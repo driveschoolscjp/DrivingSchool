@@ -1,0 +1,12 @@
+# IDEA
+*.iml
+.idea/
+
+# Java out
+*.class
+out/
+target/
+
+# Log messages
+*.log
+log/
