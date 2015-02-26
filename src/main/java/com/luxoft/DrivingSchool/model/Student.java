@@ -1,4 +1,6 @@
 package com.luxoft.DrivingSchool.model;
 
-public class Student {
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+public class Student extends AbstractPersistable<Long> {
 }

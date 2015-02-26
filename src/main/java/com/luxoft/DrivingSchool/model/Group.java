@@ -1,4 +1,6 @@
 package com.luxoft.DrivingSchool.model;
 
-public class Group {
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+public class Group extends AbstractPersistable<Long> {
 }

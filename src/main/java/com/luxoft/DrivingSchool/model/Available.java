@@ -1,4 +1,6 @@
 package com.luxoft.DrivingSchool.model;
 
-public class Available {
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+public class Available extends AbstractPersistable<Long> {
 }

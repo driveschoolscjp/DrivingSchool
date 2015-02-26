@@ -1,8 +1,10 @@
 package com.luxoft.DrivingSchool.DAO;
 
+import org.springframework.data.domain.Persistable;
+
 import java.util.List;
 
-public interface GenericDAO<T> {
+public interface GenericDAO<T extends Persistable<Long>> {
 
     T findOne(long id);
 
