@@ -1,8 +1,10 @@
 package com.luxoft.DrivingSchool.DAO;
 
+import com.luxoft.DrivingSchool.model.Car;
+
 import java.util.List;
 
-public interface CarDAO extends GenericDAO<CarDAO> {
+public interface CarDAO extends GenericDAO<Car> {
 
     List<CarDAO> findByBrand(String brand);
 

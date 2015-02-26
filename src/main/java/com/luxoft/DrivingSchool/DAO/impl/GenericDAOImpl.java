@@ -1,12 +1,13 @@
 package com.luxoft.DrivingSchool.DAO.impl;
 
 import com.luxoft.DrivingSchool.DAO.GenericDAO;
+import org.springframework.data.domain.Persistable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
+public abstract class GenericDAOImpl<T extends Persistable<Long>> implements GenericDAO<T> {
 
     Class<T> clazz;
 
