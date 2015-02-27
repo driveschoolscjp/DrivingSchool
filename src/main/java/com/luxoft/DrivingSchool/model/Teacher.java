@@ -1,6 +1,18 @@
 package com.luxoft.DrivingSchool.model;
 
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public class Teacher extends AbstractPersistable<Long> {
+@Entity
+@Table(name = "teachers")
+public class Teacher extends Person {
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
