@@ -1,5 +1,6 @@
 package com.luxoft.DrivingSchool.model;
 
+import com.luxoft.DrivingSchool.model.enums.Transmission;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;

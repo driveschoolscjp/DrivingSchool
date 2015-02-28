@@ -1,6 +1,7 @@
 package com.luxoft.DrivingSchool.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -14,6 +15,8 @@ public class Student extends Person {
     @JoinColumn(name = "instructor_id")
     private Teacher instructor;
     private int rideNumber;
+    @OneToMany(mappedBy="student", cascade=CascadeType.REMOVE)
+    private List<Schedule> schedule;
 
     public String getLogin() {
         return login;

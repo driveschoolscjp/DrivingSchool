@@ -5,13 +5,16 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Created by Aleksei Chumakov on 28.02.2015.
+ */
 @Entity
-@Table(name = "busy")
-public class Busy extends AbstractPersistable<Long> {
-    @ManyToOne(cascade = CascadeType.REMOVE)
+@Table(name = "schedule")
+public class Schedule extends AbstractPersistable<Long> {
+    @ManyToOne
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
     @Temporal(value = TemporalType.DATE)
