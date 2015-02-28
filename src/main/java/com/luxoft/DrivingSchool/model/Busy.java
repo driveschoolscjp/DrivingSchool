@@ -8,6 +8,7 @@ import java.util.Date;
 @Entity
 @Table(name = "busy")
 public class Busy extends AbstractPersistable<Long> {
+
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;

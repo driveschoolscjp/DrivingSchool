@@ -6,6 +6,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "teachers")
 public class Teacher extends Person {
+
     private String description;
 
     public String getDescription() {

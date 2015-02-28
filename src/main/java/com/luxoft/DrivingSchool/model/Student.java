@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "students")
 public class Student extends Person {
+
     private String login;
     private String password;
     @OneToOne(fetch = FetchType.LAZY)

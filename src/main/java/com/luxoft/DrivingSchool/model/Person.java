@@ -7,6 +7,7 @@ import java.util.Date;
 
 @MappedSuperclass
 public abstract class Person extends AbstractPersistable<Long> {
+
     @Column(length = 40)
     private String name;
     @Column(length = 40)

@@ -8,6 +8,7 @@ import java.util.Date;
 @Entity
 @Table(name = "groups")
 public class Group extends AbstractPersistable<Long> {
+
     @Column(length = 40)
     private String name;
     @Temporal(value = TemporalType.DATE)

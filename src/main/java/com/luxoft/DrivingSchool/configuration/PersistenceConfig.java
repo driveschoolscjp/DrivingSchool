@@ -7,13 +7,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
 @ComponentScan("com.luxoft.DrivingSchool.DAO.impl")
 @PropertySource("classpath:db.properties")
-public class ConfigDAO {
+public class PersistenceConfig {
 
     @Autowired
     Environment environment;
@@ -29,18 +30,25 @@ public class ConfigDAO {
     }
 
     @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
+
+    @Bean
     public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
-        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setDataSource(dataSource());
-        factoryBean.setPackagesToScan("com.luxoft.DrivingSchool.model");
+
+        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(dataSource());
+        em.setPackagesToScan("com.luxoft.DrivingSchool.model");
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setShowSql(true);
         vendorAdapter.setGenerateDdl(true);
-        vendorAdapter.setDatabasePlatform("org.springframework.orm.jpa.DefaultJpaDialect");
+        vendorAdapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQL9Dialect");
 
-        factoryBean.setJpaVendorAdapter(vendorAdapter);
+        em.setJpaVendorAdapter(vendorAdapter);
 
-        return factoryBean;
+        return em;
     }
+
 }
