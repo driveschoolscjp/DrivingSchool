@@ -20,7 +20,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:db.properties")
-@EnableJpaRepositories("com.luxoft.DrivingSchool.DAO")
+@EnableJpaRepositories("com.luxoft.DrivingSchool.repository")
 public class PersistenceConfig {
 
     @Autowired
