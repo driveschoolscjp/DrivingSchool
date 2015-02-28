@@ -12,13 +12,12 @@ public class Car extends AbstractPersistable<Long> {
     private String brand;
     @Column(length = 40)
     private String model;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Transmission transmission;
     private float engineSize;
     private float pricePerHour;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_id")
-    private Teacher teacher;
+    private Teacher instructor;
 
     public String getBrand() {
         return brand;
@@ -60,11 +59,11 @@ public class Car extends AbstractPersistable<Long> {
         this.pricePerHour = pricePerHour;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
+    public Teacher getInstructor() {
+        return instructor;
     }
 
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
+    public void setInstructor(Teacher instructor) {
+        this.instructor = instructor;
     }
 }

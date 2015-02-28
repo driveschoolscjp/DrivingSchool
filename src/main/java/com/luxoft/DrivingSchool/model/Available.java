@@ -10,7 +10,6 @@ import java.util.Date;
 public class Available extends AbstractPersistable<Long> {
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
     @Temporal(value = TemporalType.DATE)
     private Date day;

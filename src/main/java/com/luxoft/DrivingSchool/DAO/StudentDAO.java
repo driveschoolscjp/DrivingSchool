@@ -1,13 +1,13 @@
 package com.luxoft.DrivingSchool.DAO;
 
-import com.luxoft.DrivingSchool.model.Group;
 import com.luxoft.DrivingSchool.model.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface StudentDAO extends GenericDAO<Student> {
+public interface StudentDAO extends JpaRepository<Student, Long> {
 
-    List<Student> findByName(String name);
+    Student findByFirstname(String firstname);
 
-    List<Student> findByGroup(Group group);
+    List<Student> findByGroupId(long groupId);
 }

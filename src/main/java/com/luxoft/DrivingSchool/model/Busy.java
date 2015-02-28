@@ -10,10 +10,8 @@ import java.util.Date;
 public class Busy extends AbstractPersistable<Long> {
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "teacher_id")
     private Teacher teacher;
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "student_id")
     private Student student;
     @Temporal(value = TemporalType.DATE)
     private Date day;

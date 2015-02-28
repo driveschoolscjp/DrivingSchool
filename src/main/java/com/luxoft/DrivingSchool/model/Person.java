@@ -8,36 +8,37 @@ import java.util.Date;
 @MappedSuperclass
 public abstract class Person extends AbstractPersistable<Long> {
 
-    @Column(length = 40)
-    private String name;
-    @Column(length = 40)
-    private String surname;
-    @Column(length = 40)
+    @Column(length = 50)
+    private String firstname;
+    @Column(length = 50)
+    private String lastname;
+    @Column(length = 50)
     private String patronymic;
-    @Column(length = 6)
+    @Column(length = 8)
     private String passport;
+    @Column(length = 8)
     private Integer inn;
     @Temporal(value = TemporalType.DATE)
     private Date birthday;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     private String email;
     private String photoURI;
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPatronymic() {

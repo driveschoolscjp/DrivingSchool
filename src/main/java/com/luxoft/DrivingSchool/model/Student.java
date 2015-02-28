@@ -12,7 +12,6 @@ public class Student extends Person {
     @JoinColumn(name = "group_id")
     private Group group;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_id")
     private Teacher instructor;
     private int rideNumber;
 
