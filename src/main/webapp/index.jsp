@@ -130,7 +130,7 @@
 <script src="/bootstrap/js/bootstrap.js"></script>
 
 
-<!--Вращение слайдов-->
+<!--Вращение  слайдов-->
 
 <script type='text/javascript'>
     $(document).ready(function() {
