@@ -8,6 +8,8 @@
     <artifactId>DrivingSchool</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <packaging>war</packaging>
+
     <properties>
         <spring.version>4.1.5.RELEASE</spring.version>
     </properties>

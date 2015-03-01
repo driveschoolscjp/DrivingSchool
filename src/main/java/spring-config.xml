@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config />
-    <context:component-scan base-package="com.luxoft.DrivingSchool" />
+    <context:component-scan base-package="com.luxoft.drivingschool" />
 </beans>
 
         <!--https://samerabdelkafi.wordpress.com/2014/08/03/spring-mvc-full-java-based-config/-->
