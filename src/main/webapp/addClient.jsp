@@ -39,40 +39,83 @@
 
 
 <jsp:include page="header.jsp" />
+<jsp:include page="menuAdmin.jsp" />
+
+<div class="body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2  col-xs-offset-3 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
 
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2  col-xs-offset-3 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
+                <form:form action="add" method="post" commandName="userForm">
 
 
-    <form:form action="add" method="post" commandName="userForm">
+                <h2 class="form-signin-heading" style="color: #ffffff">User Registration</h2>
+
+                    <label for="inputLogit" class="sr-only">Login</label>
+                    <form:input path="login"  class="form-control" type="text"  placeholder="Student name" id = "inputLogit" required = "inputLogin"   />
+
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <form:password path="password" id="inputPassword" class="form-control" placeholder="Password" required="inputPassword"/>
+
+                    <label for="inputGroupId" class="sr-only">Group Id</label>
+                    <form:input path="groupId" id="inputGroupId"  type="id" class="form-control" placeholder="Group Id" required="inputGroupId"/>
+
+                    <label for="inputInstructorId" class="sr-only">Instructor Id</label>
+                    <form:input path="instructorId"  class="form-control" type="id"  placeholder="Instructor Id" id = "inputInstructorId" required = "inputInstructorId"   />
+
+                    <label for="rideNumber" class="sr-only">Ride Number</label>
+                    <form:input path="rideNumber" id="rideNumber"  type = "text" class="form-control" placeholder="ride Number" required="rideNumber"/>
+
+                    <label for="firstname" class="sr-only">Name</label>
+                    <form:input path="firstname" id="firstname" class="form-control" placeholder="Name" required="firstname"/>
+
+                    <label for="lastname" class="sr-only">Lastname</label>
+                    <form:input path="lastname" id="lastname" class="form-control" placeholder="Lastname" required="lastname"/>
+
+                    <label for="patronymic" class="sr-only">Patronymic</label>
+                    <form:input path="patronymic" id="patronymic" class="form-control" placeholder="Patronymic" required="patronymic"/>
 
 
-        <h2 class="form-signin-heading" style="color: #ffffff">User Registration</h2>
+                    <label for="passport" class="sr-only">Passport</label>
+                    <form:input path="passport" id="passport" class="form-control" placeholder="Passport code" required="passport"/>
 
-        <label for="firstName" class="sr-only">First name</label>
-        <form:input path="firstName" class="form-control" type="text"  placeholder="First name" id = "firstName" required = "text"   />
-        <label for="familyName" class="sr-only">Family name</label>
-        <form:input path="familyName" class="form-control" type="text"  placeholder="FamilyName" id = "familyName" required = "text"   />
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="email" autofocus=""/>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <form:password path="password" id="inputPassword" class="form-control" placeholder="Password" required="inputPassword"/>
-        <label for="inputLogit" class="sr-only">Login</label>
-    <form:input path="login"  class="form-control" type="text"  placeholder="User name" id = "inputLogit" required = "inputLogin"   />
-       <br>
+                    <label for="inn" class="sr-only">Inn</label>
+                    <form:input path="inn" id="inn" class="form-control" placeholder="INN" required="inn"/>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                    <label for="birthday" class="sr-only">Birthday</label>
+                    <form:input path="birthday" id="birthday" class="form-control" placeholder="Birthday" required="birthday"/>
+
+                    <div>
+                        <label class="radio-inline">
+                            <form:radiobutton path="gender" value="M"/> <p style="color: #ffffff">Male</p>
+                        </label>
+                        <label class="radio-inline">
+                            <form:radiobutton path="gender" value="F"/> <p style="color: #ffffff">Female</p>
+                        </label>
+
+                    </div>
+
+
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="email" autofocus=""/>
+
+                    <label for="photoURI" class="sr-only">Photo url</label>
+                    <form:input path="photoURI"  id="photoURI" class="form-control" placeholder="photo URI" required="photoURI" autofocus=""/>
+
+
+                <br>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 
             </div>
-    </form:form>
+            </form:form>
 
-</div>
-</div>
+        </div>
+    </div>
 </div>    <!-- /container -->
 
-
+</div>
 
 
 

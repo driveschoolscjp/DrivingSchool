@@ -39,56 +39,56 @@
 <body>
 
 <jsp:include page="header.jsp" />
+<jsp:include page="menuAdmin.jsp" />
 
-<form action="administrator.jsp">
+<div class="body">
 
-<div align="center">
-    <table border="0"  style="color: #ffffff">
-        <tr>
-            <td colspan="2" align="center"><h2>Registration Succeeded!</h2></td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <h3>Thank you for registering! Here's the review of details:</h3>
-            </td>
-        </tr>
-        <tr>
-            <td>User id:</td>
-            <td>${userForm.id}</td>
-        </tr>
 
-        <tr>
-            <td>User login:</td>
-            <td>${userForm.login}</td>
-        </tr>
 
-        <tr>
-            <td>User password:</td>
-            <td>${userForm.password}</td>
-        </tr>
 
-        <tr>
-            <td>Name:</td>
-            <td>${userForm.firstName}</td>
-        </tr>
+    <div align="center">
+        <table border="0"  style="color: #ffffff">
+            <tr>
+                <td colspan="2" align="center"><h2>Registration Succeeded!</h2></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <h3>Thank you for registering! Here's the review of details:</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>User id:</td>
+                <td>${userForm.id}</td>
+            </tr>
 
-        <tr>
-            <td>Surname:</td>
-            <td>${userForm.familyName}</td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td>${userForm.email}</td>
-        </tr>
+            <tr>
+                <td>User login:</td>
+                <td>${userForm.login}</td>
+            </tr>
 
-        <tr>
-            <td align="center"> <br><input type="submit" class="btn btn-primary btn"  value="Вернуться"  ></td>
-        </tr>
+            <tr>
+                <td>User password:</td>
+                <td>${userForm.password}</td>
+            </tr>
 
-    </table>
+            <tr>
+                <td>Name:</td>
+                <td>${userForm.firstName}</td>
+            </tr>
+
+            <tr>
+                <td>Surname:</td>
+                <td>${userForm.familyName}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>${userForm.email}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
 </div>
-
-</form>
-
 </body>
 </html>

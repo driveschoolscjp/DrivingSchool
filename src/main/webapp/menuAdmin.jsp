@@ -40,18 +40,11 @@
 
                 <div>
                     <p style="color: #ffffff"><i class="fa fa-cog fa-2x" ></i> Admin </p>
-                    <div class="btn-group open">
 
-                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-
-                            <span class="fa fa-caret-down"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="add"><i class="fa fa-user-plus fa-2x"></i> Add</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-user-times fa-2x"></i> Delete</a></li>
-                            <li class="divider"></li>
-                            <li><a href="users"><i class="fa fa-users fa-2x"></i> Show users</a></li>
-                        </ul>
+                    <div class="list-group">
+                        <a class="list-group-item" href="add"><i class="fa fa-user-plus fa-1x"></i>&nbsp; Add</a>
+                        <a class="list-group-item" href="#"><i class="fa fa-user-times fa-1x"></i>&nbsp; Delete</a>
+                        <a class="list-group-item" href="users"><i class="fa fa-users fa-1x"></i>&nbsp;  Show users</a>
 
                     </div>
                 </div>
