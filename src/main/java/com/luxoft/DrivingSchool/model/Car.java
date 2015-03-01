@@ -8,9 +8,9 @@ import javax.persistence.*;
 @Table(name = "cars")
 public class Car extends AbstractPersistable<Long> {
 
-    @Column(length = 40)
+    @Column(length = 50)
     private String brand;
-    @Column(length = 40)
+    @Column(length = 50)
     private String model;
     @Enumerated(EnumType.STRING)
     private Transmission transmission;

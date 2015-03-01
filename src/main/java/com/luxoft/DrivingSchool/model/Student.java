@@ -9,7 +9,6 @@ public class Student extends Person {
     private String login;
     private String password;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id")
     private Group group;
     @ManyToOne(fetch = FetchType.LAZY)
     private Teacher instructor;
