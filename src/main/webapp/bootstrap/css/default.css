@@ -1,0 +1,60 @@
+body {
+    background: url("../images/resized.jpg") no-repeat center center fixed;/* Цвет фона */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.page {
+    min-height:100%;
+    position:relative;
+}
+
+
+
+.content {
+    padding:10px;
+    padding-bottom:20px; /* Height of the footer element */
+    overflow:hidden;
+}
+
+.menu {
+    padding:50px 10px 0px 10px;
+    width:200px;
+    float:left;
+}
+
+.body {
+    margin:50px 10px 0px 250px;
+}
+
+.footer {
+
+   height:25px;
+  margin-bottom:auto;
+  text-align: center;
+
+    padding: 5px; /* Поля вокруг текста */
+    opacity: 0.7; /* Значение прозрачности */
+    filter: alpha(Opacity=80); /* Прозрачность в IE */
+}
+
+#contentText {
+    color: #ffffff;
+}
+
+#MenuText {
+    color: #ffffff;
+}
+
+.roleMenu {
+    width: 220px;
+}
+
+.error {
+    color:red;
+    font-style: italic;
+}
+
