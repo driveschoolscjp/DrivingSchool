@@ -38,8 +38,6 @@
     <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
 
 
-
-
 </head>
 
 <body>
@@ -47,8 +45,6 @@
 
 <jsp:include page="header.jsp" />
 <jsp:include page="menuAdmin.jsp" />
-
-
 
 
 

@@ -17,7 +17,6 @@ import java.util.Map;
 @Controller
 public class UserController {
 
-   private StudentRepository studentRepository;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView takeLogin(HttpServletRequest httpServletRequest){

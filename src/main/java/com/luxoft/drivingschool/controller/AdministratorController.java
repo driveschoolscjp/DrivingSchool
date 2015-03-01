@@ -44,7 +44,7 @@ public class AdministratorController {
         gendersForm.add(Gender.FEMALE);
         gendersForm.add(Gender.MALE);
 
-//        model.put("studentForm", studentForm);
+        model.put("studentForm", studentForm);
 //        model.put("instructorForm", instructorForm);
 //        model.put("groupForm", groupForm);
 //        model.put("genderForm", genderForm);
@@ -57,6 +57,7 @@ public class AdministratorController {
                                       @ModelAttribute("instructorForm") Teacher instructorForm,
                                       @ModelAttribute("groupForm") Group groupForm,
                                       @ModelAttribute("genderForm") Gender genderForm) {
+
 
         student.setInstructor(instructorForm);
         student.setGroup(groupForm);

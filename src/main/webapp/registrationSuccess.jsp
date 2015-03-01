@@ -58,32 +58,67 @@
             </tr>
             <tr>
                 <td>User id:</td>
-                <td>${userForm.id}</td>
+                <td>${studentForm.id}</td>
             </tr>
+
+
 
             <tr>
                 <td>User login:</td>
-                <td>${userForm.login}</td>
+                <td>${studentForm.login}</td>
             </tr>
 
             <tr>
                 <td>User password:</td>
-                <td>${userForm.password}</td>
+                <td>${studentForm.password}</td>
             </tr>
 
             <tr>
                 <td>Name:</td>
-                <td>${userForm.firstName}</td>
+                <td>${studentForm.lastname}</td>
             </tr>
 
             <tr>
                 <td>Surname:</td>
-                <td>${userForm.familyName}</td>
+                <td>${studentForm.lastname}</td>
             </tr>
             <tr>
                 <td>Email:</td>
-                <td>${userForm.email}</td>
+                <td>${studentForm.email}</td>
             </tr>
+            <tr>
+                <td>Birth:</td>
+                <td>${studentForm.birthday}</td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>${studentForm.gender}</td>
+            </tr>
+            <tr>
+                <td>Group:</td>
+                <td>${studentForm.group.id}</td>
+            </tr>
+            <tr>
+                <td>Instructor:</td>
+                <td>${studentForm.instructor.id}</td>
+            </tr>
+            <tr>
+                <td>Inn:</td>
+                <td>${studentForm.inn}</td>
+            </tr>
+            <tr>
+                <td>Passport:</td>
+                <td>${studentForm.passport}</td>
+            </tr>
+            <tr>
+                <td>rideNumber:</td>
+                <td>${studentForm.rideNumber}</td>
+            </tr>
+            <tr>
+                <td>photo Url:</td>
+                <td>${studentForm.photoURI}</td>
+            </tr>
+
         </table>
     </div>
 

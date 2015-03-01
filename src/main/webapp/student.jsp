@@ -42,30 +42,30 @@
 <jsp:include page="menuAdmin.jsp" />
 
 <div class="body">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2  col-xs-offset-3 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
+            <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2  ">
 
 
                 <form:form action="add" method="post" commandName="studentForm">
 
 
-                <h2 class="form-signin-heading" style="color: #ffffff">User Registration</h2>
+                    <p class="form-signin-heading" style="color: #ffffff">Student add</p>
 
                     <label for="inputLogit" class="sr-only">Login</label>
-                    <form:input path="login"  class="form-control" type="text"  placeholder="Student name" id = "inputLogit" required = "inputLogin"   />
+                    <form:input path="login"  class="form-control" type="text"  placeholder="Login" id = "inputLogit" required = "inputLogin"   />
 
                     <label for="inputPassword" class="sr-only">Password</label>
                     <form:password path="password" id="inputPassword" class="form-control" placeholder="Password" required="inputPassword"/>
 
-                    <%--<label for="inputGroupId" class="sr-only">Group Id</label>--%>
-                    <%--<form:input path="groupId" id="inputGroupId"  type="id" class="form-control" placeholder="Group Id" required="inputGroupId"/>--%>
+                    <label for="inputGroupId" class="sr-only">Group Id</label>
+                    <form:input path="group" id="inputGroupId" type="number" min="0" step="1" class="form-control" placeholder="Group Id" required="inputGroupId"/>
 
-                    <%--<label for="inputInstructorId" class="sr-only">Instructor Id</label>--%>
-                    <%--<form:input path="instructorId"  class="form-control" type="id"  placeholder="Instructor Id" id = "inputInstructorId" required = "inputInstructorId"   />--%>
+                    <label for="inputInstructorId" class="sr-only">Instructor Id</label>
+                    <form:input path="instructor"  class="form-control" type="number" min="0" step="1"  placeholder="Instructor Id" id = "inputInstructorId" required = "inputInstructorId"   />
 
                     <label for="rideNumber" class="sr-only">Ride Number</label>
-                    <form:input path="rideNumber" id="rideNumber"  type = "text" class="form-control" placeholder="ride Number" required="rideNumber"/>
+                    <form:input path="rideNumber"  class="form-control" type="number" min="0" step="1"  placeholder="ride Number" id = "rideNumber" required = "rideNumber"   />
 
                     <label for="firstname" class="sr-only">Name</label>
                     <form:input path="firstname" id="firstname" class="form-control" placeholder="Name" required="firstname"/>
@@ -78,13 +78,13 @@
 
 
                     <label for="passport" class="sr-only">Passport</label>
-                    <form:input path="passport" id="passport" class="form-control" placeholder="Passport code" required="passport"/>
+                    <form:input path="passport" id="passport" class="form-control" placeholder="Passport code" type = "text" pattern ="[a-zA-Z]{2}[0-9]{6}" required = "passport" />
 
                     <label for="inn" class="sr-only">Inn</label>
-                    <form:input path="inn" id="inn" class="form-control" placeholder="INN" required="inn"/>
+                    <form:input path="inn" id="inn" class="form-control" placeholder="INN" type = "text" pattern= "[0-9]{8}" required = "inn"/>
 
                     <label for="birthday" class="sr-only">Birthday</label>
-                    <form:input path="birthday" id="birthday" class="form-control" placeholder="Birthday" required="birthday"/>
+                    <form:input path="birthday" id="birthday" type = "date" class="form-control"  placeholder="Birthday" required="birthday"/>
 
                     <div>
                         <label class="radio-inline">
@@ -100,20 +100,25 @@
                     <label for="inputEmail" class="sr-only">Email address</label>
                     <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="email" autofocus=""/>
 
-                    <%--<label for="photoURI" class="sr-only">Photo url</label>--%>
-                    <%--<form:input path="photoURI"  id="photoURI" class="form-control" placeholder="photo URI" required="photoURI" autofocus=""/>--%>
+                    <label for="photoURI" class="sr-only">Photo url</label>
+                    <form:input path="photoURI"  id="photoURI" class="form-control" type="url" placeholder="photo URI" required="photoURI" autofocus=""/>
 
 
-                <br>
+                    <br>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10  col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+
+                                <button class="btn btn-lg btn-primary btn-block btn-xs" type="submit">Add student</button>
+                            </div>
+                        </div>
+                    </div>
+                </form:form>
 
             </div>
-            </form:form>
-
         </div>
-    </div>
-</div>    <!-- /container -->
+    </div>    <!-- /container -->
 
 </div>
 
