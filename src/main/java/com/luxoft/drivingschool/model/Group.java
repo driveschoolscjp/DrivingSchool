@@ -1,9 +1,13 @@
 package com.luxoft.drivingschool.model;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 
 @Entity
@@ -12,9 +16,9 @@ public class Group extends AbstractPersistable<Long> {
 
     @Column(length = 40)
     private String name;
-    @Temporal(value = TemporalType.DATE)
+    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
     private LocalDate startDate;
-    @Temporal(value = TemporalType.DATE)
+    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
     private LocalDate finishDate;
     @ManyToOne
     private Teacher teacher;

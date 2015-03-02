@@ -1,9 +1,12 @@
 package com.luxoft.drivingschool.model;
 
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "schedule")
@@ -12,8 +15,8 @@ public class Schedule extends AbstractPersistable<Long> {
     private Teacher teacher;
     @ManyToOne
     private Student student;
-    @Temporal(value = TemporalType.DATE)
-    private Date day;
+    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+    private LocalDate day;
     private int startInterval;
     private int finishInterval;
 
@@ -41,16 +44,15 @@ public class Schedule extends AbstractPersistable<Long> {
         this.startInterval = startInterval;
     }
 
-    public Date getDay() {
+    public LocalDate getDay() {
         return day;
     }
 
-    public void setDay(Date day) {
+    public void setDay(LocalDate day) {
         this.day = day;
     }
 
     public int getFinishInterval() {
-
         return finishInterval;
     }
 

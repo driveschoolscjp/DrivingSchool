@@ -1,10 +1,14 @@
 package com.luxoft.drivingschool.model;
 
 import com.luxoft.drivingschool.model.enums.Gender;
+import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class Person extends AbstractPersistable<Long> {
@@ -18,7 +22,7 @@ public abstract class Person extends AbstractPersistable<Long> {
     @Column(length = 8)
     private String passport;
     private int inn;
-    @Temporal(value = TemporalType.DATE)
+    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
     private LocalDate birthday;
     @Enumerated(EnumType.STRING)
     private Gender gender;
