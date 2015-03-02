@@ -47,7 +47,7 @@
             <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2  ">
 
 
-                <form:form action="add" method="post" commandName="studentForm">
+                <form:form action="add" method="post" modelAttribute="studentForm">
 
 
                     <p class="form-signin-heading" style="color: #ffffff">Student add</p>
@@ -58,11 +58,15 @@
                     <label for="inputPassword" class="sr-only">Password</label>
                     <form:password path="password" id="inputPassword" class="form-control" placeholder="Password" required="inputPassword"/>
 
-                    <label for="inputGroupId" class="sr-only">Group Id</label>
-                    <form:input path="group" id="inputGroupId" type="number" min="0" step="1" class="form-control" placeholder="Group Id" required="inputGroupId"/>
+                    <form:select path="group">
+                    <c:forEach items="${groups}" var="group">
+                            <option value="${group}">${group.name}</option>
+                    </c:forEach>
+                    </form:select>
 
-                    <label for="inputInstructorId" class="sr-only">Instructor Id</label>
-                    <form:input path="instructor"  class="form-control" type="number" min="0" step="1"  placeholder="Instructor Id" id = "inputInstructorId" required = "inputInstructorId"   />
+                    <%--<c:forEach items="${teachers}" var="teacher">--%>
+                        <%--<c:out value="${teacher.firstname}" />--%>
+                    <%--</c:forEach>--%>
 
                     <label for="rideNumber" class="sr-only">Ride Number</label>
                     <form:input path="rideNumber"  class="form-control" type="number" min="0" step="1"  placeholder="Ride Number" id = "rideNumber" required = "rideNumber"   />
@@ -83,18 +87,18 @@
                     <label for="inn" class="sr-only">Inn</label>
                     <form:input path="inn" id="inn" class="form-control" placeholder="INN" type = "text" pattern= "[0-9]{8}" required = "inn"/>
 
-                    <label for="birthday" class="sr-only">Birthday</label>
-                    <form:input path="birthday" id="birthday" type = "date" class="form-control"  placeholder="Birthday" required="birthday"/>
+                    <%--&lt;%&ndash;<label for="birthday" class="sr-only">Birthday</label>&ndash;%&gt;--%>
+                    <%--<form:input path="studentForm.birthday" id="birthday" class="form-control"  placeholder="Birthday" required="birthday"/>--%>
 
-                    <div>
-                        <label class="radio-inline">
-                            <form:radiobutton path="gender" value="M"/> <p style="color: #ffffff">Male</p>
-                        </label>
-                        <label class="radio-inline">
-                            <form:radiobutton path="gender" value="F"/> <p style="color: #ffffff">Female</p>
-                        </label>
+                    <%--<div>--%>
+                        <%--<label class="radio-inline">--%>
+                            <%--<form:radiobutton path="student.gender" value="M"/> <p style="color: #ffffff">Male</p>--%>
+                        <%--</label>--%>
+                        <%--<label class="radio-inline">--%>
+                            <%--<form:radiobutton path="student.gender" value="F"/> <p style="color: #ffffff">Female</p>--%>
+                        <%--</label>--%>
 
-                    </div>
+                    <%--</div>--%>
 
 
                     <label for="inputEmail" class="sr-only">Email address</label>

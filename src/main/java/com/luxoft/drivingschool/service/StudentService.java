@@ -1,5 +1,6 @@
 package com.luxoft.drivingschool.service;
 
+import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,4 +10,8 @@ public class StudentService {
 
     @Autowired
     StudentRepository studentRepository;
+
+    public Student save(Student student){
+        return studentRepository.save(student);
+    }
 }

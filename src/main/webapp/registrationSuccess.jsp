@@ -46,81 +46,81 @@
 
 
 
-    <div align="center">
-        <table border="0"  style="color: #ffffff">
-            <tr>
-                <td colspan="2" align="center"><h2>Registration Succeeded!</h2></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <h3>Thank you for registering! Here's the review of details:</h3>
-                </td>
-            </tr>
-            <tr>
-                <td>User id:</td>
-                <td>${studentForm.id}</td>
-            </tr>
+    <%--<div align="center">--%>
+        <%--<table border="0"  style="color: #ffffff">--%>
+            <%--<tr>--%>
+                <%--<td colspan="2" align="center"><h2>Registration Succeeded!</h2></td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td colspan="2" align="center">--%>
+                    <%--<h3>Thank you for registering! Here's the review of details:</h3>--%>
+                <%--</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>User id:</td>--%>
+                <%--<td>${studentForm.id}</td>--%>
+            <%--</tr>--%>
 
 
 
-            <tr>
-                <td>User login:</td>
-                <td>${studentForm.login}</td>
-            </tr>
+            <%--<tr>--%>
+                <%--<td>User login:</td>--%>
+                <%--<td>${studentForm.login}</td>--%>
+            <%--</tr>--%>
 
-            <tr>
-                <td>User password:</td>
-                <td>${studentForm.password}</td>
-            </tr>
+            <%--<tr>--%>
+                <%--<td>User password:</td>--%>
+                <%--<td>${studentForm.password}</td>--%>
+            <%--</tr>--%>
 
-            <tr>
-                <td>Name:</td>
-                <td>${studentForm.lastname}</td>
-            </tr>
+            <%--<tr>--%>
+                <%--<td>Name:</td>--%>
+                <%--<td>${studentForm.lastname}</td>--%>
+            <%--</tr>--%>
 
-            <tr>
-                <td>Surname:</td>
-                <td>${studentForm.lastname}</td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td>${studentForm.email}</td>
-            </tr>
-            <tr>
-                <td>Birth:</td>
-                <td>${studentForm.birthday}</td>
-            </tr>
-            <tr>
-                <td>Gender:</td>
-                <td>${studentForm.gender}</td>
-            </tr>
-            <tr>
-                <td>Group:</td>
-                <td>${studentForm.group.id}</td>
-            </tr>
-            <tr>
-                <td>Instructor:</td>
-                <td>${studentForm.instructor.id}</td>
-            </tr>
-            <tr>
-                <td>Inn:</td>
-                <td>${studentForm.inn}</td>
-            </tr>
-            <tr>
-                <td>Passport:</td>
-                <td>${studentForm.passport}</td>
-            </tr>
-            <tr>
-                <td>rideNumber:</td>
-                <td>${studentForm.rideNumber}</td>
-            </tr>
-            <tr>
-                <td>photo Url:</td>
-                <td>${studentForm.photoURI}</td>
-            </tr>
+            <%--<tr>--%>
+                <%--<td>Surname:</td>--%>
+                <%--<td>${studentForm.lastname}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>Email:</td>--%>
+                <%--<td>${studentForm.email}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>Birth:</td>--%>
+                <%--<td>${studentForm.birthday}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>Gender:</td>--%>
+                <%--<td>${studentForm.gender}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>Group:</td>--%>
+                <%--<td>${studentForm.group.id}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>Instructor:</td>--%>
+                <%--<td>${studentForm.instructor.id}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>Inn:</td>--%>
+                <%--<td>${studentForm.inn}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>Passport:</td>--%>
+                <%--<td>${studentForm.passport}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>rideNumber:</td>--%>
+                <%--<td>${studentForm.rideNumber}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>photo Url:</td>--%>
+                <%--<td>${studentForm.photoURI}</td>--%>
+            <%--</tr>--%>
 
-        </table>
-    </div>
+        <%--</table>--%>
+    <%--</div>--%>
 
 
 

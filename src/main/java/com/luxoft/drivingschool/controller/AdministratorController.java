@@ -4,82 +4,82 @@ import com.luxoft.drivingschool.model.Gender;
 import com.luxoft.drivingschool.model.Group;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.Teacher;
-import com.luxoft.drivingschool.repository.GroupRepository;
-import com.luxoft.drivingschool.repository.StudentRepository;
-import com.luxoft.drivingschool.repository.mockImpl.GroupRepositoryMock;
-import com.luxoft.drivingschool.repository.mockImpl.StudentRepositoryMock;
-import com.luxoft.drivingschool.repository.mockImpl.TeacherRepositoryMock;
+import com.luxoft.drivingschool.service.GroupService;
+import com.luxoft.drivingschool.service.StudentService;
+import com.luxoft.drivingschool.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by SCJP on 26.02.2015.
  */
-@Controller("administratorController")
+@Controller
 public class AdministratorController {
 
-//    @Autowired private StudentRepositoryMock studentRepository;
-//    @Autowired private TeacherRepositoryMock teacherRepository;
-//    @Autowired GroupRepositoryMock groupRepository;
+    @Autowired
+    StudentService studentService;
+
+    @Autowired
+    TeacherService teacherService;
+
+    @Autowired
+    GroupService groupService;
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String viewRegistration(Map<String, Object> model) {
+    public ModelAndView viewRegistration() {
         Student studentForm = new Student();
-        Teacher instructorForm = new Teacher();
-        Group groupForm = new Group();
-        Gender genderForm = Gender.FEMALE;
 
-//        List<Teacher> instructorsForm =  teacherRepository.findByFirstname("k");
-//        List<Group> groupsForm = groupRepository.findByFirstname("l");
-        List<Gender> gendersForm = new ArrayList<>();
-        gendersForm.add(Gender.FEMALE);
-        gendersForm.add(Gender.MALE);
+        List<Teacher> instructors =  teacherService.findAll();
+        List<Group> groups = groupService.findAll();
+//        List<Gender> gendersForm = new ArrayList<>();
+//        gendersForm.add(Gender.FEMALE);
+//        gendersForm.add(Gender.MALE);
 
-        model.put("studentForm", studentForm);
-//        model.put("instructorForm", instructorForm);
-//        model.put("groupForm", groupForm);
-//        model.put("genderForm", genderForm);
 
-        return "student";
+        Map<String, Object> map = new HashMap<>();
+        map.put("studentForm", studentForm);
+        map.put("groups", groups);
+        map.put("instructors", instructors);
+
+        return new ModelAndView("student", map);
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("studentForm") Student student,
-                                      @ModelAttribute("instructorForm") Teacher instructorForm,
-                                      @ModelAttribute("groupForm") Group groupForm,
-                                      @ModelAttribute("genderForm") Gender genderForm) {
+    public String processRegistration(@ModelAttribute("studentForm") Student studentForm) {
 
+        Student student = studentForm;
+//        long groupId = commandForm.getGroup();
+//        long teacherId = commandForm.getTeacher();
 
-        student.setInstructor(instructorForm);
-        student.setGroup(groupForm);
-        student.setGender(genderForm);
+//        student.setGender(genderForm);
 
-//        studentRepository.save(student);
+        studentService.save(student);
 
-        // for testing purpose:
-        System.out.println("id: " + student.getId());
-        System.out.println("login: " + student.getLogin());
-        System.out.println("password: " + student.getPassword());
-        System.out.println("email: " + student.getEmail());
-        System.out.println("Name: " + student.getFirstname());
-        System.out.println("Surname: " + student.getLastname());
-        System.out.println("Patronymic: " + student.getPatronymic());
-        System.out.println("INN: " + student.getInn().toString());
-        System.out.println("Passport: " + student.getPassport());
-        System.out.println("Number of ride: " + student.getRideNumber());
-        System.out.println("Instructor: " + student.getInstructor().toString());
-        System.out.println("Group: " + student.getGroup().toString());
-        System.out.println("Gender: " + student.getGender().toString());
-        System.out.println("Birthday: " + student.getBirthday().toString());
+//        for testing purpose:
+//        System.out.println("id: " + student.getId());
+//        System.out.println("login: " + student.getLogin());
+//        System.out.println("password: " + student.getPassword());
+//        System.out.println("email: " + student.getEmail());
+//        System.out.println("Name: " + student.getFirstname());
+//        System.out.println("Surname: " + student.getLastname());
+//        System.out.println("Patronymic: " + student.getPatronymic());
+//        System.out.println("INN: " + student.getInn());
+//        System.out.println("Passport: " + student.getPassport());
+//        System.out.println("Number of ride: " + student.getRideNumber());
+//        System.out.println("Instructor: " + student.getInstructor().toString());
+//        System.out.println("Group: " + student.getGroup().toString());
+//        System.out.println("Gender: " + student.getGender().toString());
+//        System.out.println("Birthday: " + student.getBirthday().toString());
 
         return "registrationSuccess";
     }
