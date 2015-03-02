@@ -12,7 +12,12 @@ public class ScheduleService {
     private ScheduleRepository scheduleRepository;
 
     @Transactional
-    public List<Schedule> findAllAppointmentsByTeacherId(long teacher_id) {
-        return scheduleRepository.findAllByTeacherId(teacher_id);
+    public List<Schedule> findAllAppointmentsByTeacherId(long id) {
+        return scheduleRepository.findAllByTeacherIdAndStudentIdNotNull(id);
+    }
+
+    @Transactional
+    public List<Schedule> findFreeTimeByTeacherId(long id) {
+        return scheduleRepository.findAllByTeacherIdAndStudentIdIsNull(id);
     }
 }
