@@ -21,16 +21,21 @@ import java.util.Properties;
 @EnableJpaRepositories("com.luxoft.drivingschool.repository")
 public class PersistenceConfig {
 
+    private static final String PROP_DB_DRIVER = "db.driver";
+    private static final String PROP_DB_URL = "db.url";
+    private static final String PROP_DB_USERNAME = "db.username";
+    private static final String PROP_DB_PASSWORD = "db.password";
+
     @Autowired
     Environment environment;
 
     @Bean(destroyMethod = "close")
     public BasicDataSource dataSource() {
         BasicDataSource ds = new BasicDataSource();
-        ds.setDriverClassName(environment.getProperty("db.driver"));
-        ds.setUrl(environment.getProperty("db.url"));
-        ds.setUsername(environment.getProperty("db.username"));
-        ds.setPassword(environment.getProperty("db.password"));
+        ds.setDriverClassName(environment.getProperty(PROP_DB_DRIVER));
+        ds.setUrl(environment.getProperty(PROP_DB_URL));
+        ds.setUsername(environment.getProperty(PROP_DB_USERNAME));
+        ds.setPassword(environment.getProperty(PROP_DB_PASSWORD));
         return ds;
     }
 

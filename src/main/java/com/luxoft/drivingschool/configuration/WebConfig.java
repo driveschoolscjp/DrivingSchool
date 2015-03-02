@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @Configuration
 @ComponentScan("com.luxoft.drivingschool.controller")
-public class MvcConfig extends WebMvcConfigurerAdapter {
+public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
