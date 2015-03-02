@@ -24,12 +24,12 @@ import java.util.Map;
 /**
  * Created by SCJP on 26.02.2015.
  */
-@Controller
+@Controller("administratorController")
 public class AdministratorController {
 
-    @Autowired private StudentRepositoryMock studentRepository;
-    @Autowired private TeacherRepositoryMock teacherRepository;
-    @Autowired GroupRepositoryMock groupRepository;
+//    @Autowired private StudentRepositoryMock studentRepository;
+//    @Autowired private TeacherRepositoryMock teacherRepository;
+//    @Autowired GroupRepositoryMock groupRepository;
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String viewRegistration(Map<String, Object> model) {
@@ -38,8 +38,8 @@ public class AdministratorController {
         Group groupForm = new Group();
         Gender genderForm = Gender.FEMALE;
 
-        List<Teacher> instructorsForm =  teacherRepository.findByFirstname("k");
-        List<Group> groupsForm = groupRepository.findByFirstname("l");
+//        List<Teacher> instructorsForm =  teacherRepository.findByFirstname("k");
+//        List<Group> groupsForm = groupRepository.findByFirstname("l");
         List<Gender> gendersForm = new ArrayList<>();
         gendersForm.add(Gender.FEMALE);
         gendersForm.add(Gender.MALE);
@@ -63,7 +63,7 @@ public class AdministratorController {
         student.setGroup(groupForm);
         student.setGender(genderForm);
 
-        studentRepository.save(student);
+//        studentRepository.save(student);
 
         // for testing purpose:
         System.out.println("id: " + student.getId());

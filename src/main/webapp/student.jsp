@@ -65,7 +65,7 @@
                     <form:input path="instructor"  class="form-control" type="number" min="0" step="1"  placeholder="Instructor Id" id = "inputInstructorId" required = "inputInstructorId"   />
 
                     <label for="rideNumber" class="sr-only">Ride Number</label>
-                    <form:input path="rideNumber"  class="form-control" type="number" min="0" step="1"  placeholder="ride Number" id = "rideNumber" required = "rideNumber"   />
+                    <form:input path="rideNumber"  class="form-control" type="number" min="0" step="1"  placeholder="Ride Number" id = "rideNumber" required = "rideNumber"   />
 
                     <label for="firstname" class="sr-only">Name</label>
                     <form:input path="firstname" id="firstname" class="form-control" placeholder="Name" required="firstname"/>

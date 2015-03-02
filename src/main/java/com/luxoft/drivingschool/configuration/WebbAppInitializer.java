@@ -12,6 +12,7 @@ import javax.servlet.ServletRegistration;
  * Created by SCJP on 26.02.2015.
  */
 public class WebbAppInitializer implements WebApplicationInitializer {
+
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext dispatcherServlet = new AnnotationConfigWebApplicationContext();

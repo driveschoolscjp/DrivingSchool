@@ -8,7 +8,7 @@ public class Student extends Person {
 
     private String login;
     private String password;
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Group group;
     @ManyToOne(fetch = FetchType.LAZY)
     private Teacher instructor;

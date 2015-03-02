@@ -16,8 +16,7 @@ public abstract class Person extends AbstractPersistable<Long> {
     private String patronymic;
     @Column(length = 8)
     private String passport;
-    @Column(length = 8)
-    private Integer inn;
+    private int inn;
     @Temporal(value = TemporalType.DATE)
     private Date birthday;
     @Enumerated(EnumType.STRING)
