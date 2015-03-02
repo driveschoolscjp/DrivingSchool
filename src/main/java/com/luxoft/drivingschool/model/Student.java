@@ -1,6 +1,8 @@
 package com.luxoft.drivingschool.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "students")
@@ -8,9 +10,9 @@ public class Student extends Person {
 
     private String login;
     private String password;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Group group;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Teacher instructor;
     private int rideNumber;
 
