@@ -4,6 +4,7 @@ import com.luxoft.drivingschool.model.Gender;
 import com.luxoft.drivingschool.model.Group;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.Teacher;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 @Controller("administratorController")
 public class AdministratorController {
-
+@Autowired
 //    @Autowired private StudentRepositoryMock studentRepository;
 //    @Autowired private TeacherRepositoryMock teacherRepository;
 //    @Autowired GroupRepositoryMock groupRepository;
@@ -58,7 +59,7 @@ public class AdministratorController {
 //        studentRepository.save(student);
 
         // for testing purpose:
-        System.out.println("id: " + student.getId());
+    /*    System.out.println("id: " + student.getId());
         System.out.println("login: " + student.getLogin());
         System.out.println("password: " + student.getPassword());
         System.out.println("email: " + student.getEmail());
@@ -71,7 +72,7 @@ public class AdministratorController {
         System.out.println("Instructor: " + student.getInstructor().toString());
         System.out.println("Group: " + student.getGroup().toString());
         System.out.println("Gender: " + student.getGender().toString());
-        System.out.println("Birthday: " + student.getBirthday().toString());
+        System.out.println("Birthday: " + student.getBirthday().toString()); */
 
         return "registrationSuccess";
     }
