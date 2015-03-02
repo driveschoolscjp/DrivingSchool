@@ -1,9 +1,9 @@
 package com.luxoft.drivingschool.model;
 
+import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @MappedSuperclass
 public abstract class Person extends AbstractPersistable<Long> {
@@ -18,7 +18,7 @@ public abstract class Person extends AbstractPersistable<Long> {
     private String passport;
     private int inn;
     @Temporal(value = TemporalType.DATE)
-    private Date birthday;
+    private LocalDate birthday;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private String tel;
@@ -65,11 +65,11 @@ public abstract class Person extends AbstractPersistable<Long> {
         this.inn = inn;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

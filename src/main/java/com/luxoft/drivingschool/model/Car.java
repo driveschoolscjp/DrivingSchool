@@ -16,8 +16,9 @@ public class Car extends AbstractPersistable<Long> {
     private Transmission transmission;
     private float engineSize;
     private float pricePerHour;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     private Teacher instructor;
+    private String photoURI;
 
     public String getBrand() {
         return brand;
@@ -65,5 +66,13 @@ public class Car extends AbstractPersistable<Long> {
 
     public void setInstructor(Teacher instructor) {
         this.instructor = instructor;
+    }
+
+    public String getPhotoURI() {
+        return photoURI;
+    }
+
+    public void setPhotoURI(String photoURI) {
+        this.photoURI = photoURI;
     }
 }
