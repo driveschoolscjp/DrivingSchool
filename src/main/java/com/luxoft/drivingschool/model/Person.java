@@ -1,5 +1,6 @@
 package com.luxoft.drivingschool.model;
 
+import com.luxoft.drivingschool.model.enums.Gender;
 import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 

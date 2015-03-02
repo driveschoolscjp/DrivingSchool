@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CarService {
-
     @Autowired
-    CarRepository carRepository;
+    private CarRepository carRepository;
 }

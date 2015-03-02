@@ -1,6 +1,5 @@
 package com.luxoft.drivingschool.controller;
 
-import com.luxoft.drivingschool.model.Gender;
 import com.luxoft.drivingschool.model.Group;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.Teacher;
@@ -8,14 +7,12 @@ import com.luxoft.drivingschool.service.GroupService;
 import com.luxoft.drivingschool.service.StudentService;
 import com.luxoft.drivingschool.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

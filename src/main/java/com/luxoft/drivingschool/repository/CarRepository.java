@@ -1,7 +1,7 @@
 package com.luxoft.drivingschool.repository;
 
 import com.luxoft.drivingschool.model.Car;
-import com.luxoft.drivingschool.model.Transmission;
+import com.luxoft.drivingschool.model.enums.Transmission;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
