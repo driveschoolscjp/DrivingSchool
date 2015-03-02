@@ -21,6 +21,7 @@ public abstract class Person extends AbstractPersistable<Long> {
     private Date birthday;
     @Enumerated(EnumType.STRING)
     private Gender gender;
+    private String tel;
     private String email;
     private String photoURI;
 
@@ -56,11 +57,11 @@ public abstract class Person extends AbstractPersistable<Long> {
         this.passport = passport;
     }
 
-    public Integer getInn() {
+    public int getInn() {
         return inn;
     }
 
-    public void setInn(Integer inn) {
+    public void setInn(int inn) {
         this.inn = inn;
     }
 
@@ -80,6 +81,14 @@ public abstract class Person extends AbstractPersistable<Long> {
         this.gender = gender;
     }
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -92,7 +101,7 @@ public abstract class Person extends AbstractPersistable<Long> {
         return photoURI;
     }
 
-    public void setPhotoURI(String phooURI) {
+    public void setPhotoURI(String photoURI) {
         this.photoURI = photoURI;
     }
 }
