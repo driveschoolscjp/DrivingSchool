@@ -1,6 +1,6 @@
-package com.luxoft.DrivingSchool.model;
+package com.luxoft.drivingschool.model;
 
-import com.luxoft.DrivingSchool.model.enums.Gender;
+import com.luxoft.drivingschool.model.enums.Gender;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -8,10 +8,12 @@ import java.util.Date;
 
 @MappedSuperclass
 public abstract class Person extends AbstractPersistable<Long> {
+    private String login;
+    private String password;
     @Column(length = 40)
-    private String name;
+    private String firstName;
     @Column(length = 40)
-    private String surname;
+    private String lastName;
     @Column(length = 40)
     private String patronymic;
     @Column(length = 6)
@@ -24,20 +26,20 @@ public abstract class Person extends AbstractPersistable<Long> {
     private String email;
     private String photoURI;
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPatronymic() {
@@ -94,5 +96,21 @@ public abstract class Person extends AbstractPersistable<Long> {
 
     public void setPhotoURI(String phooURI) {
         this.photoURI = photoURI;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -1,4 +1,4 @@
-package com.luxoft.DrivingSchool.model;
+package com.luxoft.drivingschool.model;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 

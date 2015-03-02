@@ -1,7 +1,7 @@
-package com.luxoft.DrivingSchool.service.impl;
+package com.luxoft.drivingschool.service.impl;
 
-import com.luxoft.DrivingSchool.model.Car;
-import com.luxoft.DrivingSchool.service.CarService;
+import com.luxoft.drivingschool.model.Car;
+import com.luxoft.drivingschool.service.CarService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

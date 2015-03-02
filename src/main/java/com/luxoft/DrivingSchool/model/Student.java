@@ -1,4 +1,4 @@
-package com.luxoft.DrivingSchool.model;
+package com.luxoft.drivingschool.model;
 
 import javax.persistence.*;
 import java.util.List;
@@ -6,8 +6,6 @@ import java.util.List;
 @Entity
 @Table(name = "students")
 public class Student extends Person {
-    private String login;
-    private String password;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
     private Group group;
@@ -17,22 +15,6 @@ public class Student extends Person {
     private int rideNumber;
     @OneToMany(mappedBy="student", cascade=CascadeType.REMOVE)
     private List<Schedule> schedule;
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public Group getGroup() {
         return group;

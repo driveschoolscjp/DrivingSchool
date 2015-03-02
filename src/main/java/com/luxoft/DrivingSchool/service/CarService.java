@@ -1,4 +1,4 @@
-package com.luxoft.DrivingSchool.service;
+package com.luxoft.drivingschool.service;
 
 /**
  * Created by Aleksei Chumakov on 28.02.2015.

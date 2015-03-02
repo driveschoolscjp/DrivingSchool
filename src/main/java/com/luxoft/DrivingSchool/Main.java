@@ -1,11 +1,11 @@
-package com.luxoft.DrivingSchool;
+package com.luxoft.drivingschool;
 
-import com.luxoft.DrivingSchool.configuration.RootConfig;
-import com.luxoft.DrivingSchool.model.Schedule;
-import com.luxoft.DrivingSchool.model.Student;
-import com.luxoft.DrivingSchool.model.Teacher;
-import com.luxoft.DrivingSchool.model.enums.Gender;
-import com.luxoft.DrivingSchool.service.BaseService;
+import com.luxoft.drivingschool.configuration.RootConfig;
+import com.luxoft.drivingschool.model.Schedule;
+import com.luxoft.drivingschool.model.Student;
+import com.luxoft.drivingschool.model.Teacher;
+import com.luxoft.drivingschool.model.enums.Gender;
+import com.luxoft.drivingschool.service.BaseService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -20,13 +20,13 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(RootConfig.class);
         BaseService studentService = (BaseService)context.getBean("studentService");
         Student student = new Student();
-        student.setName("Мирон");
+        student.setFirstName("Мирон");
         student.setGender(Gender.MALE);
         studentService.create(student);
 
         BaseService teacherService = (BaseService)context.getBean("teacherService");
         Teacher teacher = new Teacher();
-        teacher.setName("Тичер");
+        teacher.setFirstName("Тичер");
         teacher.setGender(Gender.MALE);
         teacherService.create(teacher);
 

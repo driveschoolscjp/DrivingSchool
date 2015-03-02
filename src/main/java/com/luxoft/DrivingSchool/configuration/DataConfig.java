@@ -1,11 +1,11 @@
-package com.luxoft.DrivingSchool.configuration;
+package com.luxoft.drivingschool.configuration;
 
 /**
  * Created by Aleksei Chumakov on 28.02.2015.
  */
+
 import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -22,9 +22,8 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("com.luxoft.DrivingSchool")
 @PropertySource("classpath:db.properties")
-@EnableJpaRepositories("com.luxoft.DrivingSchool.repository")
+@EnableJpaRepositories("com.luxoft.drivingschool.repository")
 public class DataConfig {
     private static final String PROP_DATABASE_DRIVER = "db.driverClassName";
     private static final String PROP_DATABASE_PASSWORD = "db.password";
@@ -45,7 +44,6 @@ public class DataConfig {
         dataSource.setUrl(environment.getRequiredProperty(PROP_DATABASE_URL));
         dataSource.setUsername(environment.getRequiredProperty(PROP_DATABASE_USERNAME));
         dataSource.setPassword(environment.getRequiredProperty(PROP_DATABASE_PASSWORD));
-
         return dataSource;
     }
 
@@ -58,9 +56,7 @@ public class DataConfig {
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
         entityManagerFactoryBean.setPackagesToScan(environment.getRequiredProperty(PROP_ENTITYMANAGER_PACKAGES_TO_SCAN));
-
         entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
-
         return entityManagerFactoryBean;
     }
 
@@ -68,7 +64,6 @@ public class DataConfig {
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-
         return transactionManager;
     }
 
@@ -77,7 +72,6 @@ public class DataConfig {
         properties.put(PROP_HIBERNATE_DIALECT, environment.getRequiredProperty(PROP_HIBERNATE_DIALECT));
         properties.put(PROP_HIBERNATE_SHOW_SQL, environment.getRequiredProperty(PROP_HIBERNATE_SHOW_SQL));
         properties.put(PROP_HIBERNATE_HBM2DDL_AUTO, environment.getRequiredProperty(PROP_HIBERNATE_HBM2DDL_AUTO));
-
         return properties;
     }
 

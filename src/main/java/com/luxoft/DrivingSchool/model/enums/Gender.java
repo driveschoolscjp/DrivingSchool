@@ -1,4 +1,4 @@
-package com.luxoft.DrivingSchool.model.enums;
+package com.luxoft.drivingschool.model.enums;
 
 public enum Gender {
     MALE, FEMALE

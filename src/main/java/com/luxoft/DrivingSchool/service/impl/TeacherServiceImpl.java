@@ -1,7 +1,8 @@
-package com.luxoft.DrivingSchool.service.impl;
+package com.luxoft.drivingschool.service.impl;
 
-import com.luxoft.DrivingSchool.model.Teacher;
-import com.luxoft.DrivingSchool.service.TeacherService;
+import com.luxoft.drivingschool.model.Teacher;
+import com.luxoft.drivingschool.repository.TeacherRepository;
+import com.luxoft.drivingschool.service.TeacherService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,4 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("teacherService")
 @Transactional
 public class TeacherServiceImpl extends BaseServiceImpl<Teacher> implements TeacherService {
+    public Teacher findByLogin(String login) {
+        return ((TeacherRepository)getRepository()).findByLogin(login);
+    }
 }

@@ -1,6 +1,6 @@
-package com.luxoft.DrivingSchool.repository;
+package com.luxoft.drivingschool.repository;
 
-import com.luxoft.DrivingSchool.model.Group;
+import com.luxoft.drivingschool.model.Group;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

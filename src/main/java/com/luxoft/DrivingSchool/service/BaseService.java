@@ -1,4 +1,4 @@
-package com.luxoft.DrivingSchool.service;
+package com.luxoft.drivingschool.service;
 
 import java.util.List;
 
