@@ -137,31 +137,22 @@
                     </div>
                 </div>
             </div>
-    </div>
-        </div>
 
-
-            <!--Вконтакте-->
-            <div class="roleMenu"  style="margin-top: 1%;  margin-left: 4%">
-                <div id="vk_groups"></div>
-            </div>
-        </div>
-
-        <br>
-        <br>
+    <div class="container">
+                <!--Вконтакте-->
+                <div class="roleMenu" style="margin-top: 1%;  margin-left: 5px">
+                    <div id="vk_groups"></div>
+                </div>
     </div>
 
+          </div>
+        </div>
+     </div>
         </div>
         </div>
     </div>
+    </div>
 
-
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bootstrap/js/bootstrap.js"></script>
 
 
 <script type="text/javascript">
