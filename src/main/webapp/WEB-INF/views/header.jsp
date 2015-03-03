@@ -15,9 +15,9 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="bootstrap/css/default.css" rel="stylesheet">
-    <link href="bootstrap/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/default.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,7 +50,7 @@
                     <span class="icon-bar"> </span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="bootstrap/images/logo.png" height= "40"   alt="">
+                    <img src="/images/logo.png" height="40" alt="">
                 </a>
             </div>
 

@@ -17,9 +17,9 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="bootstrap/css/default.css" rel="stylesheet">
-    <link href="bootstrap/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/default.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
 
 
     <!--for VK-->

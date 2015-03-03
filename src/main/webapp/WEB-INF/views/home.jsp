@@ -13,9 +13,9 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/bootstrap/css/default.css" rel="stylesheet">
-    <link href="/bootstrap/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/default.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -64,7 +64,7 @@
                     <div class="carousel-inner">
 
                         <div class="item active" >
-                            <img src="bootstrap/images/hat.png" alt="">
+                            <img src="/images/hat.png" alt="">
                             <!-- Описание слайда -->
                             <a href="#"><div class="carousel-caption">
                                 <h3> Лучшие автомобили</h3>
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="item" >
-                            <img src="bootstrap/images/Porshe.png" alt="">
+                            <img src="/images/Porshe.png" alt="">
                             <!-- Описание слайда -->
                             <a href="#"><div class="carousel-caption">
                                 <h3> Тесты онлайн</h3>
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="item" >
-                            <img src="bootstrap/images/hat_3.png" alt="">
+                            <img src="/images/hat_3.png" alt="">
                             <!-- Описание слайда -->
                             <a href="#"><div class="carousel-caption">
                                 <h3> Наши преподаватели</h3>
@@ -127,7 +127,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/js/bootstrap.js"></script>
 
 
 <!--Вращение  слайдов-->
