@@ -68,10 +68,19 @@
                     </th>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th></th>
+                    <th>
+                        <div class="pull-left" style="margin-bottom:5%; width: auto;">
+                            <a href="edit.jsp" type="button" class="btn-default btn-md"><i class="fa fa-user-plus fa-xs">&nbsp;Добавить</i></a>&nbsp;
+                        </div>
+                    </th>
+                    <th>
+
+                    </th>
                      <th>
+
+                             <%--<a href="edit.jsp" type="button" class="btn btn-default btn-xs" ><i class="fa fa-user-plus fa-xs">&nbsp;Добавить</i></a>&nbsp;--%>
                     <input type="search" id="search" value="" class="form-control" placeholder="Поиск по ФИО студента">
+
                      </th>
                 </tr>
                 <tr>
@@ -88,7 +97,7 @@
                         <td>${student.lastname}</td>
                         <td>${student.patronymic} &nbsp;
                             <div class="btn-group-vertical pull-right">
-                                <a href="edit.jsp" type="button" class="btn btn-default btn-xs"  ><i class="fa fa-user-plus fa-xs">&nbsp; Добавить</i></a>
+                                <a href="edit.jsp" type="button" class="btn btn-default btn-xs"  ><i class="fa fa-user fa-xs">&nbsp; Редактировать</i></a>
                                 <a href="show.jsp" type="button" class="btn btn-default btn-xs"><i class="fa fa-search fa-xs">&nbsp;  Просмотреть</i></a>
                             </div>
                         </td>
