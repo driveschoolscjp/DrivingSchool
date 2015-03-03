@@ -1,13 +1,9 @@
 package com.luxoft.drivingschool.model;
 
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "groups")
@@ -15,10 +11,10 @@ public class Group extends AbstractPersistable<Long> {
 
     @Column(length = 40)
     private String name;
-    @Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
-    private LocalDate startDate;
-    @Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
-    private LocalDate finishDate;
+    @Temporal(value = TemporalType.DATE)
+    private Date startDate;
+    @Temporal(value = TemporalType.DATE)
+    private Date finishDate;
     @ManyToOne
     private Teacher teacher;
 
@@ -30,19 +26,19 @@ public class Group extends AbstractPersistable<Long> {
         this.name = name;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getFinishDate() {
+    public Date getFinishDate() {
         return finishDate;
     }
 
-    public void setFinishDate(LocalDate finishDate) {
+    public void setFinishDate(Date finishDate) {
         this.finishDate = finishDate;
     }
 
@@ -52,5 +48,10 @@ public class Group extends AbstractPersistable<Long> {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
     }
 }

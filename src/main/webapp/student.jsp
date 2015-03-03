@@ -14,7 +14,7 @@
 
 <html>
 <head>
-    <title>add client</title>
+    <title>Add client</title>
 
 
     <meta charset="utf-8">
@@ -47,7 +47,7 @@
             <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2  ">
 
 
-  <form:form action="add" method="post" modelAttribute="studentForm">
+                <form:form action="add" method="post" modelAttribute="student">
 
 
                     <p class="form-signin-heading" style="color: #ffffff">Student add</p>
@@ -59,9 +59,9 @@
                     <form:password path="password" id="inputPassword" class="form-control" placeholder="Password" required="inputPassword"/>
 
 
-                    <form:select path="group" class="selectpicker">
+                    <form:select path="group.id" class="selectpicker">
                         <c:forEach items="${groups}" var="group">
-                        <option value="${group}">${group.name}</option>
+                            <option value="${group.id}">${group.name}</option>
                         </c:forEach>
                     </form:select>
 

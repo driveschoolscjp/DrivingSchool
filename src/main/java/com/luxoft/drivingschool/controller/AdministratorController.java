@@ -1,21 +1,15 @@
 package com.luxoft.drivingschool.controller;
 
-import com.luxoft.drivingschool.model.Group;
 import com.luxoft.drivingschool.model.Student;
-import com.luxoft.drivingschool.model.Teacher;
 import com.luxoft.drivingschool.service.GroupService;
 import com.luxoft.drivingschool.service.StudentService;
 import com.luxoft.drivingschool.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by SCJP on 26.02.2015.
@@ -33,28 +27,18 @@ public class AdministratorController {
     GroupService groupService;
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public ModelAndView viewRegistration() {
-        Student studentForm = new Student();
+    public String viewRegistration(Model model) {
 
-        List<Teacher> instructors =  teacherService.findAll();
-        List<Group> groups = groupService.findAll();
-//        List<Gender> gendersForm = new ArrayList<>();
-//        gendersForm.add(Gender.FEMALE);
-//        gendersForm.add(Gender.MALE);
+        model.addAttribute("student", new Student());
+        model.addAttribute("groups", groupService.findAll());
+        model.addAttribute("instructors", teacherService.findAll());
 
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("studentForm", studentForm);
-        map.put("groups", groups);
-        map.put("instructors", instructors);
-
-        return new ModelAndView("student", map);
+        return "student";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("studentForm") Student studentForm) {
+    public String processRegistration(@ModelAttribute("student") Student student) {
 
-        Student student = studentForm;
 //        long groupId = commandForm.getGroup();
 //        long teacherId = commandForm.getTeacher();
 
