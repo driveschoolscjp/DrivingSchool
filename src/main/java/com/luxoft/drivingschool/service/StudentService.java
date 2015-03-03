@@ -26,4 +26,8 @@ public class StudentService {
     public Student getOne(long id) {
         return studentRepository.getOne(id);
     }
+
+    public Student findOne(long id){
+        return studentRepository.findOne(id);
+    }
 }

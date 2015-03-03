@@ -48,69 +48,70 @@
 
                 <form:form action="add" method="post" modelAttribute="student">
 
+                    <form:hidden path="id" />
 
                     <p class="form-signin-heading" style="color: #ffffff">Student add</p>
 
                     <label for="inputLogit" class="sr-only">Login</label>
-                    <form:input path="login"  class="form-control" type="text"  placeholder="Login" id = "inputLogit" required = "inputLogin"   />
+                    <form:input path="login"  class="form-control" type="text"  placeholder="${student.login==null?'Login':student.login}" id = "inputLogit" required = "inputLogin"   />
 
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <form:password path="password" id="inputPassword" class="form-control" placeholder="Password" required="inputPassword"/>
+                    <form:password path="password" id="inputPassword" class="form-control" placeholder="${student.password==null?'Password':student.password}" required="inputPassword"/>
 
 
-                    <form:select path="group.id" class="selectpicker">
+                    <form:select path="group.id" class="selectpicker" >
                         <c:forEach items="${groups}" var="group">
-                            <option value="${group.id}">${group.name}</option>
+                            <option value="${group.id}" ${student.group.id==group.id?"selected":""}>${group.name}</option>
                         </c:forEach>
                     </form:select>
 
-
-
-                    <%--<c:forEach items="${teachers}" var="teacher">--%>
-                        <%--<c:out value="${teacher.firstname}" />--%>
-                    <%--</c:forEach>--%>
+                    <form:select path="instructor.id" class="selectpicker" >
+                        <c:forEach items="${instructors}" var="instructor">
+                            <option value="${instructor.id}" ${student.instructor.id==instructor.id?"selected":""}> ${instructor.firstname} ${instructor.lastname}</option>
+                        </c:forEach>
+                    </form:select>
 
                     <label for="rideNumber" class="sr-only">Ride Number</label>
-                    <form:input path="rideNumber"  class="form-control" type="number" min="0" step="1"  placeholder="Ride Number" id = "rideNumber" required = "rideNumber"   />
+                    <form:input path="rideNumber"  class="form-control" type="number" min="0" step="1"  placeholder="${student.rideNumber==null?'Ride number':student.rideNumber}" id = "rideNumber" required = "rideNumber"   />
 
                     <label for="firstname" class="sr-only">Name</label>
-                    <form:input path="firstname" id="firstname" class="form-control" placeholder="Name" required="firstname"/>
+                    <form:input path="firstname" id="firstname" class="form-control" placeholder="${student.firstname==null?'Name':student.firstname}" required="firstname"/>
 
                     <label for="lastname" class="sr-only">Lastname</label>
-                    <form:input path="lastname" id="lastname" class="form-control" placeholder="Lastname" required="lastname"/>
+                    <form:input path="lastname" id="lastname" class="form-control" placeholder="${student.lastname==null?'Last name':student.lastname}" required="lastname"/>
 
                     <label for="patronymic" class="sr-only">Patronymic</label>
-                    <form:input path="patronymic" id="patronymic" class="form-control" placeholder="Patronymic" required="patronymic"/>
+                    <form:input path="patronymic" id="patronymic" class="form-control" placeholder="${student.patronymic==null?'Patronymic':student.patronymic}" required="patronymic"/>
 
 
                     <label for="passport" class="sr-only">Passport</label>
-                    <form:input path="passport" id="passport" class="form-control" placeholder="Passport code" type = "text" pattern ="[a-zA-Z]{2}[0-9]{6}" required = "passport" />
+                    <form:input path="passport" id="passport" class="form-control" placeholder="${student.passport==null?'Passport code':student.passport}" type = "text" pattern ="[a-zA-Z]{2}[0-9]{6}" required = "passport" />
 
                     <label for="inn" class="sr-only">Inn</label>
-                    <form:input path="inn" id="inn" class="form-control" placeholder="INN" type = "text" pattern= "[0-9]{8}" required = "inn"/>
+                    <form:input path="inn" id="inn" class="form-control" placeholder="${student.inn==null?'INN':student.inn}" type = "text" pattern= "[0-9]{8}" required = "inn"/>
 
 
-      <label for="tel" class="sr-only">Telephone</label>
-      <form:input path="tel"  type="tel"   class="form-control" placeholder="telephome"  id = "tel" required = "tel" />
-      <%--&lt;%&ndash;<label for="birthday" class="sr-only">Birthday</label>&ndash;%&gt;--%>
-                    <%--<form:input path="studentForm.birthday" id="birthday" class="form-control"  placeholder="Birthday" required="birthday"/>--%>
+                    <label for="tel" class="sr-only">Telephone</label>
+                    <form:input path="tel"  type="tel"   class="form-control" placeholder="${student.tel==null?'Telephone':student.tel}"  id = "tel" required = "tel" />
 
-                    <%--<div>--%>
-                        <%--<label class="radio-inline">--%>
-                            <%--<form:radiobutton path="student.gender" value="M"/> <p style="color: #ffffff">Male</p>--%>
-                        <%--</label>--%>
-                        <%--<label class="radio-inline">--%>
-                            <%--<form:radiobutton path="student.gender" value="F"/> <p style="color: #ffffff">Female</p>--%>
-                        <%--</label>--%>
+                    <%--<label for="birthday" class="sr-only">Birthday</label>--%>
+                    <%--<form:input path="birthday" id="birthday" class="form-control"  type="date" placeholder="Birthday" required="birthday"/>--%>
 
-                    <%--</div>--%>
+                    <div>
+                        <label class="radio-inline">
+                            <form:radiobutton path="gender" value="MALE"/> <p style="color: #ffffff">Male</p>
+                        </label>
+                        <label class="radio-inline">
+                            <form:radiobutton path="gender" value="FEMALE"/> <p style="color: #ffffff">Female</p>
+                        </label>
 
+                    </div>
 
                     <label for="inputEmail" class="sr-only">Email address</label>
-                    <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="email" autofocus=""/>
+                    <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="${student.email==null?'Email address':student.email}" required="email" autofocus=""/>
 
                     <label for="photoURI" class="sr-only">Photo url</label>
-                    <form:input path="photoURI"  id="photoURI" class="form-control" type="url" placeholder="photo URI" required="photoURI" autofocus=""/>
+                    <form:input path="photoURI"  id="photoURI" class="form-control" type="url" placeholder="${student.photoURI==null?'Photo URI':student.photoURI}" required="photoURI" autofocus=""/>
 
 
                     <br>
