@@ -43,7 +43,7 @@
 
                     <div class="list-group">
                         <a class="list-group-item" href="add"><i class="fa fa-child fa-1x"></i>&nbsp; студент</a>
-                        <a class="list-group-item" href="#"><i class="fa fa-users fa-1x"></i>&nbsp; группа</a>
+                        <a class="list-group-item" href="edit"><i class="fa fa-users fa-1x"></i>&nbsp; группа</a>
                         <a class="list-group-item" href="#"><i class="fa fa-user-secret fa-1x"></i>&nbsp; преподаватель</a>
                         <a class="list-group-item" href="#"><i class="fa fa-car fa-1x"></i>&nbsp; автомобиль</a>
 

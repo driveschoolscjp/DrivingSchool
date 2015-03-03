@@ -39,29 +39,21 @@ public class AdministratorController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute("student") Student student) {
 
-//        long groupId = commandForm.getGroup();
-//        long teacherId = commandForm.getTeacher();
-
-//        student.setGender(genderForm);
-
         studentService.save(student);
 
-//        for testing purpose:
-//        System.out.println("id: " + student.getId());
-//        System.out.println("login: " + student.getLogin());
-//        System.out.println("password: " + student.getPassword());
-//        System.out.println("email: " + student.getEmail());
-//        System.out.println("Name: " + student.getFirstname());
-//        System.out.println("Surname: " + student.getLastname());
-//        System.out.println("Patronymic: " + student.getPatronymic());
-//        System.out.println("INN: " + student.getInn());
-//        System.out.println("Passport: " + student.getPassport());
-//        System.out.println("Number of ride: " + student.getRideNumber());
-//        System.out.println("Instructor: " + student.getInstructor().toString());
-//        System.out.println("Group: " + student.getGroup().toString());
-//        System.out.println("Gender: " + student.getGender().toString());
-//        System.out.println("Birthday: " + student.getBirthday().toString());
-
         return "registrationSuccess";
+    }
+
+
+    @RequestMapping(value = "edit", method = RequestMethod.GET)
+    public String editStudent(Model model, Student student) {
+
+        student = studentService.findOne(10L);
+
+        model.addAttribute("student", student);
+        model.addAttribute("groups", groupService.findAll());
+        model.addAttribute("instructors", teacherService.findAll());
+
+        return "student";
     }
 }

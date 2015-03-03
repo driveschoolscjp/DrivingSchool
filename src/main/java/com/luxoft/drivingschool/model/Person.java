@@ -105,4 +105,9 @@ public abstract class Person extends AbstractPersistable<Long> {
     public void setPhotoURI(String photoURI) {
         this.photoURI = photoURI;
     }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
 }
