@@ -88,7 +88,7 @@
                     <form:input path="passport" id="passport" class="form-control" placeholder="${student.passport==null?'Passport code':student.passport}" type = "text" pattern ="[a-zA-Z]{2}[0-9]{6}" required = "passport" />
 
                     <label for="inn" class="sr-only">Inn</label>
-                    <form:input path="inn" id="inn" class="form-control" placeholder="${student.inn==null?'INN':student.inn}" type = "text" pattern= "[0-9]{8}" required = "inn"/>
+                    <form:input path="inn" id="inn" class="form-control" placeholder="${student.inn==0?'INN':student.inn}" type = "text" pattern= "[0-9]{8}" required = "inn"/>
 
 
                     <label for="tel" class="sr-only">Telephone</label>

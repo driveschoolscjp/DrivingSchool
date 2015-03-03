@@ -42,13 +42,13 @@
                     <p style="color: #ffffff"><i class="fa fa-cog fa-2x" ></i> Admin </p>
 
                     <div class="list-group">
-                        <a class="list-group-item" href="admin/student/search"><i class="fa fa-child fa-1x"></i>&nbsp;
+                        <a class="list-group-item" href="/admin/student/search"><i class="fa fa-child fa-1x"></i>&nbsp;
                             студент</a>
-                        <a class="list-group-item" href="admin/group/search"><i class="fa fa-users fa-1x"></i>&nbsp;
+                        <a class="list-group-item" href="/admin/group/search"><i class="fa fa-users fa-1x"></i>&nbsp;
                             группа</a>
-                        <a class="list-group-item" href="admin/teacher/search"><i class="fa fa-user-secret fa-1x"></i>&nbsp;
+                        <a class="list-group-item" href="/admin/teacher/search"><i class="fa fa-user-secret fa-1x"></i>&nbsp;
                             преподаватель</a>
-                        <a class="list-group-item" href="admin/car/search"><i class="fa fa-car fa-1x"></i>&nbsp;
+                        <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car fa-1x"></i>&nbsp;
                             автомобиль</a>
 
                     </div>

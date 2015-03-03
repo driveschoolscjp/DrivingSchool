@@ -60,7 +60,7 @@
                     <form:input path="passport" id="passport" class="form-control" placeholder="${teacher.passport==null?'Passport code':teacher.passport}" type = "text" pattern ="[a-zA-Z]{2}[0-9]{6}" required = "passport" />
 
                     <label for="inn" class="sr-only">Inn</label>
-                    <form:input path="inn" id="inn" class="form-control" placeholder="${teacher.inn==null?'INN':teacher.inn}" type = "text" pattern= "[0-9]{8}" required = "inn"/>
+                    <form:input path="inn" id="inn" class="form-control" placeholder="${teacher.inn==0?'INN':teacher.inn}" type = "text" pattern= "[0-9]{8}" required = "inn"/>
 
 
                     <label for="tel" class="sr-only">Telephone</label>
