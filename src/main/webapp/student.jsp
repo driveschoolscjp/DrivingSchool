@@ -42,9 +42,9 @@
 <jsp:include page="menuAdmin.jsp" />
 
 <div class="body">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-8 col-sm-2 col-md-2 col-lg-2  ">
+            <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2  ">
 
 
                 <form:form action="add" method="post" modelAttribute="studentForm">
@@ -58,11 +58,14 @@
                     <label for="inputPassword" class="sr-only">Password</label>
                     <form:password path="password" id="inputPassword" class="form-control" placeholder="Password" required="inputPassword"/>
 
-                    <form:select path="group">
-                    <c:forEach items="${groups}" var="group">
-                            <option value="${group}">${group.name}</option>
-                    </c:forEach>
+
+                    <form:select path="group" class="selectpicker show-tick">
+                        <c:forEach items="${groups}" var="group">
+                        <option value="${group}">${group.name}</option>
+                        </c:forEach>
                     </form:select>
+
+
 
                     <%--<c:forEach items="${teachers}" var="teacher">--%>
                         <%--<c:out value="${teacher.firstname}" />--%>
@@ -121,12 +124,44 @@
                 </form:form>
 
             </div>
-        </div>
-    </div>    <!-- /container -->
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
 
+<form:form action="findStudentByName" method="get" modelAttribute="studentForm">
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col-sm-push-4 col-md-4 col-lg-4 hidden-xs">
+
+                <p style="color: #ffffff">Search: </p> <input class="awesomplete" list="mylist" placeholder="student name" />
+    <datalist id="mylist">
+    <option>Ada </option>
+    <option>Java</option>
+    <option>JavaScript</option>
+    <option>Brainfuck</option>
+    <option>LOLCODE</option>
+    <option>Node.js</option>
+    <option>Ruby on Rails</option>
+    </datalist>
+                <div class="list-group">
+                    <a class="list-group-item" href="deleteStudent"><i class="fa fa-user-times fa-1x"></i>&nbsp;удалить</a>
+                    <a class="list-group-item" href="changeStudent"><i class="fa fa-chain fa-1x"></i>&nbsp;изменить</a>
+                </div>
+    </div>
+        </div>
 </div>
 
+</form:form>
 
+
+
+    </div>
+            <!-- /container -->
+
+</div>
+</div>
+</div>
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

@@ -42,9 +42,10 @@
                     <p style="color: #ffffff"><i class="fa fa-cog fa-2x" ></i> Admin </p>
 
                     <div class="list-group">
-                        <a class="list-group-item" href="add"><i class="fa fa-user-plus fa-1x"></i>&nbsp; Add</a>
-                        <a class="list-group-item" href="#"><i class="fa fa-user-times fa-1x"></i>&nbsp; Delete</a>
-                        <a class="list-group-item" href="users"><i class="fa fa-users fa-1x"></i>&nbsp;  Show users</a>
+                        <a class="list-group-item" href="add"><i class="fa fa-child fa-1x"></i>&nbsp; студент</a>
+                        <a class="list-group-item" href="#"><i class="fa fa-users fa-1x"></i>&nbsp; группа</a>
+                        <a class="list-group-item" href="#"><i class="fa fa-user-secret fa-1x"></i>&nbsp; преподаватель</a>
+                        <a class="list-group-item" href="#"><i class="fa fa-car fa-1x"></i>&nbsp; автомобиль</a>
 
                     </div>
                 </div>
@@ -56,15 +57,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-<%--<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->--%>
-<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--%>
-<%--<!-- Include all compiled plugins (below), or include individual files as needed -->--%>
-<%--<script src="bootstrap/js/bootstrap.js"></script>--%>
-
 
 </body>
 </html>
