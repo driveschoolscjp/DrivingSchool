@@ -26,4 +26,8 @@ public class StudentService {
     public Student findOne(long id){
         return studentRepository.findOne(id);
     }
+
+    public List<Student> findByGroupId(long id) {
+        return studentRepository.findByGroupId(id);
+    }
 }
