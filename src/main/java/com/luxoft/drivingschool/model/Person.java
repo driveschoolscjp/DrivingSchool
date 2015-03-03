@@ -22,7 +22,7 @@ public abstract class Person extends AbstractPersistable<Long> {
     @Column(length = 8)
     private String passport;
     private int inn;
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    @Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
     private LocalDate birthday;
     @Enumerated(EnumType.STRING)
     private Gender gender;

@@ -9,16 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "groups")
 public class Group extends AbstractPersistable<Long> {
 
     @Column(length = 40)
     private String name;
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    @Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
     private LocalDate startDate;
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    @Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
     private LocalDate finishDate;
     @ManyToOne
     private Teacher teacher;

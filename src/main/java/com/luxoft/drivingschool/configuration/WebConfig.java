@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -20,17 +21,25 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
     }
 
+    // Asking DispatcherServlet to forward requests
+    // for static resources (css, images etc.)
+    // to the servlet container’s default servlet
+    // and not to try to handle them itself.
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 
     @Bean
-    public InternalResourceViewResolver jspViewResolver(){
-        InternalResourceViewResolver bean = new InternalResourceViewResolver();
-        bean.setPrefix("/");
-        bean.setSuffix(".jsp");
-        return bean;
+    public ViewResolver jspViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        //TODO перенести страницы в WEB-INF/views и поменять префикс, добавить HomeController, который редиректит на index.jsp (или перименовать в home)
+        // отформатировать все страницы, разложить по логическим папкам, положить ресурсы в отдельную папку
+        resolver.setPrefix("/");
+        resolver.setSuffix(".jsp");
+        // From "Spring in action", don't know what fot yet
+        resolver.setExposeContextBeansAsAttributes(true);
+        return resolver;
     }
 
     @Bean(name = "messageSource")

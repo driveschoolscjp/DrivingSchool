@@ -11,11 +11,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "schedule")
 public class Schedule extends AbstractPersistable<Long> {
+
     @ManyToOne
     private Teacher teacher;
     @ManyToOne
     private Student student;
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    @Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
     private LocalDate day;
     private int startInterval;
     private int finishInterval;
