@@ -47,7 +47,7 @@
             <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2  ">
 
 
-                <form:form action="add" method="post" modelAttribute="studentForm">
+  <form:form action="add" method="post" modelAttribute="studentForm">
 
 
                     <p class="form-signin-heading" style="color: #ffffff">Student add</p>
@@ -59,7 +59,7 @@
                     <form:password path="password" id="inputPassword" class="form-control" placeholder="Password" required="inputPassword"/>
 
 
-                    <form:select path="group" class="selectpicker show-tick">
+                    <form:select path="group" class="selectpicker">
                         <c:forEach items="${groups}" var="group">
                         <option value="${group}">${group.name}</option>
                         </c:forEach>
@@ -90,7 +90,10 @@
                     <label for="inn" class="sr-only">Inn</label>
                     <form:input path="inn" id="inn" class="form-control" placeholder="INN" type = "text" pattern= "[0-9]{8}" required = "inn"/>
 
-                    <%--&lt;%&ndash;<label for="birthday" class="sr-only">Birthday</label>&ndash;%&gt;--%>
+
+      <label for="tel" class="sr-only">Telephone</label>
+      <form:input path="tel"  type="tel"   class="form-control" placeholder="telephome"  id = "tel" required = "tel" />
+      <%--&lt;%&ndash;<label for="birthday" class="sr-only">Birthday</label>&ndash;%&gt;--%>
                     <%--<form:input path="studentForm.birthday" id="birthday" class="form-control"  placeholder="Birthday" required="birthday"/>--%>
 
                     <%--<div>--%>
@@ -122,8 +125,7 @@
                         </div>
                     </div>
                 </form:form>
-
-            </div>
+ </div>
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
 
 <form:form action="findStudentByName" method="get" modelAttribute="studentForm">
