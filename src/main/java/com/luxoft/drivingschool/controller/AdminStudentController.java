@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
-
 @RequestMapping("/admin/student")
 @Controller
 public class AdminStudentController {
@@ -38,12 +36,10 @@ public class AdminStudentController {
 
     // Поиск по параметрам
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String findStudents(@RequestParam("firstname") String firstname,
-                               @RequestParam("lastname") String lastname,
-                               @RequestParam("groupId") long groupId,
-                               Model model) {
-        // TODO сделать метод для поиска по имени/фамилии/группе
-        model.addAttribute("students", studentService.findAll());
+    public String findStudents(@RequestParam("groupId") long groupId, Model model) {
+
+        model.addAttribute("students", studentService.findByGroupId(groupId));
+        model.addAttribute("groups", groupService.findAll());
         return "admin/student/search";
     }
 
@@ -61,14 +57,14 @@ public class AdminStudentController {
     // Сохранение и переход на форму просмотра
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute("student") Student student) {
+
         student = studentService.save(student);
         return "redirect:show?id=" + student.getId(); // На страничку просмотра
     }
 
     // Показ одного студента
     @RequestMapping(value = "/show", method = RequestMethod.GET)
-    public String show(@RequestParam("id") long id,
-                       Model model) {
+    public String show(@RequestParam("id") long id, Model model) {
 
         model.addAttribute("student", studentService.findOne(id));
         return "admin/student/show";
@@ -76,8 +72,7 @@ public class AdminStudentController {
 
     // Редактирование одного студента
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String edit(@RequestParam("id") long id,
-                       Model model) {
+    public String edit(@RequestParam("id") long id, Model model) {
 
         model.addAttribute("student", studentService.findOne(id));
         model.addAttribute("groups", groupService.findAll());
