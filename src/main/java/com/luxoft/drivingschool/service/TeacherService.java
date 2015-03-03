@@ -22,4 +22,8 @@ public class TeacherService {
     public List<Teacher> findAll(){
        return teacherRepository.findAll();
     }
+
+    public Teacher save(Teacher teacher) {
+        return teacherRepository.save(teacher);
+    }
 }

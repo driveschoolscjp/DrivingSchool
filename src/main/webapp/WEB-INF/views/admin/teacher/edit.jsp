@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: acer
-  Date: 01.03.15
-  Time: 8:11
-  To change this template use File | Settings | File Templates.
---%>
+
 
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,7 +8,7 @@
 
 <html>
 <head>
-    <title>Student</title>
+    <title>Teacher</title>
 
 
     <meta charset="utf-8">
@@ -46,53 +40,53 @@
             <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2  ">
 
 
-                <form:form action="/admin/student/save" method="post" modelAttribute="student">
+                <form:form action="/admin/teacher/save" method="post" modelAttribute="teacher">
 
                     <form:hidden path="id" />
 
-                    <p class="form-signin-heading" style="color: #ffffff">Student add</p>
+                    <p class="form-signin-heading" style="color: #ffffff">Teacher add</p>
 
                     <label for="inputLogit" class="sr-only">Login</label>
-                    <form:input path="login"  class="form-control" type="text"  placeholder="${student.login==null?'Login':student.login}" id = "inputLogit" required = "inputLogin"   />
+                    <form:input path="login"  class="form-control" type="text"  placeholder="${teacher.login==null?'Login':teacher.login}" id = "inputLogit" required = "inputLogin"   />
 
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <form:password path="password" id="inputPassword" class="form-control" placeholder="${student.password==null?'Password':student.password}" required="inputPassword"/>
+                    <form:password path="password" id="inputPassword" class="form-control" placeholder="${teacher.password==null?'Password':teacher.password}" required="inputPassword"/>
 
 
                     <form:select path="group.id" class="selectpicker" >
                         <c:forEach items="${groups}" var="group">
-                            <option value="${group.id}" ${student.group.id==group.id?"selected":""}>${group.name}</option>
+                            <option value="${group.id}" ${teacher.group.id==group.id?"selected":""}>${group.name}</option>
                         </c:forEach>
                     </form:select>
 
                     <form:select path="instructor.id" class="selectpicker" >
                         <c:forEach items="${instructors}" var="instructor">
-                            <option value="${instructor.id}" ${student.instructor.id==instructor.id?"selected":""}> ${instructor.firstname} ${instructor.lastname}</option>
+                            <option value="${instructor.id}" ${teacher.instructor.id==instructor.id?"selected":""}> ${instructor.firstname} ${instructor.lastname}</option>
                         </c:forEach>
                     </form:select>
 
                     <label for="rideNumber" class="sr-only">Ride Number</label>
-                    <form:input path="rideNumber"  class="form-control" type="number" min="0" step="1"  placeholder="${student.rideNumber==null?'Ride number':student.rideNumber}" id = "rideNumber" required = "rideNumber"   />
+                    <form:input path="rideNumber"  class="form-control" type="number" min="0" step="1"  placeholder="${teacher.rideNumber==null?'Ride number':teacher.rideNumber}" id = "rideNumber" required = "rideNumber"   />
 
                     <label for="firstname" class="sr-only">Name</label>
-                    <form:input path="firstname" id="firstname" class="form-control" placeholder="${student.firstname==null?'Name':student.firstname}" required="firstname"/>
+                    <form:input path="firstname" id="firstname" class="form-control" placeholder="${teacher.firstname==null?'Name':teacher.firstname}" required="firstname"/>
 
                     <label for="lastname" class="sr-only">Lastname</label>
-                    <form:input path="lastname" id="lastname" class="form-control" placeholder="${student.lastname==null?'Last name':student.lastname}" required="lastname"/>
+                    <form:input path="lastname" id="lastname" class="form-control" placeholder="${teacher.lastname==null?'Last name':teacher.lastname}" required="lastname"/>
 
                     <label for="patronymic" class="sr-only">Patronymic</label>
-                    <form:input path="patronymic" id="patronymic" class="form-control" placeholder="${student.patronymic==null?'Patronymic':student.patronymic}" required="patronymic"/>
+                    <form:input path="patronymic" id="patronymic" class="form-control" placeholder="${teacher.patronymic==null?'Patronymic':teacher.patronymic}" required="patronymic"/>
 
 
                     <label for="passport" class="sr-only">Passport</label>
-                    <form:input path="passport" id="passport" class="form-control" placeholder="${student.passport==null?'Passport code':student.passport}" type = "text" pattern ="[a-zA-Z]{2}[0-9]{6}" required = "passport" />
+                    <form:input path="passport" id="passport" class="form-control" placeholder="${teacher.passport==null?'Passport code':teacher.passport}" type = "text" pattern ="[a-zA-Z]{2}[0-9]{6}" required = "passport" />
 
                     <label for="inn" class="sr-only">Inn</label>
-                    <form:input path="inn" id="inn" class="form-control" placeholder="${student.inn==null?'INN':student.inn}" type = "text" pattern= "[0-9]{8}" required = "inn"/>
+                    <form:input path="inn" id="inn" class="form-control" placeholder="${teacher.inn==null?'INN':teacher.inn}" type = "text" pattern= "[0-9]{8}" required = "inn"/>
 
 
                     <label for="tel" class="sr-only">Telephone</label>
-                    <form:input path="tel"  type="tel"   class="form-control" placeholder="${student.tel==null?'Telephone':student.tel}"  id = "tel" required = "tel" />
+                    <form:input path="tel"  type="tel"   class="form-control" placeholder="${teacher.tel==null?'Telephone':teacher.tel}"  id = "tel" required = "tel" />
 
                     <%--<label for="birthday" class="sr-only">Birthday</label>--%>
                     <%--<form:input path="birthday" id="birthday" class="form-control"  type="date" placeholder="Birthday" required="birthday"/>--%>
@@ -108,10 +102,10 @@
                     </div>
 
                     <label for="inputEmail" class="sr-only">Email address</label>
-                    <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="${student.email==null?'Email address':student.email}" required="email" autofocus=""/>
+                    <form:input path="email" type="email" id="inputEmail" class="form-control" placeholder="${teacher.email==null?'Email address':teacher.email}" required="email" autofocus=""/>
 
                     <label for="photoURI" class="sr-only">Photo url</label>
-                    <form:input path="photoURI"  id="photoURI" class="form-control" type="url" placeholder="${student.photoURI==null?'Photo URI':student.photoURI}" required="photoURI" autofocus=""/>
+                    <form:input path="photoURI"  id="photoURI" class="form-control" type="url" placeholder="${teacher.photoURI==null?'Photo URI':teacher.photoURI}" required="photoURI" autofocus=""/>
 
 
                     <br>
@@ -120,7 +114,7 @@
                         <div class="row">
                             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10  col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
 
-                                <button class="btn btn-lg btn-primary btn-block btn-xs" type="submit">Add student</button>
+                                <button class="btn btn-lg btn-primary btn-block btn-xs" type="submit">Add teacher</button>
                             </div>
                         </div>
                     </div>
@@ -128,7 +122,7 @@
  </div>
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
 
-<form:form action="findStudentByName" method="get" modelAttribute="studentForm">
+<form:form action="findTeacherByName" method="get" modelAttribute="teacherForm">
 
 
 
@@ -136,7 +130,7 @@
         <div class="row">
             <div class=" col-sm-push-4 col-md-4 col-lg-4 hidden-xs">
 
-                <p style="color: #ffffff">Search: </p> <input class="awesomplete" list="mylist" placeholder="student name" />
+                <p style="color: #ffffff">Search: </p> <input class="awesomplete" list="mylist" placeholder="teacher name" />
     <datalist id="mylist">
     <option>Ada </option>
     <option>Java</option>
