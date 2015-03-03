@@ -1,9 +1,13 @@
 package com.luxoft.drivingschool.model;
 
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "groups")
@@ -11,10 +15,10 @@ public class Group extends AbstractPersistable<Long> {
 
     @Column(length = 40)
     private String name;
-    @Temporal(value = TemporalType.DATE)
-    private Date startDate;
-    @Temporal(value = TemporalType.DATE)
-    private Date finishDate;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    private LocalDate startDate;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    private LocalDate finishDate;
     @ManyToOne
     private Teacher teacher;
 
@@ -26,19 +30,19 @@ public class Group extends AbstractPersistable<Long> {
         this.name = name;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getFinishDate() {
+    public LocalDate getFinishDate() {
         return finishDate;
     }
 
-    public void setFinishDate(Date finishDate) {
+    public void setFinishDate(LocalDate finishDate) {
         this.finishDate = finishDate;
     }
 
