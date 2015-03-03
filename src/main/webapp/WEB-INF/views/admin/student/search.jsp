@@ -31,6 +31,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.js"></script>
+    <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 
 </head>
 <body>
@@ -38,47 +39,100 @@
 <jsp:include page="../../header.jsp"/>
 <jsp:include page="../menuAdmin.jsp"/>
 
-<form action="/admin/student/search" method="post">
 
-    <div class="container">
-        <div class="row">
-            <h2>Поиск студентов</h2>
+<div class="body">
 
 
-            <input type="text" name="firstname" maxlength="64" placeholder="Name"/>
-            <input type="text" name="lastname" maxlength="64" placeholder="Surname"/>
+<div class="container-fluid">
 
+    <div class="row">
+        <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+            <table class="table" id="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>
+                        <div class="pull-right">
+                            <h3 style="color: #ffffff">Поиск по группе</h3>
 
-            <%--<form:select path="groups" class="selectpicker">--%>
-            <select name="groupId" class="selectpicker">
-                <c:forEach items="${groups}" var="group">
-                    <option value="${group.id}">${group.name}</option>
+                            <form action="/admin/student/search" method="post">
+                                <select name="groupId" class="selectpicker">
+                                    <c:forEach items="${groups}" var="group">
+                                        <option value="${group.id}">${group.name}</option>
+                                    </c:forEach>
+                                </select>
+                                <button type="submit" value="Поиск по группе">Поиск по группе</button>
+                            </form>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                     <th>
+                    <input type="search" id="search" value="" class="form-control" placeholder="Поиск по ФИО студента">
+                     </th>
+                </tr>
+                <tr>
+                    <th style="color: #ffffff">Имя</th>
+                    <th style="color: #ffffff">Фамилия</th>
+                    <th style="color: #ffffff">Отчество</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="student" items="${students}">
+
+                    <tr>
+                        <td>${student.firstname}</td>
+                        <td>${student.lastname}</td>
+                        <td>${student.patronymic} &nbsp;
+                            <div class="btn-group-vertical pull-right">
+                                <a href="edit.jsp" type="button" class="btn btn-default btn-xs"  ><i class="fa fa-user-plus fa-xs">&nbsp; Добавить</i></a>
+                                <a href="show.jsp" type="button" class="btn btn-default btn-xs"><i class="fa fa-search fa-xs">&nbsp;  Просмотреть</i></a>
+                            </div>
+                        </td>
+                    </tr>
                 </c:forEach>
-            </select>
-            <%--</form:select>--%>
-
-
-            <button type="submit">Search</button>
-
+                </tbody>
+            </table>
+            <hr>
         </div>
     </div>
-
-</form>
-
-<div class="container">
-    <div class="row">
-        <table>
-            <c:forEach var="student" items="${students}">
-
-            <tr>
-                <td>"${student.firstname}"</td>
-                <td>"${student.lastname}"</td>
-            </tr>
-            </c:forEach>
-        </table>
+</div>
 
     </div>
-</div>
+
+
+
+
+<style>.row-padding {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}</style>
+
+<script>
+    $(function () {
+    $( '#table' ).searchable({
+        striped: true,
+        oddRow: { 'background-color': '#f5f5f5' },
+        evenRow: { 'background-color': '#fff' },
+        searchType: 'fuzzy'
+    });
+
+    $( '#searchable-container' ).searchable({
+        searchField: '#container-search',
+        selector: '.row',
+        childSelector: '.col-xs-4',
+        show: function( elem ) {
+            elem.slideDown(100);
+        },
+        hide: function( elem ) {
+            elem.slideUp( 100 );
+        }
+    })
+});</script>
+
 
 </body>
 </html>
