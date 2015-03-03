@@ -46,28 +46,6 @@
 
                     <p class="form-signin-heading" style="color: #ffffff">Teacher add</p>
 
-                    <label for="inputLogit" class="sr-only">Login</label>
-                    <form:input path="login"  class="form-control" type="text"  placeholder="${teacher.login==null?'Login':teacher.login}" id = "inputLogit" required = "inputLogin"   />
-
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <form:password path="password" id="inputPassword" class="form-control" placeholder="${teacher.password==null?'Password':teacher.password}" required="inputPassword"/>
-
-
-                    <form:select path="group.id" class="selectpicker" >
-                        <c:forEach items="${groups}" var="group">
-                            <option value="${group.id}" ${teacher.group.id==group.id?"selected":""}>${group.name}</option>
-                        </c:forEach>
-                    </form:select>
-
-                    <form:select path="instructor.id" class="selectpicker" >
-                        <c:forEach items="${instructors}" var="instructor">
-                            <option value="${instructor.id}" ${teacher.instructor.id==instructor.id?"selected":""}> ${instructor.firstname} ${instructor.lastname}</option>
-                        </c:forEach>
-                    </form:select>
-
-                    <label for="rideNumber" class="sr-only">Ride Number</label>
-                    <form:input path="rideNumber"  class="form-control" type="number" min="0" step="1"  placeholder="${teacher.rideNumber==null?'Ride number':teacher.rideNumber}" id = "rideNumber" required = "rideNumber"   />
-
                     <label for="firstname" class="sr-only">Name</label>
                     <form:input path="firstname" id="firstname" class="form-control" placeholder="${teacher.firstname==null?'Name':teacher.firstname}" required="firstname"/>
 
@@ -107,6 +85,8 @@
                     <label for="photoURI" class="sr-only">Photo url</label>
                     <form:input path="photoURI"  id="photoURI" class="form-control" type="url" placeholder="${teacher.photoURI==null?'Photo URI':teacher.photoURI}" required="photoURI" autofocus=""/>
 
+                    <label for="description" class="sr-only">Description</label>
+                    <form:textarea path="description"  id="description" class="form-control" cols= "20" rows= "3" placeholder="${teacher.description==null?'Description':teacher.description}" required="description" autofocus=""/>
 
                     <br>
 
