@@ -18,7 +18,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
+        registry.addResourceHandler("/**").addResourceLocations("/resources/");
     }
 
     // Asking DispatcherServlet to forward requests
@@ -33,9 +33,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ViewResolver jspViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        //TODO перенести страницы в WEB-INF/views и поменять префикс, добавить HomeController, который редиректит на index.jsp (или перименовать в home)
+        // TODO перенести страницы в WEB-INF/views и поменять префикс, добавить HomeController, который редиректит на index.jsp (или перименовать в home)
         // отформатировать все страницы, разложить по логическим папкам, положить ресурсы в отдельную папку
-        resolver.setPrefix("/");
+        resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         // From "Spring in action", don't know what fot yet
         resolver.setExposeContextBeansAsAttributes(true);

@@ -19,7 +19,7 @@ public class UserController {
         System.out.println("password: " + password);
 
         if (login.equals("admin") && password.equals("admin")) {
-            return "admin";
+            return "admin/admin";
         }
         return "client";
     }

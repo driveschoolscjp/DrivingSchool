@@ -23,9 +23,9 @@
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/bootstrap/css/default.css" rel="stylesheet">
-    <link href="/bootstrap/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/default.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,9 +37,8 @@
 </head>
 
 
-
-<jsp:include page="header.jsp" />
-<jsp:include page="menuAdmin.jsp" />
+<jsp:include page="../../header.jsp"/>
+<jsp:include page="../menuAdmin.jsp"/>
 
 <div class="body">
     <div class="container-fluid">
@@ -171,7 +170,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/js/bootstrap.js"></script>
 
 </body>
 </html>
