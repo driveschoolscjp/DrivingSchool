@@ -32,6 +32,7 @@ public class AdminStudentController {
     public String showAllStudents(Model model) {
 
         model.addAttribute("students", studentService.findAll());
+        model.addAttribute("groups", groupService.findAll());
         return "admin/student/search";
     }
 
