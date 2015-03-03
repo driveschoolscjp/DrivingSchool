@@ -69,7 +69,7 @@ public class AdminStudentController {
     public String show(@RequestParam("id") long id,
                        Model model) {
 
-        model.addAttribute("student", studentService.getOne(id));
+        model.addAttribute("student", studentService.findOne(id));
         return "admin/student/show";
     }
 
