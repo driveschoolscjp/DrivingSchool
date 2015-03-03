@@ -88,8 +88,8 @@
                         <td>${student.lastname}</td>
                         <td>${student.patronymic} &nbsp;
                             <div class="btn-group-vertical pull-right">
-                                <a href="edit.jsp" type="button" class="btn btn-default btn-xs"  ><i class="fa fa-user-plus fa-xs">&nbsp; Добавить</i></a>
-                                <a href="show.jsp" type="button" class="btn btn-default btn-xs"><i class="fa fa-search fa-xs">&nbsp;  Просмотреть</i></a>
+                                <a href="/admin/student/edit?id=${student.id}" type="button" class="btn btn-default btn-xs"  ><i class="fa fa-user-plus fa-xs">&nbsp; Редактировать</i></a>
+                                <a href="/admin/student/show?id=${student.id}" type="button" class="btn btn-default btn-xs"><i class="fa fa-search fa-xs">&nbsp;  Просмотреть</i></a>
                             </div>
                         </td>
                     </tr>
