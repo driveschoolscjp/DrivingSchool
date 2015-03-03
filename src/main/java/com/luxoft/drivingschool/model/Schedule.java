@@ -15,7 +15,7 @@ public class Schedule extends AbstractPersistable<Long> {
     private Teacher teacher;
     @ManyToOne
     private Student student;
-    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     private LocalDate day;
     private int startInterval;
     private int finishInterval;

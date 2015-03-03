@@ -16,9 +16,9 @@ public class Group extends AbstractPersistable<Long> {
 
     @Column(length = 40)
     private String name;
-    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     private LocalDate startDate;
-    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     private LocalDate finishDate;
     @ManyToOne
     private Teacher teacher;
