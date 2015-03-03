@@ -46,7 +46,7 @@
             <div class="col-xs-7 col-sm-3 col-md-2 col-lg-2  ">
 
 
-                <form:form action="add" method="post" modelAttribute="student">
+                <form:form action="/admin/student/save" method="post" modelAttribute="student">
 
                     <form:hidden path="id" />
 

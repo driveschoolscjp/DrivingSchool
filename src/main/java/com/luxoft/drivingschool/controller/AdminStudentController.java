@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
+
 @RequestMapping("/admin/student")
 @Controller
 public class AdminStudentController {
@@ -56,10 +58,10 @@ public class AdminStudentController {
     }
 
     // Сохранение и переход на форму просмотра
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute("student") Student student) {
         student = studentService.save(student);
-        return "redirect:admin/student/show?id=" + student.getId(); // На страничку просмотра
+        return "redirect:show?id=" + student.getId(); // На страничку просмотра
     }
 
     // Показ одного студента
@@ -71,12 +73,12 @@ public class AdminStudentController {
         return "admin/student/show";
     }
 
-    // Редактирование одного клиента
+    // Редактирование одного студента
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String edit(@RequestParam("id") long id,
                        Model model) {
 
-        model.addAttribute("student", studentService.getOne(id));
+        model.addAttribute("student", studentService.findOne(id));
         model.addAttribute("groups", groupService.findAll());
         model.addAttribute("instructors", teacherService.findAll());
 

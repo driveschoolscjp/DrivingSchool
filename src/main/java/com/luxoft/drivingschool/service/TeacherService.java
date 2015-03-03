@@ -15,8 +15,8 @@ public class TeacherService {
     @Autowired
     private TeacherRepository teacherRepository;
 
-    public Teacher getOne(Long id){
-        return teacherRepository.getOne(id);
+    public Teacher findOne(Long id){
+        return teacherRepository.findOne(id);
     }
 
     public List<Teacher> findAll(){
