@@ -24,4 +24,14 @@ public class GroupService {
     public Group findById(long id) {
         return groupRepository.getOne(id);
     }
+
+    public Group findOne(long id){
+        return groupRepository.findOne(id);
+    }
+    public Group save(Group group){
+        return groupRepository.save(group);
+    }
+    public List<Group> findByTeacherId(long id) {
+        return groupRepository.findByTeacherId(id);
+    }
 }

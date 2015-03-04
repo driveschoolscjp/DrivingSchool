@@ -49,7 +49,6 @@
                     <table id="events-id2" data-url="admin/group/getall" data-toggle="table" data-height="299" data-cache="false" data-show-toggle="true" data-flat="true" data-search="true">
                         <thead>
                         <tr>
-                            <th data-field="id" data-sortable="false">ID</th>
                             <th data-field="name" data-sortable="false">Group name</th>
                             <th data-field="teacher.firstname" data-sortable="false">Teacher name</th>
                             <th data-field="teacher.lastname" data-sortable="false">Teacher surname</th>
@@ -115,8 +114,10 @@
                     <div class="list-group">
                         <a class="list-group-item" href="/admin/student/search"><i class="fa fa-child fa-1x"></i>&nbsp;
                             студент</a>
+                        <a class="list-group-item" href="/admin/group/search"><i class="fa fa-users fa-1x"></i>&nbsp;
+                            группа1</a>
                         <a class="list-group-item" href="#groupsTable" data-toggle="modal"><i class="fa fa-users fa-1x"></i>&nbsp;
-                            группа</a>
+                            группа2</a>
                         <a class="list-group-item" href="/admin/teacher/search"><i class="fa fa-user-secret fa-1x"></i>&nbsp;
                             преподаватель</a>
                         <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car fa-1x"></i>&nbsp;

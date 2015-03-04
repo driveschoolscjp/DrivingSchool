@@ -22,10 +22,6 @@ public class Group extends AbstractPersistable<Long> {
     @ManyToOne
     private Teacher teacher;
 
-    public Group() {
-
-    }
-
     public String getName() {
         return name;
     }
