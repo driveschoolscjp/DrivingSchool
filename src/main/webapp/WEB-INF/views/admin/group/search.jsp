@@ -46,29 +46,28 @@
         <div class="row">
             <div class="col-md-11 whiteback">
 
-                <h3 class="text-center">Поиск преподавателей</h3>
+                <h3 class="text-center">Поиск групп</h3>
                 <hr>
                 <%--три верхние кнопки--%>
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="/admin/teacher/add" type="button" class="btn btn-primary btn-success">Добавить
-                            преподавателя</a>
+                        <a href="/admin/group/add" type="button" class="btn btn-primary btn-success">Добавить
+                            группу</a>
                     </div>
 
                     <div class="col-md-4">
                         <form action="" method="post">
-                            <select name="hasCar" class="selectpicker input-xlarge">
-                                    <option value="1" ${hasCar==1?"selected":""}>All</option>
-                                    <option value="2" ${hasCar==2?"selected":""}>Has car</option>
-                                    <option value="3" ${hasCar==3?"selected":""}>No car</option>
+                            <select name="groupId" class="selectpicker input-xlarge">
+                                <c:forEach items="${teachers}" var="teacher">
+                                    <option value="${teacher.id}">${teacher.firstname}</option>
+                                </c:forEach>
                             </select>
 
-                            <button type="submit" class="btn btn-primary">Has car</button>
+                            <button type="submit" class="btn btn-primary">Поиск по учителю</button>
                         </form>
                     </div>
-
                     <div class="col-md-4">
-                        <input type="search" id="search" value="" class="form-control" placeholder="Найти по ФИО">
+                        <input type="search" id="search" value="" class="form-control" placeholder="Найти">
                     </div>
                 </div>
                 <%--таблица с данными--%>
@@ -77,32 +76,25 @@
                         <table class="table" id="table">
                             <thead>
                             <tr>
-                                <th>Вождение</th>
-                                <th>Фамилия</th>
-                                <th>Имя</th>
-                                <th>Отчество</th>
-                                <th>Телефон</th>
-                                <th>Email</th>
+                                <th>Название группы</th>
+                                <th>Учитель</th>
+                                <th>Дата начала занятий</th>
+                                <th>Дата окончания занятий</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="teacher" items="${teachers}">
+                            <c:forEach var="group" items="${groups}">
                                 <tr>
-                                    <td align="center"><c:if test="${teacher.car!=null}">
-                                        <i class="fa fa-car"></i>
-                                    </c:if>
-                                    </td>
-                                    <td>${teacher.lastname}</td>
-                                    <td>${teacher.firstname}</td>
-                                    <td>${teacher.patronymic}</td>
-                                    <td>${teacher.tel}</td>
-                                    <td>${teacher.email}</td>
+                                    <td>${group.name}</td>
+                                    <td>${group.teacher.firstname} &nbsp; ${group.teacher.lastname} &nbsp; ${group.teacher.patronymic}</td>
+                                    <td>${group.startDate}</td>
+                                    <td>${group.finishDate}</td>
                                     <td>
                                         <div class="btn-group-vertical pull-right">
-                                            <a href="/admin/teacher/edit?id=${teacher.id}" type="button"
+                                            <a href="/admin/group/edit?id=${group.id}" type="button"
                                                class="btn btn-primary btn-sm"><i class="fa fa-user fa-xs">&nbsp;
                                                 Редактировать</i></a>
-                                            <a href="/admin/teacher/show?id=${teacher.id}" type="button"
+                                            <a href="/admin/group/show?id=${group.id}" type="button"
                                                class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">&nbsp;
                                                 Просмотреть</i></a>
                                         </div>
