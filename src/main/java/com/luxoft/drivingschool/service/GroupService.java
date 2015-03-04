@@ -18,9 +18,10 @@ public class GroupService {
     public List<Group> findByName(String name){
         return groupRepository.findByName(name);
     }
-
     public List<Group> findAll(){
         return groupRepository.findAll();
     }
-
+    public Group findById(long id) {
+        return groupRepository.getOne(id);
+    }
 }
