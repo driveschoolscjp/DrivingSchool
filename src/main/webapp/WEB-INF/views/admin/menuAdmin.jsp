@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: acer
-  Date: 26.02.15
-  Time: 21:00
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -14,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>Admin Menu</title>
 
     <script src="/js/jquery-1.11.2.min.js"></script>
     <script src="/js/bootstrap-table.min.js"></script>
