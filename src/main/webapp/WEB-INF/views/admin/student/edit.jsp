@@ -52,15 +52,15 @@
                             <%--строка с полями--%>
                             <fieldset>
                                 <div class="form-group col-md-4">
-                                    <label for="firstname">Name:</label>
-                                    <form:input path="firstname" class="form-control" placeholder="Jack"
-                                                required="firstname"/>
-                                </div>
-
-                                <div class="form-group col-md-4">
                                     <label for="lastname">Lastname:</label>
                                     <form:input path="lastname" class="form-control" placeholder="Black"
                                                 required="lastname"/>
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label for="firstname">Name:</label>
+                                    <form:input path="firstname" class="form-control" placeholder="Jack"
+                                                required="firstname"/>
                                 </div>
 
                                 <div class="form-group col-md-4">
@@ -173,7 +173,7 @@
                             </fieldset>
                             <hr/>
                             <div class="text-center">
-                                <button class="btn  btn-primary" type="submit">Добавить клиента</button>
+                                <button class="btn  btn-primary" type="submit">Сохранить изменения</button>
                             </div>
                         </form:form>
                 </div>

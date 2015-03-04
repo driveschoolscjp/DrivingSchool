@@ -26,4 +26,12 @@ public class TeacherService {
     public Teacher save(Teacher teacher) {
         return teacherRepository.save(teacher);
     }
+
+    public List<Teacher> findByCarNotNull(){
+        return teacherRepository.findByCarNotNull();
+    }
+
+    public List<Teacher> findByCarNull(){
+        return teacherRepository.findByCarNull();
+    }
 }
