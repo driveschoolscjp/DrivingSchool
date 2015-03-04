@@ -34,14 +34,22 @@ public class AdminTeacherController {
         return "admin/teacher/search";
     }
 
-    // Поиск по параметрам
+    // Поиск по наличию автомобиля
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String findTeachers(@RequestParam("firstname") String firstname,
-                               @RequestParam("lastname") String lastname,
-                               @RequestParam("groupId") long groupId,
+    public String findTeachers(@RequestParam("hasCar") int hasCar,
                                Model model) {
-        // TODO сделать метод для поиска по имени/фамилии/группе
-        model.addAttribute("teachers", teacherService.findAll());
+        switch (hasCar){
+            case 1:
+                model.addAttribute("teachers", teacherService.findAll());
+                break;
+            case 2:
+                model.addAttribute("teachers", teacherService.findByCarNotNull());
+                break;
+            case 3:
+                model.addAttribute("teachers", teacherService.findByCarNull());
+                break;
+        }
+        model.addAttribute("hasCar", hasCar);
         return "admin/teacher/search";
     }
 

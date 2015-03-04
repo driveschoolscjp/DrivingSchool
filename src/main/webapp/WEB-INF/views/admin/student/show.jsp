@@ -52,13 +52,13 @@
 
                         <fieldset>
                             <div class="form-group col-md-4">
-                                <label for="firstname">Name:</label>
-                                <form:input path="firstname" class="form-control" disabled="true"/>
+                                <label for="lastname">Lastname:</label>
+                                <form:input path="lastname" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="lastname">Lastname:</label>
-                                <form:input path="lastname" class="form-control" disabled="true"/>
+                                <label for="firstname">Name:</label>
+                                <form:input path="firstname" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-md-4">
