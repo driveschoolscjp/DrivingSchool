@@ -48,7 +48,7 @@
 
                 <h3 class="text-center">Поиск студентов</h3>
                 <hr>
-
+                <%--три верхние кнопки--%>
                 <div class="row">
                     <div class="col-md-4">
                         <a href="/admin/student/add" type="button" class="btn btn-primary btn-success">Добавить
@@ -71,14 +71,14 @@
                         <input type="search" id="search" value="" class="form-control" placeholder="Найти по ФИО">
                     </div>
                 </div>
-
+                <%--таблица с данными--%>
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table" id="table">
                             <thead>
                             <tr>
-                                <th>Имя</th>
                                 <th>Фамилия</th>
+                                <th>Имя</th>
                                 <th>Отчество</th>
                                 <th>Телефон</th>
                                 <th>Email</th>
@@ -88,8 +88,8 @@
                             <tbody>
                             <c:forEach var="student" items="${students}">
                                 <tr>
-                                    <td>${student.firstname}</td>
                                     <td>${student.lastname}</td>
+                                    <td>${student.firstname}</td>
                                     <td>${student.patronymic}</td>
                                     <td>${student.tel}</td>
                                     <td>${student.email}</td>

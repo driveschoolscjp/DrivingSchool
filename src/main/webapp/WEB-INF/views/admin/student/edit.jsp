@@ -49,7 +49,7 @@
 
                             <h3>Добавление студента</h3>
                             <hr>
-
+                            <%--строка с полями--%>
                             <fieldset>
                                 <div class="form-group col-md-4">
                                     <label for="firstname">Name:</label>

@@ -1,6 +1,7 @@
 package com.luxoft.drivingschool.model;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -8,6 +9,8 @@ import javax.persistence.Table;
 public class Teacher extends Person {
 
     private String description;
+    @OneToOne(mappedBy = "instructor")
+    private Car car;
 
     public String getDescription() {
         return description;
@@ -15,5 +18,13 @@ public class Teacher extends Person {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 }
