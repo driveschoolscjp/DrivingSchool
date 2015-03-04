@@ -18,7 +18,7 @@ public class UserController {
         System.out.println("login: " + login);
         System.out.println("password: " + password);
 
-        if (login.equals("admin") && password.equals("admin")) {
+        if (login.equals("a") && password.equals("a")) {
             return "admin/admin";
         }
         return "client";
