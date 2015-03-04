@@ -58,26 +58,27 @@
                     <div class="col-md-4">
                         <form action="" method="post">
                             <select name="hasCar" class="selectpicker input-xlarge">
-                                    <option value="1" ${hasCar==1?"selected":""}>All</option>
-                                    <option value="2" ${hasCar==2?"selected":""}>Has car</option>
-                                    <option value="3" ${hasCar==3?"selected":""}>No car</option>
+                                <option value="1" ${hasCar==1?"selected":""}>Все</option>
+                                <option value="2" ${hasCar==2?"selected":""}>С авто</option>
+                                <option value="3" ${hasCar==3?"selected":""}>Без авто</option>
                             </select>
 
-                            <button type="submit" class="btn btn-primary">Has car</button>
+                            <button type="submit" class="btn btn-primary">Наличие авто</button>
                         </form>
                     </div>
 
                     <div class="col-md-4">
-                        <input type="search" id="search" value="" class="form-control" placeholder="Найти по ФИО">
+                        <input type="search" id="search" value="" class="form-control" placeholder="Поиск">
                     </div>
                 </div>
+                <hr>
                 <%--таблица с данными--%>
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table" id="table">
                             <thead>
                             <tr>
-                                <th>Вождение</th>
+                                <th>Инструктор</th>
                                 <th>Фамилия</th>
                                 <th>Имя</th>
                                 <th>Отчество</th>
@@ -88,8 +89,8 @@
                             <tbody>
                             <c:forEach var="teacher" items="${teachers}">
                                 <tr>
-                                    <td align="center"><c:if test="${teacher.car!=null}">
-                                        <i class="fa fa-car"></i>
+                                    <td class="text-center"><c:if test="${teacher.car!=null}">
+                                        <i class="fa fa-car" style="color: #337ab7"></i>
                                     </c:if>
                                     </td>
                                     <td>${teacher.lastname}</td>

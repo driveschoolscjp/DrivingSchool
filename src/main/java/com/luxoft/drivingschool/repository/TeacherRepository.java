@@ -9,7 +9,7 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
     List<Teacher> findByFirstname(String firstname);
 
-    List<Teacher> findByCarNotNull();
+    List<Teacher> findByCarIsNotNull();
 
-    List<Teacher> findByCarNull();
+    List<Teacher> findByCarIsNull();
 }

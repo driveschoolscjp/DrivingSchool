@@ -27,11 +27,11 @@ public class TeacherService {
         return teacherRepository.save(teacher);
     }
 
-    public List<Teacher> findByCarNotNull(){
-        return teacherRepository.findByCarNotNull();
+    public List<Teacher> findByCarIsNotNull() {
+        return teacherRepository.findByCarIsNotNull();
     }
 
-    public List<Teacher> findByCarNull(){
-        return teacherRepository.findByCarNull();
+    public List<Teacher> findByCarIsNull() {
+        return teacherRepository.findByCarIsNull();
     }
 }

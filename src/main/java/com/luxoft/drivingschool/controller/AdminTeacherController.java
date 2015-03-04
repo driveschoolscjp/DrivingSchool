@@ -1,17 +1,16 @@
 package com.luxoft.drivingschool.controller;
 
-import com.luxoft.drivingschool.model.Student;
+import com.luxoft.drivingschool.configuration.editor.LocalDateEditor;
 import com.luxoft.drivingschool.model.Teacher;
 import com.luxoft.drivingschool.service.GroupService;
 import com.luxoft.drivingschool.service.StudentService;
 import com.luxoft.drivingschool.service.TeacherService;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/admin/teacher")
 @Controller
@@ -43,10 +42,10 @@ public class AdminTeacherController {
                 model.addAttribute("teachers", teacherService.findAll());
                 break;
             case 2:
-                model.addAttribute("teachers", teacherService.findByCarNotNull());
+                model.addAttribute("teachers", teacherService.findByCarIsNotNull());
                 break;
             case 3:
-                model.addAttribute("teachers", teacherService.findByCarNull());
+                model.addAttribute("teachers", teacherService.findByCarIsNull());
                 break;
         }
         model.addAttribute("hasCar", hasCar);
@@ -86,5 +85,10 @@ public class AdminTeacherController {
         model.addAttribute("teacher", teacherService.findOne(id));
 
         return "admin/teacher/edit";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(LocalDate.class, new LocalDateEditor());
     }
 }

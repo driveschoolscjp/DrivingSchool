@@ -12,7 +12,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -84,20 +83,12 @@
                         <fieldset>
                             <div class="form-group col-md-6">
                                 <label for="birthday">Birthday: </label>
-                                    <%--<input type="text"  placeholder="сйуда birthday">--%>
-                                <input id="birthday" class="form-control" type="date" disabled="true"/>
+                                <form:input path="birthday" type="date" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="gender">Gender</label><br>
-                                    <%--<form:radiobuttons path="gender" class="radio-inline"/>--%>
-                                <div class="col-md-6">
-                                    <form:radiobutton path="gender" value="MALE" disabled="true"/> <b>Male</b>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <form:radiobutton path="gender" value="FEMALE" disabled="true"/> <b>Female</b>
-                                </div>
+                                <form:input path="gender" class="form-control" disabled="true"/>
                             </div>
 
                         </fieldset>

@@ -1,6 +1,7 @@
 package com.luxoft.drivingschool.controller;
 
 import com.luxoft.drivingschool.model.Car;
+import com.luxoft.drivingschool.model.Teacher;
 import com.luxoft.drivingschool.service.CarService;
 import com.luxoft.drivingschool.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * Created by SCJP on 04.03.2015.
@@ -37,15 +40,14 @@ public class AdminCarController {
     public String showRegistration(Model model) {
 
         model.addAttribute("car", new Car());
-        model.addAttribute("instructors", teacherService.findAll());
-
+        model.addAttribute("instructors", teacherService.findByCarIsNull());
         return "admin/car/edit";
     }
 
     // Сохранение и переход на форму просмотра
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute("car") Car car) {
-         car = carService.save(car);
+        car = carService.save(car);
         return "redirect:show?id=" + car.getId(); // На страничку просмотра
     }
 
@@ -61,8 +63,12 @@ public class AdminCarController {
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String edit(@RequestParam("id") long id, Model model) {
 
-        model.addAttribute("car", carService.findOne(id));
-        model.addAttribute("instructors", teacherService.findAll());
+        Car car = carService.findOne(id);
+        List<Teacher> instructors = teacherService.findByCarIsNull();
+
+        instructors.add(car.getInstructor());
+        model.addAttribute("car", car);
+        model.addAttribute("instructors", instructors);
 
         return "admin/car/edit";
     }

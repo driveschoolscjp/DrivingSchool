@@ -57,9 +57,9 @@
 
                     <div class="col-md-4">
                         <form action="" method="post">
-                            <select name="groupId" class="selectpicker input-xlarge">
+                            <select name="teacherId" class="selectpicker input-xlarge">
                                 <c:forEach items="${teachers}" var="teacher">
-                                    <option value="${teacher.id}">${teacher.firstname}</option>
+                                    <option value="${teacher.id}">${teacher.firstname} ${teacher.lastname}</option>
                                 </c:forEach>
                             </select>
 
@@ -70,6 +70,7 @@
                         <input type="search" id="search" value="" class="form-control" placeholder="Найти">
                     </div>
                 </div>
+                <hr>
                 <%--таблица с данными--%>
                 <div class="row">
                     <div class="col-md-12">

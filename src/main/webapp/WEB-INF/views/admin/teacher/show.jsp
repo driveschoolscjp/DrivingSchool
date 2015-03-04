@@ -84,8 +84,7 @@
                         <fieldset>
                             <div class="form-group col-md-6">
                                 <label for="birthday">Birthday: </label>
-                                    <%--<input type="text"  placeholder="сйуда birthday">--%>
-                                <input id="birthday" class="form-control" type="date" disabled="true"/>
+                                <form:input path="birthday" type="date" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="col-md-6">

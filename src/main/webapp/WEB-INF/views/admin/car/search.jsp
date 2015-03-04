@@ -55,12 +55,11 @@
                             автомобиль</a>
                     </div>
 
-
-
                     <div class="col-md-4 col-md-offset-4">
                         <input type="search" id="search" value="" class="form-control" placeholder="Найти по техническим параметрам">
                     </div>
                 </div>
+                <hr>
                 <%--таблица с данными--%>
                 <div class="row">
                     <div class="col-md-12">
@@ -83,7 +82,7 @@
                                     <td>${car.engineSize}</td>
                                     <td>${car.pricePerHour}</td>
                                     <td>${car.transmission}</td>
-                                    <td>${car.instructor.firstname}&nbsp;${car.instructor.lastname}</td>
+                                    <td>${car.instructor.firstname} ${car.instructor.lastname}</td>
                                     <td>
                                         <div class="btn-group-vertical pull-right">
                                             <a href="/admin/car/edit?id=${car.id}" type="button"

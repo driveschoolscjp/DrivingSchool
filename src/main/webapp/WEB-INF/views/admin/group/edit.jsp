@@ -54,13 +54,11 @@
                             <div class="form-group col-md-6">
                                 <label for="name">Название группы:</label>
                                 <form:input path="name" class="form-control" placeholder="Группа 1"
-                                            required="name"/>
+                                            required="required"/>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="startDate">Дата начала занятий: </label>
-                                    <%--<input type="text"  placeholder=" date">--%>
-                                <input id="startDate" class="form-control" type="date" placeholder="start"
-                                       required="startDate"/>
+                                <form:input path="startDate" type="date" class="form-control" required="required"/>
                             </div>
                         </fieldset>
                         <fieldset>
@@ -74,9 +72,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="finishDate">Дата окончания занятий: </label>
-                                    <%--<input type="text"  placeholder=" date">--%>
-                                <input id="finishDate" class="form-control" type="date" placeholder="finish"
-                                       required="finishDate"/>
+                                <form:input path="finishDate" type="date" class="form-control" required="required"/>
                             </div>
                         </fieldset>
 
