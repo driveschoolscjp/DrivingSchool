@@ -21,6 +21,6 @@ public class UserController {
         if (login.equals("a") && password.equals("a")) {
             return "admin/admin";
         }
-        return "client";
+        return "admin";
     }
 }
