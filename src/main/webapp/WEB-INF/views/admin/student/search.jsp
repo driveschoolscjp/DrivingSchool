@@ -53,8 +53,8 @@
                     <th></th>
                     <th></th>
                     <th>
+                        <h3 style="color: #ffffff">Поиск:</h3>
                         <div class="pull-right">
-                            <h3 style="color: #ffffff">Поиск по группе</h3>
 
                             <form action="/admin/student/search" method="post">
                                 <select name="groupId" class="selectpicker">
@@ -68,7 +68,11 @@
                     </th>
                 </tr>
                 <tr>
-                    <th></th>
+                    <th>
+                        <div class="pull-left" style="margin-bottom:5%; width: auto;">
+                            <a href="/admin/student/edit?id=${student.id}" type="button" class="btn-default btn-md"><i class="fa fa-user-plus fa-xs">&nbsp;Добавить</i></a>&nbsp;
+                        </div>
+                    </th>
                     <th></th>
                      <th>
                     <input type="search" id="search" value="" class="form-control" placeholder="Поиск по ФИО студента">
@@ -88,7 +92,7 @@
                         <td>${student.lastname}</td>
                         <td>${student.patronymic} &nbsp;
                             <div class="btn-group-vertical pull-right">
-                                <a href="/admin/student/edit?id=${student.id}" type="button" class="btn btn-default btn-xs"  ><i class="fa fa-user-plus fa-xs">&nbsp; Редактировать</i></a>
+                                <a href="/admin/student/edit?id=${student.id}" type="button" class="btn btn-default btn-xs"  ><i class="fa fa-user fa-xs">&nbsp; Редактировать</i></a>
                                 <a href="/admin/student/show?id=${student.id}" type="button" class="btn btn-default btn-xs"><i class="fa fa-search fa-xs">&nbsp;  Просмотреть</i></a>
                             </div>
                         </td>
