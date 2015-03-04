@@ -39,14 +39,11 @@
 <jsp:include page="../menuAdmin.jsp"/>
 
 <div class="body">
-
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
 
                 <div class="container-fluid whiteback">
-
                         <form:form action="/admin/student/save" method="post" modelAttribute="student">
                             <form:hidden path="id"/>
 
@@ -56,16 +53,20 @@
                             <fieldset>
                                 <div class="form-group col-md-4">
                                     <label for="firstname">Name:</label>
-                                    <form:input path="firstname" class="form-control" placeholder="${student.firstname==null?'Jack':student.firstname}" required="firstname"/>
+                                    <form:input path="firstname" class="form-control" placeholder="Jack"
+                                                required="firstname"/>
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label for="lastname">Lastname:</label>
-                                    <form:input path="lastname" class="form-control" placeholder="${student.lastname==null?'Black':student.lastname}" required="lastname"/>
+                                    <form:input path="lastname" class="form-control" placeholder="Black"
+                                                required="lastname"/>
                                 </div>
+
                                 <div class="form-group col-md-4">
                                     <label for="patronymic">Patronymic:</label>
-                                    <form:input path="patronymic" class="form-control" placeholder="${student.patronymic==null?'Robertovich':student.patronymic}" required="patronymic"/>
+                                    <form:input path="patronymic" class="form-control" placeholder="Robertovich"
+                                                required="patronymic"/>
                                 </div>
                             </fieldset>
                             <hr>
@@ -73,12 +74,14 @@
                             <fieldset>
                                 <div class="form-group col-md-6">
                                     <label for="passport">Passport:</label>
-                                    <form:input path="passport" class="form-control" placeholder="${student.passport==null?'AA571175':student.passport}" pattern="[A-Za-z]{2}[0-9]{6}" required="passport"/>
+                                    <form:input path="passport" class="form-control" placeholder="AA571175"
+                                                pattern="[A-Za-z]{2}[0-9]{6}" required="passport"/>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inn">INN:</label>
-                                    <form:input path="inn" class="form-control" placeholder="${student.inn==0?'12345678':student.inn}" pattern="[0-9]{8}" required="inn"/>
+                                    <form:input path="inn" class="form-control" placeholder="12345678"
+                                                pattern="[0-9]{8}" required="inn"/>
                                 </div>
                             </fieldset>
                             <hr>
@@ -93,46 +96,38 @@
 
                                 <div class="col-md-6">
                                     <label for="gender">Gender</label><br>
-                                    <form:radiobuttons path="gender" class="radio-inline"/>
+                                        <%--<form:radiobuttons path="gender" class="radio-inline"/>--%>
+                                    <div class="col-md-6">
+                                        <form:radiobutton path="gender" value="MALE"/> <b>Male</b>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <form:radiobutton path="gender" value="FEMALE"/> <b>Female</b>
+                                    </div>
                                 </div>
 
                             </fieldset>
                             <hr>
 
 
-                            <%--<fieldset>--%>
-                            <%--<label>--%>
-                            <%--<div class="col-md-6">--%>
-                            <%--<label class="radio-inline">--%>
-                            <%--<form:radiobutton path="gender" value="MALE"/> <p style="color: #ffffff">--%>
-                            <%--Male</p>--%>
-                            <%--</label>--%>
-                            <%--</div>--%>
-
-                            <%--<div class="col-md-6">--%>
-                            <%--<label class="radio-inline">--%>
-                            <%--<form:radiobutton path="gender" value="FEMALE"/> <p style="color: #ffffff">--%>
-                            <%--Female</p>--%>
-                            <%--</label>--%>
-                            <%--</div>--%>
-                            <%--</fieldset>--%>
-                            <%--<hr>--%>
-
                             <fieldset>
                                 <div class="form-group col-md-4">
                                     <label for="tel">Telephone:</label>
-                                    <form:input path="tel" type="tel" class="form-control" placeholder="${student.tel==null?'987-654-32-10':student.tel}" required="tel"/>
+                                    <form:input path="tel" type="tel" class="form-control" placeholder="987-654-32-10"
+                                                required="tel"/>
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label for="email">Email address:</label>
-                                    <form:input path="email" type="email" class="form-control" placeholder="${student.email==null?'nickname@mail.com':student.email}" required="email"/>
+                                    <form:input path="email" type="email" class="form-control"
+                                                placeholder="nickname@mail.com" required="email"/>
 
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label for="photoURI">Photo URI:</label>
-                                    <form:input path="photoURI" class="form-control" type="url" placeholder="${student.photoURI==null?'http//photo.com/student5.png':student.photoURI}" required="photoURI"/>
+                                    <form:input path="photoURI" class="form-control" type="url"
+                                                placeholder="http//photo.com/student5.png" required="photoURI"/>
                                 </div>
                             </fieldset>
                             <hr>
@@ -157,8 +152,9 @@
                                 </div>
 
                                 <div class="form-group col-md-4">
-                                    <label for="rideNumber">Количество занятий вожденем:</label>
-                                    <form:input path="rideNumber" class="form-control" type="number" min="10" max="20" step="5" placeholder="${student.rideNumber==null?'10':student.rideNumber}" required="rideNumber"/>
+                                    <label for="rideNumber">Количество занятий вождением:</label>
+                                    <form:input path="rideNumber" class="form-control" type="number" min="10" max="20"
+                                                step="5" placeholder="10" required="rideNumber"/>
                                 </div>
                             </fieldset>
                             <hr>
@@ -166,25 +162,26 @@
                             <fieldset>
                                 <div class="form-group col-md-6">
                                     <label for="login">Login:</label>
-                                    <form:input path="login" class="form-control" placeholder="${student.login==null?'login':student.login}" required="login"/>
+                                    <form:input path="login" class="form-control" placeholder="login" required="login"/>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="password">Password:</label>
-                                    <form:input path="password" class="form-control" placeholder="${student.password==null?'password':student.password}" required="password"/>
+                                    <form:input path="password" class="form-control" placeholder="password"
+                                                required="password"/>
                                 </div>
                             </fieldset>
-
-                            <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 col-xs-offset-4 col-sm-offset-5 col-md-offset-5 col-lg-offset-5">
-                                <br>
-                                <button class="btn btn-lg btn-success btn-block btn-xs" type="submit">Добавить клиента</button>
-                                <br>
+                            <hr/>
+                            <div class="text-center">
+                                <button class="btn  btn-primary" type="submit">Добавить клиента</button>
                             </div>
                         </form:form>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+<jsp:include page="../../footer.jsp"/>
 </body>
 </html>

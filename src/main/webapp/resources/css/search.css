@@ -1,11 +1,4 @@
 
-
-#search {
-    float: right;
-    margin-top: 9px;
-    width: 250px;
-}
-
 .search {
     padding: 5px 0;
     width: 230px;
@@ -34,12 +27,4 @@
 .search:hover input, .search input:focus {
     width: 200px;
     margin-left: 0px;
-}
-
-.btn {
-    height: 30px;
-    position: absolute;
-    right: 0;
-    top: 5px;
-    border-radius:1px;
 }
