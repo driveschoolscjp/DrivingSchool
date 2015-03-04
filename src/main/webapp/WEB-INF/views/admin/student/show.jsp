@@ -45,7 +45,7 @@
             <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
 
                 <div class="container-fluid whiteback">
-                    <form:form action="/admin/student/search" method="post" modelAttribute="student">
+                    <form:form action="/admin/student/search" method="get" modelAttribute="student">
 
                         <h3>Просмотр студента</h3>
                         <hr>
