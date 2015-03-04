@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @RequestMapping("/admin/group")
 @Controller
 public class AdminGroupControllerSimply {
@@ -35,8 +34,7 @@ public class AdminGroupControllerSimply {
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public String findGroups(@RequestParam("teacherId") long teacherId, Model model) {
 
-        model.addAttribute("students", groupService.findByTeacherId(teacherId));
-        model.addAttribute("groups", groupService.findAll());
+        model.addAttribute("teachers", groupService.findByTeacherId(teacherId));
         return "admin/group/search";
     }
 
@@ -58,7 +56,7 @@ public class AdminGroupControllerSimply {
         return "redirect:show?id=" + group.getId(); // На страничку просмотра
     }
 
-    // Показ одного студента
+    // Показ одной группы
     @RequestMapping(value = "/show", method = RequestMethod.GET)
     public String show(@RequestParam("id") long id, Model model) {
 
@@ -66,13 +64,12 @@ public class AdminGroupControllerSimply {
         return "admin/group/show";
     }
 
-    // Редактирование одного студента
+    // Редактирование одной группы
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String edit(@RequestParam("id") long id, Model model) {
 
         model.addAttribute("group", groupService.findOne(id));
         model.addAttribute("teachers", teacherService.findAll());
-
 
         return "admin/group/edit";
     }
