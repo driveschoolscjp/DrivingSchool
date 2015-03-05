@@ -3,21 +3,31 @@
 <head>
     <title>Contacts</title>
 
-    <link rel='stylesheet' type='text/css' href='../../resources/css/google.css' />
-    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
-    <script type='text/javascript' src='js/example.js'></script>
-    <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=true'></script>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
 
-    <!-- Bootstrap -->
-    <link href="/resources/css/bootstrap.css" rel="stylesheet">
-    <link href="/resources/css/default.css" rel="stylesheet">
-    <link href="/resources/css/font-awesome.css" rel="stylesheet">
+    <!-- css -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/default.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/google.css" rel="stylesheet">
+
+    <!--js-->
+    <script src="/js/bootstrap.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap.js"></script>
+
+
+    <!--FOR Google-->
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+    <script type='text/javascript' src='js/example.js'></script>
+    <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=true'></script>
+
 </head>
 <body>
 
@@ -25,65 +35,55 @@
 <jsp:include page="/WEB-INF/views/menu.jsp" />
 
 <div class="body">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4  ">
+
 <div id="page-wrap">
+ <ul id="locations">
 
+        <li data-geo-lat="48.458085" data-geo-long="35.057470">
+            <h3 style="color: #ffffff">Офис автошколы</h3>
 
-
-    <h1>Google Maps Slider</h1>
-
-    <ul id="locations">
-
-        <li data-geo-lat="41.9786" data-geo-long="-87.9047">
-            <h3>O'Hare Airport</h3>
-            <p>Flights n' stuff</p>
-            <p class="longdesc"><strong>About:</strong> O'Hare International Airport has been voted the "Best Airport in North America" for 10 years by two separate sources: Readers of the U.S. Edition of Business Traveler Magazine (1998-2003) and Global Traveler Magazine (2004-2007). Travel and Leisure magazine's 2009 "America's Favorite Cities" ranked Chicago's Airport System (O'Hare and Midway) the second-worst for delays, New York City's airport system (JFK, Newark Liberty, and LaGuardia) being the first.</p>
+            <p class="longdesc" style="color: #ffffff"><b>адрес:</b> ул.Школьная, 1. пгт.Кринички,
+                Днепропетровская область, Украина</p>
         </li>
 
-        <li data-geo-lat="41.927118" data-geo-long="-87.697621">
-            <h3>Bueno Terra</h3>
-            <p>World-class Italian</p>
-            <p class="longdesc"><strong>Random review:</strong> Get the carpaccio</p>
-        </li>
+        <li data-geo-lat="48.376040" data-geo-long="34.462065">
+            <h3 style="color: #ffffff">Автодром</h3>
 
-        <li data-geo-lat="41.921735" data-geo-long="-87.664688">
-            <h3>Pequod's Pizza</h3>
-            <p>Unique pan-style pizza</p>
-            <p class="longdesc"><strong>Random review:</strong> I ate there about a month ago now, and... I've just thought about it over and over again. I think they put something addictive in the food. LOL. The one thing I didn't like was the burnt edges, but... that's the style of pizza, and they nail that style perfectly, so...it's just a difference in ideology on that one. I have to let it slide. Best pizza in Chicago? I don't know. Definitely top 5 though.</p>
+            <p class="longdesc" style="color: #ffffff"><b>адрес:</b> ул. Гоголя, 1.
+                Днепропетровск
+                Днепропетровская область, Украина</p>
         </li>
-
-        <li data-geo-lat="41.927568" data-geo-long="-87.705201">
-            <h3>The Rocking Horse</h3>
-            <p>Nice bar</p>
-            <p class="longdesc"><strong>Random review:</strong> The only thing you have to know about the Horse, TOTS. You get a Massive plate of these things. Seriously, it feeds 3, easy.  I get them cajun style, as ranch is just too salty for me.  And that garlic aoli it comes with is flippin' great!</p>
-        </li>
-
     </ul>
 
-    <div id="map_canvas"></div>
-
-    <div id="more-info"><div>
-
-        <h2>More Info</h2>
-        <p>Hover over location on the left. (JavaScript must be enabled)</p>
-
-    </div></div>
-
 </div>
-
+</div>
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                <div id="map_canvas"></div>
+            </div>
+</div>
 </div>
 
 <script>
 
+
+
     $(function() {
 
-        var chicago = new google.maps.LatLng(41.924832, -87.697456),
+        var chicago = new google.maps.LatLng(48.458085, 35.057470),
                 pointToMoveTo,
                 first = true,
                 curMarker = new google.maps.Marker({}),
+
                 $el;
 
+
         var myOptions = {
-            zoom: 10,
+            zoom: 12,
             center: chicago,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -104,8 +104,7 @@
                     // Clear current marker
                     curMarker.setMap();
 
-                    // Set zoom back to Chicago level
-                    // map.setZoom(10);
+                    map.setZoom(14);
                 }
 
                 // Move (pan) map to new location
@@ -115,23 +114,12 @@
                 // Add new marker
                 curMarker = new google.maps.Marker({
                     position: pointToMoveTo,
-                    map: map,
-                    icon: "images/marker.png"
+                    map: map
                 });
-
                 // On click, zoom map
                 google.maps.event.addListener(curMarker, 'click', function() {
                     map.setZoom(14);
                 });
-
-                // Fill more info area
-                $("#more-info")
-                        .find("h2")
-                        .html($el.find("h3").html())
-                        .end()
-                        .find("p")
-                        .html($el.find(".longdesc").html());
-
                 // No longer the first time through (re: marker clearing)
                 first = false;
             }
@@ -145,10 +133,7 @@
 </script>
 
 <jsp:include page="/WEB-INF/views/footer.jsp" />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/resources/js/bootstrap.js"></script>
+
 
 </body>
 </html>
