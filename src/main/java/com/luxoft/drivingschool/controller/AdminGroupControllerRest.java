@@ -14,15 +14,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin/group")
 public class AdminGroupControllerRest {
+
+    private static final String GETALL_ATTRIBUTE="getall";
+    private static final String EDIT_ID_JSON__ATTRIBUTE="edit/{id}";
+
     @Autowired
     private GroupService groupService;
 
-    @RequestMapping(value = "getall", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = GETALL_ATTRIBUTE, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Group> getGroups() {
         return groupService.findAll();
     }
 
-    @RequestMapping(value = "edit/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = EDIT_ID_JSON__ATTRIBUTE, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Group editGroup(@PathVariable String id) {
         return groupService.findById(Long.parseLong(id));
     }
