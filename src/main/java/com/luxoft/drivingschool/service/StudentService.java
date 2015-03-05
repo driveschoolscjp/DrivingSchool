@@ -9,12 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
 
+    @Transactional
     public Student save(Student student){
         return studentRepository.save(student);
     }

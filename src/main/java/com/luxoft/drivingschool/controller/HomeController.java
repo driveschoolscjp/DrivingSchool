@@ -5,16 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping({"/", "/home"})
 public class HomeController {
 
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.HEAD})
+    @RequestMapping(value = {"/", "/home"}, method = {RequestMethod.GET, RequestMethod.HEAD})
     public String home() {
         return "home";
     }
 
-    @RequestMapping(value = "schedule", method = {RequestMethod.GET, RequestMethod.HEAD})
-    public String sheduleView() {
+    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
+    public String shedule() {
         return "schedule";
+    }
+
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    public String contact() {
+        return "contact";
     }
 }
