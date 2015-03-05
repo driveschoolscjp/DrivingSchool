@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+
+
 @RequestMapping("/admin/student")
 @Controller
 public class AdminStudentController {
@@ -67,7 +69,7 @@ public class AdminStudentController {
     public String show(@RequestParam("id") long id, Model model) {
 
         model.addAttribute("student", studentService.findOne(id));
-        return "admin/student/show";
+            return "admin/student/show";
     }
 
     // Редактирование одного студента
