@@ -68,69 +68,86 @@
 </div>
 </div>
 
-<script>
+    <script type="text/javascript">
+        var locations = [
+            ['Офис автошколы', 48.458085, 35.057470, 1],
+            ['Автодром', 48.376040, 34.462065, 2]
+        ];
 
-
-
-    $(function() {
-
-        var chicago = new google.maps.LatLng(48.458085, 35.057470),
-                pointToMoveTo,
-                first = true,
-                curMarker = new google.maps.Marker({}),
-
-                $el;
-
-
-        var myOptions = {
-            zoom: 12,
-            center: chicago,
+        var map = new google.maps.Map(document.getElementById('map_canvas'), {
+            zoom: 10,
+            center: new google.maps.LatLng(48.458085, 35.057470),
             mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        var map = new google.maps.Map($("#map_canvas")[0], myOptions);
-
-        $("#locations li").mouseenter(function() {
-
-            $el = $(this);
-
-            if (!$el.hasClass("hover")) {
-
-                $("#locations li").removeClass("hover");
-                $el.addClass("hover");
-
-                if (!first) {
-
-                    // Clear current marker
-                    curMarker.setMap();
-
-                    map.setZoom(14);
-                }
-
-                // Move (pan) map to new location
-                pointToMoveTo = new google.maps.LatLng($el.attr("data-geo-lat"), $el.attr("data-geo-long"));
-                map.panTo(pointToMoveTo);
-
-                // Add new marker
-                curMarker = new google.maps.Marker({
-                    position: pointToMoveTo,
-                    map: map
-                });
-                // On click, zoom map
-                google.maps.event.addListener(curMarker, 'click', function() {
-                    map.setZoom(14);
-                });
-                // No longer the first time through (re: marker clearing)
-                first = false;
-            }
-
         });
 
-        $("#locations li:first").trigger("mouseenter");
+        var infowindow = new google.maps.InfoWindow();
 
-    });
+        var marker, i;
+        var markers = new Array();
 
-</script>
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                map: map
+            });
+
+            markers.push(marker);
+
+            $("#locations li").mouseenter(function() {
+
+                $el = $(this);
+
+                if (!$el.hasClass("hover")) {
+
+                    //плавное изменение центра карты
+                    // Move (pan) map to new location
+                    pointToMoveTo = new google.maps.LatLng($el.attr("data-geo-lat"), $el.attr("data-geo-long"));
+                    map.panTo(pointToMoveTo);
+
+//                резкое изменение центра карты
+//                map.setCenter(pointToMoveTo);
+
+                    // Add new marker
+                    curMarker = new google.maps.Marker({
+                        position: pointToMoveTo,
+                        map: map
+                    });
+                    // On click, zoom map
+                    google.maps.event.addListener(curMarker, 'click', function() {
+                        map.setZoom(14);
+                    });
+                    // No longer the first time through (re: marker clearing)
+                    first = false;
+                }
+
+            });
+
+            $("#locations li:first").trigger("mouseenter");
+
+
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
+
+        function AutoCenter() {
+            //  Create a new viewpoint bound
+            var bounds = new google.maps.LatLngBounds();
+            //  Go through each...
+            $.each(markers, function (index, marker) {
+                bounds.extend(marker.position);
+            });
+            //  Fit these bounds to the map
+            map.fitBounds(bounds);
+
+
+        }
+        AutoCenter();
+
+    </script>
 
 <jsp:include page="/WEB-INF/views/footer.jsp" />
 
