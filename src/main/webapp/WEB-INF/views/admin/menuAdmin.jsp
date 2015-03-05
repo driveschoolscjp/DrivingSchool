@@ -85,7 +85,7 @@
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert(jqXHR.status + ' ' + jqXHR.responseText);
                     },
-                    dataType: 'json',
+                    dataType: 'json'
                 })
             },
             'click .remove': function (e, value, row, index) {

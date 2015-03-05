@@ -12,4 +12,9 @@ public class HomeController {
     public String home() {
         return "home";
     }
+
+    @RequestMapping(value = "schedule", method = {RequestMethod.GET, RequestMethod.HEAD})
+    public String sheduleView() {
+        return "schedule";
+    }
 }
