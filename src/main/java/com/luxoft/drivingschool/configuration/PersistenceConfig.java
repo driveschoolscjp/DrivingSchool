@@ -25,6 +25,9 @@ public class PersistenceConfig {
     private static final String PROP_DB_URL = "db.url";
     private static final String PROP_DB_USERNAME = "db.username";
     private static final String PROP_DB_PASSWORD = "db.password";
+    private static final String PROP_DB_SHOW_SQL = "hibernate.show_sql";
+    private static final String PROP_DB_GENERATE_DDL = "hibernate.hbm2ddl.auto";
+    private static final String PROP_DB_DIALECT = "hibernate.dialect";
 
     @Autowired
     Environment environment;
@@ -61,9 +64,9 @@ public class PersistenceConfig {
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.show_sql", "true");
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        properties.setProperty(PROP_DB_SHOW_SQL, environment.getProperty(PROP_DB_SHOW_SQL));
+        properties.setProperty(PROP_DB_GENERATE_DDL, environment.getProperty(PROP_DB_GENERATE_DDL));
+        properties.setProperty(PROP_DB_DIALECT, environment.getProperty(PROP_DB_DIALECT));
         return properties;
     }
 }
