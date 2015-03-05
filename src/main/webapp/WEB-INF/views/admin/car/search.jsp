@@ -34,25 +34,25 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-11 whiteback">
+            <div class="col-xs-11 whiteback">
 
                 <h3 class="text-center">Поиск автомобилей</h3>
                 <hr>
                 <%--три верхние кнопки--%>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <a href="/admin/car/add" type="button" class="btn btn-primary btn-success">Добавить
                             автомобиль</a>
                     </div>
 
-                    <div class="col-md-4 col-md-offset-4">
+                    <div class="col-xs-4 col-xs-offset-4">
                         <input type="search" id="search" value="" class="form-control" placeholder="Найти по техническим параметрам">
                     </div>
                 </div>
                 <hr>
                 <%--таблица с данными--%>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                         <table class="table" id="table">
                             <thead>
                             <tr>

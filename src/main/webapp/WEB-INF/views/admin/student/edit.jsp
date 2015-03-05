@@ -30,7 +30,7 @@
 <div class="body">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+            <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
                         <form:form action="/admin/student/save" method="post" modelAttribute="student">
@@ -40,19 +40,19 @@
                             <hr>
                             <%--строка с полями--%>
                             <fieldset>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label for="lastname">Lastname:</label>
                                     <form:input path="lastname" class="form-control" placeholder="Black"
                                                 required="required"/>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label for="firstname">Name:</label>
                                     <form:input path="firstname" class="form-control" placeholder="Jack"
                                                 required="required"/>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label for="patronymic">Patronymic:</label>
                                     <form:input path="patronymic" class="form-control" placeholder="Robertovich"
                                                 required="required"/>
@@ -61,13 +61,13 @@
                             <hr>
 
                             <fieldset>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-xs-6">
                                     <label for="passport">Passport:</label>
                                     <form:input path="passport" class="form-control" placeholder="AA571175"
                                                 pattern="[A-Za-z]{2}[0-9]{6}" required="required"/>
                                 </div>
 
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-xs-6">
                                     <label for="inn">INN:</label>
                                     <form:input path="inn" class="form-control" placeholder="12345678"
                                                 pattern="[0-9]{8}" required="required"/>
@@ -76,19 +76,19 @@
                             <hr>
 
                             <fieldset>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-xs-6">
                                     <label for="birthday">Birthday: </label>
                                     <form:input path="birthday" type="date" class="form-control" required="required"/>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-xs-6">
                                     <label for="gender">Gender</label><br>
                                         <%--<form:radiobuttons path="gender" class="radio-inline"/>--%>
-                                    <div class="col-md-6">
+                                    <div class="col-xs-6">
                                         <form:radiobutton path="gender" value="MALE"/> <b>Male</b>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-xs-6">
                                         <form:radiobutton path="gender" value="FEMALE"/> <b>Female</b>
                                     </div>
                                 </div>
@@ -98,20 +98,20 @@
 
 
                             <fieldset>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label for="tel">Telephone:</label>
                                     <form:input path="tel" type="tel" class="form-control" placeholder="987-654-32-10"
                                                 required="required"/>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label for="email">Email address:</label>
                                     <form:input path="email" type="email" class="form-control"
                                                 placeholder="nickname@mail.com" required="required"/>
 
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label for="photoURI">Photo URI:</label>
                                     <form:input path="photoURI" class="form-control" type="url"
                                                 placeholder="http//photo.com/student5.png" required="required"/>
@@ -120,18 +120,18 @@
                             <hr>
 
                             <fieldset>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label>Группа:</label><br/>
-                                    <form:select path="group.id" class="selectpicker">
+                                    <form:select path="group.id" class="selectpicker form-control">
                                         <c:forEach items="${groups}" var="group">
                                             <option value="${group.id}" ${student.group.id==group.id?"selected":""}>${group.name}</option>
                                         </c:forEach>
                                     </form:select>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label>Инструктор:</label><br/>
-                                    <form:select path="instructor.id" class="selectpicker">
+                                    <form:select path="instructor.id" class="selectpicker form-control">
                                         <c:forEach items="${instructors}" var="instructor">
                                             <option value="${instructor.id}" ${student.instructor.id==instructor.id?"selected":""}>
                                                     ${instructor.firstname} ${instructor.lastname}
@@ -140,7 +140,7 @@
                                     </form:select>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label for="rideNumber">Количество занятий вождением:</label>
                                     <form:input path="rideNumber" class="form-control" type="number" min="10" max="20"
                                                 step="5" placeholder="10" required="required"/>
@@ -149,13 +149,13 @@
                             <hr>
 
                             <fieldset>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-xs-6">
                                     <label for="login">Login:</label>
                                     <form:input path="login" class="form-control" placeholder="login"
                                                 required="required"/>
                                 </div>
 
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-xs-6">
                                     <label for="password">Password:</label>
                                     <form:input path="password" class="form-control" placeholder="password"
                                                 required="required"/>

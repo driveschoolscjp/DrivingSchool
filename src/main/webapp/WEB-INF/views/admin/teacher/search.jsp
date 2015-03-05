@@ -33,37 +33,40 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-11 whiteback">
+            <div class="col-xs-11 whiteback">
 
                 <h3 class="text-center">Поиск преподавателей</h3>
                 <hr>
                 <%--три верхние кнопки--%>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-xs-3">
                         <a href="/admin/teacher/add" type="button" class="btn btn-primary btn-success">Добавить
                             преподавателя</a>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-xs-5">
                         <form action="" method="post">
-                            <select name="hasCar" class="selectpicker input-xlarge">
-                                <option value="1" ${hasCar==1?"selected":""}>Все</option>
-                                <option value="2" ${hasCar==2?"selected":""}>С авто</option>
-                                <option value="3" ${hasCar==3?"selected":""}>Без авто</option>
-                            </select>
-
-                            <button type="submit" class="btn btn-primary">Наличие авто</button>
+                            <div class="col-xs-7">
+                                <select name="hasCar" class="selectpicker form-control">
+                                    <option value="1" ${hasCar==1?"selected":""}>Все</option>
+                                    <option value="2" ${hasCar==2?"selected":""}>С авто</option>
+                                    <option value="3" ${hasCar==3?"selected":""}>Без авто</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-5">
+                                <button type="submit" class="btn btn-primary">Наличие авто</button>
+                            </div>
                         </form>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <input type="search" id="search" value="" class="form-control" placeholder="Поиск">
                     </div>
                 </div>
                 <hr>
                 <%--таблица с данными--%>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                         <table class="table" id="table">
                             <thead>
                             <tr>

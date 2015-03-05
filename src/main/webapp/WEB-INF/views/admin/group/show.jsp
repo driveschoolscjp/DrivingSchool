@@ -29,7 +29,7 @@
 <div class="body">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+            <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
                     <form:form action="/admin/group/search" method="get" modelAttribute="group">
@@ -38,21 +38,21 @@
                         <hr>
 
                         <fieldset>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="name">Название группы:</label>
                                 <form:input path="name" class="form-control" disabled="true"/>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="startDate">Дата начала занятий:</label>
                                 <form:input path="startDate" class="form-control" type="date" disabled="true"/>
                             </div>
                             </fieldset>
                             <fieldset>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-xs-6">
                                     <label for="teacher.firstname">Учитель:</label>
                                     <form:input path="teacher.firstname" class="form-control" disabled="true"/>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-xs-6">
                                     <label for="finishDate">Дата окончания занятий:</label>
                                     <form:input path="finishDate" class="form-control" type="date" disabled="true"/>
                                 </div>

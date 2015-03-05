@@ -30,7 +30,7 @@
 <div class="body">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+            <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
                         <form:form action="/admin/car/save" method="post" modelAttribute="car">
@@ -40,21 +40,21 @@
                             <hr>
                             <%--строка с полями--%>
                             <fieldset>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label for="brand">Brand:</label>
                                     <form:input path="brand" class="form-control" placeholder="Honda"
                                                 required="required"/>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label for="model">Model:</label>
                                     <form:input path="model" class="form-control" placeholder="H2000"
                                                 required="required"/>
                                 </div>
 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-xs-4">
                                     <label>Инструктор:</label><br/>
-                                    <form:select path="instructor.id" class="selectpicker">
+                                    <form:select path="instructor.id" class="selectpicker form-control">
                                         <c:forEach items="${instructors}" var="instructor">
                                             <option value="${instructor.id}" ${car.instructor.id==instructor.id?"selected":""}>${instructor.firstname} ${instructor.lastname}</option>
                                         </c:forEach>
@@ -66,33 +66,32 @@
 
                             <fieldset>
 
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-xs-3">
                                     <label for="transmission">Transmission</label><br>
 
-                                    <div class="col-md-6">
+                                    <div class="col-xs-6">
                                         <form:radiobutton path="transmission" value="AUTO"/> <b>Auto</b>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-xs-6">
                                         <form:radiobutton path="transmission" value="MANUAL"/> <b>Manual</b>
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-xs-3">
                                     <label for="engineSize">Engine size:</label>
                                     <form:input path="engineSize" class="form-control" placeholder="1.8"
                                                 type="number" min="1" max="15"
                                                 step="0.1" required="required"/>
                                 </div>
 
-                                <div class="form-group col-md-3">
-                                    <label for="pricePerHour">Price/Hour: UAH</label
-                                    <form:input path="pricePerHour" class="form-control" placeholder="9999"
-                                                type="number" min="10" max="10000"
-                                                step="1" required="required"/>
+                                <div class="form-group col-xs-3">
+                                    <label for="pricePerHour">Rrice / Hour: UAH</label>
+                                    <form:input path="pricePerHour" class="form-control" type="number" min="10"
+                                                max="10000" step="1" required="required"/>
                                 </div>
 
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-xs-3">
                                     <label for="photoURI">Photo URI:</label>
                                     <form:input path="photoURI" class="form-control" type="url"
                                                 placeholder="http//photo.com/car5.png" required="required"/>

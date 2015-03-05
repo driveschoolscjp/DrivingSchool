@@ -33,37 +33,40 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-11 whiteback">
+            <div class="col-xs-11 whiteback">
 
                 <h3 class="text-center">Поиск студентов</h3>
                 <hr>
                 <%--три верхние кнопки--%>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-xs-3">
                         <a href="/admin/student/add" type="button" class="btn btn-primary btn-success">Добавить
                             студента</a>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-xs-5">
                         <form action="" method="post">
-                            <select name="groupId" class="selectpicker input-xlarge">
-                                <c:forEach items="${groups}" var="group">
-                                    <option value="${group.id}">${group.name}</option>
-                                </c:forEach>
-                            </select>
-
-                            <button type="submit" class="btn btn-primary">Поиск по группе</button>
+                            <div class="col-xs-7">
+                                <select name="groupId" class="selectpicker form-control">
+                                    <c:forEach items="${groups}" var="group">
+                                        <option value="${group.id}">${group.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="col-xs-5">
+                                <button type="submit" class="btn btn-primary">Поиск по группе</button>
+                            </div>
                         </form>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-xs-4">
                         <input type="search" id="search" value="" class="form-control" placeholder="Поиск">
                     </div>
                 </div>
                 <hr>
                 <%--таблица с данными--%>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12">
                         <table class="table" id="table">
                             <thead>
                             <tr>

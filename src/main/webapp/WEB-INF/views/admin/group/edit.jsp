@@ -30,7 +30,7 @@
 <div class="body">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+            <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
                     <form:form action="/admin/group/save" method="post" modelAttribute="group">
@@ -40,26 +40,26 @@
                         <hr>
                         <%--строка с полями--%>
                         <fieldset>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="name">Название группы:</label>
                                 <form:input path="name" class="form-control" placeholder="Группа 1"
                                             required="required"/>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="startDate">Дата начала занятий: </label>
                                 <form:input path="startDate" class="form-control" type="date" required="required"/>
                             </div>
                         </fieldset>
                         <fieldset>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label>Учитель:</label><br/>
-                                <form:select path="teacher.id" class="selectpicker">
+                                <form:select path="teacher.id" class="selectpicker form-control">
                                     <c:forEach items="${teachers}" var="teacher">
                                         <option value="${teacher.id}" ${group.teacher.id==teacher.id?"selected":""}> ${teacher.firstname} ${teacher.lastname}</option>
                                     </c:forEach>
                                 </form:select>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="finishDate">Дата окончания занятий: </label>
                                 <form:input path="finishDate" class="form-control" type="date" required="required"/>
                             </div>
