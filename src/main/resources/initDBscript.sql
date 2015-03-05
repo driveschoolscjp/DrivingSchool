@@ -17,7 +17,7 @@ insert into teachers(id,birthday,email,firstname,gender,inn,lastname,passport,pa
 
 insert into cars(id, brand, enginesize, model, priceperhour, transmission, instructor_id) values
 (1,'Porsche',3.5,'911',150,'AUTO',1),
-(2,'BMV',4.1,'M2',100,'MANUAL',3),
+(2,'BMV',4.1,'M3',100,'MANUAL',3),
 (3,'Lamborghini',8.2,'Aventador',250,'MANUAL',4),
 (4,'Audi',7.3,'R8',150,'AUTO',8),
 (5,'Ford',9,'GT',120,'MANUAL',9);

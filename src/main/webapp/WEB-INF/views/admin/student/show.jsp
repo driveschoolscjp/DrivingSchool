@@ -1,14 +1,10 @@
-<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
     <title>Student</title>
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,13 +13,11 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/default.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"/>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/js/bootstrap.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"/>
+    <script src="/js/bootstrap.js"/>
 
 </head>
 
