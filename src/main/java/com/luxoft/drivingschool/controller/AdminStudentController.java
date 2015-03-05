@@ -1,6 +1,6 @@
 package com.luxoft.drivingschool.controller;
 
-import com.luxoft.drivingschool.configuration.editor.LocalDateEditor;
+import com.luxoft.drivingschool.controller.editor.LocalDateEditor;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.service.GroupService;
 import com.luxoft.drivingschool.service.StudentService;

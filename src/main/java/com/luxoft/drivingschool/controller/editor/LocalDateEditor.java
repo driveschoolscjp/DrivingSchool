@@ -1,4 +1,4 @@
-package com.luxoft.drivingschool.configuration.editor;
+package com.luxoft.drivingschool.controller.editor;
 
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
