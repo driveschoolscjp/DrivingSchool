@@ -9,9 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class GroupService {
-
     @Autowired
     private GroupRepository groupRepository;
 
@@ -24,7 +23,6 @@ public class GroupService {
     public Group findById(long id) {
         return groupRepository.getOne(id);
     }
-
     public Group findOne(long id){
         return groupRepository.findOne(id);
     }

@@ -10,6 +10,7 @@
 <head>
     <title>Schedule</title>
     <script src="/js/daypilot-all.min.js"></script>
+    <script src="/js/jquery-1.11.2.min.js"></script>
 
 </head>
 <body>
@@ -20,20 +21,7 @@
     <div id="dp"></div>
 </div>
 
-<script type="text/javascript">
-    var nav = new DayPilot.Navigator("nav");
-    nav.showMonths = 3;
-    nav.selectMode = "week";
-    nav.onTimeRangeSelected = function(args) {
-        dp.startDate = args.start;
-        dp.update();
-    };
-    nav.init();
+<script src="/js/schedule.js"></script>
 
-    var dp = new DayPilot.Calendar("dp");
-    dp.viewType = "Week";
-    dp.init();
-
-</script>
 </body>
 </html>
