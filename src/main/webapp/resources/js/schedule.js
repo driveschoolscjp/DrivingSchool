@@ -1,5 +1,3 @@
-
-
 var nav = new DayPilot.Navigator("nav");
 nav.showMonths = 1;
 nav.selectMode = "week";
@@ -7,7 +5,6 @@ nav.onTimeRangeSelected = function(args) {
     dp.startDate = args.start;
     dp.update();
 };
-nav.init();
 
 var dp = new DayPilot.Calendar("dp");
 dp.viewType = "Week";
@@ -22,8 +19,8 @@ dp.events.list = [
         text: "Event",
         toolTip: "my tooltip",
         backColor: "#cccccc"
-    }]
-dp.init();
+    }];
+
 dp.onTimeRangeSelected = function (args) {
     var name = prompt("New event name:", "Event");
     dp.clearSelection();
@@ -54,19 +51,27 @@ dp.onEventMoved = function (args) {
 
 function getAllAppointments(instructorId) {
     $.ajax({
-        url: "schedule/getallappointments/" + instructorId,
+        url: "/scheduler/getallappointments/" + instructorId,
         type: "GET",
         success: function(data, code, xhr) {
-            alert(data);
-            jQuery.parseJSON(data);
-
-            $.each(a, function(i, b) {
-
+            dp.startDate = "2011-11-11";
+            nav.init();
+            dp.init();
+            $.each(data, function(i, b) {
+                var startMoment = b.startInterval.split('.')[0];
+                var finishMoment = b.finishInterval.split('.')[0];
+                var e = new DayPilot.Event({
+                    start: new DayPilot.Date(startMoment),
+                    end: new DayPilot.Date(finishMoment),
+                    id: b.id,
+                    text: b.student["firstname"] + " " + b.student["lastname"]
+                });
+                dp.events.add(e);
             });
+            dp.update();
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert(jqXHR.status + ' ' + jqXHR.responseText);
-            alert("qwq");
         },
         dataType: 'json'
     })

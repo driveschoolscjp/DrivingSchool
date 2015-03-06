@@ -12,14 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/schedule")
+@RequestMapping("/scheduler")
 public class ScheduleController {
     @Autowired
     private ScheduleService scheduleService;
 
     @RequestMapping(value = "getallappointments/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> getAllAppointments(@PathVariable long id) {
-        List<Schedule> l= scheduleService.findAllAppointmentsByInstructorId(id);
-        return l;
+        return scheduleService.findAllAppointmentsByInstructorId(id);
     }
 }

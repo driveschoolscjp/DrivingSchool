@@ -1,5 +1,6 @@
 package com.luxoft.drivingschool.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -12,7 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "groups")
 public class Group extends AbstractPersistable<Long> {
-
     @Column(length = 40)
     private String name;
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
@@ -20,6 +20,7 @@ public class Group extends AbstractPersistable<Long> {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate finishDate;
     @ManyToOne
+    @JsonIgnore
     private Teacher teacher;
 
     public String getName() {

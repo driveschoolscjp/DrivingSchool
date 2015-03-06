@@ -1,6 +1,6 @@
-package com.luxoft.drivingschool.configuration.editor;
+package com.luxoft.drivingschool.controller.editor;
 
-import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -17,8 +17,8 @@ public class LocalDateTimeEditor extends PropertyEditorSupport {
             if ("".equals(value)) {
                 setValue(null);
             } else {
-                DateTimeFormatter jodaDateFormatter = getJodaDateTimeFormatter();
-                LocalDate result = jodaDateFormatter.parseLocalDate(text);
+                DateTimeFormatter jodaDateTimeFormatter = getJodaDateTimeFormatter();
+                LocalDateTime result = jodaDateTimeFormatter.parseLocalDateTime(text);
                 setValue(result);
             }
         }
@@ -30,9 +30,9 @@ public class LocalDateTimeEditor extends PropertyEditorSupport {
         if (value == null) {
             return "";
         } else {
-            DateTimeFormatter jodaDateFormatter = getJodaDateTimeFormatter();
-            LocalDate localDate = (LocalDate) value;
-            return jodaDateFormatter.print(localDate.toDate().getTime());
+            DateTimeFormatter jodaDateTimeFormatter = getJodaDateTimeFormatter();
+            LocalDateTime localDateTime = (LocalDateTime) value;
+            return jodaDateTimeFormatter.print(localDateTime.toDate().getTime());
         }
     }
 

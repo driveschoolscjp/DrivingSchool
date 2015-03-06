@@ -12,7 +12,6 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class Person extends AbstractPersistable<Long> {
-
     @Column(length = 50)
     private String firstname;
     @Column(length = 50)
