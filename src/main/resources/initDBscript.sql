@@ -71,4 +71,12 @@ insert into students(id,birthday,email,firstname,gender,inn,lastname,passport,pa
 (39,'15-05-1983','vakulenko@mail.ru','Nina','FEMALE',22988453,'Vakulenko','DD769877','Vladimirovna','067-856-56-54','vakulenko','vakulenko',10,5,8),
 (40,'11-11-1987','friske@mail.ru','Janna','FEMALE',20099838,'Friske','SD675563','Vyacheslavovna','097-945-55-09','friske','friske',10,5,1);
 
+
+insert into schedule(id, startinterval, finishinterval, instructor_id, student_id)
+values (1, '11.11.11 10:00:00', '11.11.11 11:00:00', 1, 1);
+insert into schedule(id, startinterval, finishinterval, instructor_id, student_id)
+values (2, '11.11.11 14:00:00', '11.11.11 16:00:00', 1, 2);
+insert into schedule(id, startinterval, finishinterval, instructor_id, student_id)
+values (3, '11.11.11 19:00:00', '11.11.11 19:30:00', 1, 3);
+
 ALTER SEQUENCE hibernate_sequence RESTART WITH 175;

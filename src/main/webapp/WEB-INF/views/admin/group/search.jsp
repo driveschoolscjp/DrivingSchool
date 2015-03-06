@@ -48,7 +48,7 @@
                     <div class="col-xs-5">
                         <form action="" method="post">
                             <div class="col-xs-7">
-                                <select name="teacherId" class="selectpicker form-control">
+                                <select name="id" class="selectpicker form-control">
                                     <c:forEach items="${teachers}" var="teacher">
                                         <option value="${teacher.id}">${teacher.firstname} ${teacher.lastname}</option>
                                     </c:forEach>

@@ -47,7 +47,7 @@
                     <div class="col-xs-5">
                         <form action="" method="post">
                             <div class="col-xs-7">
-                                <select name="groupId" class="selectpicker form-control">
+                                <select name="id" class="selectpicker form-control">
                                     <c:forEach items="${groups}" var="group">
                                         <option value="${group.id}">${group.name}</option>
                                     </c:forEach>

@@ -13,7 +13,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/schedule", method = RequestMethod.GET)
-    public String shedule() {
+    public String scheduleView() {
         return "schedule";
     }
 

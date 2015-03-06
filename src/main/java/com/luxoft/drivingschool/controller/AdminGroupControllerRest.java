@@ -23,7 +23,7 @@ public class AdminGroupControllerRest {
     }
 
     @RequestMapping(value = "edit/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Group editGroup(@PathVariable String id) {
-        return groupService.findById(Long.parseLong(id));
+    public Group editGroup(@PathVariable long id) {
+        return groupService.findById(id);
     }
 }

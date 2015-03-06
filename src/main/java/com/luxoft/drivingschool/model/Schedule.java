@@ -1,7 +1,7 @@
 package com.luxoft.drivingschool.model;
 
 import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
@@ -16,10 +16,10 @@ public class Schedule extends AbstractPersistable<Long> {
     private Teacher instructor;
     @ManyToOne
     private Student student;
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    private LocalDate day;
-    private int startInterval;
-    private int finishInterval;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime startInterval;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private LocalDateTime finishInterval;
 
     public Teacher getInstructor() {
         return instructor;
@@ -37,27 +37,19 @@ public class Schedule extends AbstractPersistable<Long> {
         this.student = student;
     }
 
-    public LocalDate getDay() {
-        return day;
-    }
-
-    public void setDay(LocalDate day) {
-        this.day = day;
-    }
-
-    public int getStartInterval() {
+    public LocalDateTime getStartInterval() {
         return startInterval;
     }
 
-    public void setStartInterval(int startInterval) {
+    public void setStartInterval(LocalDateTime startInterval) {
         this.startInterval = startInterval;
     }
 
-    public int getFinishInterval() {
+    public LocalDateTime getFinishInterval() {
         return finishInterval;
     }
 
-    public void setFinishInterval(int finishInterval) {
+    public void setFinishInterval(LocalDateTime finishInterval) {
         this.finishInterval = finishInterval;
     }
 }
