@@ -29,7 +29,7 @@
 <div class="body">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+            <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
                     <form:form action="/admin/student/search" method="get" modelAttribute="student">
@@ -38,17 +38,17 @@
                         <hr>
 
                         <fieldset>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label for="lastname">Lastname:</label>
                                 <form:input path="lastname" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label for="firstname">Name:</label>
                                 <form:input path="firstname" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label for="patronymic">Patronymic:</label>
                                 <form:input path="patronymic" class="form-control" disabled="true"/>
                             </div>
@@ -56,12 +56,12 @@
                         <hr>
 
                         <fieldset>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="passport">Passport:</label>
                                 <form:input path="passport" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="inn">INN:</label>
                                 <form:input path="inn" class="form-control" disabled="true"/>
                             </div>
@@ -69,12 +69,12 @@
                         <hr>
 
                         <fieldset>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="birthday">Birthday: </label>
                                 <form:input path="birthday" type="date" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-xs-6">
                                 <label for="gender">Gender</label><br>
                                 <form:input path="gender" class="form-control" disabled="true"/>
                             </div>
@@ -83,18 +83,18 @@
                         <hr>
 
                         <fieldset>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label for="tel">Telephone:</label>
                                 <form:input path="tel" type="tel" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label for="email">Email address:</label>
                                 <form:input path="email" type="email" class="form-control" disabled="true"/>
 
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label for="photoURI">Photo URI:</label>
                                 <form:input path="photoURI" class="form-control" type="url" disabled="true"/>
                             </div>
@@ -102,17 +102,17 @@
                         <hr>
 
                         <fieldset>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label>Группа:</label><br/>
                                 <form:input path="group.name" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label>Инструктор:</label><br/>
                                 <form:input path="instructor.firstname" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label for="rideNumber">Количество занятий вождением:</label>
                                 <form:input path="rideNumber" class="form-control" disabled="true"/>
                             </div>
@@ -120,12 +120,12 @@
                         <hr>
 
                         <fieldset>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="login">Login:</label>
                                 <form:input path="login" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-xs-6">
                                 <label for="password">Password:</label>
                                 <form:input path="password" class="form-control" disabled="true"/>
                             </div>

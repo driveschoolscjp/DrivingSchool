@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional (readOnly = true)
 public class CarService {
     @Autowired
     private CarRepository carRepository;
@@ -18,6 +18,7 @@ public class CarService {
         return carRepository.findAll();
     }
 
+    @Transactional
     public Car save(Car car){
         carRepository.save(car);
         return car;

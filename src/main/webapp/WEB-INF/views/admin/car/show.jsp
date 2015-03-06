@@ -29,7 +29,7 @@
 <div class="body">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+            <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
                     <form:form action="/admin/car/search" method="get" modelAttribute="car">
@@ -39,17 +39,17 @@
                         <hr>
                         <%--строка с полями--%>
                         <fieldset>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label for="brand">Brand:</label>
                                 <form:input path="brand" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label for="model">Model:</label>
                                 <form:input path="model" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-xs-4">
                                 <label>Инструктор:</label><br/>
                                 <form:input path="instructor.firstname" class="form-control" disabled="true"/>
                             </div>
@@ -59,22 +59,22 @@
 
                         <fieldset>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-xs-3">
                                 <label for="transmission">Transmission:</label>
                                 <form:input path="transmission" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-xs-3">
                                 <label for="engineSize">Engine size:</label>
                                 <form:input path="engineSize" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-3">
-                                <label for="pricePerHour">Rrice / Hour: UAH</label>
+                            <div class="form-group col-xs-3">
+                                <label for="pricePerHour">Rrice/Hour: UAH</label>
                                 <form:input path="pricePerHour" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-xs-3">
                                 <label for="photoURI">Photo URI:</label>
                                 <form:input path="photoURI" class="form-control" type="url"
                                             disabled="true"/>
