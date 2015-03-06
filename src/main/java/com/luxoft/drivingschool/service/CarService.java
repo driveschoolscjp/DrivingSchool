@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 @Transactional (readOnly = true)
 public class CarService {
+
     @Autowired
     private CarRepository carRepository;
 
@@ -20,8 +21,7 @@ public class CarService {
 
     @Transactional
     public Car save(Car car){
-        carRepository.save(car);
-        return car;
+        return carRepository.save(car);
     }
 
     public Car findOne(long id){

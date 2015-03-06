@@ -18,7 +18,7 @@ import java.util.List;
 @Controller
 public class AdminCarController {
 
-    private static final String VIEW_SEARCH_PATH = "/admin/car/search";
+    private static final String VIEW_SEARCH_PATH = "admin/car/search";
     private static final String VIEW_SHOW_PATH = "admin/car/show";
     private static final String VIEW_EDIT_PATH = "admin/car/edit";
     private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:show?id=";
@@ -31,7 +31,6 @@ public class AdminCarController {
 
     private static final String CARS_ATTRIBUTE="cars";
     private static final String CAR_ATTRIBUTE="car";
-    private static final String TEACHERS_ATTRIBUTE="teachers";
     private static final String INSTRUCTORS_ATTRIBUTE="instructors";
 
     private static final String ID_REQUEST_PARAM="id";
@@ -46,10 +45,8 @@ public class AdminCarController {
     public String showAllCars(Model model) {
 
         model.addAttribute(CARS_ATTRIBUTE, carService.findAll());
-        model.addAttribute(TEACHERS_ATTRIBUTE, teacherService.findAll());
         return VIEW_SEARCH_PATH;
     }
-
 
     // Переход на форму сохранения
     @RequestMapping(value = ADD_MAPPING_PATH, method = RequestMethod.GET)

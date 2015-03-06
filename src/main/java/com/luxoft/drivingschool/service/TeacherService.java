@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class TeacherService {
 
     @Autowired
@@ -23,6 +23,7 @@ public class TeacherService {
        return teacherRepository.findAll();
     }
 
+    @Transactional
     public Teacher save(Teacher teacher) {
         return teacherRepository.save(teacher);
     }

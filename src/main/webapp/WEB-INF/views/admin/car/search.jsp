@@ -46,20 +46,20 @@
                     </div>
 
                     <div class="col-xs-4 col-xs-offset-4">
-                        <input type="search" id="search" value="" class="form-control" placeholder="Найти по техническим параметрам">
+                        <input type="search" id="search" value="" class="form-control" placeholder="Поиск">
                     </div>
                 </div>
                 <hr>
                 <%--таблица с данными--%>
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 table-responsive">
                         <table class="table" id="table">
                             <thead>
                             <tr>
                                 <th>Марка</th>
                                 <th>Модель</th>
-                                <th>Цена/час UAH</th>
                                 <th>Обьем двигателя</th>
+                                <th>Цена/час UAH</th>
                                 <th>КПП</th>
                                 <th>Инструктор</th>
                             </tr>
@@ -76,9 +76,10 @@
                                     <td>
                                         <div class="btn-group-vertical pull-right">
                                             <a href="/admin/car/edit?id=${car.id}" type="button"
-                                               class="btn btn-primary btn-sm"> <span class="glyphicon glyphicon-road">&nbsp;Редактировать</span></a>
+                                               class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-xs">
+                                                Редактировать</i></a>
                                             <a href="/admin/car/show?id=${car.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">&nbsp;
+                                               class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
                                                 Просмотреть</i></a>
                                         </div>
                                     </td>

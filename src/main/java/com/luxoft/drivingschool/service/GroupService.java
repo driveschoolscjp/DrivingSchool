@@ -9,28 +9,33 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class GroupService {
 
     @Autowired
     private GroupRepository groupRepository;
 
+    public Group findOne(long id) {
+        return groupRepository.findOne(id);
+    }
+
     public List<Group> findByName(String name){
         return groupRepository.findByName(name);
     }
+
     public List<Group> findAll(){
         return groupRepository.findAll();
     }
+
     public Group findById(long id) {
         return groupRepository.getOne(id);
     }
 
-    public Group findOne(long id){
-        return groupRepository.findOne(id);
-    }
+    @Transactional
     public Group save(Group group){
         return groupRepository.save(group);
     }
+
     public List<Group> findByTeacherId(long id) {
         return groupRepository.findByTeacherId(id);
     }

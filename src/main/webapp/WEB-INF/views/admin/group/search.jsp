@@ -66,7 +66,7 @@
                 <hr>
                 <%--таблица с данными--%>
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 table-responsive">
                         <table class="table" id="table">
                             <thead>
                             <tr>
@@ -86,10 +86,10 @@
                                     <td>
                                         <div class="btn-group-vertical pull-right">
                                             <a href="/admin/group/edit?id=${group.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-user fa-xs">&nbsp;
+                                               class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-xs">
                                                 Редактировать</i></a>
                                             <a href="/admin/group/show?id=${group.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">&nbsp;
+                                               class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
                                                 Просмотреть</i></a>
                                         </div>
                                     </td>

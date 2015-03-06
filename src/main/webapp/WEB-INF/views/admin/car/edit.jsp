@@ -53,7 +53,7 @@
                                 </div>
 
                                 <div class="form-group col-xs-4">
-                                    <label>Инструктор:</label><br/>
+                                    <label>Instructor:</label><br/>
                                     <form:select path="instructor.id" class="selectpicker form-control">
                                         <c:forEach items="${instructors}" var="instructor">
                                             <option value="${instructor.id}" ${car.instructor.id==instructor.id?"selected":""}>${instructor.firstname} ${instructor.lastname}</option>
@@ -86,7 +86,7 @@
                                 </div>
 
                                 <div class="form-group col-xs-3">
-                                    <label for="pricePerHour">Rrice / Hour: UAH</label>
+                                    <label for="pricePerHour">Price/Hour: UAH</label>
                                     <form:input path="pricePerHour" class="form-control" type="number" min="10"
                                                 max="10000" step="1" required="required"/>
                                 </div>
