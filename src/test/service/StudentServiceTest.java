@@ -16,7 +16,7 @@ import javax.persistence.EntityManagerFactory;
 
 @DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestBaseConfig.class)
+@ContextConfiguration(classes = RootConfig.class)
 @WebAppConfiguration
 public class StudentServiceTest {
     @Resource

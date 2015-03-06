@@ -39,7 +39,7 @@
             <div class="container-fluid">
 
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user fa-1x" style="color: #2370d5"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-user fa-1x" style="color: #2370d5; width:14px;"></i></span>
                     <input class="form-control" type="text"  placeholder="User name" name = "login" required />
                 </div>
                 <div class="input-group">

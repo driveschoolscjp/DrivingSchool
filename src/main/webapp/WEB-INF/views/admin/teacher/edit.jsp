@@ -120,6 +120,17 @@
                                 </div>
                             </fieldset>
                             <hr>
+
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <form:textarea path="description" class="form-control" rows="3"
+                                                   placeholder="Description"
+                                                   required="required"/>
+                                </div>
+                            </fieldset>
+                            <hr>
+
                             <div class="text-center">
                                 <button class="btn  btn-primary" type="submit">Сохранить преподавателя</button>
                             </div>

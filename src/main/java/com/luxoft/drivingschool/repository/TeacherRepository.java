@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
-    List<Teacher> findByFirstname(String firstname);
+    List<Teacher> findByCarId(long carId);
 
     List<Teacher> findByCarIsNotNull();
 

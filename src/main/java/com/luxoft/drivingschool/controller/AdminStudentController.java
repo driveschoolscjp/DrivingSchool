@@ -101,6 +101,7 @@ public class AdminStudentController {
         return VIEW_EDIT_PATH;
     }
 
+    // TODO добавить показ фоток
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(LocalDate.class, new LocalDateEditor());

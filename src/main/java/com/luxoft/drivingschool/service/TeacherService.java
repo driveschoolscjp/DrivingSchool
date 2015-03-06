@@ -35,4 +35,10 @@ public class TeacherService {
     public List<Teacher> findByCarIsNull() {
         return teacherRepository.findByCarIsNull();
     }
+
+    public List<Teacher> findInstructorForCar(long carId) {
+        List<Teacher> instructors = teacherRepository.findByCarIsNull();
+        instructors.addAll(teacherRepository.findByCarId(carId));
+        return instructors;
+    }
 }

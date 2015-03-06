@@ -77,37 +77,42 @@
 
                             <div class="col-xs-6">
                                 <label for="gender">Gender</label><br>
-                                    <%--<form:radiobuttons path="gender" class="radio-inline"/>--%>
-                                <div class="col-xs-6">
-                                    <form:radiobutton path="gender" value="MALE" disabled="true"/> <b>Male</b>
-                                </div>
-
-                                <div class="col-xs-6">
-                                    <form:radiobutton path="gender" value="FEMALE" disabled="true"/> <b>Female</b>
-                                </div>
+                                <form:input path="gender" class="form-control" disabled="true"/>
                             </div>
 
                         </fieldset>
                         <hr>
 
                         <fieldset>
-                            <div class="form-group col-xs-4">
+                            <div class="form-group col-xs-6">
                                 <label for="tel">Telephone:</label>
                                 <form:input path="tel" type="tel" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-xs-4">
+                            <div class="form-group col-xs-6">
                                 <label for="email">Email address:</label>
                                 <form:input path="email" type="email" class="form-control" disabled="true"/>
 
                             </div>
 
-                            <div class="form-group col-xs-4">
-                                <label for="photoURI">Photo URI:</label>
-                                <form:input path="photoURI" class="form-control" type="url" disabled="true"/>
+
+                        </fieldset>
+                        <hr>
+
+                        <fieldset>
+                            <div class="col-xs-4">
+                                <img src="${teacher.photoURI}" class="img-responsive img-thumbnail"
+                                     alt="${teacher.firstname} ${teacher.lastname}">
+                            </div>
+
+                            <div class="form-group col-xs-8">
+                                <label for="description">Description:</label>
+                                <form:textarea path="description" class="form-control" rows="5"
+                                               disabled="true"/>
                             </div>
                         </fieldset>
                         <hr>
+
                         <div class="text-center">
                             <button class="btn  btn-primary" type="submit">Назад</button>
                         </div>

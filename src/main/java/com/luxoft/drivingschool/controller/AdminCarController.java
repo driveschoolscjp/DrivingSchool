@@ -1,7 +1,6 @@
 package com.luxoft.drivingschool.controller;
 
 import com.luxoft.drivingschool.model.Car;
-import com.luxoft.drivingschool.model.Teacher;
 import com.luxoft.drivingschool.service.CarService;
 import com.luxoft.drivingschool.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @RequestMapping("/admin/car")
 @Controller
@@ -76,12 +73,8 @@ public class AdminCarController {
     @RequestMapping(value = EDIT_MAPPING_PATH, method = RequestMethod.GET)
     public String edit(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
 
-        Car car = carService.findOne(id);
-        List<Teacher> instructors = teacherService.findByCarIsNull();
-
-        instructors.add(car.getInstructor());
-        model.addAttribute(CAR_ATTRIBUTE, car);
-        model.addAttribute(INSTRUCTORS_ATTRIBUTE, instructors);
+        model.addAttribute(CAR_ATTRIBUTE, carService.findOne(id));
+        model.addAttribute(INSTRUCTORS_ATTRIBUTE, teacherService.findInstructorForCar(id));
 
         return VIEW_EDIT_PATH;
     }

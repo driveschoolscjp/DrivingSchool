@@ -15,12 +15,12 @@ insert into teachers(id,birthday,email,firstname,gender,inn,lastname,passport,pa
 (9,'11-10-1990','fridman@gmail.com','Eduard','MALE',22091655,'Fridman','FD375946','Alekseevich','066-466-78-33','Experience from 2003'),
 (10,'01-09-1988','voropaev@gmail.com','Georgy','MALE',34887253,'Voropaev','SD475869','Sergeevich','097-569-76-67','Experience from 2005');
 
-insert into cars(id, brand, enginesize, model, priceperhour, transmission, instructor_id) values
-(1,'Porsche',3.5,'911',150,'AUTO',1),
-(2,'BMV',4.1,'M3',100,'MANUAL',3),
-(3,'Lamborghini',8.2,'Aventador',250,'MANUAL',4),
-(4,'Audi',7.3,'R8',150,'AUTO',8),
-(5,'Ford',9,'GT',120,'MANUAL',9);
+insert into cars(id, brand, model, enginesize, transmission, priceperhour, instructor_id, photouri) values
+(1,'Porsche','911',3.5,'MANUAL',150,1,'http://cs621222.vk.me/v621222392/1653a/VKn6sCVrUX8.jpg'),
+(2,'BMV','M3',4.1,'MANUAL',100,3,'http://cs621222.vk.me/v621222392/16521/wCwSkD9YaeI.jpg'),
+(3,'Lamborghini','Aventador',8.2,'MANUAL',250,4,'http://cs621222.vk.me/v621222392/16543/fjGBpQ_AarM.jpg'),
+(4,'Audi','R8',7.3,'AUTO',150,8,'http://cs621222.vk.me/v621222392/1654c/CbkK4Whte48.jpg'),
+(5,'Ferrari','458 Italia',9,'AUTO',120,9,'http://cs621222.vk.me/v621222392/16554/FRr3NnlMjqQ.jpg');
 
 insert into groups(id,finishdate,name,startdate,teacher_id) values
 (1,'06-05-2015','E5-03-2015','05-03-2015',2),

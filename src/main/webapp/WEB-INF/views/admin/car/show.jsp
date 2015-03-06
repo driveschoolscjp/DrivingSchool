@@ -29,13 +29,11 @@
 <div class="body">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-11">
-
-                <div class="container-fluid whiteback">
+            <div class="container-fluid whiteback col-xs-11">
                     <form:form action="/admin/car/search" method="get" modelAttribute="car">
                         <form:hidden path="id"/>
 
-                        <h3>Добавление автомобиля</h3>
+                        <h3>Просмотр автомобиля</h3>
                         <hr>
                         <%--строка с полями--%>
                         <fieldset>
@@ -58,37 +56,35 @@
                         <hr>
 
                         <fieldset>
+                            <div class="col-xs-8">
+                                <img src="${car.photoURI}" class="img-responsive img-thumbnail" alt="car">
+                            </div>
 
-                            <div class="form-group col-xs-3">
+                            <div class="form-group col-xs-4">
                                 <label for="transmission">Transmission:</label>
                                 <form:input path="transmission" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-xs-3">
+                            <div class="form-group col-xs-4">
                                 <label for="engineSize">Engine size:</label>
                                 <form:input path="engineSize" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-xs-3">
+                            <div class="form-group col-xs-4">
                                 <label for="pricePerHour">Rrice/Hour: UAH</label>
                                 <form:input path="pricePerHour" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-xs-3">
-                                <label for="photoURI">Photo URI:</label>
-                                <form:input path="photoURI" class="form-control" type="url"
-                                            disabled="true"/>
-                            </div>
-
                         </fieldset>
-                        <hr>
+                        <hr/>
+
                         <div class="text-center">
                             <button class="btn  btn-primary" type="submit">Назад</button>
                         </div>
                     </form:form>
                 </div>
 
-            </div>
+
         </div>
     </div>
 </div>
