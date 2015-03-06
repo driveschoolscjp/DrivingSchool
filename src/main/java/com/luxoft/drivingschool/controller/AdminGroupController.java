@@ -20,17 +20,17 @@ public class AdminGroupController {
     private static final String VIEW_EDIT_PATH = "admin/group/edit";
     private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:show?id=";
 
-    private static final String SEARCH_MAPPING_PATH="/search";
-    private static final String ADD_MAPPING_PATH="/add";
-    private static final String SAVE_MAPPING_PATH="/save";
-    private static final String SHOW_MAPPING_PATH="/show";
-    private static final String EDIT_MAPPING_PATH="/edit";
+    private static final String SEARCH_MAPPING_PATH = "/search";
+    private static final String ADD_MAPPING_PATH = "/add";
+    private static final String SAVE_MAPPING_PATH = "/save";
+    private static final String SHOW_MAPPING_PATH = "/show";
+    private static final String EDIT_MAPPING_PATH = "/edit";
 
-    private static final String TEACHERS_ATTRIBUTE="teachers";
-    private static final String GROUPS_ATTRIBUTE="groups";
-    private static final String GROUP_ATTRIBUTE="group";
+    private static final String TEACHERS_ATTRIBUTE = "teachers";
+    private static final String GROUPS_ATTRIBUTE = "groups";
+    private static final String GROUP_ATTRIBUTE = "group";
 
-    private static final String ID_REQUEST_PARAM="id";
+    private static final String ID_REQUEST_PARAM = "id";
 
     @Autowired
     TeacherService teacherService;

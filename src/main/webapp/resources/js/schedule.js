@@ -1,7 +1,7 @@
 var nav = new DayPilot.Navigator("nav");
 nav.showMonths = 1;
 nav.selectMode = "week";
-nav.onTimeRangeSelected = function(args) {
+nav.onTimeRangeSelected = function (args) {
     dp.startDate = args.start;
     dp.update();
 };
@@ -36,7 +36,7 @@ dp.onTimeRangeSelected = function (args) {
     dp.message("Created");
 };
 
-dp.eventClicked = function(args) {
+dp.eventClicked = function (args) {
     alert("dsd");
     var name = prompt("New event name:", "Event");
     if (!name) return;
@@ -53,11 +53,11 @@ function getAllAppointments(instructorId) {
     $.ajax({
         url: "/scheduler/getallappointments/" + instructorId,
         type: "GET",
-        success: function(data, code, xhr) {
+        success: function (data, code, xhr) {
             dp.startDate = "2011-11-11";
             nav.init();
             dp.init();
-            $.each(data, function(i, b) {
+            $.each(data, function (i, b) {
                 var startMoment = b.startInterval.split('.')[0];
                 var finishMoment = b.finishInterval.split('.')[0];
                 var e = new DayPilot.Event({
@@ -70,7 +70,7 @@ function getAllAppointments(instructorId) {
             });
             dp.update();
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR.status + ' ' + jqXHR.responseText);
         },
         dataType: 'json'

@@ -29,8 +29,7 @@
             <div class=" col-xs-offset-1">
 
 
-
-        <!--Включаю в форму для валидации по HTML 5-->
+                <!--Включаю в форму для валидации по HTML 5-->
   <form action="login" method="post">
 
 
@@ -138,7 +137,7 @@
           </div>
         </div>
 
-        </div>
+            </div>
         </div>
     </div>
     </div>
