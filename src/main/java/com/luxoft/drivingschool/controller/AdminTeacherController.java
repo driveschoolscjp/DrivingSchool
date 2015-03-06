@@ -85,7 +85,7 @@ public class AdminTeacherController {
         return REDIRECT_SHOW_TO_ID_PATH + teacher.getId(); // На страничку просмотра
     }
 
-    // Показ одного студента
+    // Показ одного преподавателя
     @RequestMapping(value = SHOW_MAPPING_PATH, method = RequestMethod.GET)
     public String show(@RequestParam(ID_REQUEST_PARAM) long id,
                        Model model) {
@@ -94,7 +94,7 @@ public class AdminTeacherController {
         return VIEW_SHOW_PATH;
     }
 
-    // Редактирование одного учителя
+    // Редактирование одного преподавателя
     @RequestMapping(value = EDIT_MAPPING_PATH, method = RequestMethod.GET)
     public String edit(@RequestParam(ID_REQUEST_PARAM) long id,
                        Model model) {
