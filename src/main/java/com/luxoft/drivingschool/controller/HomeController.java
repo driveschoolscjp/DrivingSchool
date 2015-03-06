@@ -15,6 +15,7 @@ public class HomeController {
     private static final String VIEW_HOME_PATH = "home";
     private static final String SCHEDULE_HOME_PATH = "schedule";
     private static final String CONTACT_HOME_PATH = "contact";
+    private static final String COST_HOME_PATH = "cost";
 
     @RequestMapping(value = {ROOT_MAPPING_PATH, HOME_MAPPING_PATH}, method = {RequestMethod.GET, RequestMethod.HEAD})
     public String home() {
@@ -29,5 +30,10 @@ public class HomeController {
     @RequestMapping(value = CONTACT_MAPPING_PATH, method = RequestMethod.GET)
     public String contact() {
         return CONTACT_HOME_PATH    ;
+    }
+
+    @RequestMapping(value = COST_HOME_PATH, method = RequestMethod.GET)
+    public String cost() {
+        return COST_HOME_PATH    ;
     }
 }
