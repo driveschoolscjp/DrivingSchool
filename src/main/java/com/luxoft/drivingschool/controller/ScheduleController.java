@@ -14,10 +14,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/scheduler")
 public class ScheduleController {
+
+    private static final String GETALLAPPOINTMENTS_MAPPING_PATH = "getallappointments/{id}";
+
     @Autowired
     private ScheduleService scheduleService;
 
-    @RequestMapping(value = "getallappointments/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = GETALLAPPOINTMENTS_MAPPING_PATH, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> getAllAppointments(@PathVariable long id) {
         return scheduleService.findAllAppointmentsByInstructorId(id);
     }

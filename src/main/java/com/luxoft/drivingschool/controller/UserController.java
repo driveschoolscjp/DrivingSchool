@@ -10,17 +10,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
 
+    private static final String LOGIN_MAPPING_PATH = "/login";
+
+    private static final String LOGIN_REQUEST_PARAM = "login";
+    private static final String PASSWORD_REQUEST_PARAM = "password";
+
+    private static final String VIEW_ADMIN_PATH = "admin";
+    private static final String VIEW_ADMIN_ADMIN_PATH = "admin/admin";
+
     // либо же в методе можно ничего не указывать в @RequestMapping(method = RequestMethod.GET)
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String takeLogin(@RequestParam("login") String login,
-                            @RequestParam("password") String password) {
+    @RequestMapping(value = LOGIN_MAPPING_PATH, method = RequestMethod.POST)
+    public String takeLogin(@RequestParam(LOGIN_REQUEST_PARAM) String login,
+                            @RequestParam(PASSWORD_REQUEST_PARAM) String password) {
 
         System.out.println("login: " + login);
         System.out.println("password: " + password);
 
         if (login.equals("a") && password.equals("a")) {
-            return "admin/admin";
+            return VIEW_ADMIN_ADMIN_PATH;
         }
-        return "admin";
+        return VIEW_ADMIN_PATH;
     }
 }

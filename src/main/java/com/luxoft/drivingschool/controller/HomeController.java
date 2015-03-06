@@ -7,18 +7,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = {"/", "/home"}, method = {RequestMethod.GET, RequestMethod.HEAD})
+    private static final String ROOT_MAPPING_PATH = "/";
+    private static final String HOME_MAPPING_PATH = "/home";
+    private static final String SCHEDULE_MAPPING_PATH = "/schedule";
+    private static final String CONTACT_MAPPING_PATH = "/contact";
+
+    private static final String VIEW_HOME_PATH = "home";
+    private static final String SCHEDULE_HOME_PATH = "schedule";
+    private static final String CONTACT_HOME_PATH = "contact";
+
+    @RequestMapping(value = {ROOT_MAPPING_PATH, HOME_MAPPING_PATH}, method = {RequestMethod.GET, RequestMethod.HEAD})
     public String home() {
-        return "home";
+        return VIEW_HOME_PATH;
     }
 
-    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
+    @RequestMapping(value = SCHEDULE_MAPPING_PATH, method = RequestMethod.GET)
     public String scheduleView() {
-        return "schedule";
+        return SCHEDULE_HOME_PATH;
     }
 
-    @RequestMapping(value = "/contact", method = RequestMethod.GET)
+    @RequestMapping(value = CONTACT_MAPPING_PATH, method = RequestMethod.GET)
     public String contact() {
-        return "contact";
+        return CONTACT_HOME_PATH    ;
     }
 }
