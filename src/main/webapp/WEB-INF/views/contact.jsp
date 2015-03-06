@@ -45,9 +45,9 @@
 
 
                         <li data-geo-lat="48.458085" data-geo-long="35.057470"><a href="#" onClick="showNext();">
-                            <h3 style="color: #ffffff">Офис автошколы</h3>
+                            <h3 style="color: #00fcff">Офис автошколы</h3>
 
-                            <p class="longdesc" style="color: #ffffff"><b>адрес:</b> <br/>ул.Школьная, 1. пгт.Кринички,
+                            <p class="longdesc" style="color: #fffafa"><b>адрес:</b> <br/>ул.Школьная, 1. пгт.Кринички,
                                 Днепропетровская область, Украина <br/>
                                 <b>Телефон: </b> (059) 740-54-17<br/>
                                 <b> e-mail: </b>com@drivingschool.dp.ua</p>
@@ -60,7 +60,7 @@
 
 
                         <li data-geo-lat="48.376040" data-geo-long="34.462065"><a href="#" onClick="show();">
-                            <h3 style="color: #ffffff">Автодром</h3>
+                            <h3 style="color: #00fcff">Автодром</h3>
 
                             <p class="longdesc" style="color: #ffffff"><b>адрес:</b> <br/>ул. Гоголя, 1.
                                 Днепропетровск
@@ -162,7 +162,7 @@
                     // Move (pan) map to new location
                     pointToMoveTo = new google.maps.LatLng($el.attr("data-geo-lat"), $el.attr("data-geo-long"));
                     map.panTo(pointToMoveTo);
-
+                    map.setZoom(15);
 //                резкое изменение центра карты
 //                map.setCenter(pointToMoveTo);
 
@@ -173,7 +173,7 @@
                     });
                     // On click, zoom map
                     google.maps.event.addListener(curMarker, 'click', function() {
-                        map.setZoom(14);
+                        map.setZoom(15);
                     });
                     // No longer the first time through (re: marker clearing)
                     first = false;
