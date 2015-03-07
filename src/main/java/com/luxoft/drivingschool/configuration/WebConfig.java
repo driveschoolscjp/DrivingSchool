@@ -61,6 +61,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JodaModule());
+ 
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         converter.setObjectMapper(objectMapper);
         converters.add(converter);

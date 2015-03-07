@@ -5,54 +5,118 @@ nav.onTimeRangeSelected = function (args) {
     dp.startDate = args.start;
     dp.update();
 };
+nav.on
 
 var dp = new DayPilot.Calendar("dp");
 dp.viewType = "Week";
+dp.heightSpec = "Full";
 dp.ShowToolTip = true;
-dp.eventDeleteHandling = "Update";
-dp.events.list = [
-    {
-        start: "2013-03-25T00:00:00",
-        end: "2013-03-25T12:00:00",
-        id: "123",
-        resource: "A",
-        text: "Event",
-        toolTip: "my tooltip",
-        backColor: "#cccccc"
-    }];
+dp.eventMoveHandling = "Update";
 
-dp.onTimeRangeSelected = function (args) {
-    var name = prompt("New event name:", "Event");
+dp.onTimeRangeSelected = function(args) {
     dp.clearSelection();
-    if (!name) return;
-    var e = new DayPilot.Event({
+    var lesson = new Object ({
+        id: 0,
         start: args.start,
         end: args.end,
-        id: DayPilot.guid(),
-        resource: args.resource,
-        text: name
+        instructor_id: "1",
+        student_id: "1"
+    });
+    var result = operateLesson(lesson, "take");
+    if (result === -1) {
+        alert("Ошибка соединения!");
+        return;
+    }
+    if (result === 0) {
+        args.e.preventDefault();
+        alert("Время занято!");
+        return;
+    }
+    var e = new DayPilot.Event({
+        start: lesson.start,
+        end: lesson.end,
+        id: result,
+        text: "Vasya"
     });
     dp.events.add(e);
-    dp.message("Created");
+    dp.update();
+
+  //  var name = prompt("Student name:", "");
 };
 
-dp.eventClicked = function (args) {
-    alert("dsd");
-    var name = prompt("New event name:", "Event");
-    if (!name) return;
-    args.e.text(name);
-    dp.events.update(args.e);
+function operateLesson(lesson, operation) {
+    var id;
+    $.ajax({
+        url: "/scheduler/lesson/action/" + operation,
+        type: "POST",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(lesson),
+        success: function (data, code, xhr) {
+            id = data.id;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.status + ' ' + jqXHR.responseText);
+            id = -1;
+        },
+        dataType: 'json'
+    })
+    return id;
+}
+
+dp.onEventClicked = function (args) {
+alert("clicked");
 };
 
 dp.onEventMoved = function (args) {
-    alert("moved");
-    dp.message("Moved: " + args.e.text());
+
 };
+
+dp.onEventResize = function (args) {
+    var lesson = new Object ({
+        id: args.e.id(),
+        start: args.newStart,
+        end: args.newEnd,
+        instructor_id: "1",
+        student_id: "1"
+    });
+    var result = operateLesson(lesson, "move");
+    if (result === -1) {
+        alert("Ошибка соединения!");
+        return;
+    }
+    if (result === 0) {
+        args.preventDefault();
+        alert("Время занято!");
+        return;
+    }
+};
+
+dp.onEventMove = function (args) {
+    var lesson = new Object ({
+        id: args.e.id(),
+        start: args.newStart,
+        end: args.newEnd,
+        instructor_id: "1",
+        student_id: "1"
+    });
+    var result = operateLesson(lesson, "move");
+    if (result === -1) {
+        alert("Ошибка соединения!");
+        return;
+    }
+    if (result === 0) {
+        args.preventDefault();
+        alert("Время занято!");
+        return;
+    }
+}
 
 function getAllAppointments(instructorId) {
     $.ajax({
         url: "/scheduler/getallappointments/" + instructorId,
-        type: "GET",
+        type: "POST",
+        async: false,
         success: function (data, code, xhr) {
             dp.startDate = "2011-11-11";
             nav.init();
@@ -78,3 +142,4 @@ function getAllAppointments(instructorId) {
 };
 
 getAllAppointments(1);
+
