@@ -17,7 +17,7 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/default.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
-    <link href="/css/cost.css" rel="stylesheet">
+    <link href="/css/costs.css" rel="stylesheet">
     <!--js-->
     <script src="/js/bootstrap.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -33,102 +33,95 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-xs-5 col-xs-offset-1">
+
 
     <div class="price-box">
 
-    <form class="form-horizontal form-pricing" role="form">
+    <form class="form-horizontal form-pricing" role="form" id = "myForm">
 
-            <div class="price-slider">
-                <h4 class="great">Обьем двигателя</h4>
-                <span>1 - 15 литров</span>
-                <div class="col-sm-12">
+        <div class="price-slider">
+            <h4 class="great">Трансмиссия</h4>
+            <div class="col-xs-12">
+                <div class="col-xs-6">
+                    <input type="radio" name="gender" id="gender_Male" value="Male" checked onClick= "autoSelect(this,document.myForm.funds)" />МКПП &nbsp;&nbsp;
+                    <input type="radio" name="gender" id="gender_Female" value="Female"  checked onClick= "autoSelect(this,document.myForm.funds)" />АКПП
+                </div>
+            </div>
+        </div>
+
+           <div class="price-slider">
+                <h4 class="great">Мощьность двигателя</h4>
+                <span>150 - 1200 л.с.</span>
+                <div class="col-xs-12">
                     <div id="slider"></div>
                 </div>
             </div>
-            <div class="price-slider">
-                <h4 class="great">KPP</h4>
-                <div class="col-sm-12">
 
-                        <span for="transmission">Transmission</span><br>
-
-
-                        <div class="col-xs-6">
-                            <input type="radio" name="genderS" id="r1" value="1" checked> MKP
-                        </div>
-
-                        <div class="col-xs-6">
-                            <input type="radio" name="genderS" id = "r2" value="0" >AKP
-                        </div>
-
-
-
-
-
-                    <div class="price-slider">
-                        <h4 class="great">Price/hour</h4>
-                        <span>Minimum 1 day is required</span>
-                        <div class="col-sm-12">
+                <div class="price-slider">
+                        <h4 class="great">Цена/ час аренды авто</h4>
+                    <span>10 - 10000 $</span>
+                        <div class="col-xs-12">
                             <div id="slider2"></div>
+                            <br>
+                            <label  class="col-xs-3 control-label col-xs-offset-1"><strong> Стоимость: </strong></label>
+                            &nbsp;
+                            <p class="price lead" id="total-label"></p>
+                            <br>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="price-form">
+        <div class="col-sm-8 col-xs-offset-2">
+            <button type="submit" class="btn btn-primary btn-md btn-block">Подать заявку</button>
+        </div>
+
+
+
 
                 <div class="form-group">
-                    <label for="amount" class="col-sm-6 control-label">Выбраный обьем: </label>
-                    <div class="col-sm-6">
-                        <input type="hidden" id="amount" class="form-control">
-                        <p class="price lead" id="amount-label"></p>
-                        <span class="price"> л.</span>
-                    </div>
+                    <input type="hidden" id="amount" class="form-control">
                 </div>
 
                 <div class="form-group">
-                    <label for="duration" class="col-sm-6 control-label">Duration: </label>
-                    <span class="help-text">Choose your commitment</span>
-                    <div class="col-sm-6">
                         <input type="hidden" id="duration" class="form-control">
-                        <p class="price lead" id="duration-label"></p>
-                        <span class="price">days</span>
-                    </div>
                 </div>
 
-                <hr class="style">
-                <div class="form-group total">
-                    <label for="total" class="col-sm-6 control-label"><strong>Стоимость обучения: </strong></label>
-                    <div class="col-sm-6">
-                        <input type="hidden" id="total" class="form-control">
-                        <p class="price lead" id="total-label"></p>
-                    </div>
-                </div>
 
-            </div>
 
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Подать заявку <span class="glyphicon glyphicon-chevron-right pull-right" style="padding-right: 10px;"></span></button>
-                </div>
-            </div>
 
         </form>
-
-
     </div>
 
 </div>
-
+</div>
+</div>
 <script>
 
+
+
+
     $(document).ready(function() {
+
+        function autoSelect(memberType, fundsType)
+        {
+       if(memberType.value=="Male")
+            {    fundsType[0].checked=true;
+                  }
+
+            else
+            { fundsType[1].checked=true;
+                 }
+        }
+
+
         $("#slider").slider({
             animate: true,
-            value:1,
-            min: 1,
-            max: 15,
-            step: 0.1,
+            value:150,
+            min: 150,
+            max: 1200,
+            step: 25,
             slide: function(event, ui) {
                 update(1,ui.value); //changed
             }
@@ -139,7 +132,7 @@
             value:10,
             min: 10,
             max: 10000,
-            step: 1,
+            step: 15,
             slide: function(event, ui) {
                 update(2,ui.value); //changed
             }
@@ -148,30 +141,26 @@
         //Added, set initial value.
         $("#amount").val(0);
         $("#duration").val(0);
-        $("#gendreS").val(0);
         $("#amount-label").text(0);
         $("#duration-label").text(0);
 
         update();
     });
 
+
+
     //changed. now with parameter
     function update(slider,val) {
+
+
         //changed. Now, directly take value from ui.value. if not set (initial, will use current value.)
         var $amount = slider == 1?val:$("#amount").val();
         var $duration = slider == 2?val:$("#duration").val();
 
-        if (document.getElementById('r1').checked) {
-          var kpp = document.getElementById('r1').value;
-        }
-        if (document.getElementById('r2').checked) {
-        var  kpp2 = document.getElementById('r2').value;
-        }
-if (kpp !== 0) {
-    $total = ($amount * $duration * 20 * 2) + " грн";
-}
-        else  if (kpp2 !== 0){
-            $total = ($amount * $duration * 20 * 2 * 1.2) + " грн";
+        if(document.getElementById('gender_Male').checked) {
+            $total = (($amount / 100) * $duration * 20 * 2) + " $";
+        }else if(document.getElementById('gender_Female').checked) {
+            $total = (($amount/ 100) * $duration * 20 * 2 * 1.2) + " $";
         }
 
 
