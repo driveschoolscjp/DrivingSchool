@@ -33,76 +33,76 @@
             <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
-                        <form:form action="/admin/car/save" method="post" modelAttribute="car">
-                            <form:hidden path="id"/>
+                    <form:form action="/admin/car/save" method="post" modelAttribute="car">
+                        <form:hidden path="id"/>
 
-                            <h3>Добавление автомобиля</h3>
-                            <hr>
-                            <%--строка с полями--%>
-                            <fieldset>
-                                <div class="form-group col-xs-4">
-                                    <label for="brand">Brand:</label>
-                                    <form:input path="brand" class="form-control" placeholder="Honda"
-                                                required="required"/>
-                                </div>
-
-                                <div class="form-group col-xs-4">
-                                    <label for="model">Model:</label>
-                                    <form:input path="model" class="form-control" placeholder="H2000"
-                                                required="required"/>
-                                </div>
-
-                                <div class="form-group col-xs-4">
-                                    <label>Instructor:</label><br/>
-                                    <form:select path="instructor.id" class="selectpicker form-control">
-                                        <c:forEach items="${instructors}" var="instructor">
-                                            <option value="${instructor.id}" ${car.instructor.id==instructor.id?"selected":""}>${instructor.firstname} ${instructor.lastname}</option>
-                                        </c:forEach>
-                                    </form:select>
-                                </div>
-
-                            </fieldset>
-                            <hr>
-
-                            <fieldset>
-
-                                <div class="form-group col-xs-3">
-                                    <label for="transmission">Transmission</label><br>
-
-                                    <div class="col-xs-6">
-                                        <form:radiobutton path="transmission" value="AUTO"/> <b>Auto</b>
-                                    </div>
-
-                                    <div class="col-xs-6">
-                                        <form:radiobutton path="transmission" value="MANUAL"/> <b>Manual</b>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-xs-3">
-                                    <label for="engineSize">Engine size:</label>
-                                    <form:input path="engineSize" class="form-control" placeholder="1.8"
-                                                type="number" min="1" max="15"
-                                                step="0.1" required="required"/>
-                                </div>
-
-                                <div class="form-group col-xs-3">
-                                    <label for="pricePerHour">Price/Hour: UAH</label>
-                                    <form:input path="pricePerHour" class="form-control" type="number" min="10"
-                                                max="10000" step="1" required="required"/>
-                                </div>
-
-                                <div class="form-group col-xs-3">
-                                    <label for="photoURI">Photo URI:</label>
-                                    <form:input path="photoURI" class="form-control" type="url"
-                                                placeholder="http//photo.com/car5.png" required="required"/>
-                                </div>
-
-                            </fieldset>
-                            <hr>
-                            <div class="text-center">
-                                <button class="btn  btn-primary" type="submit">Сохранить автомобиль</button>
+                        <h3>Добавление автомобиля</h3>
+                        <hr>
+                        <%--строка с полями--%>
+                        <fieldset>
+                            <div class="form-group col-xs-4">
+                                <label for="brand">Brand:</label>
+                                <form:input path="brand" class="form-control" placeholder="Honda"
+                                            required="required"/>
                             </div>
-                        </form:form>
+
+                            <div class="form-group col-xs-4">
+                                <label for="model">Model:</label>
+                                <form:input path="model" class="form-control" placeholder="H2000"
+                                            required="required"/>
+                            </div>
+
+                            <div class="form-group col-xs-4">
+                                <label>Instructor:</label><br/>
+                                <form:select path="instructor.id" class="selectpicker form-control" required="required">
+                                    <c:forEach items="${instructors}" var="instructor">
+                                        <option value="${instructor.id}" ${car.instructor.id==instructor.id?"selected":""}>${instructor.firstname} ${instructor.lastname}</option>
+                                    </c:forEach>
+                                </form:select>
+                            </div>
+
+                        </fieldset>
+                        <hr>
+
+                        <fieldset>
+
+                            <div class="form-group col-xs-3">
+                                <label for="transmission">Transmission</label><br>
+
+                                <div class="col-xs-6">
+                                    <form:radiobutton path="transmission" value="AUTO"/> <b>Auto</b>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <form:radiobutton path="transmission" value="MANUAL"/> <b>Manual</b>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-xs-3">
+                                <label for="horsePower">Hp:</label>
+                                <form:input path="horsePower" class="form-control" placeholder="1.8"
+                                            type="number" min="0" max="1000"
+                                            step="1" required="required"/>
+                            </div>
+
+                            <div class="form-group col-xs-3">
+                                <label for="pricePerHour">Price/Hour: UAH</label>
+                                <form:input path="pricePerHour" class="form-control" type="number" min="10"
+                                            max="10000" step="1" required="required"/>
+                            </div>
+
+                            <div class="form-group col-xs-3">
+                                <label for="photoURL">Photo URI:</label>
+                                <form:input path="photoURL" class="form-control" type="url"
+                                            placeholder="http//photo.com/car5.png" required="required"/>
+                            </div>
+
+                        </fieldset>
+                        <hr>
+                        <div class="text-center">
+                            <button class="btn  btn-primary" type="submit">Сохранить автомобиль</button>
+                        </div>
+                    </form:form>
                 </div>
 
             </div>

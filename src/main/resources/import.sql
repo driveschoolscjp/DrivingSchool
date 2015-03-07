@@ -93,12 +93,4 @@ VALUES
   (40, '1987-09-01', 'friske@mail.ru', 'Janna', 'FEMALE', 20099838, 'Friske', 'SD675563', 'Vyacheslavovna',
    '097-945-55-09', 'friske', 'friske', 10, 5, 1);
 
-
-INSERT INTO schedule (id, startinterval, finishinterval, instructor_id, student_id)
-VALUES (1, '11.11.11 10:00:00', '11.11.11 11:00:00', 1, 1);
-INSERT INTO schedule (id, startinterval, finishinterval, instructor_id, student_id)
-VALUES (2, '11.11.11 14:00:00', '11.11.11 16:00:00', 1, 2);
-INSERT INTO schedule (id, startinterval, finishinterval, instructor_id, student_id)
-VALUES (3, '11.11.11 19:00:00', '11.11.11 19:30:00', 1, 3);
-
 ALTER SEQUENCE hibernate_sequence RESTART WITH 175;
