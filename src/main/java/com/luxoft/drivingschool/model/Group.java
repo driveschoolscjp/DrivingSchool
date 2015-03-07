@@ -22,6 +22,7 @@ public class Group extends AbstractPersistable<Long> {
     @ManyToOne
     @JsonIgnore
     private Teacher teacher;
+    private String description;
 
     public String getName() {
         return name;
@@ -53,6 +54,14 @@ public class Group extends AbstractPersistable<Long> {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

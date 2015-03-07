@@ -20,14 +20,14 @@ public abstract class Person extends AbstractPersistable<Long> {
     private String patronymic;
     @Column(length = 8)
     private String passport;
-    private int inn;
+    @Column(length = 8)
+    private String inn;
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate birthday;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private String tel;
     private String email;
-    private String photoURI;
 
     public String getFirstname() {
         return firstname;
@@ -61,11 +61,11 @@ public abstract class Person extends AbstractPersistable<Long> {
         this.passport = passport;
     }
 
-    public int getInn() {
+    public String getInn() {
         return inn;
     }
 
-    public void setInn(int inn) {
+    public void setInn(String inn) {
         this.inn = inn;
     }
 
@@ -99,14 +99,6 @@ public abstract class Person extends AbstractPersistable<Long> {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhotoURI() {
-        return photoURI;
-    }
-
-    public void setPhotoURI(String photoURI) {
-        this.photoURI = photoURI;
     }
 
     @Override

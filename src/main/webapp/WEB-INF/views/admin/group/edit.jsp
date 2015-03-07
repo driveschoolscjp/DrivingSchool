@@ -38,34 +38,45 @@
 
                         <h3>Добавление группы</h3>
                         <hr>
-                        <%--строка с полями--%>
+
                         <fieldset>
                             <div class="form-group col-xs-6">
                                 <label for="name">Название группы:</label>
                                 <form:input path="name" class="form-control" placeholder="Группа 1"
                                             required="required"/>
                             </div>
+
                             <div class="form-group col-xs-6">
-                                <label for="startDate">Дата начала занятий: </label>
-                                <form:input path="startDate" class="form-control" type="date" required="required"/>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div class="form-group col-xs-6">
-                                <label>Учитель:</label><br/>
-                                <form:select path="teacher.id" class="selectpicker form-control">
+                                <label>Преподаватель:</label><br/>
+                                <form:select path="teacher.id" class="selectpicker form-control" required="required">
                                     <c:forEach items="${teachers}" var="teacher">
-                                        <option value="${teacher.id}" ${group.teacher.id==teacher.id?"selected":""}> ${teacher.firstname} ${teacher.lastname}</option>
+                                        <option value="${teacher.id}" ${group.teacher.id==teacher.id?"selected":""}>
+                                                ${teacher.firstname} ${teacher.lastname}</option>
                                     </c:forEach>
                                 </form:select>
                             </div>
+
+                        </fieldset>
+                        <hr>
+
+                        <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="finishDate">Дата окончания занятий: </label>
+                                <label for="description">Описание:</label>
+                                <form:input path="description" class="form-control" required="required"/>
+                            </div>
+
+                            <div class="form-group col-xs-3">
+                                <label for="startDate">Дата начала занятий:</label>
+                                <form:input path="startDate" class="form-control" type="date" required="required"/>
+                            </div>
+
+                            <div class="form-group col-xs-3">
+                                <label for="finishDate">Дата окончания занятий:</label>
                                 <form:input path="finishDate" class="form-control" type="date" required="required"/>
                             </div>
                         </fieldset>
+                        <hr>
 
-                        <hr/>
                         <div class="text-center">
                             <button class="btn  btn-primary" type="submit">Сохранить группу</button>
                         </div>

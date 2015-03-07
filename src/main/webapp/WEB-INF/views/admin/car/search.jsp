@@ -58,8 +58,8 @@
                             <tr>
                                 <th>Марка</th>
                                 <th>Модель</th>
-                                <th>Обьем двигателя</th>
-                                <th>Цена/час UAH</th>
+                                <th>Мощность <л class="с "></л></th>
+                                <th>Цена/час (UAH)</th>
                                 <th>КПП</th>
                                 <th>Инструктор</th>
                             </tr>
@@ -69,7 +69,7 @@
                                 <tr>
                                     <td>${car.brand}</td>
                                     <td>${car.model}</td>
-                                    <td>${car.engineSize}</td>
+                                    <td>${car.horsePower}</td>
                                     <td>${car.pricePerHour}</td>
                                     <td>${car.transmission}</td>
                                     <td>${car.instructor.firstname} ${car.instructor.lastname}</td>

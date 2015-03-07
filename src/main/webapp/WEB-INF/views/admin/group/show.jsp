@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
@@ -40,23 +40,36 @@
                         <fieldset>
                             <div class="form-group col-xs-6">
                                 <label for="name">Название группы:</label>
-                                <form:input path="name" class="form-control" disabled="true"/>
+                                <form:input path="name" class="form-control" readonly="true"/>
                             </div>
+
                             <div class="form-group col-xs-6">
-                                <label for="startDate">Дата начала занятий:</label>
-                                <form:input path="startDate" class="form-control" type="date" disabled="true"/>
+                                <label for="teacher">Преподаватель:</label>
+                                <input class="form-control" id="teacher" type="text" readonly="true"
+                                       value="${group.teacher.firstname} ${group.teacher.lastname}"/>
                             </div>
-                            </fieldset>
-                            <fieldset>
-                                <div class="form-group col-xs-6">
-                                    <label for="teacher.firstname">Учитель:</label>
-                                    <form:input path="teacher.firstname" class="form-control" disabled="true"/>
-                                </div>
-                                <div class="form-group col-xs-6">
-                                    <label for="finishDate">Дата окончания занятий:</label>
-                                    <form:input path="finishDate" class="form-control" type="date" disabled="true"/>
-                                </div>
                         </fieldset>
+                        <hr/>
+
+                        <fieldset>
+                            <div class="form-group col-xs-6">
+                                <label for="description">Описание:</label>
+                                <form:input path="description" class="form-control" readonly="true"/>
+                            </div>
+
+                            <div class="form-group col-xs-3">
+                                <label for="startDate">Дата начала занятий:</label>
+                                <form:input path="startDate" class="form-control" type="date" readonly="true"/>
+                            </div>
+
+                            <div class="form-group col-xs-3">
+                                <label for="finishDate">Дата окончания занятий:</label>
+                                <form:input path="finishDate" class="form-control" type="date" readonly="true"/>
+                            </div>
+                        </fieldset>
+                        <hr/>
+
+
                         <div class="text-center">
                             <button class="btn  btn-primary" type="submit">Назад</button>
                         </div>

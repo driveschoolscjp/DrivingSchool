@@ -57,24 +57,25 @@
 
                         <fieldset>
                             <div class="col-xs-8">
-                                <img src="${car.photoURI}" class="img-responsive img-thumbnail" alt="car">
+                                <img src="${car.photoURL}" class="img-responsive img-thumbnail" alt="${car.brand} ${car.model}">
                             </div>
 
-                            <div class="form-group col-xs-4">
-                                <label for="transmission">Transmission:</label>
-                                <form:input path="transmission" class="form-control" disabled="true"/>
-                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label for="transmission">Transmission:</label>
+                                    <form:input path="transmission" class="form-control" disabled="true"/>
+                                </div>
 
-                            <div class="form-group col-xs-4">
-                                <label for="engineSize">Engine size:</label>
-                                <form:input path="engineSize" class="form-control" disabled="true"/>
-                            </div>
+                                <div class="form-group">
+                                    <label for="horsePower">Hp:</label>
+                                    <form:input path="horsePower" class="form-control" disabled="true"/>
+                                </div>
 
-                            <div class="form-group col-xs-4">
-                                <label for="pricePerHour">Rrice/Hour: UAH</label>
-                                <form:input path="pricePerHour" class="form-control" disabled="true"/>
+                                <div class="form-group">
+                                    <label for="pricePerHour">Rrice/Hour: UAH</label>
+                                    <form:input path="pricePerHour" class="form-control" disabled="true"/>
+                                </div>
                             </div>
-
                         </fieldset>
                         <hr/>
 

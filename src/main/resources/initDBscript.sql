@@ -3,31 +3,31 @@ delete from cars;
 delete from groups;
 delete from teachers;
 
-insert into teachers(id,birthday,email,firstname,gender,inn,lastname,passport,patronymic,tel,description) values
-(1,'19-10-1961','petrov@gmail.com','Nikolay','MALE',34590823,'Petrov','FD459865','Igorevich','097-345-77-32','Experience from 1995'),
-(2,'15-12-1975','orlov@gmail.com','Oleg','MALE',58702314,'Orlov','AC332554','Sergeevich','067-546-56-66','Experience from 2000'),
-(3,'21-05-1967','Krylov@gmail.com','Anatoly','MALE',98737164,'Krylov','HH906755','Vladimirovich','066-239-00-56','Experience from 2011'),
-(4,'04-01-1980','denisov@gmail.com','Sergey','MALE',94036472,'Denisov','TR435644','Nikolaevich','097-560-98-55','Experience from 2013'),
-(5,'17-11-1974','komarova@gmail.com','Tamara','FEMALE',94522099,'Komarova','AC889078','Aleksandrovna','067-465-09-11','Experience from 2006'),
-(6,'24-09-1969','shvarts@gmail.com','Dmitry','MALE',44836109,'Shvarts','GF435564','Gavrilovich','050-430-98-65','Experience from 2009'),
-(7,'07-06-1977','dorogny@gmail.com','Vasily','MALE',94776333,'Dorogny','GT547786','Vladislavovich','050-566-78-43','Experience from 2007'),
-(8,'16-03-1980','boyko@gmail.com','Konstantin','MALE',76819900,'Boyko','DD098897','Valerievich','063-540-99-12','Experience from 2005'),
-(9,'11-10-1990','fridman@gmail.com','Eduard','MALE',22091655,'Fridman','FD375946','Alekseevich','066-466-78-33','Experience from 2003'),
-(10,'01-09-1988','voropaev@gmail.com','Georgy','MALE',34887253,'Voropaev','SD475869','Sergeevich','097-569-76-67','Experience from 2005');
+insert into teachers(id,birthday,email,firstname,gender,inn,lastname,passport,patronymic,tel,photourl,description) values
+(1,'19-10-1961','petrov@gmail.com','Nikolay','MALE',34590823,'Petrov','FD459865','Igorevich','097-345-77-32','http://cs621222.vk.me/v621222392/16814/y4UYdX3Jn84.jpg','Experience from 1995'),
+(2,'15-12-1975','orlov@gmail.com','Oleg','MALE',58702314,'Orlov','AC332554','Sergeevich','067-546-56-66','http://cs623717.vk.me/v623717392/2f6a5/buznf0zGKXE.jpg','Experience from 2000'),
+(3,'21-05-1967','kirylova@gmail.com','Alina','FEMALE',98737164,'Kirylova','HH906755','Vladimirovna','066-239-00-56','http://cs623717.vk.me/v623717392/2f6e4/STlMTziVM8s.jpg','Experience from 2011'),
+(4,'04-01-1980','denisov@gmail.com','Sergey','MALE',94036472,'Denisov','TR435644','Nikolaevich','097-560-98-55','http://cs623717.vk.me/v623717392/2f6ae/fYc1SRN6ruE.jpg','Experience from 2013'),
+(5,'17-11-1974','komarova@gmail.com','Inna','FEMALE',94522099,'Komarova','AC889078','Aleksandrovna','067-465-09-11','http://cs623717.vk.me/v623717392/2f6b7/ql8EucirrLk.jpg','Experience from 2006'),
+(6,'24-09-1969','shvarts@gmail.com','Dmitry','MALE',44836109,'Shvarts','GF435564','Gavrilovich','050-430-98-65','http://cs623717.vk.me/v623717392/2f6c9/WomHgmpSylc.jpg','Experience from 2009'),
+(7,'07-06-1977','dorognaya@gmail.com','Victoria','FEMALE',94776333,'Dorogaya','GT547786','Vladislavovna','050-566-78-43','http://cs623717.vk.me/v623717392/2f6db/pUNWLYY1HtM.jpg','Experience from 2007'),
+(8,'16-03-1980','boyko@gmail.com','Konstantin','MALE',76819900,'Boyko','DD098897','Valerievich','063-540-99-12','http://cs623717.vk.me/v623717392/2f693/SvEhrRadwv8.jpg','Experience from 2005'),
+(9,'11-10-1990','fridman@gmail.com','Anna','FEMALE',22091655,'Fridman','FD375946','Alekseevna','066-466-78-33','http://cs623717.vk.me/v623717392/2f69c/N_NzYco46hE.jpg','Experience from 2003'),
+(10,'01-09-1988','voropaev@gmail.com','Georgy','MALE',34887253,'Voropaev','SD475869','Sergeevich','097-569-76-67','http://cs623717.vk.me/v623717392/2f6ed/8pwTalSgq9Q.jpg','Experience from 2005');
 
-insert into cars(id, brand, model, enginesize, transmission, priceperhour, instructor_id, photouri) values
-(1,'Porsche','911',3.5,'MANUAL',150,1,'http://cs621222.vk.me/v621222392/1653a/VKn6sCVrUX8.jpg'),
-(2,'BMV','M3',4.1,'MANUAL',100,3,'http://cs621222.vk.me/v621222392/16521/wCwSkD9YaeI.jpg'),
-(3,'Lamborghini','Aventador',8.2,'MANUAL',250,4,'http://cs621222.vk.me/v621222392/16543/fjGBpQ_AarM.jpg'),
-(4,'Audi','R8',7.3,'AUTO',150,8,'http://cs621222.vk.me/v621222392/1654c/CbkK4Whte48.jpg'),
-(5,'Ferrari','458 Italia',9,'AUTO',120,9,'http://cs621222.vk.me/v621222392/16554/FRr3NnlMjqQ.jpg');
+insert into cars(id, brand, model, horsepower, transmission, priceperhour, photourl, instructor_id) values
+(1,'Porsche','911 GT3',370,'MANUAL',170,'http://cs621222.vk.me/v621222392/1653a/VKn6sCVrUX8.jpg',1),
+(2,'BMV','M3',270,'MANUAL',95,'http://cs621222.vk.me/v621222392/16521/wCwSkD9YaeI.jpg',3),
+(3,'Lamborghini','Aventador',835,'MANUAL',250,'http://cs621222.vk.me/v621222392/16543/fjGBpQ_AarM.jpg',4),
+(4,'Audi','R8',325,'AUTO',100,'http://cs621222.vk.me/v621222392/1654c/CbkK4Whte48.jpg',8),
+(5,'Ferrari','458 Italia Spider',457,'AUTO',190,'http://cs621222.vk.me/v621222392/16826/2evXSBDLhpM.jpg',9);
 
-insert into groups(id,finishdate,name,startdate,teacher_id) values
-(1,'06-05-2015','E5-03-2015','05-03-2015',2),
-(2,'08-05-2015','M7-03-2015','07-03-2015',5),
-(3,'12-05-2015','D11-03-2015','11-03-2015',6),
-(4,'20-05-2015','E19-03-2015','19-03-2015',7),
-(5,'25-05-2015','D24-03-2015','24-03-2015',10);
+insert into groups(id,name,startdate,finishdate,teacher_id) values
+(1,'E5-03-2015','05-03-2015','06-05-2015',2),
+(2,'M7-03-2015','07-03-2015','08-05-2015',5),
+(3,'D11-05-2015','11-05-2015','12-07-2015',6),
+(4,'E19-07-2015','19-07-2015','20-09-2015',7),
+(5,'D24-08-2015','24-08-2015','25-010-2015',10);
 
 insert into students(id,birthday,email,firstname,gender,inn,lastname,passport,patronymic,tel,login,password,ridenumber,group_id,instructor_id) values
 (1,'19-03-1988','govorov@mail.ru','Sergey','MALE',37430098,'Govorov','DR477865','Fedorovich','093-678-09-54','govorov','govorov',10,1,1),
