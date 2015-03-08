@@ -29,16 +29,23 @@ public class CarService {
         return carRepository.findOne(id);
     }
 
-    public List<Car> findByHorsePower(int horsePower){
-        return carRepository.findByHorsePower(horsePower);
-    }
-
-    public List<Car> findByPricePerHour(float pricePerHour){
-        return carRepository.findByPricePerHour(pricePerHour);
-    }
-
     public List<Car> findByTransmission(Transmission transmission){
         return carRepository.findByTransmission(transmission);
+    }
+
+    public  List<Car> findByPricePerHourLessThanAndTransmission(float pricePerHour,Transmission transmission){
+     return carRepository.findByPricePerHourLessThanAndTransmission(pricePerHour, transmission);
+    }
+
+    public  List<Car> findByHorsePowerLessThanAndTransmission( int horsePower,Transmission transmission){
+        return carRepository.findByHorsePowerLessThanAndTransmission(horsePower, transmission);
+    }
+    public  List<Car> findByPricePerHourAndTransmission(float pricePerHour,Transmission transmission){
+        return carRepository.findByPricePerHourAndTransmission(pricePerHour, transmission);
+    }
+
+    public  List<Car> findByHorsePowerAndTransmission( int horsePower,Transmission transmission){
+        return carRepository.findByHorsePowerAndTransmission(horsePower, transmission);
     }
 
 }
