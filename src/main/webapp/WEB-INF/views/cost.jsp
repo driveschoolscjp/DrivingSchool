@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Contacts</title>
+    <title>Cost</title>
 
 
     <meta charset="utf-8">
@@ -69,7 +69,7 @@
 
                 <div class="price-slider">
                     <h4 class="great">Цена/ час аренды авто</h4>
-                    <span>10 - 10000 <img id="imgInLine4" class="img-responsive"
+                    <span>1 - 1000 <img id="imgInLine4" class="img-responsive"
                                           src="/images/dollars.png"/></span>
                     <div class="col-xs-12">
                         <div id="slider2"></div>
@@ -90,11 +90,11 @@
 
 
                     <div class="form-group">
-                        <form:input path="car.horsePower" type="hidden" id="amount" class="form-control"/>
+                        <form:input path="car.horsePower" type="hidden" id="horse" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <form:input  path="car.pricePerHour"   type="hidden" id="duration" class="form-control"/>
+                        <form:input  path="car.pricePerHour"   type="hidden" id="cost" class="form-control"/>
                     </div>
 
             </form>
@@ -163,10 +163,10 @@
 
         $("#slider").slider({
             animate: true,
-            value:150,
+            value:0,
             min: 150,
             max: 1200,
-            step: 25,
+            step: 1,
 
             slide: function(event, ui) {
                 update(1,ui.value); //changed
@@ -175,20 +175,20 @@
 
         $("#slider2").slider({
             animate: true,
-            value:10,
-            min: 10,
-            max: 10000,
-            step: 15,
+            value:0,
+            min: 1,
+            max: 1000,
+            step: 1,
             slide: function(event, ui) {
                 update(2,ui.value); //changed
             }
         });
 
         //Added, set initial value.
-        $("#amount").val(0);
-        $("#duration").val(0);
-        $("#amount-label").text(0);
-        $("#duration-label").text(0);
+        $("#horse").val(0);
+        $("#cost").val(0);
+        $("#horse-label").text(0);
+        $("#cost-label").text(0);
 
         update();
     });
@@ -200,25 +200,25 @@
 
 
         //changed. Now, directly take value from ui.value. if not set (initial, will use current value.)
-        var $amount = slider == 1?val:$("#amount").val();
-        var $duration = slider == 2?val:$("#duration").val();
+        var $horse = slider == 1?val:$("#horse").val();
+        var $cost = slider == 2?val:$("#cost").val();
 
         if(document.getElementById('MKPP').checked) {
-            $total = (($amount / 100) * $duration * 20 * 2) + " $";
+            $total = (($horse / 100) * $cost * 20 * 2).toFixed(2) + " $";
         }else if(document.getElementById('AKPP').checked) {
-            $total = (($amount/ 100) * $duration * 20 * 2 * 1.2) + " $";
+            $total = (($horse/ 100) * $cost * 20 * 2 * 1.2).toFixed(2) + " $";
         }
 
 
-        $( "#amount" ).val($amount);
-        $( "#amount-label" ).text($amount);
-        $( "#duration" ).val($duration);
-        $( "#duration-label" ).text($duration);
+        $( "#horse" ).val($horse);
+        $( "#horse-label" ).text($horse);
+        $( "#cost" ).val($cost);
+        $( "#cost-label" ).text($cost);
         $( "#total" ).val($total);
         $( "#total-label" ).text($total);
 
-        $('#slider a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+$amount+' <span class="glyphicon glyphicon-chevron-right"></span></label>');
-        $('#slider2 a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+$duration+' <span class="glyphicon glyphicon-chevron-right"></span></label>');
+        $('#slider a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+$horse+' <span class="glyphicon glyphicon-chevron-right"></span></label>');
+        $('#slider2 a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+$cost+' <span class="glyphicon glyphicon-chevron-right"></span></label>');
     }
 
 </script>
