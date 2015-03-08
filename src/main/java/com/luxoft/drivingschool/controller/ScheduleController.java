@@ -18,17 +18,29 @@ public class ScheduleController {
     private Map<String, Object> result = new HashMap<String, Object>();
 
     private static final String GET_ALL_APPOINTMENTS_MAPPING_PATH = "getallappointments/{id}";
+    private static final String GET_ALL_SCHEDULES_MAPPING_PATH = "getallschedules/{id}";
     private static final String LESSON_ACTION_MAPPING_PATH = "lesson/action/{action}";
     private static final String GET_ALL_APPOINTMENTS_BETWEEN_MAPPING_PATH = "lesson/between";
     private static final String GET_ALL_APPOINTMENTS_SOME_WEEK_MAPPING_PATH = "lesson/week";
     private static final String GET_ALL_APPOINTMENTS_SOME_MONTH_MAPPING_PATH = "lesson/month";
+    private static final String DELETE_INTERVAL_MAPPING_PATH = "lesson/action/delete/{id}";
 
     @Autowired
     private ScheduleService scheduleService;
 
-    @RequestMapping(value =GET_ALL_APPOINTMENTS_MAPPING_PATH, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = DELETE_INTERVAL_MAPPING_PATH, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteInterval(@PathVariable long id) {
+        scheduleService.deleteIntervalById(id);
+    }
+
+    @RequestMapping(value = GET_ALL_APPOINTMENTS_MAPPING_PATH, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> getAllAppointments(@PathVariable long id) {
-        return scheduleService.findAllAppointmentsByInstructorId(id);
+        return scheduleService.findAllSchedulesByInstructorId(id);
+    }
+
+    @RequestMapping(value = GET_ALL_SCHEDULES_MAPPING_PATH, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Schedule> getAllSchedules(@PathVariable long id) {
+        return scheduleService.findAllSchedulesByInstructorId(id);
     }
 
     @RequestMapping(value = GET_ALL_APPOINTMENTS_BETWEEN_MAPPING_PATH, method = RequestMethod.POST,
@@ -65,6 +77,9 @@ public class ScheduleController {
     public Map<String, Object> lessonAction(@RequestBody Map<String, Object> map, @PathVariable String action) {
         Long eid = new Long(map.get("id").toString());
         Long iid = new Long(map.get("instructor_id").toString());
+        if (iid == -1) {
+            iid = null;
+        }
         Long sid = new Long(map.get("student_id").toString());
         LocalDateTime sd = new LocalDateTime(map.get("start"));
         LocalDateTime ed = new LocalDateTime(map.get("end"));
