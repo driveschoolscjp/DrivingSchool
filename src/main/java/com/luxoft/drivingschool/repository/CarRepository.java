@@ -1,8 +1,9 @@
 package com.luxoft.drivingschool.repository;
 
 import com.luxoft.drivingschool.model.Car;
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.luxoft.drivingschool.model.enums.Transmission;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car, Long> {
@@ -13,9 +14,5 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findByTransmission(Transmission transmission);
 
-    List<Car> findByInstructorFirstname(String firstname);
-
     List<Car> findByPricePerHour(float pricePerHour);
-
-
 }

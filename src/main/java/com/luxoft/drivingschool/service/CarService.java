@@ -29,7 +29,7 @@ public class CarService {
         return carRepository.findOne(id);
     }
 
-    public List<Car> findByHorsePerHour(int horsePower){
+    public List<Car> findByHorsePower(int horsePower){
         return carRepository.findByHorsePower(horsePower);
     }
 
