@@ -12,7 +12,7 @@ public class HomeController {
     private static final String SCHEDULE_MAPPING_PATH = "/schedule";
     private static final String CONTACT_MAPPING_PATH = "/contact";
 
-    private static final String VIEW_HOME_PATH = "home";
+    private static final String VIEW_HOME_PATH = "schedule";
     private static final String SCHEDULE_HOME_PATH = "schedule";
     private static final String CONTACT_HOME_PATH = "contact";
 

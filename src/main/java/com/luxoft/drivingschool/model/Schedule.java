@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "schedule")
 public class Schedule extends AbstractPersistable<Long> {
-
     @ManyToOne
     private Teacher instructor;
     @ManyToOne

@@ -14,6 +14,8 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     List<Schedule> findByInstructorIdAndStudentIdNotNullAndStartIntervalBetween(
             long id, LocalDateTime startDate, LocalDateTime finishDate);
 
+    List<Schedule> findByInstructorId(long id);
+
     @Query("select s from Schedule s where s.instructor.id = ?1 and " +
             "((s.startInterval >= ?2 and s.startInterval < ?3) or " +
             "(s.finishInterval > ?2 and s.finishInterval <= ?3) or " +
