@@ -52,4 +52,9 @@ public class Schedule extends AbstractPersistable<Long> {
     public void setFinishInterval(LocalDateTime finishInterval) {
         this.finishInterval = finishInterval;
     }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
 }

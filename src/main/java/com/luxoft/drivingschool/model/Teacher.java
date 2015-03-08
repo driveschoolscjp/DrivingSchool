@@ -9,10 +9,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "teachers")
 public class Teacher extends Person {
+
+    private String photoURL;
     private String description;
     @OneToOne(mappedBy = "instructor")
     @JsonIgnore
     private Car car;
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
 
     public String getDescription() {
         return description;

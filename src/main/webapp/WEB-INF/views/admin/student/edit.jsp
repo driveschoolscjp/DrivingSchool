@@ -38,7 +38,7 @@
 
                             <h3>Добавление студента</h3>
                             <hr>
-                            <%--строка с полями--%>
+
                             <fieldset>
                                 <div class="form-group col-xs-4">
                                     <label for="lastname">Lastname:</label>
@@ -64,7 +64,7 @@
                                 <div class="form-group col-xs-6">
                                     <label for="passport">Passport:</label>
                                     <form:input path="passport" class="form-control" placeholder="AA571175"
-                                                pattern="[A-Za-z]{2}[0-9]{6}" required="required"/>
+                                                pattern="[А-Я]{2}[0-9]{6}" required="required"/>
                                 </div>
 
                                 <div class="form-group col-xs-6">
@@ -83,7 +83,6 @@
 
                                 <div class="col-xs-6">
                                     <label for="gender">Gender</label><br>
-                                        <%--<form:radiobuttons path="gender" class="radio-inline"/>--%>
                                     <div class="col-xs-6">
                                         <form:radiobutton path="gender" value="MALE"/> <b>Male</b>
                                     </div>
@@ -98,23 +97,17 @@
 
 
                             <fieldset>
-                                <div class="form-group col-xs-4">
+                                <div class="form-group col-xs-6">
                                     <label for="tel">Telephone:</label>
                                     <form:input path="tel" type="tel" class="form-control" placeholder="987-654-32-10"
                                                 required="required"/>
                                 </div>
 
-                                <div class="form-group col-xs-4">
+                                <div class="form-group col-xs-6">
                                     <label for="email">Email address:</label>
                                     <form:input path="email" type="email" class="form-control"
                                                 placeholder="nickname@mail.com" required="required"/>
 
-                                </div>
-
-                                <div class="form-group col-xs-4">
-                                    <label for="photoURI">Photo URI:</label>
-                                    <form:input path="photoURI" class="form-control" type="url"
-                                                placeholder="http//photo.com/student5.png" required="required"/>
                                 </div>
                             </fieldset>
                             <hr>
@@ -122,7 +115,7 @@
                             <fieldset>
                                 <div class="form-group col-xs-4">
                                     <label>Группа:</label><br/>
-                                    <form:select path="group.id" class="selectpicker form-control">
+                                    <form:select path="group.id" class="selectpicker form-control" required="required">
                                         <c:forEach items="${groups}" var="group">
                                             <option value="${group.id}" ${student.group.id==group.id?"selected":""}>${group.name}</option>
                                         </c:forEach>
@@ -131,7 +124,7 @@
 
                                 <div class="form-group col-xs-4">
                                     <label>Инструктор:</label><br/>
-                                    <form:select path="instructor.id" class="selectpicker form-control">
+                                    <form:select path="instructor.id" class="selectpicker form-control" required="required">
                                         <c:forEach items="${instructors}" var="instructor">
                                             <option value="${instructor.id}" ${student.instructor.id==instructor.id?"selected":""}>
                                                     ${instructor.firstname} ${instructor.lastname}

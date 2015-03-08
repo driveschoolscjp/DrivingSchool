@@ -15,11 +15,11 @@ public class Car extends AbstractPersistable<Long> {
     private String model;
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
-    private float engineSize;
+    private int horsePower;
     private float pricePerHour;
     @OneToOne
     private Teacher instructor;
-    private String photoURI;
+    private String photoURL;
 
     public String getBrand() {
         return brand;
@@ -45,12 +45,12 @@ public class Car extends AbstractPersistable<Long> {
         this.transmission = transmission;
     }
 
-    public float getEngineSize() {
-        return engineSize;
+    public int getHorsePower() {
+        return horsePower;
     }
 
-    public void setEngineSize(float engineSize) {
-        this.engineSize = engineSize;
+    public void setHorsePower(int horsePower) {
+        this.horsePower = horsePower;
     }
 
     public float getPricePerHour() {
@@ -69,12 +69,12 @@ public class Car extends AbstractPersistable<Long> {
         this.instructor = instructor;
     }
 
-    public String getPhotoURI() {
-        return photoURI;
+    public String getPhotoURL() {
+        return photoURL;
     }
 
-    public void setPhotoURI(String photoURI) {
-        this.photoURI = photoURI;
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
     }
 
     @Override

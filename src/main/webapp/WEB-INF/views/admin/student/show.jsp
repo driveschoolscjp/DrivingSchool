@@ -83,20 +83,15 @@
                         <hr>
 
                         <fieldset>
-                            <div class="form-group col-xs-4">
+                            <div class="form-group col-xs-6">
                                 <label for="tel">Telephone:</label>
                                 <form:input path="tel" type="tel" class="form-control" disabled="true"/>
                             </div>
 
-                            <div class="form-group col-xs-4">
+                            <div class="form-group col-xs-6">
                                 <label for="email">Email address:</label>
                                 <form:input path="email" type="email" class="form-control" disabled="true"/>
 
-                            </div>
-
-                            <div class="form-group col-xs-4">
-                                <label for="photoURI">Photo URI:</label>
-                                <form:input path="photoURI" class="form-control" type="url" disabled="true"/>
                             </div>
                         </fieldset>
                         <hr>
@@ -109,7 +104,7 @@
 
                             <div class="form-group col-xs-4">
                                 <label>Инструктор:</label><br/>
-                                <form:input path="instructor.firstname" class="form-control" disabled="true"/>
+                                <input id="instructor" class="form-control" type="text" value="${student.instructor.firstname} ${student.instructor.lastname} - ${student.instructor.car.brand} ${student.instructor.car.model}" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-4">

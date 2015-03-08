@@ -27,4 +27,12 @@ public class AnswerService {
     public Answer findOne(long id){
         return answerRepository.findOne(id);
     }
+
+    public List<Answer> findByQuestionId(long id) {
+        return answerRepository.findByQuestionId(id);
+    }
+
+    public long selectQuestionId(Long id) {
+        return answerRepository.selectQuestionId(id).get(0);
+    }
 }

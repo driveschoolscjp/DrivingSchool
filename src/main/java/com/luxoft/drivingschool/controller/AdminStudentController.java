@@ -12,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-
-
 @RequestMapping("/admin/student")
 @Controller
 public class AdminStudentController {
@@ -101,7 +99,6 @@ public class AdminStudentController {
         return VIEW_EDIT_PATH;
     }
 
-    // TODO добавить показ фоток
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(LocalDate.class, new LocalDateEditor());

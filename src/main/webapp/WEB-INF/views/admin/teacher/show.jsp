@@ -101,7 +101,7 @@
 
                         <fieldset>
                             <div class="col-xs-4">
-                                <img src="${teacher.photoURI}" class="img-responsive img-thumbnail"
+                                <img src="${teacher.photoURL}" class="img-responsive img-thumbnail"
                                      alt="${teacher.firstname} ${teacher.lastname}">
                             </div>
 

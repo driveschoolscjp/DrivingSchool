@@ -66,7 +66,7 @@
                                 <div class="form-group col-xs-6">
                                     <label for="passport">Passport:</label>
                                     <form:input path="passport" class="form-control" placeholder="AA571175"
-                                                pattern="[A-Za-z]{2}[0-9]{6}" required="required"/>
+                                                pattern="[А-Я]{2}[0-9]{6}" required="required"/>
                                 </div>
 
                                 <div class="form-group col-xs-6">
@@ -87,11 +87,11 @@
                                     <label for="gender">Gender</label><br>
                                         <%--<form:radiobuttons path="gender" class="radio-inline"/>--%>
                                     <div class="col-xs-6">
-                                        <form:radiobutton path="gender" value="MALE"/> <b>Male</b>
+                                        <form:radiobutton path="gender" value="MALE"/> <b>Мужской</b>
                                     </div>
 
                                     <div class="col-xs-6">
-                                        <form:radiobutton path="gender" value="FEMALE"/> <b>Female</b>
+                                        <form:radiobutton path="gender" value="FEMALE"/> <b>Женский</b>
                                     </div>
                                 </div>
 
@@ -114,8 +114,8 @@
                                 </div>
 
                                 <div class="form-group col-xs-4">
-                                    <label for="photoURI">Photo URI:</label>
-                                    <form:input path="photoURI" class="form-control" type="url"
+                                    <label for="photoURL">Photo URI:</label>
+                                    <form:input path="photoURL" class="form-control" type="url"
                                                 placeholder="http//photo.com/teacher5.png" required="required"/>
                                 </div>
                             </fieldset>
