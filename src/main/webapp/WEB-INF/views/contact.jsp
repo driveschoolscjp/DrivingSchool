@@ -51,12 +51,11 @@
 
 
 
-
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5  ">
 
 
                 <li data-geo-lat="48.458085" data-geo-long="35.057470"><a href="#" onClick="showNext();" style=" text-decoration: none;">
-                    <h3 style="color: #2370d5;   font-weight: bold;">Офис автошколы</h3>
+                    <h3 style="color: #2e6da4;  font-weight: bold;">Офис автошколы</h3>
 
                     <p class="longdesc" style="color: #fffafa;   font-weight: bold;"><b>адрес:</b> <br/>ул.Школьная, 1. пгт.Кринички,
                         Днепропетровская область, Украина <br/>
@@ -71,7 +70,7 @@
 
 
                 <li data-geo-lat="48.376040" data-geo-long="34.462065"><a href="#" onClick="show();" style=" text-decoration: none;">
-                    <h3 style="color: #2370d5;   font-weight: bold;">Автодром</h3>
+                    <h3 style="color: #2e6da4;  font-weight: bold;">Автодром</h3>
 
                     <p class="longdesc" style="color: #ffffff;   font-weight: bold;"><b>адрес:</b> <br/>ул. Гоголя, 1.
                         Днепропетровск

@@ -1,6 +1,7 @@
 package com.luxoft.drivingschool.service;
 
 import com.luxoft.drivingschool.model.Car;
+import com.luxoft.drivingschool.model.enums.Transmission;
 import com.luxoft.drivingschool.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,4 +29,15 @@ public class CarService {
         return carRepository.findOne(id);
     }
 
+    public List<Car> findByEngineSize(float engineSize){
+        return carRepository.findByEngineSize(engineSize);
+    }
+
+    public List<Car> findByPricePerHour(float pricePerHour){
+        return carRepository.findByPricePerHour(pricePerHour);
+    }
+
+    public List<Car> findByTransmission(Transmission transmission){
+        return carRepository.findByTransmission(transmission);
+    }
 }
