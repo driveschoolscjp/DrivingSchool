@@ -60,15 +60,15 @@ public class HomeController {
     public String processRegistration(@ModelAttribute(CAR_ATTRIBUTE) Car car, Model model) {
         List<Car> carsList = new ArrayList<Car>();
         float pricePerHour = car.getPricePerHour();
-        float engineSize = car.getEngineSize();
+        int horsePower = car.getHorsePower();
         Transmission transmission = car.getTransmission();
 
         if (pricePerHour != 0) {
             carsList.addAll(carService.findByPricePerHour(pricePerHour));
         }
 
-        if (engineSize != 0) {
-            carsList.addAll(carService.findByEngineSize(engineSize));
+        if (horsePower != 0) {
+            carsList.addAll(carService.findByHorsePerHour(horsePower));
          }
 
         if(!transmission.equals(null)){

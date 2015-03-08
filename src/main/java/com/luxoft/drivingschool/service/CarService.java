@@ -29,8 +29,8 @@ public class CarService {
         return carRepository.findOne(id);
     }
 
-    public List<Car> findByEngineSize(float engineSize){
-        return carRepository.findByEngineSize(engineSize);
+    public List<Car> findByHorsePerHour(int horsePower){
+        return carRepository.findByHorsePower(horsePower);
     }
 
     public List<Car> findByPricePerHour(float pricePerHour){
@@ -40,4 +40,5 @@ public class CarService {
     public List<Car> findByTransmission(Transmission transmission){
         return carRepository.findByTransmission(transmission);
     }
+
 }

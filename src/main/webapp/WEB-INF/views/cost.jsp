@@ -90,7 +90,7 @@
 
 
                     <div class="form-group">
-                        <form:input path="car.engineSize" type="hidden" id="amount" class="form-control"/>
+                        <form:input path="car.horsePower" type="hidden" id="amount" class="form-control"/>
                     </div>
 
                     <div class="form-group">
@@ -123,7 +123,7 @@
                     <td   class="text-left">&nbsp;${car.model}&nbsp;</td>
                     <td   class="text-left">&nbsp;${car.pricePerHour}&nbsp;</td>
                     <td   class="text-left">&nbsp;${car.transmission}&nbsp;</td>
-                    <td   class="text-left">&nbsp;${car.engineSize}&nbsp;</td>
+                    <td   class="text-left">&nbsp;${car.horsePower}&nbsp;</td>
                     <td   class="text-left">&nbsp;${car.instructor.firstname}&nbsp; ${car.instructor.lastname} &nbsp;</td>
                     <td   class="text-left">&nbsp;
                         <div class="btn-group-vertical pull-right">
