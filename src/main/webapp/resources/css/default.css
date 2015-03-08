@@ -90,3 +90,14 @@ body {
     width: 200px;
     margin-left: 0px;
 }
+.allcars{
+    color:#ffffff;
+}
+.allcars table{
+    width: 100%;
+    vertical-align: middle;
+}
+.allcars table th{
+    height: 32px;
+    color: #ffffff;
+}
