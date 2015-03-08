@@ -6,12 +6,14 @@ import com.luxoft.drivingschool.repository.testing.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.security.krb5.internal.Ticket;
 
 import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
 public class QuestionService {
+
     @Autowired
     QuestionRepository questionRepository;
 
@@ -28,7 +30,15 @@ public class QuestionService {
         return questionRepository.findOne(id);
     }
 
-    public long countByTicket(int ticket) {
-        return questionRepository.countByTicket(ticket);
+    public List<Question> findAllByTicket() {
+        return questionRepository.findAll();
+    }
+
+    public List<Question> findByTicketId(Long ticketId) {
+        return questionRepository.findByTicketId(ticketId);
+    }
+
+    public int lastNumber(long ticketId) {
+        return questionRepository.countByTicketId(ticketId);
     }
 }

@@ -10,10 +10,9 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findByBrand(String brand);
 
-    List<Car> findByEngineSize(float engineSize);
+    List<Car> findByHorsePower(int horsePower);
 
     List<Car> findByTransmission(Transmission transmission);
 
-    List<Car> findByInstructorFirstname(String firstname);
-
+    List<Car> findByPricePerHour(float pricePerHour);
 }

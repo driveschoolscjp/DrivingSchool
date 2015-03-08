@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Theme</title>
+    <title>Tickets</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
     <link href="/css/search.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -25,8 +25,8 @@
 </head>
 <body>
 
-<jsp:include page="../../header.jsp"/>
-<jsp:include page="../menuAdmin.jsp"/>
+<jsp:include page="../../../header.jsp"/>
+<jsp:include page="../../menuAdmin.jsp"/>
 
 
 <div class="body">
@@ -36,45 +36,43 @@
         <div class="row">
             <div class="col-xs-11 whiteback">
 
-                <h3 class="text-center">Поиск темы</h3>
+                <h3 class="text-center">Экзамен ${exam.name}</h3>
+                <h3 class="text-center">Редактор билетов</h3>
                 <hr>
-                <%--три верхние кнопки--%>
+                <%--новый билет--%>
+                <c:if test="${moreTickets}">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="/admin/theme/add" type="button" class="btn btn-primary btn-success">Добавить
-                            тему</a>
-                    </div>
-
-                    <div class="col-xs-4 col-xs-offset-4">
-                        <input type="search" id="search" value="" class="form-control" placeholder="Поиск">
+                        <a href="/admin/testing/ticket/add?id=${exam.id}" type="button" class="btn btn-primary btn-success">Добавить
+                            билет</a>
                     </div>
                 </div>
+                </c:if>
                 <hr>
-                <%--таблица с данными--%>
+                <%--таблица с билетами--%>
                 <div class="row">
                     <div class="col-xs-12 table-responsive">
                         <table class="table" id="table">
                             <thead>
                             <tr>
-                                <th>Название</th>
+                                <th>Билеты</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="theme" items="${themes}">
                                 <tr>
-                                    <td>${theme.name}</td>
+                                <c:forEach var="ticket" items="${tickets}">
                                     <td>
-                                        <div class="btn-group-vertical pull-right">
-                                            <a href="/admin/theme/edit?id=${theme.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-xs">
-                                                Редактировать</i></a>
-                                            <a href="/admin/theme/show?id=${theme.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
-                                                Просмотреть</i></a>
+                                        <div class="col-xs-12">
+                                        <a href="/admin/testing/question/search?id=${ticket.id}" type="button" class="btn btn-primary btn-success">
+                                            ${ticket.number}
+                                        </a>
                                         </div>
                                     </td>
-                                </tr>
+                                        <c:if test="${ticket.id%10==0}">
+                                            </tr><tr>
+                                        </c:if>
                             </c:forEach>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -84,7 +82,7 @@
     </div>
 </div>
 
-<jsp:include page="../../footer.jsp"/>
+<jsp:include page="../../../footer.jsp"/>
 <script>
     $(function () {
         $('#table').searchable({

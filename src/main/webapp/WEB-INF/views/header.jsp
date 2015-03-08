@@ -28,7 +28,7 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle ="collapse" data-target = "#responsive-menu">
-                    <span class="sr-only">Открыть навигацийу </span>
+                    <span class="sr-only">Открыть навигацию</span>
                     <span class="icon-bar"> </span>
                     <span class="icon-bar"> </span>
                     <span class="icon-bar"> </span>
@@ -41,8 +41,9 @@
             <div class="collapse navbar-collapse" id="responsive-menu">
                 <ul class="nav navbar-nav">
                     <li> <a href="/home"><i class="fa fa-home fa-2x" style="color: #2370d5"></i> Дом</a></li>
-                    <li> <a href="#"><i class="fa fa-calculator fa-2x"></i> Стоимость обучения</a> </li>
+                    <li> <a href="/cost"><i class="fa fa-calculator fa-2x"></i> Стоимость обучения</a> </li>
                     <li> <a href="#"><i class="fa fa-calendar fa-2x"></i> Расписание занятий</a></li>
+                    <li> <a href="/cars"><i class="fa fa-car fa-2x"></i> Наши автомобили</a></li>
                     <li> <a href="#"><i class="fa fa-user fa-2x"></i> Запись в автошколу</a></li>
                     <li> <a href="/contact"><i class="fa fa-mobile fa-2x"></i> Контакты</a></li>
                 </ul>

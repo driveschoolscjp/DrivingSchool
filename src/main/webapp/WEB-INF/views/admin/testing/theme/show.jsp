@@ -14,7 +14,7 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/default.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -23,8 +23,8 @@
 </head>
 
 <body>
-<jsp:include page="../../header.jsp"/>
-<jsp:include page="../menuAdmin.jsp"/>
+<jsp:include page="../../../header.jsp"/>
+<jsp:include page="../../menuAdmin.jsp"/>
 
 <div class="body">
     <div class="container-fluid">
@@ -32,7 +32,7 @@
             <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
-                    <form:form action="/admin/theme/search" method="get" modelAttribute="theme">
+                    <form:form action="/admin/testing/theme/search" method="get" modelAttribute="theme">
                         <form:hidden path="id"/>
 
                         <h3>Добавление темы</h3>
@@ -57,6 +57,6 @@
     </div>
 </div>
 
-<jsp:include page="../../footer.jsp"/>
+<jsp:include page="../../../footer.jsp"/>
 </body>
 </html>
