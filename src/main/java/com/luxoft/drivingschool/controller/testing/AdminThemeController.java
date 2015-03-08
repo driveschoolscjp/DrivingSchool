@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@RequestMapping("/admin/theme")
+@RequestMapping("/admin/testing/theme")
 @Controller
 public class AdminThemeController {
 
-    private static final String VIEW_SEARCH_PATH = "admin/theme/search";
-    private static final String VIEW_SHOW_PATH = "admin/theme/show";
-    private static final String VIEW_EDIT_PATH = "admin/theme/edit";
+    private static final String VIEW_SEARCH_PATH = "admin/testing/theme/search";
+    private static final String VIEW_SHOW_PATH = "admin/testing/theme/show";
+    private static final String VIEW_EDIT_PATH = "admin/testing/theme/edit";
     private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:show?id=";
 
     private static final String SEARCH_MAPPING_PATH="/search";

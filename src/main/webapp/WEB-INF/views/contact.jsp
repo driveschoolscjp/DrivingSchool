@@ -41,13 +41,23 @@
         <div id="page-wrap">
             <ul id="locations">
         <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4  col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 
 
-                <li data-geo-lat="48.458085" data-geo-long="35.057470"><a href="#" onClick="showNext();">
-                    <h3 style="color: #00fcff">Офис автошколы</h3>
 
-                    <p class="longdesc" style="color: #fffafa"><b>адрес:</b> <br/>ул.Школьная, 1. пгт.Кринички,
+
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <div id="map_canvas"></div>
+                    </div>
+
+
+
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5  ">
+
+
+                <li data-geo-lat="48.458085" data-geo-long="35.057470"><a href="#" onClick="showNext();" style=" text-decoration: none;">
+                    <h3 style="color: #2e6da4;  font-weight: bold;">Офис автошколы</h3>
+
+                    <p class="longdesc" style="color: #fffafa;   font-weight: bold;"><b>адрес:</b> <br/>ул.Школьная, 1. пгт.Кринички,
                         Днепропетровская область, Украина <br/>
                         <b>Телефон: </b> (059) 740-54-17<br/>
                         <b> e-mail: </b>com@drivingschool.dp.ua</p>
@@ -56,13 +66,13 @@
                 </li>
 
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4  col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5  col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
 
 
-                <li data-geo-lat="48.376040" data-geo-long="34.462065"><a href="#" onClick="show();">
-                    <h3 style="color: #00fcff">Автодром</h3>
+                <li data-geo-lat="48.376040" data-geo-long="34.462065"><a href="#" onClick="show();" style=" text-decoration: none;">
+                    <h3 style="color: #2e6da4;  font-weight: bold;">Автодром</h3>
 
-                    <p class="longdesc" style="color: #ffffff"><b>адрес:</b> <br/>ул. Гоголя, 1.
+                    <p class="longdesc" style="color: #ffffff;   font-weight: bold;"><b>адрес:</b> <br/>ул. Гоголя, 1.
                         Днепропетровск
                         Днепропетровская область, Украина <br/>
                         <b>Телефон: </b> (056) 770-04-57 <br/>
@@ -73,13 +83,60 @@
                 </li>
 
             </div>
-            <div class="container-fluid ">
 
-                <div class="row">
-                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-                        <div id="map_canvas"></div>
+            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                <br/>
+                <br/>
+            <div id="images">
+                <div class="container-fluid" id="3" style="display:none">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/1188608278.jpg"/></div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/Volkswagen-Track-Day1.jpg"/></div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/michelin-pilot-super-sport-bmw-dubai.jpg"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/Lamborghini_Aventador_track_test_drive_01.jpg"/></div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/corporate-fleet.jpg"/></div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive" src="/images/lgv_02.jpg"/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container-fluid" id="2" style="display:block">
+                </div>
+
+                <div class="container-fluid" id="4" style="display:none">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/ClassroomSession-600x400.jpg"/></div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/ddn051512a1Driving_1127652a_4.jpg"/>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/interior-rendering2.jpg"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/dsc_0142-large.jpg"/></div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/classroom.jpg"/></div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
+                                                                              src="/images/Survive the Drive at GPNY C-1.jpg"/>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid" id="5" style="display:block">
                     </div>
                 </div>
+
+            </div>
             </div>
 </div>
 
@@ -88,57 +145,8 @@
         </div>
     </div>
 
+</div>
 
-    <div id="images">
-        <div class="container-fluid" id="3" style="display:none">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/1188608278.jpg"/></div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/Volkswagen-Track-Day1.jpg"/></div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/michelin-pilot-super-sport-bmw-dubai.jpg"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/DriverTraining_Main.jpg"/></div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/corporate-fleet.jpg"/></div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive" src="/images/lgv_02.jpg"/>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="container-fluid" id="2" style="display:block">
-        </div>
-
-        <div class="container-fluid" id="4" style="display:none">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/ClassroomSession-600x400.jpg"/></div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/ddn051512a1Driving_1127652a_4.jpg"/>
-                </div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/driving12-1.jpg"/></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/dsc_0142-large.jpg"/></div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/classroom.jpg"/></div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><img class="img-responsive"
-                                                                      src="/images/Survive the Drive at GPNY C-1.jpg"/>
-                </div>
-            </div>
-
-            <div class="container-fluid" id="5" style="display:block">
-            </div>
-        </div>
-
-    </div>
 
 
     <script type="text/javascript">
