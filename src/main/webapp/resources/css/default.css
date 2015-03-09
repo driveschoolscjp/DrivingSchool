@@ -101,3 +101,11 @@ body {
     height: 32px;
     color: #ffffff;
 }
+
+
+#imgInLineLogo  {
+    display: inline;
+}
+#imgInLineLogo2 {
+    display: inline;
+}

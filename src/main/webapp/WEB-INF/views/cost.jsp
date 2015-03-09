@@ -143,7 +143,7 @@
                     <td   class="text-left">&nbsp;${car.instructor.firstname}&nbsp; ${car.instructor.lastname} &nbsp;</td>
                     <td   class="text-left">&nbsp;
                         <div class="btn-group-vertical pull-right">
-                             <a href="#" type="button"
+                             <a href="/cars" type="button"
                                class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
                                 смотреть детали</i> </a>
                         </div>
