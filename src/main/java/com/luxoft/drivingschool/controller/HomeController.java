@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class HomeController {
@@ -68,23 +70,36 @@ public class HomeController {
     //выбор всех машин из заданых параметров, при подсчете стоимости обучения
     @RequestMapping(value = SEARCH_COST_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute(CAR_ATTRIBUTE) Car car, Model model) {
-        List<Car> carsList = new ArrayList<Car>();
+        Set<Car> carsTotalList = new HashSet<Car>();
+        Set<Car> carsPricePerHourList = new HashSet<Car>();
+        Set<Car> carsHorsePowerList = new HashSet<Car>();
+
         float pricePerHour = car.getPricePerHour();
         int horsePower = car.getHorsePower();
         Transmission transmission = car.getTransmission();
 
-        if (pricePerHour != 0) {
-            carsList.addAll(carService.findByPricePerHour(pricePerHour));
-        }
+        if ((pricePerHour != 0)&&(!transmission.equals(null)) &&(horsePower != 0)) {
 
-        if (horsePower != 0) {
-            carsList.addAll(carService.findByHorsePower(horsePower));
-         }
+                carsPricePerHourList.addAll(carService.findByPricePerHourLessThanAndTransmission(pricePerHour, transmission));
+                carsPricePerHourList.addAll(carService.findByPricePerHourAndTransmission(pricePerHour, transmission));
+                carsHorsePowerList.addAll(carService.findByHorsePowerAndTransmission(horsePower, transmission));
+                carsHorsePowerList.addAll(carService.findByHorsePowerLessThanAndTransmission(horsePower, transmission));
 
-        if(!transmission.equals(null)){
-            carsList.addAll(carService.findByTransmission(transmission));
+
+            if((!carsHorsePowerList.isEmpty()) && !(carsPricePerHourList.isEmpty())){
+
+             for(Car c : carsHorsePowerList){
+                 for (Car c2 : carsPricePerHourList){
+                     if(c.equals(c2)){
+                         carsTotalList.add(c);
+                     }
+                 }
+             }
+            }
+
+
         }
-        model.addAttribute(CARS_ATTRIBUTE, carsList);
+        model.addAttribute(CARS_ATTRIBUTE, carsTotalList);
 
         return COST_HOME_PATH;
     }
