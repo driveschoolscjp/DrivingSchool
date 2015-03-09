@@ -54,7 +54,7 @@
                         <div class="row">
                             <input type="radio"  name="days" id="TenDays" value="TenDays" checked="checked" onClick= "autoSelectDays(this,document.myForm.funds)"  /> 10 дней
                             <input type="radio"  name="days" id="FifteenDays" value="FifteenDays"   onClick= "autoSelectDays(this,document.myForm.funds)" />15 дней
-                            <input type="radio"  name="days" id="TwentyDays" value="TwentyDays"   onClick= "autoSelectDays(this,document.myForm.funds)" />20 дней
+                            <input type="radio"  name="days" id="TwentyDays" value="TwentyDays"    onClick= "autoSelectDays(this,document.myForm.funds)" />20 дней
                         </div>
                     </div>
                 </div>
@@ -96,10 +96,7 @@
                 </div>
 
                 <div class="col-sm-8 col-xs-offset-2">
-                    <div class="btn-group-vertical" role="group">
                     <button type="submit" class="btn btn-primary btn-block">Подобрать авто</button>
-                    <a href="#" type= "button" class="btn btn-primary btn-block">Подать заявку</a>
-                </div>
                 </div>
 
 
@@ -142,12 +139,16 @@
                     <td   class="text-left">&nbsp;${car.horsePower}&nbsp;</td>
                     <td   class="text-left">&nbsp;${car.instructor.firstname}&nbsp; ${car.instructor.lastname} &nbsp;</td>
                     <td   class="text-left">&nbsp;
-                        <div class="btn-group-vertical pull-right">
-                             <a href="/cars" type="button"
+                            <div class="btn-group-vertical" role="group">
+                             <a href="/show?id=${car.id}" type="button"
                                class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
                                 смотреть детали</i> </a>
+                            <a href="#" type="button"
+                               class="btn btn-primary btn-sm"><i class="fa fa-user-plus fa-xs">
+                                подать заявку</i> </a>
                         </div>
                         &nbsp;
+                        </td>
                     </td>
                 </tr>
             </c:forEach>
@@ -187,7 +188,7 @@
             else if (memberType.value=="FifteenDays")
             { fundsType[1].checked=true;
             }
-            else {
+            else  if (memberType.value=="TwentyDays"){
                 fundsType[2].checked=true;
             }
         }

@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Наши машины и инструктора</title>
+    <title>Отобранная машина и инструктор</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,15 +30,13 @@
 <div class="body">
     <div class="container-fluid col-xs-10 allcars">
 
-        <div><h1>Наши машины и инструктора</h1></div>
+        <div><h1>Выбранная машина и инструктор</h1></div>
 
-        <c:forEach var="car" items="${cars}">
-            <hr/>
-            <br/>
             <div class="row">
-
+                <hr/>
+                <br/>
                 <div class="col-xs-5 col-md-2">
-                    <br/>
+
                     <img class="img-responsive img-rounded" src="${car.instructor.photoURL}"
                          alt="${car.instructor.firstname} ${car.instructor.lastname}"/>
                 </div>
@@ -65,14 +63,57 @@
                         </tr>
                     </table>
                 </div>
+                <hr/>
+                <br/>
+                <hr/>
+            </div>
+        <div><h1>Еще машины и инструкторы</h1></div>
+
+        <div class="row">
+                <c:forEach var="car" items="${cars}">
+                    <hr/>
+                    <br/>
+                    <div class="row">
+
+                        <div class="col-xs-5 col-md-2">
+                            <br/>
+                            <img class="img-responsive img-rounded" src="${car.instructor.photoURL}"
+                                 alt="${car.instructor.firstname} ${car.instructor.lastname}"/>
+                        </div>
+
+                        <div class="col-xs-7 col-md-4">
+                            <h1>${car.instructor.firstname} ${car.instructor.lastname}</h1>
+
+                            <p><b>${car.instructor.description}</b></p>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6">
+                            <img class="img-responsive img-rounded" src="${car.photoURL}" alt="${car.brand} ${car.model}"/>
+
+                            <table>
+                                <tr>
+                                    <th colspan="6">${car.brand} ${car.model}&nbsp;   <a href="#" type="button"
+                                                                                         class="btn btn-primary btn-sm"><i class="fa fa-user-plus fa-xs">
+                                        подать заявку</i> </a></th>
+                                </tr>
+                                <tr>
+                                    <th><i class="fa fa-tachometer fa-2x"></i></th><th>${car.horsePower} л.с.</th>
+                                    <th><i class="fa fa-cog fa-2x"></i></th><th>${car.transmission} КПП</th>
+                                    <th><i class="fa fa-money fa-2x"></i></th><th>${car.pricePerHour} $/час</th>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </c:forEach>
+        </div>
 
             </div>
-        </c:forEach>
 
     </div>
 </div>
 <div class="container-fluid col-xs-12">
-<jsp:include page="footer.jsp"/>
+    <jsp:include page="footer.jsp"/>
 </div>
 
 

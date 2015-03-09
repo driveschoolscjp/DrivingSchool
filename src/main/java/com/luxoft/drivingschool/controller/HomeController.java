@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,15 +29,16 @@ public class HomeController {
     private static final String CARS_MAPPING_PATH = "/cars";
     private static final String COST_MAPPING_PATH = "/cost";
     private static final String SEARCH_COST_MAPPING_PATH = "/searchCost";
-    
+    private static final String VIEW_SHOW_PATH = "carsShow";
     private static final String VIEW_HOME_PATH = "home";
     private static final String SCHEDULE_HOME_PATH = "schedule";
     private static final String CONTACT_HOME_PATH = "contact";
     private static final String CARS_HOME_PATH = "cars";
     private static final String COST_HOME_PATH = "cost";
-    
+    private static final String SHOW_MAPPING_PATH = "/show";
     private static final String CAR_ATTRIBUTE = "car";
     private static final String CARS_ATTRIBUTE = "cars";
+    private static final String ID_REQUEST_PARAM = "id";
 
     @RequestMapping(value = {ROOT_MAPPING_PATH, HOME_MAPPING_PATH}, method = {RequestMethod.GET, RequestMethod.HEAD})
     public String home() {
@@ -96,12 +98,30 @@ public class HomeController {
                  }
              }
             }
-
-
-        }
+     }
         model.addAttribute(CARS_ATTRIBUTE, carsTotalList);
 
         return COST_HOME_PATH;
+    }
+
+
+
+    // Показ одного инструктора и его авто, отдельно от всех инструкторов
+    @RequestMapping(value = SHOW_MAPPING_PATH, method = RequestMethod.GET)
+    public String show(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
+
+        List<Car> cars = new ArrayList<Car>();
+        Car car = carService.findOne(id);
+
+        for (Car c: carService.findAll()){
+            if(!(c.equals(car))){
+                cars.add(c);
+            }
+        }
+
+        model.addAttribute(CARS_ATTRIBUTE,  cars);
+        model.addAttribute(CAR_ATTRIBUTE, carService.findOne(id));
+        return VIEW_SHOW_PATH;
     }
 
 
