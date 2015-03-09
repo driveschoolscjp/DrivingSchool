@@ -19,8 +19,10 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private final String ADMIN_LOGIN = "a";
-    private final String ADMIN_PASSWORD = "a";
+
+    private static final String ADMIN_LOGIN = "a";
+    private static final String ADMIN_PASSWORD = "a";
+
     @Autowired
     private StudentRepository studentRepository;
 
@@ -28,13 +30,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
         if (login.equals(ADMIN_LOGIN)) {
-            List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
+            List<GrantedAuthority> roles = new ArrayList<>();
             roles.add(new SimpleGrantedAuthority(UserRoleEnum.ADMIN.name()));
             return new User(ADMIN_LOGIN, ADMIN_PASSWORD, roles);
         }
         Student user = studentRepository.findByLogin(login);
         if (user != null) {
-            List<GrantedAuthority> roles = new ArrayList();
+            List<GrantedAuthority> roles = new ArrayList<>();
             roles.add(new SimpleGrantedAuthority(UserRoleEnum.STUDENT.name()));
             return new User(user.getLogin(), user.getPassword(), roles);
         }

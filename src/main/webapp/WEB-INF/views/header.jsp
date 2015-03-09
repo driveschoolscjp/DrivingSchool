@@ -49,7 +49,7 @@
                     <li> <a href="/contact"><i class="fa fa-mobile fa-2x"></i> Контакты</a></li>
                     <sec:authorize access="isAuthenticated()">
                         <li><a href="/logout"><i class="fa sign-out fa-2x"></i>Вы зашли как
-                        <sec:authentication property="principal.username"></sec:authentication>. Выйти</a></li></sec:authorize>
+                        <sec:authentication property="principal.username"/>. Выйти</a></li></sec:authorize>
                 </ul>
 
             </div>

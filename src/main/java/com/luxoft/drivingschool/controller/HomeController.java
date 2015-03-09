@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -60,7 +58,7 @@ public class HomeController {
         return CARS_HOME_PATH    ;
     }
 
-    // переход на страницу разчета стоимости обучения
+    // переход на страницу расчета стоимости обучения
     @RequestMapping(value = COST_MAPPING_PATH, method = RequestMethod.GET)
     public String cost(Model model) {
         model.addAttribute(CAR_ATTRIBUTE, new Car());
@@ -70,15 +68,15 @@ public class HomeController {
     //выбор всех машин из заданых параметров, при подсчете стоимости обучения
     @RequestMapping(value = SEARCH_COST_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute(CAR_ATTRIBUTE) Car car, Model model) {
-        Set<Car> carsTotalList = new HashSet<Car>();
-        Set<Car> carsPricePerHourList = new HashSet<Car>();
-        Set<Car> carsHorsePowerList = new HashSet<Car>();
+        Set<Car> carsTotalList = new HashSet<>();
+        Set<Car> carsPricePerHourList = new HashSet<>();
+        Set<Car> carsHorsePowerList = new HashSet<>();
 
         float pricePerHour = car.getPricePerHour();
         int horsePower = car.getHorsePower();
         Transmission transmission = car.getTransmission();
 
-        if ((pricePerHour != 0)&&(!transmission.equals(null)) &&(horsePower != 0)) {
+        if ((pricePerHour != 0)&&(transmission!=null) &&(horsePower != 0)) {
 
                 carsPricePerHourList.addAll(carService.findByPricePerHourLessThanAndTransmission(pricePerHour, transmission));
                 carsPricePerHourList.addAll(carService.findByPricePerHourAndTransmission(pricePerHour, transmission));
@@ -103,6 +101,4 @@ public class HomeController {
 
         return COST_HOME_PATH;
     }
-
-
 }

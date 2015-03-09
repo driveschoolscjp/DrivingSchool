@@ -1,6 +1,5 @@
 package com.luxoft.drivingschool.configuration;
 
-import com.luxoft.drivingschool.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @EnableWebMvcSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -57,11 +57,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(getUserDetailsService());
+        auth.userDetailsService(userDetailsService);
     }
 
-    @Bean
-    public UserDetailsService getUserDetailsService(){
-        return new UserDetailsServiceImpl();
-    }
 }

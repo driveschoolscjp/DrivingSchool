@@ -1,15 +1,15 @@
 package com.luxoft.drivingschool.controller;
 
-import com.luxoft.drivingschool.controller.editor.LocalDateEditor;
 import com.luxoft.drivingschool.model.Group;
 import com.luxoft.drivingschool.service.GroupService;
 import com.luxoft.drivingschool.service.TeacherService;
-import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/admin/group")
 @Controller
@@ -90,10 +90,5 @@ public class AdminGroupController {
         model.addAttribute(TEACHERS_ATTRIBUTE, teacherService.findAll());
 
         return VIEW_EDIT_PATH;
-    }
-
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(LocalDate.class, new LocalDateEditor());
     }
 }
