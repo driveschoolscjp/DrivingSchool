@@ -116,7 +116,7 @@
                         <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car fa-1x"></i>
                         Автомобили</a>
                         <a class="list-group-item" href="/schedule"><i class="fa fa-car fa-1x"></i>
-                            Расписание уроков вождения</a>
+                            График занятий по вождению</a>
 
                     </div>
                 </div>

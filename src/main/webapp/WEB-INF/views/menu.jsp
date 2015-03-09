@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ page isELIgnored="false" %>
 
 <html>
 <head>
@@ -32,7 +33,7 @@
                 <sec:authorize access="!isAuthenticated()">
                 <!--Включаю в форму для валидации по HTML 5-->
                 <c:url value="/j_spring_security_check" var="loginUrl"/>
-                <form action=/j_spring_security_check method="POST">
+                <form action="${loginUrl}" method="POST">
                     <!--Логин-->
                     <div class="roleMenu">
                         <div class="container-fluid">
@@ -141,6 +142,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <sec:authorize access="isAuthenticated()">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h1 class="panel-title">
+                                        <a href="/schedule"><i
+                                                class="fa fa-male fa-1x" style="color: #fffafa"></i> График занятий по вождению</a>
+                                    </h1>
+                                </div>
+                            </div>
+                            </sec:authorize>
                         </div>
 
                         <div class="container">
