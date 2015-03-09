@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RequestMapping("/admin/testing/question")
 @Controller
 public class AdminQuestionController {
@@ -26,7 +23,7 @@ public class AdminQuestionController {
     private static final String VIEW_EDIT_PATH = "admin/testing/question/edit";
     private static final String VIEW_EDIT_ANSWER_PATH = "admin/testing/question/edit_answer";
     private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:show?id=";
-    private static final String REDIRECT_ADD_ANSWER_TO_ID_PATH = "redirect:addAnswer?id=";
+    private static final String REDIRECT_ADD_ANSWER = "redirect:addAnswer?id=";
 
     private static final String SEARCH_MAPPING_PATH="/search";
     private static final String ADD_MAPPING_PATH="/add";
@@ -35,6 +32,7 @@ public class AdminQuestionController {
     private static final String SHOW_MAPPING_PATH="/show";
     private static final String EDIT_MAPPING_PATH="/edit";
     private static final String ADD_ANSWER_MAPPING_PATH = "/addAnswer";
+    private static final String EDIT_ANSWER_MAPPING_PATH = "/editAnswer";
 
     private static final String QUESTIONS_ATTRIBUTE="questions";
     private static final String QUESTION_ATTRIBUTE="question";
@@ -48,6 +46,7 @@ public class AdminQuestionController {
     private static final String MORE_QUESTIONS_ATTRIBUTE = "moreQuestions";
     private static final String ANSWERS_ATTRIBUTE = "answers";
     private static final String ANSWER_ATTRIBUTE = "answer";
+    private static final String THEME_ATTRIBUTE = "theme";
 
     @Autowired
     private QuestionService questionService;
@@ -77,26 +76,29 @@ public class AdminQuestionController {
 
         Question question = new Question();
         question.setNumber(questionService.lastNumber(ticketId)+1);
-        question.setTicket(ticketService.findOne(ticketId));
-        question = questionService.save(question);
+        question.setTicket(ticketService.findOne(ticketId));                   //почему-то не сохраняет через форму
         model.addAttribute(QUESTION_ATTRIBUTE, question);
         model.addAttribute(THEMES_ATTRIBUTE, themeService.findAll());
 
         return VIEW_EDIT_PATH;
     }
 
-    // Сохранение вопроса и переход на форму просмотра
+    // Сохранение ответа и переход на форму просмотра
     @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
-    public String processRegistrationAnswer(@ModelAttribute(QUESTION_ATTRIBUTE) Question question) {
+        public String saveQuestion(@ModelAttribute(QUESTION_ATTRIBUTE) Question question,
+                                   @RequestParam(ID_REQUEST_PARAM) long ticketId) {
+        question.setTicket(ticketService.findOne(ticketId));
         question = questionService.save(question);
-        return REDIRECT_ADD_ANSWER_TO_ID_PATH + question.getId(); // На страничку просмотра
+        return REDIRECT_ADD_ANSWER + question.getId(); // На страничку просмотра
     }
 
     // Сохранение ответа и переход на форму просмотра
     @RequestMapping(value = SAVE_ANSWER_MAPPING_PATH, method = RequestMethod.POST)
-    public String processRegistrationQuestion(@ModelAttribute(QUESTION_ATTRIBUTE) Question question) {
-        question = questionService.save(question);
-        return REDIRECT_ADD_ANSWER_TO_ID_PATH + question.getId(); // На страничку просмотра
+    public String processRegistrationQuestion(@ModelAttribute(ANSWER_ATTRIBUTE) Answer answer,
+                                              @RequestParam(ID_REQUEST_PARAM) long questionId) {
+        answer.setQuestion(questionService.findOne(questionId));
+        answer = answerService.save(answer);
+        return REDIRECT_ADD_ANSWER + questionId; // На страничку просмотра
     }
 
     // Показ одного вопроса
@@ -118,16 +120,30 @@ public class AdminQuestionController {
 
         return VIEW_EDIT_PATH;
     }
+
+    // Редактирование ответа
+    @RequestMapping(value = EDIT_ANSWER_MAPPING_PATH, method = RequestMethod.GET)
+    public String editAnswer(@RequestParam(ID_REQUEST_PARAM) long answerId, Model model) {
+
+        Answer answer = answerService.findOne(answerId);
+        Question question = answer.getQuestion();
+        model.addAttribute(ANSWER_ATTRIBUTE, answer);
+        model.addAttribute(QUESTION_ATTRIBUTE, question);
+        model.addAttribute(ANSWERS_ATTRIBUTE, answerService.findByQuestionId(question.getId()));
+        model.addAttribute(QUESTION_ATTRIBUTE, question);
+
+        return VIEW_EDIT_ANSWER_PATH;
+    }
+
     // Добавление ответа
     @RequestMapping(value = ADD_ANSWER_MAPPING_PATH, method = RequestMethod.GET)
-    public String addAnswer(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
+    public String addAnswer(@RequestParam(ID_REQUEST_PARAM) long questionId, Model model) {
 
-        Question question = questionService.findOne(id);
         Answer answer = new Answer();
+        Question question = questionService.findOne(questionId);
         answer.setQuestion(question);
-        model.addAttribute(ANSWER_ATTRIBUTE, answerService.findOne(id));
-        model.addAttribute(ANSWERS_ATTRIBUTE, answerService.findByQuestionId(id));
-        model.addAttribute(THEMES_ATTRIBUTE, themeService.findAll());
+        model.addAttribute(ANSWER_ATTRIBUTE, answer);
+        model.addAttribute(ANSWERS_ATTRIBUTE, answerService.findByQuestionId(question.getId()));
         model.addAttribute(QUESTION_ATTRIBUTE, question);
 
         return VIEW_EDIT_ANSWER_PATH;

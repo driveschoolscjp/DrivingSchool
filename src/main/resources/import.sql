@@ -76,4 +76,26 @@ INSERT INTO students (id, birthday, email, firstname, gender, inn, lastname, pas
   (39, '1983-08-27', 'vakulenko@mail.ru', 'Nina', 'FEMALE', 22988453, 'Vakulenko', 'DD769877', 'Vladimirovna','067-856-56-54', 'vakulenko', 'vakulenko', 10, 5, 8),
   (40, '1987-09-01', 'friske@mail.ru', 'Janna', 'FEMALE', 20099838, 'Friske', 'SD675563', 'Vyacheslavovna','097-945-55-09', 'friske', 'friske', 10, 5, 1);
 
+insert into themes (id, name) values (1, 'Вождение велосипедов'), (2, 'Вождение мотоциклов');
+insert into exams (id, name, questionperticketquantity, ticketquantity) VALUES
+(1, 'ПДД-2014-Украина-B', 20, 30), (2, 'ПДД-2015-Украина-A', 10, 10);
+insert into tickets (id, number, exam_id) values (1, 1, 1);
+insert into tickets (id, number, exam_id) values (2, 2, 1);
+INSERT INTO questions (id, number, question, theme_id, ticket_id) VALUES
+(1, 1, 'Можно ли выполнять разворот', 1, 1),
+(2, 2, 'Можно проехать на красный свет', 1, 1),
+(3, 3, 'Остановка по требованию гаишника:', 1, 1);
+
+insert into answers (id, answer, istrue, question_id) values
+(1, 'да', true, 1),
+(2, 'нет', FALSE , 1),
+(3, 'при плохой погоде можно', FALSE , 1),
+(4, 'да', FALSE , 2),
+(5, 'нет', TRUE , 2),
+(6, 'можно, если вы водитель скорой помощи', FALSE , 2),
+(7, 'обязательна', TRUE , 3),
+(8, 'не обязательна', FALSE , 3);
+
+
+
 ALTER SEQUENCE hibernate_sequence RESTART WITH 175;

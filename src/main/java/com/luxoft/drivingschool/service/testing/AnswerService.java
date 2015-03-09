@@ -2,6 +2,7 @@ package com.luxoft.drivingschool.service.testing;
 
 
 import com.luxoft.drivingschool.model.testing.Answer;
+import com.luxoft.drivingschool.model.testing.Question;
 import com.luxoft.drivingschool.repository.testing.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,9 @@ public class AnswerService {
 
     public long selectQuestionId(Long id) {
         return answerRepository.selectQuestionId(id).get(0);
+    }
+
+    public Question findQuestionByAnswerId(Long id) {
+        return new Question();
     }
 }
