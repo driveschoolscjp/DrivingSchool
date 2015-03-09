@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Menu</title>
 
-    <script src="/js/jquery-1.11.2.min.js"></script>
+
     <script src="/js/bootstrap-table.min.js"></script>
     <script src="/js/bootstrap-table-flatJSON.min.js"></script>
     <script src="/js/bootstrap.js"></script>
@@ -116,7 +116,7 @@
                         <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car fa-1x"></i>
                         Автомобили</a>
                         <a class="list-group-item" href="/schedule"><i class="fa fa-car fa-1x"></i>
-                            Расписание уроков вождения</a>
+                            График занятий по вождению</a>
 
                     </div>
                 </div>

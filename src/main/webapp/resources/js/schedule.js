@@ -19,16 +19,26 @@ nav.init();
 dp.init();
 
 dp.onTimeRangeSelected = function(args) {
-    var form = document.getElementById("onCreateForm");
-    var intervalType = form.elements["interval_type"].value;
-    var sid = (intervalType === "lesson" ? 1 : -1);
     dp.clearSelection();
+    console.log(currentUser);
+    console.log(currentUser.id);
+    console.log(currentUser.fullName);
+    console.log(currentUser.iid);
+    if (currentUser.admin) {
+        var form = document.getElementById("onCreateForm");
+        var intervalType = form.elements["interval_type"].value;
+        var sid = (intervalType === "lesson" ? 1 : -1);
+        var iid = 1;     //  must be selected, not const
+    } else {
+        var sid = currentUser.id;
+        var iid = currentUser.iid;
+    }
   //  dp.preventDefault();
     var lesson = new Object ({
         id: 0,
         start: args.start,
         end: args.end,
-        instructor_id: 1,
+        instructor_id: iid,
         student_id: sid
     });
     var result = operateLesson(lesson, "take");
@@ -42,8 +52,8 @@ dp.onTimeRangeSelected = function(args) {
         return;
     }
     var student = (sid === -1 ? null : {id: sid});
-    var textHint = (sid === -1 ? "" : "name");   // current student , not 1
-    var instructor = {id: 1};
+    var textHint = (sid === -1 ? "" : currentUser.fullName);
+    var instructor = {id: (sid === -1 ? 1 : currentUser.iid)};    // must be selected, not const(1)
     var e = new DayPilot.Event({
         start: lesson.start,
         end: lesson.end,
@@ -172,5 +182,9 @@ function getAllAppointments(instructorId) {
     })
 };
 
-getAllAppointments(1);
+if (currentUser.admin) {
+    getAllAppointments(1);
+} else {
+    getAllAppointments(currentUser.iid);
+}
 dp.update();
