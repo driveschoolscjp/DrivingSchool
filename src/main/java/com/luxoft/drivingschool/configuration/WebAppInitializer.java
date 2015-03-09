@@ -1,9 +1,11 @@
 package com.luxoft.drivingschool.configuration;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
+import javax.servlet.ServletRegistration;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -29,6 +31,13 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         filter.setEncoding("UTF-8");
         filter.setForceEncoding(true);
 
-        return new Filter[]{filter};
+        DelegatingFilterProxy dfp = new DelegatingFilterProxy("springSecurityFilterChain");
+        return new Filter[]{filter, dfp};
+    }
+
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        registration.setInitParameter("defaultHtmlEscape", "true");
+        registration.setInitParameter("spring.profiles.active", "default");
     }
 }

@@ -16,23 +16,57 @@
     <script src="/js/daypilot-modal.src.js"></script>
     <script src="/js/daypilot-common.src.js"></script>
 
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/default.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <script src="/js/bootstrap.js"></script>
+
 </head>
 <body>
 
+<jsp:include page="header.jsp"/>
 
-<div style="float:left; width: 150px;">
-    <div id="nav"></div>
-    <div  style="float:left; width: 150px;">
-        <form  id="onCreateForm" name="onCreateForm">
-            <p><b>Создавать:</b></p>
-            <p><input type="radio" name="interval_type" value="nolesson">Неактивное время у инструктора<Br></p>
-            <p><input type="radio" name="interval_type" value="lesson" checked="checked">Урок вождения<Br></p>
-        </form>
+<style type="text/css">
+    .container11 {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        color:#c7ddef;
+        background-color: #66afe9;
+    }
+</style>
+<div class="row">
+    <div class="col-md-1">
+
     </div>
+    <div class="col-md-2">
+        <div id="nav"></div>
+        <div class="container11 col-md-2">
+            <p>Создавать:</p>
+            <form role="form" id="onCreateForm">
+                <div class="radio">
+                    <label><input type="radio" name="interval_type" value = "lesson" checked>Новое занятие</label>
+                </div>
+                <div class="radio">
+                    <label><input type="radio" name="interval_type" value = "nolesson">Неактивный интервал</label>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <div class="col-md-8">
+
+
+
+
+            <div id="dp"></div>
+
+    </div>
+    <div class="col-md-1">
+
+    </div>
+
 </div>
-<div style="margin-left: 150px;">
-    <div id="dp"></div>
-</div>
+
 
 
 <script src="/js/schedule.js"></script>

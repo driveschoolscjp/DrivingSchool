@@ -114,7 +114,9 @@
                         <a class="list-group-item" href="/admin/teacher/search"><i class="fa fa-user-secret fa-1x"></i>
                             Преподаватели</a>
                         <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car fa-1x"></i>
-                            Автомобили</a>
+                        Автомобили</a>
+                        <a class="list-group-item" href="/schedule"><i class="fa fa-car fa-1x"></i>
+                            Расписание уроков вождения</a>
 
                     </div>
                 </div>

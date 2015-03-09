@@ -38,6 +38,7 @@ public class HomeController {
 
     @RequestMapping(value = {ROOT_MAPPING_PATH, HOME_MAPPING_PATH}, method = {RequestMethod.GET, RequestMethod.HEAD})
     public String home() {
+
         return VIEW_HOME_PATH;
     }
 

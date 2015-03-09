@@ -69,9 +69,7 @@ if (typeof DayPilot.Global === 'undefined') {
         // trying to define event height using css
         //sheet.add(".calendar_default_header_height", "height:50px");
         //sheet.add(".calendar_default_alldayevent_height", "height:50px");
-        
-        DayPilot.Global.defaultCalendarCss = true;
-        document.oncontextmenu = function() {return false;};
+
     }
 
     var DayPilotCalendar = {};

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <html>
 
@@ -25,7 +26,15 @@
 
 <body>
 <jsp:include page="header.jsp" />
+<sec:authorize ifAnyGranted="ADMIN">
+    <jsp:include page="admin/menuAdmin.jsp" />
+</sec:authorize>
+<sec:authorize ifAnyGranted="STUDENT">
 <jsp:include page="menu.jsp" />
+</sec:authorize>
+<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
+    <jsp:include page="menu.jsp" />
+</sec:authorize>
 
 <div class="body">
 

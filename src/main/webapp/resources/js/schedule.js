@@ -12,7 +12,7 @@ dp.viewType = "Week";
 dp.heightSpec = "Full";
 dp.ShowToolTip = true;
 dp.eventMoveHandling = "Update";
-HeightSpec = "BusinessHoursNoScroll";
+//HeightSpec = "Full";
 dp.theme = "my";
 dp.startDate = "2011-11-11";
 nav.init();

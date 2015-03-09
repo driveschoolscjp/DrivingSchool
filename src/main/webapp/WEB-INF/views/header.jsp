@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <html>
 <head>
 
@@ -46,6 +47,9 @@
                     <li> <a href="/cars"><i class="fa fa-car fa-2x"></i> Наши автомобили</a></li>
                     <li> <a href="#"><i class="fa fa-user fa-2x"></i> Запись в автошколу</a></li>
                     <li> <a href="/contact"><i class="fa fa-mobile fa-2x"></i> Контакты</a></li>
+                    <sec:authorize access="isAuthenticated()">
+                        <li><a href="/logout"><i class="fa sign-out fa-2x"></i>Вы зашли как
+                        <sec:authentication property="principal.username"></sec:authentication>. Выйти</a></li></sec:authorize>
                 </ul>
 
             </div>
