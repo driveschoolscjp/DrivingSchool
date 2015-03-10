@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="col-xs-12 col-md-6">
-                    <div class="thumbnail">
+                    <div class="thumbnailhover">
                         <div class="caption">
                             <form:form action="/registration" method="post">
                                 <input type="hidden" value="${car.id}"/>
@@ -75,7 +75,7 @@
                 <br/>
                 <hr/>
             </div>
-        <div><h1>Еще машины и инструкторы</h1></div>
+        <div><h1>Еще машины и инструктора</h1></div>
 
         <div class="row">
                 <c:forEach var="car" items="${cars}">
@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="col-xs-12 col-md-6">
-                            <div class="thumbnail">
+                            <div class="thumbnailhover">
                                 <div class="caption">
                                     <form:form action="/registration" method="post">
                                         <input type="hidden" value="${car.id}"/>
@@ -133,7 +133,7 @@
 </div>
 
 <script>
-    $('.thumbnail').hover(
+    $('.thumbnailhover').hover(
             function(){
                 $(this).find('.caption').fadeIn(250); //.slideDown(250)
             },

@@ -104,7 +104,7 @@ body {
 .allcars h1 {
     margin-top: 0;
 }
-.allcars .thumbnail {
+.allcars .thumbnailhover {
     position:relative;
     overflow:hidden;
 }

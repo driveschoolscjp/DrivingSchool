@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="col-xs-12 col-md-6">
-                    <div class="thumbnail">
+                    <div class="thumbnailhover">
                         <div class="caption">
                             <form:form action="/registration" method="post">
                                 <input type="hidden" value="${car.id}"/>
@@ -83,7 +83,7 @@
 </div>
 
 <script>
-    $('.thumbnail').hover(
+    $('.thumbnailhover').hover(
             function(){
                 $(this).find('.caption').fadeIn(250); //.slideDown(250)
             },
