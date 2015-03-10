@@ -37,7 +37,7 @@
 
                     <h3 class="text-center">Вопрос ${question.number}</h3>
 
-                    <form:form action="/admin/testing/question/saveAnswer" method="post" modelAttribute="answer">
+                    <form:form action="/admin/testing/question/saveAnswer?id=${question.id}" method="post" modelAttribute="answer">
                         <form:hidden path="id"/>
 
                         <h3>Редактор вопроса</h3>
@@ -45,35 +45,74 @@
                         <%--строка с полями--%>
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                    <label for="theme.name">Тема:</label>
-                                    <form:input path="theme.name" class="form-control" readonly="true"/>
+                                    <label>Тема:</label>
+                                    <input value="${question.theme.name}" class="form-control" readonly="true"/>
                             </div>
                         </fieldset>
                         <fieldset>
-                            <div class="form-group col-xs-12">
+                            <div class="form-group col-xs-6">
                                 <label>Вопрос:</label><br/>
-                                <form:textarea path="question" class="form-control" cols= "20" rows= "6"
-                                               placeholder="Question" required="required" readonly="true"/>
+                                ${question.question}
                             </div>
                         </fieldset>
                         <fieldset>
-                            <table>
+                            <div class="row">
+                                <div class="col-xs-10 table-responsive">
+                            <table class="table" id="table">
                                 <c:forEach var="ans" items="${answers}">
                                     <tr>
                                         <td>
-                                            <div class="form-group col-xs-8">
-                                                <label for="ans.answer">Answer:</label>
-                                                <form:input path="ans.answer" class="form-control" readonly="${ans.id!=answer.id?true:false}"/>
-                                            </div>
+                                                <c:choose>
+                                                    <c:when test="${answer.id==ans.id}">
+                                                        <form:textarea path="answer" class="form-control" cols= "10" rows= "3"
+                                                                       placeholder="Answer" required="required" autofocus=""/>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <textarea class="form-control" cols= "10" rows= "3"
+                                                                        readonly="true">
+                                                            ${ans.answer}
+                                                            </textarea>
+                                                    </c:otherwise>
+                                                </c:choose>
                                         </td>
                                         <td>
+                                            Верный
+                                            <%--<input type="checkbox" value="${ans.correct}" readonly="true">--%>
+                                        </td>
+                                        <td>
+
                                             <div class="btn-group-vertical pull-right">
-                                                <button class="btn  btn-primary" type="submit">Сохранить ответ</button>
-                                            </div>
+                                                <a href="/admin/testing/question/editAnswer?id=${ans.id}" type="button"
+                                                   class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-xs">
+                                                    Редактировать</i></a>
+                                                </div>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group col-xs-11">
                                 </c:forEach>
+                                <c:if test="${answer.id==null}">
+                                    <form:textarea path="answer" class="form-control" cols= "10" rows= "3"
+                                                   placeholder="Answer" required="required" autofocus=""/>
+                                </c:if>
+                                                </div>
+                                    </td>
+                                    </tr>
+                                <tr>
+                                    <td>
+                                        <div class="btn-group-vertical pull-right">
+                                            <button class="btn  btn-primary" type="submit">Сохранить ответ</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        Верный
+                                        <%--<form:checkbox path="correct" value="false"/>--%>
+                                    </td>
+                                </tr>
                             </table>
+                                    </div>
+                                </div>
                         </fieldset>
                         <hr />
                     </form:form>

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name = "answers")
 public class Answer extends AbstractPersistable<Long> {
     private String answer;
-    private boolean isTrue;
+    private boolean correct;
     @ManyToOne
     private Question question;
 
@@ -22,12 +22,12 @@ public class Answer extends AbstractPersistable<Long> {
         this.answer = answer;
     }
 
-    public boolean isTrue() {
-        return isTrue;
+    public boolean getCorrect() {
+        return correct;
     }
 
-    public void setTrue(boolean isTrue) {
-        this.isTrue = isTrue;
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
     }
 
     public Question getQuestion() {

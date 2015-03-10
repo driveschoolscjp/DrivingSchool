@@ -16,7 +16,6 @@ public class Question extends AbstractPersistable<Long> {
 
     private int number;
     private String question;
-    private int ticket_number;
     private String pathToPicture;
     @ManyToOne(optional = true)
     @JsonIgnore
@@ -24,6 +23,7 @@ public class Question extends AbstractPersistable<Long> {
     @ManyToOne
     @JsonIgnore
     private Ticket ticket;
+    private String description;
 
     public int getNumber() {
         return number;
@@ -65,11 +65,11 @@ public class Question extends AbstractPersistable<Long> {
         this.theme = theme;
     }
 
-    public int getTicket_number() {
-        return ticket_number;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTicket_number(int ticket_number) {
-        this.ticket_number = ticket_number;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

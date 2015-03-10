@@ -28,11 +28,15 @@ public class TicketService {
         return ticketRepository.save(ticket);
     }
 
-    public int lastNumber(long examId) {
+    public int countByExamId(long examId) {
         return ticketRepository.countByExamId(examId);
     }
 
     public Ticket findOne(long ticketId) {
         return ticketRepository.findOne(ticketId);
+    }
+
+    public long findByNumberAndExamId(int ticketNumber, long idExam) {
+        return ticketRepository.findByNumberAndExamId(ticketNumber, idExam);
     }
 }
