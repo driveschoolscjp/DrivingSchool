@@ -4,20 +4,18 @@ import com.luxoft.drivingschool.model.testing.Answer;
 import com.luxoft.drivingschool.model.testing.Exam;
 import com.luxoft.drivingschool.model.testing.Question;
 import com.luxoft.drivingschool.model.testing.Result;
-import com.luxoft.drivingschool.repository.StudentRepository;
-import com.luxoft.drivingschool.repository.testing.ResultRepository;
 import com.luxoft.drivingschool.service.StudentService;
 import com.luxoft.drivingschool.service.testing.*;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * Created by Svetlana Lawrentyeva on 08.03.15.

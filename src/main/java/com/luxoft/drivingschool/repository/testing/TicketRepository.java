@@ -1,6 +1,5 @@
 package com.luxoft.drivingschool.repository.testing;
 
-import com.luxoft.drivingschool.model.testing.Exam;
 import com.luxoft.drivingschool.model.testing.Ticket;
 import org.springframework.data.jpa.repository.JpaRepository;
 
