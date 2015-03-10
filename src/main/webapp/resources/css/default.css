@@ -102,7 +102,9 @@ body {
     color: #ffffff;
 }
 
-
+.allcars h1 {
+    margin-top: 0;
+}
 #imgInLineLogo  {
     display: inline;
 }

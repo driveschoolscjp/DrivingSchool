@@ -28,11 +28,12 @@ INSERT INTO cars (id, brand, model, horsepower, transmission, priceperhour, phot
   (5, 'Ferrari', '458 Italia Spider', 457, 'AUTO', 190, 'http://cs621222.vk.me/v621222392/16826/2evXSBDLhpM.jpg', 9);
 
 INSERT INTO groups (id, name, description, startdate, finishdate, teacher_id) VALUES
-  (1, 'E5-03-2015', '袩袧 小袪 17:30-19:45', '2015-04-24', '2015-06-05', 2),
-  (2, 'M7-03-2015', '袙孝 效孝 18:00-20:15', '2015-03-07', '2015-05-08', 5),
-  (3, 'D11-05-2015', '袩袧 小袪 19:00-21:15', '2015-05-11', '2015-07-12', 6),
-  (4, 'E19-07-2015', '袙孝 效孝 18:30-20:45', '2015-07-09', '2015-09-20', 7),
-  (5, 'D24-08-2015', '袩袧 小袪 17:00-19:15', '2015-08-20', '2015-10-25', 10);
+  (1, 'E5-03-2015', '贤 研 17:30-19:45', '2015-01-24', '2015-03-05', 2),
+  (2, 'M7-03-2015', '乱 滓 18:00-20:15', '2015-03-11', '2015-05-12', 5),
+  (3, 'D11-05-2015', '贤 研 19:00-21:15', '2015-04-11', '2015-06-12', 6),
+  (4, 'E19-07-2015', '乱 滓 18:30-20:45', '2015-07-09', '2015-09-20', 7),
+  (5, 'D24-08-2015', '贤 研 17:00-19:15', '2015-08-20', '2015-10-25', 10),
+  (6, 'D32-10-2015', '贤 研 17:15-19:30', '2015-10-20', '2015-12-25', 2);
 
 INSERT INTO students (id, birthday, email, firstname, gender, inn, lastname, passport, patronymic, tel, login, password, ridenumber, group_id, instructor_id) VALUES
   (1, '1988-03-19', 'govorov@mail.ru', 'Sergey', 'MALE', 37430098, 'Govorov', 'DR477865', 'Fedorovich', '093-678-09-54','govorov', 'govorov', 10, 1, 1),
