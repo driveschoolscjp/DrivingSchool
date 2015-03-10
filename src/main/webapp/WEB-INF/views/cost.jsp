@@ -49,18 +49,6 @@
 
                 <form:hidden path="id"/>
 
-                <div class="price-slider">
-                    <h4 class="great">Количство занятий</h4>
-                    <div class="col-xs-12">
-                        <div class="row">
-                            <input type="radio"  name="days" id="TenDays" value="TenDays" checked="checked" onClick= "autoSelectDays(this,document.myForm.funds)"  /> 10 дней
-                            <input type="radio"  name="days" id="FifteenDays" value="FifteenDays"   onClick= "autoSelectDays(this,document.myForm.funds)" />15 дней
-                            <input type="radio"  name="days" id="TwentyDays" value="TwentyDays"    onClick= "autoSelectDays(this,document.myForm.funds)" />20 дней
-                        </div>
-                    </div>
-                </div>
-
-
 
                 <div class="price-slider">
                     <h4 class="great">Трансмиссия</h4>
@@ -79,7 +67,7 @@
                 </div>
 
                 <div class="price-slider">
-                    <h4 class="great">Мощьность двигателя</h4>
+                    <h4 class="great">Максимальная мощьность двигателя</h4>
                     <span>150 - 1200 <img id="imgInLine3" class="img-responsive"
                                           src="/images/kpp.png"/></span>
                     <div class="col-xs-12">
@@ -88,24 +76,53 @@
                 </div>
 
                 <div class="price-slider">
-                    <h4 class="great">Цена/ час аренды авто</h4>
+                    <h4 class="great">Максимальная цена/ час аренды</h4>
                     <span>1 - 1000 <img id="imgInLine4" class="img-responsive"
                                           src="/images/dollars.png"/></span>
                     <div class="col-xs-12">
                         <div id="slider2"></div>
                         <br>
-                        <label  class="col-xs-3 control-label col-xs-offset-1"><strong> Стоимость: </strong></label>
-                        &nbsp;
-                        <p class="price lead" id="total-label"></p>
-                        <br>
-                    </div>
+                        </div>
+                      </div>
+
+
+
+
+                <div class="price-slider">
+                    <h4 class="great">Стоимость курса</h4>
+                    <div class="col-xs-12">
+                        <div class="row">
+                                  <label>10 занятий:  </label>
+                            <br/>
+                                  <b  id="total-label" style="font-size: 20"></b>
+                                  <img id="imgInLine5" class="img-responsive"
+                                       src="/images/dollars.png"/>
+                              </div>
+
+
+                        <div class="row">
+                            <label>15 занятий:  </label>
+                            <br/>
+                            <b  id="total-label1" style="font-size: 20"></b>
+                            <img id="imgInLine6" class="img-responsive"
+                                 src="/images/dollars.png"/>
+                        </div>
+
+                        <div class="row">
+                            <label>20 занятий:  </label>
+                            <br/>
+                            <b  id="total-label2" style="font-size: 20"></b>
+                            <img id="imgInLine7" class="img-responsive"
+                                 src="/images/dollars.png"/>
+                        </div>
+                        <br/>
+
+                        <div class="col-xs-8 col-xs-offset-2">
+                            <button type="submit" class="btn btn-primary">Подобрать авто</button>
+                        </div>
                 </div>
-
-                <div class="col-sm-8 col-xs-offset-2">
-                    <button type="submit" class="btn btn-primary btn-block">Подобрать авто</button>
-                </div>
-
-
+        </div>
+   </div>
                     <div class="form-group">
                         <form:input path="horsePower" type="hidden" id="horse" class="form-control"/>
                     </div>
@@ -116,14 +133,10 @@
 
             </form:form>
         </div>
-
-    </div>
-
-    <div class="container-fluid">
     <div class = "col-xs-7">
 
 
-        <table class="table-fill" id="table">
+        <table class="table-fill table" id="table">
             <thead>
             <tr>
                 <th  class="text-left">&nbsp;Марка&nbsp;</th>
@@ -145,8 +158,8 @@
                     <td   class="text-left">&nbsp;${car.horsePower}&nbsp;</td>
                     <td   class="text-left">&nbsp;${car.instructor.firstname}&nbsp; ${car.instructor.lastname} &nbsp;</td>
                     <td   class="text-left">&nbsp;
-                            <div class="btn-group-vertical" role="group">
-                             <a href="/show?id=${car.id}" type="button"
+                        <div class="btn-group-vertical" role="group">
+                            <a href="/show?id=${car.id}" type="button"
                                class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
                                 смотреть детали</i> </a>
                             <a href="#" type="button"
@@ -154,7 +167,7 @@
                                 подать заявку</i> </a>
                         </div>
                         &nbsp;
-                        </td>
+                    </td>
                     </td>
                 </tr>
             </c:forEach>
@@ -162,10 +175,22 @@
         </table>
     </div>
     </div>
+
 </div>
+
 </div>
+
+<div class="container">
+    <div class="row">
+    <div class="col-xs-12">
+        <br/>
+        <br/>
+        <br/>
+    <jsp:include page="footer.jsp"/>
     </div>
-<jsp:include page="footer.jsp" />
+    </div>
+</div>
+
 <script>
 
 
@@ -183,23 +208,6 @@
             { fundsType[1].checked=true;
                  }
         }
-
-
-        function autoSelectDays(memberType, fundsType)
-        {
-            if(memberType.value=="TenDays")
-            {    fundsType[0].checked=true;
-            }
-
-            else if (memberType.value=="FifteenDays")
-            { fundsType[1].checked=true;
-            }
-            else  if (memberType.value=="TwentyDays"){
-                fundsType[2].checked=true;
-            }
-        }
-
-
 
 
         $("#slider").slider({
@@ -244,30 +252,24 @@
         var $horse = slider == 1?val:$("#horse").val();
         var $cost = slider == 2?val:$("#cost").val();
 
-        if(document.getElementById('MKPP').checked && document.getElementById('TenDays').checked ) {
-            $total = (($horse / 100) * $cost * 10 * 2).toFixed(2) + " $";
-        }else if(document.getElementById('AKPP').checked && document.getElementById('TenDays').checked) {
-            $total = (($horse/ 100) * $cost * 10 * 2 * 1.2).toFixed(2) + " $";
-        }
 
-       else if(document.getElementById('MKPP').checked && document.getElementById('FifteenDays').checked ) {
-            $total = (($horse / 100) * $cost * 15 * 2).toFixed(2) + " $";
-        }else if(document.getElementById('AKPP').checked && document.getElementById('FifteenDays').checked) {
-            $total = (($horse/ 100) * $cost * 15 * 2 * 1.2).toFixed(2) + " $";
-        }
-        else if(document.getElementById('MKPP').checked && document.getElementById('TwentyDays').checked ) {
-            $total = (($horse / 100) * $cost * 20 * 2).toFixed(2) + " $";
-        }else if(document.getElementById('AKPP').checked && document.getElementById('TwentyDays').checked) {
-            $total = (($horse/ 100) * $cost * 20 * 2 * 1.2).toFixed(2) + " $";
-        }
-
+            $total = ( $cost * 10 * 2).toFixed(2);
+            $total1 = ( $cost * 15 * 2).toFixed(2);
+            $total2 = ($cost * 20 * 2).toFixed(2);
 
         $( "#horse" ).val($horse);
         $( "#horse-label" ).text($horse);
         $( "#cost" ).val($cost);
         $( "#cost-label" ).text($cost);
+
         $( "#total" ).val($total);
         $( "#total-label" ).text($total);
+
+        $( "#total1" ).val($total1);
+        $( "#total-label1" ).text($total1);
+
+        $( "#total2" ).val($total2);
+        $( "#total-label2" ).text($total2);
 
         $('#slider a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+$horse+' <span class="glyphicon glyphicon-chevron-right"></span></label>');
         $('#slider2 a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+$cost+' <span class="glyphicon glyphicon-chevron-right"></span></label>');

@@ -1,10 +1,12 @@
 package com.luxoft.drivingschool.controller;
 
 import com.luxoft.drivingschool.model.Car;
+import com.luxoft.drivingschool.model.Registration;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.enums.Transmission;
 import com.luxoft.drivingschool.model.enums.UserRoleEnum;
 import com.luxoft.drivingschool.service.CarService;
+import com.luxoft.drivingschool.service.RegistrationService;
 import com.luxoft.drivingschool.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,6 +31,8 @@ public class HomeController {
     private CarService carService;
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private RegistrationService registrationService;
 
     private static final String ROOT_MAPPING_PATH = "/";
     private static final String HOME_MAPPING_PATH = "/home";
@@ -36,17 +40,21 @@ public class HomeController {
     private static final String CONTACT_MAPPING_PATH = "/contact";
     private static final String CARS_MAPPING_PATH = "/cars";
     private static final String COST_MAPPING_PATH = "/cost";
+    private static final String REGISTRATION_MAPPING_PATH = "/registration";
     private static final String SEARCH_COST_MAPPING_PATH = "/searchCost";
     private static final String VIEW_SHOW_PATH = "carsShow";
     private static final String VIEW_HOME_PATH = "home";
     private static final String SCHEDULE_HOME_PATH = "schedule";
     private static final String CONTACT_HOME_PATH = "contact";
+    private static final String REGISTRATION_HOME_PATH = "registration";
     private static final String CARS_HOME_PATH = "cars";
     private static final String COST_HOME_PATH = "cost";
     private static final String SHOW_MAPPING_PATH = "/show";
+    private static final String SAVE_MAPPING_PATH = "/saveRegistration";
     private static final String CAR_ATTRIBUTE = "car";
     private static final String CARS_ATTRIBUTE = "cars";
     private static final String ID_REQUEST_PARAM = "id";
+    private static final String REGISTRATION_ATTRIBUTE = "registration";
 
     @RequestMapping(value = {ROOT_MAPPING_PATH, HOME_MAPPING_PATH}, method = {RequestMethod.GET, RequestMethod.HEAD})
     public String home() {
@@ -136,5 +144,24 @@ public class HomeController {
         model.addAttribute(CARS_ATTRIBUTE,  cars);
         model.addAttribute(CAR_ATTRIBUTE, carService.findOne(id));
         return VIEW_SHOW_PATH;
+    }
+
+
+    // переход на страницу "запись в автошколу"
+    @RequestMapping(value = REGISTRATION_MAPPING_PATH, method = RequestMethod.GET)
+    public String registration(Model model) {
+
+       model.addAttribute(CARS_ATTRIBUTE, carService.findAll());
+       model.addAttribute(REGISTRATION_ATTRIBUTE, new Registration());
+        return REGISTRATION_HOME_PATH;
+    }
+
+
+    // Сохранение "запись в автошколу" и переход на home page
+    @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
+    public String processRegistration(@ModelAttribute(REGISTRATION_HOME_PATH) Registration registration) {
+
+        registration = registrationService.save(registration);
+        return HOME_MAPPING_PATH; // На страничку просмотра
     }
 }

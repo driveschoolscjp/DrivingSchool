@@ -2,6 +2,7 @@ DELETE FROM students;
 DELETE FROM cars;
 DELETE FROM groups;
 DELETE FROM teachers;
+DELETE FROM registrations;
 
 INSERT INTO teachers (id, birthday, email, firstname, gender, inn, lastname, passport, patronymic, tel, photourl) VALUES
   (1, '1961-10-19', 'petrov@gmail.com', 'Nikolay', 'MALE', 34590823, 'Petrov', 'FD459865', 'Igorevich', '097-345-77-32','http://cs621222.vk.me/v621222392/16814/y4UYdX3Jn84.jpg'),
@@ -75,5 +76,9 @@ INSERT INTO students (id, birthday, email, firstname, gender, inn, lastname, pas
   (38, '1984-05-23', 'grigoryeva@mail.ru', 'Olga', 'FEMALE', 22775645, 'Grigoryeva', 'HH657756', 'Vitalyevna','067-745-67-76', 'grigoryeva', 'grigoryeva', 10, 5, 9),
   (39, '1983-08-27', 'vakulenko@mail.ru', 'Nina', 'FEMALE', 22988453, 'Vakulenko', 'DD769877', 'Vladimirovna','067-856-56-54', 'vakulenko', 'vakulenko', 10, 5, 8),
   (40, '1987-09-01', 'friske@mail.ru', 'Janna', 'FEMALE', 20099838, 'Friske', 'SD675563', 'Vyacheslavovna','097-945-55-09', 'friske', 'friske', 10, 5, 1);
+
+
+INSERT INTO registrations (id, firstname, lastname, patronymic, tel, email, car_id) VALUES
+  (1, 'Sergey', 'Govorov', 'Fedorovich','093-678-09-54','dovoddv@mail.ru', 1);
 
 ALTER SEQUENCE hibernate_sequence RESTART WITH 175;

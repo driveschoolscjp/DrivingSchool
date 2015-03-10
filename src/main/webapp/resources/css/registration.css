@@ -1,0 +1,114 @@
+.myHead {
+    font-size: 36px;
+    color: white;
+}
+
+
+
+.name {
+    font-size: 21px;
+    font-weight: bold;
+    outline:0;
+    border:0;
+    padding: 10px 10px;
+    font-size: 13px;
+    width: 300px;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    text-transform:capitalize;
+}
+
+.email {
+    font-size: 21px;
+    font-weight: bold;
+    outline:0;
+    border:0;
+    padding: 10px 10px;
+    font-size: 13px;
+    width: 300px;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    text-transform:capitalize;
+}
+.email-help {
+    color: #ffffff;
+}
+
+.name-help {
+    color: #ffffff;
+}
+
+.patronymic-help {
+    color: #ffffff;
+}
+
+.tel-help {
+    color: #ffffff;
+}
+
+.lastname-help {
+    color: #ffffff;
+}
+
+.lastname{
+    font-size: 21px;
+    font-weight: bold;
+    outline:0;
+    border:0;
+    padding: 10px 10px;
+    font-size: 13px;
+    width: 300px;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    text-transform:capitalize;
+}
+
+.patronymic{
+    font-size: 21px;
+    font-weight: bold;
+    outline:0;
+    border:0;
+    padding: 10px 10px;
+    font-size: 13px;
+    width: 300px;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    text-transform:capitalize;
+}
+.tel{
+     font-size: 21px;
+     font-weight: bold;
+     outline:0;
+     border:0;
+     padding: 10px 10px;
+     font-size: 13px;
+     width: 300px;
+     border-radius: 4px;
+     -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+     -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+     box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+     text-transform:capitalize;
+ }
+
+.mySelect{
+    font-size: 21px;
+    font-weight: bold;
+    outline:0;
+    border:0;
+    padding: 10px 10px;
+    font-size: 13px;
+    width: 300px;
+    border-radius: 4px;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
+    text-transform:capitalize;
+}
