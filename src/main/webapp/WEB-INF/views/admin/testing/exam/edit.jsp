@@ -25,7 +25,7 @@
 
 <body>
 <jsp:include page="../../../header.jsp"/>
-<jsp:include page="../../menuAdmin.jsp"/>
+<jsp:include page="../../../menu.jsp"/>
 
 <div class="body">
     <div class="container-fluid">

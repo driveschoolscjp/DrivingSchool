@@ -31,4 +31,8 @@ public class StudentService {
     public List<Student> findByGroupId(long id) {
         return studentRepository.findByGroupId(id);
     }
+
+    public Student findByLogin(String login) {
+        return studentRepository.findByLogin(login);
+    }
 }

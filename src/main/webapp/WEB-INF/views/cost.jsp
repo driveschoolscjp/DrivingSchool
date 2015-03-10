@@ -17,7 +17,7 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/default.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
-    <link href="/css/costs.css" rel="stylesheet">
+    <link href="/css/cost.css" rel="stylesheet">
     <!--js-->
     <script src="/js/bootstrap.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -44,16 +44,36 @@
 
         <div class="price-box">
 
-            <form class="form-horizontal form-pricing" role="form" id = "myForm" action="/searchCost" method="post" modelAttribute="car">
+            <form:form class="form-horizontal form-pricing" role="form" id="myForm" action="/searchCost" method="post"
+                       modelAttribute="car">
 
-                <form:hidden path="car.id"/>
+                <form:hidden path="id"/>
+
+                <div class="price-slider">
+                    <h4 class="great">Количство занятий</h4>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <input type="radio"  name="days" id="TenDays" value="TenDays" checked="checked" onClick= "autoSelectDays(this,document.myForm.funds)"  /> 10 дней
+                            <input type="radio"  name="days" id="FifteenDays" value="FifteenDays"   onClick= "autoSelectDays(this,document.myForm.funds)" />15 дней
+                            <input type="radio"  name="days" id="TwentyDays" value="TwentyDays"    onClick= "autoSelectDays(this,document.myForm.funds)" />20 дней
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <div class="price-slider">
                     <h4 class="great">Трансмиссия</h4>
                     <div class="col-xs-12">
                         <div class="row">
-                            <form:radiobutton  path = "car.transmission"  name="transmission" id="AKPP" value="AUTO" checked="checked" onClick= "autoSelect(this,document.myForm.funds)"  />АКПП <img id="imgInLine2" class="img-responsive"
-                                                                                                                                                                                                      src="/images/horse.png"/>
-                            <form:radiobutton  path="car.transmission"  name="transmission" id="MKPP" value="MANUAL"   onClick= "autoSelect(this,document.myForm.funds)" />МКПП <img id="imgInLine" class="img-responsive"                                                                                                                                                                                   src="/images/horse.png"/>
+                            <form:radiobutton path="transmission" name="transmission" id="AKPP" value="AUTO"
+                                              checked="checked" onClick="autoSelect(this,document.myForm.funds)"/>АКПП
+                            <img id="imgInLine2" class="img-responsive"
+                                                                                                                                                                                                     src="/images/horse.png"/>
+                            <form:radiobutton path="transmission" name="transmission" id="MKPP" value="MANUAL"
+                                              onClick="autoSelect(this,document.myForm.funds)"/>МКПП <img id="imgInLine"
+                                                                                                          class="img-responsive"
+                                                                                                          src="/images/horse.png"/>
                         </div>
                     </div>
                 </div>
@@ -82,25 +102,24 @@
                 </div>
 
                 <div class="col-sm-8 col-xs-offset-2">
-                    <div class="btn-group-vertical" role="group">
                     <button type="submit" class="btn btn-primary btn-block">Подобрать авто</button>
-                    <a href="#" type= "button" class="btn btn-primary btn-block">Подать заявку</a>
-                </div>
                 </div>
 
 
                     <div class="form-group">
-                        <form:input path="car.horsePower" type="hidden" id="horse" class="form-control"/>
+                        <form:input path="horsePower" type="hidden" id="horse" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <form:input  path="car.pricePerHour"   type="hidden" id="cost" class="form-control"/>
+                        <form:input path="pricePerHour" type="hidden" id="cost" class="form-control"/>
                     </div>
 
-            </form>
+            </form:form>
         </div>
 
     </div>
+
+    <div class="container-fluid">
     <div class = "col-xs-7">
 
 
@@ -126,17 +145,22 @@
                     <td   class="text-left">&nbsp;${car.horsePower}&nbsp;</td>
                     <td   class="text-left">&nbsp;${car.instructor.firstname}&nbsp; ${car.instructor.lastname} &nbsp;</td>
                     <td   class="text-left">&nbsp;
-                        <div class="btn-group-vertical pull-right">
-                             <a href="#" type="button"
+                            <div class="btn-group-vertical" role="group">
+                             <a href="/show?id=${car.id}" type="button"
                                class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
                                 смотреть детали</i> </a>
+                            <a href="#" type="button"
+                               class="btn btn-primary btn-sm"><i class="fa fa-user-plus fa-xs">
+                                подать заявку</i> </a>
                         </div>
                         &nbsp;
+                        </td>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
+    </div>
     </div>
 </div>
 </div>
@@ -159,6 +183,23 @@
             { fundsType[1].checked=true;
                  }
         }
+
+
+        function autoSelectDays(memberType, fundsType)
+        {
+            if(memberType.value=="TenDays")
+            {    fundsType[0].checked=true;
+            }
+
+            else if (memberType.value=="FifteenDays")
+            { fundsType[1].checked=true;
+            }
+            else  if (memberType.value=="TwentyDays"){
+                fundsType[2].checked=true;
+            }
+        }
+
+
 
 
         $("#slider").slider({
@@ -185,10 +226,10 @@
         });
 
         //Added, set initial value.
-        $("#horse").val(0);
-        $("#cost").val(0);
-        $("#horse-label").text(0);
-        $("#cost-label").text(0);
+//        $("#horse").val(0);
+//        $("#cost").val(0);
+//        $("#horse-label").text(0);
+//        $("#cost-label").text(0);
 
         update();
     });
@@ -203,9 +244,20 @@
         var $horse = slider == 1?val:$("#horse").val();
         var $cost = slider == 2?val:$("#cost").val();
 
-        if(document.getElementById('MKPP').checked) {
+        if(document.getElementById('MKPP').checked && document.getElementById('TenDays').checked ) {
+            $total = (($horse / 100) * $cost * 10 * 2).toFixed(2) + " $";
+        }else if(document.getElementById('AKPP').checked && document.getElementById('TenDays').checked) {
+            $total = (($horse/ 100) * $cost * 10 * 2 * 1.2).toFixed(2) + " $";
+        }
+
+       else if(document.getElementById('MKPP').checked && document.getElementById('FifteenDays').checked ) {
+            $total = (($horse / 100) * $cost * 15 * 2).toFixed(2) + " $";
+        }else if(document.getElementById('AKPP').checked && document.getElementById('FifteenDays').checked) {
+            $total = (($horse/ 100) * $cost * 15 * 2 * 1.2).toFixed(2) + " $";
+        }
+        else if(document.getElementById('MKPP').checked && document.getElementById('TwentyDays').checked ) {
             $total = (($horse / 100) * $cost * 20 * 2).toFixed(2) + " $";
-        }else if(document.getElementById('AKPP').checked) {
+        }else if(document.getElementById('AKPP').checked && document.getElementById('TwentyDays').checked) {
             $total = (($horse/ 100) * $cost * 20 * 2 * 1.2).toFixed(2) + " $";
         }
 

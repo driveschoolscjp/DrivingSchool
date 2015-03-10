@@ -25,7 +25,7 @@
 
 <body>
 <jsp:include page="../../header.jsp"/>
-<jsp:include page="../menuAdmin.jsp"/>
+<jsp:include page="../../menu.jsp"/>
 
 <div class="body">
     <div class="container-fluid">
@@ -81,14 +81,14 @@
                             <div class="form-group col-xs-3">
                                 <label for="horsePower">Hp:</label>
                                 <form:input path="horsePower" class="form-control" placeholder="1.8"
-                                            type="number" min="0" max="1000"
+                                            type="number" min="0" max="1500"
                                             step="1" required="required"/>
                             </div>
 
                             <div class="form-group col-xs-3">
                                 <label for="pricePerHour">Price/Hour: UAH</label>
                                 <form:input path="pricePerHour" class="form-control" type="number" min="10"
-                                            max="10000" step="1" required="required"/>
+                                            max="1000" step="1" required="required"/>
                             </div>
 
                             <div class="form-group col-xs-3">

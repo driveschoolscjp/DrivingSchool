@@ -1,26 +1,45 @@
 var nav = new DayPilot.Navigator("nav");
 nav.showMonths = 1;
 nav.selectMode = "week";
+nav.startDate = "2011-11-11";
 nav.onTimeRangeSelected = function (args) {
     dp.startDate = args.start;
     dp.update();
 };
-nav.on
 
 var dp = new DayPilot.Calendar("dp");
 dp.viewType = "Week";
 dp.heightSpec = "Full";
 dp.ShowToolTip = true;
 dp.eventMoveHandling = "Update";
+//HeightSpec = "Full";
+dp.theme = "my";
+dp.startDate = "2011-11-11";
+nav.init();
+dp.init();
 
 dp.onTimeRangeSelected = function(args) {
     dp.clearSelection();
+    console.log(currentUser);
+    console.log(currentUser.id);
+    console.log(currentUser.fullName);
+    console.log(currentUser.iid);
+    if (currentUser.admin) {
+        var form = document.getElementById("onCreateForm");
+        var intervalType = form.elements["interval_type"].value;
+        var sid = (intervalType === "lesson" ? 1 : -1);
+        var iid = 1;     //  must be selected, not const
+    } else {
+        var sid = currentUser.id;
+        var iid = currentUser.iid;
+    }
+  //  dp.preventDefault();
     var lesson = new Object ({
         id: 0,
         start: args.start,
         end: args.end,
-        instructor_id: "1",
-        student_id: "1"
+        instructor_id: iid,
+        student_id: sid
     });
     var result = operateLesson(lesson, "take");
     if (result === -1) {
@@ -32,11 +51,15 @@ dp.onTimeRangeSelected = function(args) {
         alert("Время занято!");
         return;
     }
+    var student = (sid === -1 ? null : {id: sid});
+    var textHint = (sid === -1 ? "" : currentUser.fullName);
+    var instructor = {id: (sid === -1 ? 1 : currentUser.iid)};    // must be selected, not const(1)
     var e = new DayPilot.Event({
         start: lesson.start,
         end: lesson.end,
         id: result,
-        text: "Vasya"
+        resource: {"instructor": instructor, "student": student},
+        text: textHint
     });
     dp.events.add(e);
     dp.update();
@@ -56,7 +79,6 @@ function operateLesson(lesson, operation) {
             id = data.id;
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.status + ' ' + jqXHR.responseText);
             id = -1;
         },
         dataType: 'json'
@@ -65,20 +87,38 @@ function operateLesson(lesson, operation) {
 }
 
 dp.onEventClicked = function (args) {
-alert("clicked");
+    deleteInterval(args);
+    dp.events.remove(args.e);
+    dp.update();
 };
+
+function deleteInterval(args) {
+    $.ajax({
+        url: "/scheduler/lesson/action/delete/" + args.e.data.id,
+        type: "POST",
+        async: false,
+        contentType: "application/json; charset=utf-8",
+        success: function (data, code, xhr) {
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            id = -1;
+        },
+        dataType: 'json'
+    })
+}
 
 dp.onEventMoved = function (args) {
 
 };
 
 dp.onEventResize = function (args) {
+    var sid = (args.e.data.resource.student == null ? -1 : args.e.data.resource.student["id"]);
     var lesson = new Object ({
         id: args.e.id(),
         start: args.newStart,
         end: args.newEnd,
-        instructor_id: "1",
-        student_id: "1"
+        instructor_id: args.e.data.resource.instructor["id"],
+        student_id: sid
     });
     var result = operateLesson(lesson, "move");
     if (result === -1) {
@@ -93,12 +133,13 @@ dp.onEventResize = function (args) {
 };
 
 dp.onEventMove = function (args) {
+    var sid = (args.e.data.resource.student == null ? -1 : args.e.data.resource.student["id"]);
     var lesson = new Object ({
         id: args.e.id(),
         start: args.newStart,
         end: args.newEnd,
-        instructor_id: "1",
-        student_id: "1"
+        instructor_id: args.e.data.resource.instructor["id"],
+        student_id: sid
     });
     var result = operateLesson(lesson, "move");
     if (result === -1) {
@@ -114,21 +155,21 @@ dp.onEventMove = function (args) {
 
 function getAllAppointments(instructorId) {
     $.ajax({
-        url: "/scheduler/getallappointments/" + instructorId,
+        url: "/scheduler/getallschedules/" + instructorId,
         type: "POST",
         async: false,
         success: function (data, code, xhr) {
-            dp.startDate = "2011-11-11";
-            nav.init();
-            dp.init();
             $.each(data, function (i, b) {
                 var startMoment = b.startInterval.split('.')[0];
                 var finishMoment = b.finishInterval.split('.')[0];
+                var textHint = (b.student == null ? "" : b.student["firstname"] + " " + b.student["lastname"]);
                 var e = new DayPilot.Event({
                     start: new DayPilot.Date(startMoment),
                     end: new DayPilot.Date(finishMoment),
                     id: b.id,
-                    text: b.student["firstname"] + " " + b.student["lastname"]
+                    resource: {"instructor": b.instructor, "student": b.student},
+                    text: textHint,
+                    toolTip: "my tooltip"
                 });
                 dp.events.add(e);
             });
@@ -141,5 +182,9 @@ function getAllAppointments(instructorId) {
     })
 };
 
-getAllAppointments(1);
-
+if (currentUser.admin) {
+    getAllAppointments(1);
+} else {
+    getAllAppointments(currentUser.iid);
+}
+dp.update();

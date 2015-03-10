@@ -32,12 +32,24 @@ public class ScheduleService {
         return scheduleRepository.findByInstructorIdAndStudentIdIsNull(id);
     }
 
+    public List<Schedule> findAllSchedulesByInstructorId(long id) {
+        List<Schedule> l = scheduleRepository.findByInstructorId(id);
+        return l;
+    }
+
     public List<Schedule> findInstructorAppointmentsBetween(long id, LocalDateTime startDate, LocalDateTime finishDate) {
         return scheduleRepository.findByInstructorIdAndStudentIdNotNullAndStartIntervalBetween(id, startDate, finishDate);
     }
 
     @Transactional
-    public long lessonAction(long eventId, long teacherId, long studentId, LocalDateTime start, LocalDateTime end, LessonAction action) {
+    public void deleteIntervalById(long id) {
+        Schedule deleted = scheduleRepository.findOne(id);
+        scheduleRepository.delete(deleted);
+        scheduleRepository.flush();
+    }
+
+    @Transactional
+    public long lessonAction(long eventId, long teacherId, Long studentId, LocalDateTime start, LocalDateTime end, LessonAction action) {
         if (start.getYear() != end.getYear() || start.getDayOfYear() != end.getDayOfYear() || start.isAfter(end)) {
            // throw new ServiceException();
             return 0;
@@ -52,7 +64,10 @@ public class ScheduleService {
         }
         if (intersectList.size() == 0) {
             Schedule lesson = new Schedule();
-            Student student = studentRepository.findOne(studentId);
+            Student student = null;
+            if (studentId != null) {
+                 student = studentRepository.findOne(studentId);
+            }
             Teacher instructor = teacherRepository.findOne(teacherId);
             lesson.setId(eventId);
             lesson.setStudent(student);
