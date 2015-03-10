@@ -49,17 +49,21 @@
                 </div>
 
                 <div class="col-xs-12 col-md-6">
-                    <img class="img-responsive img-rounded" src="${car.photoURL}" alt="${car.brand} ${car.model}"/>
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <form:form action="/registration" method="post">
+                                <input type="hidden" value="${car.id}"/>
+                                <h1>Хочу катать на ${car.brand} ${car.model}!</h1>
+                                <button class="btn btn-primary" type="submit"><i
+                                        class="fa fa-user-plus fa-xs"></i><b> Подать заявку на обучение</b></button>
+                            </form:form>
+                        </div>
+                        <img class="img-responsive img-rounded" src="${car.photoURL}" alt="${car.brand} ${car.model}"/>
+                    </div>
 
                     <table>
                         <tr>
-                            <form:form action="/registration" method="post">
-                            <th colspan="6">${car.brand} ${car.model}
-                                <input type="hidden" value="${car.id}"/>
-                                <button class="btn btn-primary btn-sm" type="submit"><i
-                                        class="fa fa-user-plus fa-xs"></i><b> Подать заявку</b></button>
-                            <th>
-                                </form:form>
+                            <th colspan="6">${car.brand} ${car.model}<th>
                         </tr>
                         <tr>
                             <th><i class="fa fa-tachometer fa-2x"></i></th><th>${car.horsePower} л.с.</th>
@@ -78,7 +82,16 @@
 <jsp:include page="footer.jsp"/>
 </div>
 
-
+<script>
+    $('.thumbnail').hover(
+            function(){
+                $(this).find('.caption').fadeIn(250); //.slideDown(250)
+            },
+            function(){
+                $(this).find('.caption').fadeOut(250); //.slideUp(250)
+            }
+    );
+</script>
 
 </body>
 </html>
