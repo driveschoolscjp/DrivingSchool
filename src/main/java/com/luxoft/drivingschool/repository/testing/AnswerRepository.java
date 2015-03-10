@@ -14,4 +14,6 @@ public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
     @Query(value = "SELECT answers.question_id FROM answers WHERE id = ?0", nativeQuery = true)
     List<Long> selectQuestionId(Long id);
+
+//    Question findQuestionByAnswerId(Long id);
 }

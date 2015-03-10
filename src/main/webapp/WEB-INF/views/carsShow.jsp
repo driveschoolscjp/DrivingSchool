@@ -52,9 +52,13 @@
 
                     <table>
                         <tr>
-                            <th colspan="6">${car.brand} ${car.model}&nbsp;   <a href="#" type="button"
-                                                                                 class="btn btn-primary btn-sm"><i class="fa fa-user-plus fa-xs">
-                                подать заявку</i> </a></th>
+                            <form:form action="/registration" method="post">
+                            <th colspan="6">${car.brand} ${car.model}
+                                <input type="hidden" value="${car.id}"/>
+                                <button class="btn btn-primary btn-sm" type="submit"><i
+                                        class="fa fa-user-plus fa-xs"></i><b> Подать заявку</b></button>
+                            <th>
+                                </form:form>
                         </tr>
                         <tr>
                             <th><i class="fa fa-tachometer fa-2x"></i></th><th>${car.horsePower} л.с.</th>
@@ -92,9 +96,13 @@
 
                             <table>
                                 <tr>
-                                    <th colspan="6">${car.brand} ${car.model}&nbsp;   <a href="#" type="button"
-                                                                                         class="btn btn-primary btn-sm"><i class="fa fa-user-plus fa-xs">
-                                        подать заявку</i> </a></th>
+                                    <form:form action="/registration" method="post">
+                                    <th colspan="6">${car.brand} ${car.model}
+                                        <input type="hidden" value="${car.id}"/>
+                                        <button class="btn btn-primary btn-sm" type="submit"><i
+                                                class="fa fa-user-plus fa-xs"></i><b> Подать заявку</b></button>
+                                    <th>
+                                        </form:form>
                                 </tr>
                                 <tr>
                                     <th><i class="fa fa-tachometer fa-2x"></i></th><th>${car.horsePower} л.с.</th>

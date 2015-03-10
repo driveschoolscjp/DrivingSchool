@@ -7,6 +7,7 @@ import com.luxoft.drivingschool.model.enums.Transmission;
 import com.luxoft.drivingschool.model.enums.UserRoleEnum;
 import com.luxoft.drivingschool.service.CarService;
 import com.luxoft.drivingschool.service.RegistrationService;
+import com.luxoft.drivingschool.service.GroupService;
 import com.luxoft.drivingschool.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -33,9 +34,9 @@ public class HomeController {
     private StudentService studentService;
     @Autowired
     private RegistrationService registrationService;
+    @Autowired
+    private GroupService groupService;
 
-    private static final String ROOT_MAPPING_PATH = "/";
-    private static final String HOME_MAPPING_PATH = "/home";
     private static final String SCHEDULE_MAPPING_PATH = "/schedule";
     private static final String CONTACT_MAPPING_PATH = "/contact";
     private static final String CARS_MAPPING_PATH = "/cars";
@@ -43,7 +44,6 @@ public class HomeController {
     private static final String REGISTRATION_MAPPING_PATH = "/registration";
     private static final String SEARCH_COST_MAPPING_PATH = "/searchCost";
     private static final String VIEW_SHOW_PATH = "carsShow";
-    private static final String VIEW_HOME_PATH = "home";
     private static final String SCHEDULE_HOME_PATH = "schedule";
     private static final String CONTACT_HOME_PATH = "contact";
     private static final String REGISTRATION_HOME_PATH = "registration";
@@ -56,9 +56,9 @@ public class HomeController {
     private static final String ID_REQUEST_PARAM = "id";
     private static final String REGISTRATION_ATTRIBUTE = "registration";
 
-    @RequestMapping(value = {ROOT_MAPPING_PATH, HOME_MAPPING_PATH}, method = {RequestMethod.GET, RequestMethod.HEAD})
+    @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.HEAD})
     public String home() {
-        return VIEW_HOME_PATH;
+        return "home";
     }
 
     @RequestMapping(value = SCHEDULE_MAPPING_PATH, method = RequestMethod.GET)
@@ -75,7 +75,7 @@ public class HomeController {
 
     @RequestMapping(value = CONTACT_MAPPING_PATH, method = RequestMethod.GET)
     public String contact() {
-        return CONTACT_HOME_PATH    ;
+        return CONTACT_HOME_PATH;
     }
 
     @RequestMapping(value = CARS_MAPPING_PATH, method = RequestMethod.GET)
@@ -144,6 +144,12 @@ public class HomeController {
         model.addAttribute(CARS_ATTRIBUTE,  cars);
         model.addAttribute(CAR_ATTRIBUTE, carService.findOne(id));
         return VIEW_SHOW_PATH;
+    }
+
+    @RequestMapping(value = "/futuregroups", method = RequestMethod.GET)
+    public String futuregroups(Model model) {
+        model.addAttribute("groups", groupService.findFutureGroups());
+        return "groups";
     }
 
 

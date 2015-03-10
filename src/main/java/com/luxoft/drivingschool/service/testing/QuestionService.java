@@ -6,7 +6,6 @@ import com.luxoft.drivingschool.repository.testing.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sun.security.krb5.internal.Ticket;
 
 import java.util.List;
 
@@ -41,4 +40,9 @@ public class QuestionService {
     public int lastNumber(long ticketId) {
         return questionRepository.countByTicketId(ticketId);
     }
+
+    public Question findByTicketIdAndNumber(long ticketId, int number){
+        return questionRepository.findByTicketIdAndNumber(ticketId, number);
+    }
+
 }
