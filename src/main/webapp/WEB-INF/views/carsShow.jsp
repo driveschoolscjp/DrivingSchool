@@ -31,14 +31,17 @@
     <div class="container-fluid col-xs-10 allcars">
 
         <div><h1>Выбранная машина и инструктор</h1></div>
+        <hr/>
 
             <div class="row">
                 <hr/>
                 <br/>
                 <div class="col-xs-5 col-md-2">
 
+                <div class="col-xs-5 col-md-2">
                     <img class="img-responsive img-rounded" src="${car.instructor.photoURL}"
                          alt="${car.instructor.firstname} ${car.instructor.lastname}"/>
+                    <br/>
                 </div>
 
                 <div class="col-xs-7 col-md-4">

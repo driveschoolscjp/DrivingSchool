@@ -34,12 +34,14 @@
 
         <c:forEach var="car" items="${cars}">
             <hr/>
-            <br/>
+
             <div class="row">
+                <br/>
 
                 <div class="col-xs-5 col-md-2">
                     <img class="img-responsive img-rounded" src="${car.instructor.photoURL}"
                          alt="${car.instructor.firstname} ${car.instructor.lastname}"/>
+                    <br/>
                 </div>
 
                 <div class="col-xs-7 col-md-4">

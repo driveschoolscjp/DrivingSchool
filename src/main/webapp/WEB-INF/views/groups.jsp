@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 
 <html>
 <head>
@@ -34,13 +35,14 @@
 
         <c:forEach var="group" items="${groups}">
             <hr/>
-            <br/>
 
             <div class="row">
+                <br/>
 
                 <div class="col-xs-5 col-md-3">
                     <img class="img-responsive img-rounded" src="${group.teacher.photoURL}"
                          alt="${group.teacher.firstname} ${group.teacher.lastname}"/>
+                    <br/>
                 </div>
 
                 <div class="col-xs-7 col-md-5">
@@ -53,10 +55,10 @@
                     <h1>${group.name}</h1>
 
                     <h3>Дата начала</h3>
-                    <h4><i class="fa fa-calendar"></i> ${group.startDate}</h4>
+                    <h4><i class="fa fa-calendar"></i> <joda:format value="${group.startDate}" style="L-"/></h4>
 
                     <h3>Дата окончания</h3>
-                    <h4><i class="fa fa-calendar"></i> ${group.finishDate}</h4>
+                    <h4><i class="fa fa-calendar"></i> <joda:format value="${group.finishDate}" style="L-"/> </h4>
 
                     <h3>Расписание занятий</h3>
                     <h4><i class="fa fa-book"></i> ${group.description}</h4>

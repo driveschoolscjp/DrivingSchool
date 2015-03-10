@@ -35,7 +35,7 @@ INSERT INTO cars (id, brand, model, horsepower, transmission, priceperhour, phot
 
 INSERT INTO groups (id, name, description, startdate, finishdate, teacher_id) VALUES
   (1, 'E5-03-2015', 'ПН СР 17:30-19:45', '2015-01-24', '2015-03-05', 2),
-  (2, 'M7-03-2015', 'ВТ ЧТ 18:00-20:15', '2015-03-11', '2015-05-12', 5),
+  (2, 'M7-03-2015', 'ВТ ЧТ 18:00-20:15', '2015-03-19', '2015-05-20', 5),
   (3, 'D11-05-2015', 'ПН СР 19:00-21:15', '2015-04-11', '2015-06-12', 6),
   (4, 'E19-07-2015', 'ВТ ЧТ 18:30-20:45', '2015-07-09', '2015-09-20', 7),
   (5, 'D24-08-2015', 'ПН СР 17:00-19:15', '2015-08-20', '2015-10-25', 10),
@@ -207,3 +207,5 @@ insert into answers (id, answer, correct, question_id) values
 
 (58, 'не обязательна', FALSE , 25),
 (59, 'обязательна', TRUE , 25);
+
+ALTER SEQUENCE hibernate_sequence RESTART WITH 175;

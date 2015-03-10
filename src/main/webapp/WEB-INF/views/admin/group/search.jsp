@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 
 <html>
 <head>
@@ -80,9 +81,9 @@
                             <c:forEach var="group" items="${groups}">
                                 <tr>
                                     <td>${group.name}</td>
-                                    <td>${group.teacher.firstname} &nbsp; ${group.teacher.lastname} &nbsp; ${group.teacher.patronymic}</td>
-                                    <td>${group.startDate}</td>
-                                    <td>${group.finishDate}</td>
+                                    <td>${group.teacher.lastname} ${group.teacher.firstname} ${group.teacher.patronymic}</td>
+                                    <td><joda:format value="${group.startDate}" style="M-"/></td>
+                                    <td><joda:format value="${group.startDate}" style="M-"/></td>
                                     <td>
                                         <div class="btn-group-vertical pull-right">
                                             <a href="/admin/group/edit?id=${group.id}" type="button"

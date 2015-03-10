@@ -121,7 +121,12 @@ body {
     color:#fff;
     z-index:2;
 }
-
+.allcars .row{
+    border-radius: 15px;
+}
+.allcars .row:hover{
+    background:rgba(0, 0, 0, 0.45);
+}
 #imgInLineLogo  {
     display: inline;
 }
