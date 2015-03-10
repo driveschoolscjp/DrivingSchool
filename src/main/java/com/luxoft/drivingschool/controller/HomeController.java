@@ -52,7 +52,7 @@ public class HomeController {
     @RequestMapping(value = SCHEDULE_MAPPING_PATH, method = RequestMethod.GET)
     public String scheduleView(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.STUDENT.name()))) {
+        if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
             model.addAttribute("user_id", student.getId());
             model.addAttribute("instr_id", student.getInstructor().getId());

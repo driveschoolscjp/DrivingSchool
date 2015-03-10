@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <html>
 <head>
 
@@ -15,14 +14,10 @@
     <!--for VK-->
     <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
 
-
-
-
 </head>
 
 <body>
 <div class="header">
-
     <div class="navbar navbar-inverse  navbar-static-top">
 
         <!--Меню-->
@@ -41,23 +36,18 @@
             </div>
 
             <div class="collapse navbar-collapse" id="responsive-menu">
-                <ul class="nav navbar-nav">
-                    <li> <a href="/home" style="font-size: 13"><i class="fa fa-home fa-2x" style="color: #2370d5"></i> Дом</a></li>
-                    <li> <a href="/cost" style="font-size: 13"><i class="fa fa-calculator fa-2x"></i> Стоимость обучения</a> </li>
-                    <li> <a href="#" style="font-size: 13"><i class="fa fa-calendar fa-2x"></i> Расписание занятий</a></li>
-                    <li> <a href="/cars" style="font-size: 13"><i class="fa fa-car fa-2x"></i> Наши автомобили</a></li>
-                    <li> <a href="#" style="font-size: 13"><i class="fa fa-user fa-2x"></i> Запись в автошколу</a></li>
-                    <li> <a href="/contact" style="font-size: 13"><i class="fa fa-mobile fa-2x"></i> Контакты</a></li>
-                    <sec:authorize access="isAuthenticated()">
-                        <li><a href="/logout" style="font-size: 13"><img src="/images/admin_logo.png" id = "imgInLineLogo2">
-                        <sec:authentication property="principal.username"/></a></li></sec:authorize>
+                <ul class="nav navbar-nav headerbar">
+                    <li><a href="/home"><i class="fa fa-home fa-2x"></i> На главную</a></li>
+                    <li><a href="/cost"><i class="fa fa-calculator fa-2x"></i> Стоимость обучения</a></li>
+                    <li><a href="#"><i class="fa fa-calendar fa-2x"></i> Расписание занятий</a></li>
+                    <li><a href="/cars"><i class="fa fa-car fa-2x"></i> Наши автомобили</a></li>
+                    <li><a href="#"><i class="fa fa-user fa-2x"></i> Запись в автошколу</a></li>
+                    <li><a href="/contact"><i class="fa fa-mobile fa-2x"></i> Контакты</a></li>
                 </ul>
 
             </div>
         </div>
     </div>
-
-
 </div>
 </body>
 </html>

@@ -109,3 +109,7 @@ body {
 #imgInLineLogo2 {
     display: inline;
 }
+
+.headerbar a {
+    font-size: 13px;
+}

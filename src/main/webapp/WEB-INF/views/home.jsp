@@ -26,15 +26,7 @@
 
 <body>
 <jsp:include page="header.jsp" />
-<sec:authorize ifAnyGranted="ADMIN">
-    <jsp:include page="admin/menuAdmin.jsp" />
-</sec:authorize>
-<sec:authorize ifAnyGranted="STUDENT">
 <jsp:include page="menu.jsp" />
-</sec:authorize>
-<sec:authorize ifAnyGranted="ROLE_ANONYMOUS">
-    <jsp:include page="menu.jsp" />
-</sec:authorize>
 
 <div class="body">
 
@@ -60,7 +52,8 @@
                         <div class="item active" >
                             <img src="/images/hat.png" alt="">
                             <!-- Описание слайда -->
-                            <a href="#"><div class="carousel-caption">
+                            <a href="/cars">
+                                <div class="carousel-caption">
                                 <h3> Лучшие автомобили</h3>
                                 <p>Самый большой выбор авто для обучения </p>
                             </div>
@@ -80,7 +73,8 @@
                         <div class="item" >
                             <img src="/images/hat_3.png" alt="">
                             <!-- Описание слайда -->
-                            <a href="#"><div class="carousel-caption">
+                            <a href="/cars">
+                                <div class="carousel-caption">
                                 <h3> Наши преподаватели</h3>
                                 <p>У нас работают только лучшие </p>
                             </div>

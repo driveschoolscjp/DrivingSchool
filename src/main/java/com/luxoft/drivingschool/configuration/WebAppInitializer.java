@@ -1,7 +1,6 @@
 package com.luxoft.drivingschool.configuration;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
@@ -31,8 +30,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
         filter.setEncoding("UTF-8");
         filter.setForceEncoding(true);
 
-        DelegatingFilterProxy dfp = new DelegatingFilterProxy("springSecurityFilterChain");
-        return new Filter[]{filter, dfp};
+        return new Filter[]{filter};
     }
 
     @Override

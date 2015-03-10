@@ -29,18 +29,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
+        List<GrantedAuthority> roles = new ArrayList<>();
+
         if (login.equals(ADMIN_LOGIN)) {
-            List<GrantedAuthority> roles = new ArrayList<>();
-            roles.add(new SimpleGrantedAuthority(UserRoleEnum.ADMIN.name()));
+            roles.add(new SimpleGrantedAuthority(UserRoleEnum.ROLE_ADMIN.name()));
             return new User(ADMIN_LOGIN, ADMIN_PASSWORD, roles);
         }
         Student user = studentRepository.findByLogin(login);
         if (user != null) {
-            List<GrantedAuthority> roles = new ArrayList<>();
-            roles.add(new SimpleGrantedAuthority(UserRoleEnum.STUDENT.name()));
+            roles.add(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()));
             return new User(user.getLogin(), user.getPassword(), roles);
         }
-        throw new UsernameNotFoundException("Wrong login");
+        throw new UsernameNotFoundException("User " + login + " not found.");
     }
 
 }

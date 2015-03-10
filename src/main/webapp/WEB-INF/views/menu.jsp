@@ -31,45 +31,53 @@
             <div class=" col-xs-offset-1">
 
                 <sec:authorize access="!isAuthenticated()">
-                <!--Включаю в форму для валидации по HTML 5-->
-                <c:url value="/j_spring_security_check" var="loginUrl"/>
-                <form action="${loginUrl}" method="POST">
-                    <!--Логин-->
-                    <div class="roleMenu">
-                        <div class="container-fluid">
+                    <!--Включаю в форму для валидации по HTML 5-->
+                    <form:form name="f" action="/login" method="post">
+                        <!--Логин-->
+                        <div class="roleMenu">
+                            <div class="container-fluid">
 
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa-1x"
                                                                        style="color: #2370d5; width:14px;"></i></span>
-                                    <input class="form-control" type="text" placeholder="User name" name="j_username"
-                                           required/>
+                                    <input class="form-control" name="username" type="text" placeholder="Username"
+                                           required="required"/>
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-key fa-1x"
                                                                        style="color: #2370d5"></i></span>
-                                    <input class="form-control" type="password" placeholder="Password" name="j_password"
-                                           required="password"/>
+                                    <input class="form-control" name="password" type="password" placeholder="Password"
+                                           required="required"/>
+                                </div>
+                                <br/>
+
+                                <div class="row text-center">
+                                    <input type="submit" class="btn btn-primary btn-xs" value="Войти">
                                 </div>
 
-                        </div>
-                    </div>
-
-                    <!--Кнопки входа/регистрации-->
-                    <div class="roleMenu">
-                        <div class="container">
-                            <div class="row">
-
-                                <div class="btn-group btn-group-xs" style="margin-top: 1%;  margin-left: 4%">
-
-                                    <input type="submit" class="btn btn-primary btn" value="Войти">
-                                    <input type="button" class="btn btn-primary btn" value="Регистрация">
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                </form>
+
+                    </form:form>
                 </sec:authorize>
+                <%-- Можно было бы проще: <sec:authorize url="/admin">--%>
+                <%-- Это дублирует правила описанные в SecurityConfig для url /admin--%>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <button class="btn btn-success btn-block">I'm an admin!</button>
+                </sec:authorize>
+
+                <sec:authorize access="hasRole('ROLE_STUDENT')">
+                    <button class="btn btn-danger btn-block">I'm a student!</button>
+                </sec:authorize>
+
+                <sec:authorize access="isAuthenticated()">
+                    <form:form action="/logout" method="post">
+                        <h3 style="color:#ffffff;">Hello <sec:authentication property="principal.username"/>!
+                            <sec:authentication property="authorities"/></h3>
+                        <input class="btn btn-warning btn-block" type="submit" value="Logout"/>
+                    </form:form>
+                </sec:authorize>
+
                 <!--Аккордион-->
                 <div class="roleMenu">
                     <div class="container-fluid">
@@ -143,14 +151,15 @@
                                 </div>
                             </div>
                             <sec:authorize access="isAuthenticated()">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h1 class="panel-title">
-                                        <a href="/schedule"><i
-                                                class="fa fa-male fa-1x" style="color: #fffafa"></i> График занятий по вождению</a>
-                                    </h1>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h1 class="panel-title">
+                                            <a href="/schedule"><i
+                                                    class="fa fa-male fa-1x" style="color: #fffafa"></i> График занятий
+                                                по вождению</a>
+                                        </h1>
+                                    </div>
                                 </div>
-                            </div>
                             </sec:authorize>
                         </div>
 

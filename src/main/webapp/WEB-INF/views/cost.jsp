@@ -44,9 +44,10 @@
 
         <div class="price-box">
 
-            <form class="form-horizontal form-pricing" role="form" id = "myForm" action="/searchCost" method="post" modelAttribute="car">
+            <form:form class="form-horizontal form-pricing" role="form" id="myForm" action="/searchCost" method="post"
+                       modelAttribute="car">
 
-                <form:hidden path="car.id"/>
+                <form:hidden path="id"/>
 
                 <div class="price-slider">
                     <h4 class="great">Количство занятий</h4>
@@ -65,9 +66,14 @@
                     <h4 class="great">Трансмиссия</h4>
                     <div class="col-xs-12">
                         <div class="row">
-                            <form:radiobutton  path = "car.transmission"  name="transmission" id="AKPP" value="AUTO" checked="checked" onClick= "autoSelect(this,document.myForm.funds)"  />АКПП <img id="imgInLine2" class="img-responsive"
+                            <form:radiobutton path="transmission" name="transmission" id="AKPP" value="AUTO"
+                                              checked="checked" onClick="autoSelect(this,document.myForm.funds)"/>АКПП
+                            <img id="imgInLine2" class="img-responsive"
                                                                                                                                                                                                      src="/images/horse.png"/>
-                            <form:radiobutton  path="car.transmission"  name="transmission" id="MKPP" value="MANUAL"   onClick= "autoSelect(this,document.myForm.funds)" />МКПП <img id="imgInLine" class="img-responsive"                                                                                                                                                                                   src="/images/horse.png"/>
+                            <form:radiobutton path="transmission" name="transmission" id="MKPP" value="MANUAL"
+                                              onClick="autoSelect(this,document.myForm.funds)"/>МКПП <img id="imgInLine"
+                                                                                                          class="img-responsive"
+                                                                                                          src="/images/horse.png"/>
                         </div>
                     </div>
                 </div>
@@ -104,14 +110,14 @@
 
 
                     <div class="form-group">
-                        <form:input path="car.horsePower" type="hidden" id="horse" class="form-control"/>
+                        <form:input path="horsePower" type="hidden" id="horse" class="form-control"/>
                     </div>
 
                     <div class="form-group">
-                        <form:input  path="car.pricePerHour"   type="hidden" id="cost" class="form-control"/>
+                        <form:input path="pricePerHour" type="hidden" id="cost" class="form-control"/>
                     </div>
 
-            </form>
+            </form:form>
         </div>
 
     </div>
