@@ -77,7 +77,7 @@
                                         </td>
                                         <td>
                                             Верный
-                                            <%--<input type="checkbox" value="${ans.isTrue}" readonly="true">--%>
+                                            <%--<input type="checkbox" value="${ans.correct}" readonly="true">--%>
                                         </td>
                                         <td>
 
@@ -107,7 +107,7 @@
                                     </td>
                                     <td>
                                         Верный
-                                        <%--<form:checkbox path="isTrue" value="false"/>--%>
+                                        <%--<form:checkbox path="correct" value="false"/>--%>
                                     </td>
                                 </tr>
                             </table>

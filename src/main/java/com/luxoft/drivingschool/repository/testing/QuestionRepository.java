@@ -15,5 +15,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
 
     List<Question> findByTicketId(Long ticketId);
 
+   Question findByTicketIdAndNumber(long ticketId, int number);
+
     int countByTicketId(long ticketId);
 }

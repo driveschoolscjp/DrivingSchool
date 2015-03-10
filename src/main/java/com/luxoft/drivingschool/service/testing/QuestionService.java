@@ -42,4 +42,8 @@ public class QuestionService {
         return questionRepository.countByTicketId(ticketId);
     }
 
+    public Question findByTicketIdAndNumber(long ticketId, int number){
+        return questionRepository.findByTicketIdAndNumber(ticketId, number);
+    }
+
 }

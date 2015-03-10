@@ -23,6 +23,7 @@ public class Question extends AbstractPersistable<Long> {
     @ManyToOne
     @JsonIgnore
     private Ticket ticket;
+    private String description;
 
     public int getNumber() {
         return number;
@@ -64,4 +65,11 @@ public class Question extends AbstractPersistable<Long> {
         this.theme = theme;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
