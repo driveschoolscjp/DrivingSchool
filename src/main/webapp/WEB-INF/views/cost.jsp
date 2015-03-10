@@ -133,10 +133,12 @@
 
             </form:form>
         </div>
+
+
     <div class = "col-xs-7">
+        <div class="container-fluid">
 
-
-        <table class="table-fill table" id="table">
+        <table id="table">
             <thead>
             <tr>
                 <th  class="text-left">&nbsp;Марка&nbsp;</th>
@@ -148,8 +150,9 @@
                 <th  class="text-left">&nbsp;/&nbsp;</th>
             </tr>
             </thead>
-            <tbody class="table-hover">
+            <tbody>
             <c:forEach var="car" items="${cars}">
+                <form:form action="/registration?id=${car.id}" method="post">
                 <tr>
                     <td   class="text-left">&nbsp;${car.brand}&nbsp;</td>
                     <td   class="text-left">&nbsp;${car.model}&nbsp;</td>
@@ -162,17 +165,17 @@
                             <a href="/show?id=${car.id}" type="button"
                                class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
                                 смотреть детали</i> </a>
-                            <a href="#" type="button"
-                               class="btn btn-primary btn-sm"><i class="fa fa-user-plus fa-xs">
-                                подать заявку</i> </a>
+                            <button  class="btn btn-primary btn-sm" type="submit"><i class="fa fa-user-plus fa-xs">
+                                подать заявку</i> </button>
                         </div>
                         &nbsp;
                     </td>
-                    </td>
                 </tr>
+            </form:form>
             </c:forEach>
             </tbody>
         </table>
+    </div>
     </div>
     </div>
 

@@ -81,7 +81,7 @@
 
                 <form:select path="car.id" class="selectpicker mySelect" required="required">
                     <c:forEach items="${cars}" var="car">
-                        <option value="${car.id}" ${car.id==car.id?"selected":""}>
+                        <option value="${car.id}" ${registration.car.id==car.id?"selected":""}>
                             ${car.brand} ${car.model}</option>
                     </c:forEach>
                 </form:select>
