@@ -168,6 +168,6 @@ public class HomeController {
     public String processRegistration(@ModelAttribute(REGISTRATION_HOME_PATH) Registration registration) {
 
         registration = registrationService.save(registration);
-        return HOME_MAPPING_PATH; // На страничку просмотра
+        return "/"; // На страничку просмотра
     }
 }
