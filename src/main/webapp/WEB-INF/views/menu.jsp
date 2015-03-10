@@ -28,7 +28,7 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class=" col-xs-offset-1">
+            <div>
 
                 <sec:authorize access="!isAuthenticated()">
                     <!--Включаю в форму для валидации по HTML 5-->
@@ -36,7 +36,6 @@
                         <!--Логин-->
                         <div class="roleMenu">
                             <div class="container-fluid">
-
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user fa-1x"
                                                                        style="color: #2370d5; width:14px;"></i></span>
@@ -57,120 +56,137 @@
 
                             </div>
                         </div>
-
                     </form:form>
                 </sec:authorize>
+
                 <%-- Можно было бы проще: <sec:authorize url="/admin">--%>
                 <%-- Это дублирует правила описанные в SecurityConfig для url /admin--%>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <button class="btn btn-success btn-block">I'm an admin!</button>
+                    <div>
+                        <div class="roleMenu">
+                            <div class="container-fluid">
+                                <h3 style="color: #ffffff"><i class="fa fa-cog"></i> Админ</h3>
+                                <br/>
+                                <div class="list-group">
+                                    <a class="list-group-item" href="/admin/student/search"><i class="fa fa-child"></i> Студенты</a>
+                                    <a class="list-group-item" href="/admin/group/search"><i class="fa fa-users"></i> Группы</a>
+                                    <a class="list-group-item" href="/admin/teacher/search"><i class="fa fa-user-secret"></i> Преподаватели</a>
+                                    <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car"></i> Автомобили</a>
+                                    <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий по вождению</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </sec:authorize>
 
                 <sec:authorize access="hasRole('ROLE_STUDENT')">
-                    <button class="btn btn-danger btn-block">I'm a student!</button>
-                </sec:authorize>
-
-                <sec:authorize access="isAuthenticated()">
-                    <form:form action="/logout" method="post">
-                        <h3 style="color:#ffffff;">Hello <sec:authentication property="principal.username"/>!
-                            <sec:authentication property="authorities"/></h3>
-                        <input class="btn btn-warning btn-block" type="submit" value="Logout"/>
-                    </form:form>
-                </sec:authorize>
-
-                <!--Аккордион-->
-                <div class="roleMenu">
-                    <div class="container-fluid">
-                        <div id="accordion" class="panel-group">
-                            <div class="panel panel-primary">
-
-                                <div class="panel-heading">
-                                    <h1 class="panel-title">
-
-                                        <a href="#collapse-1" data-parent="#accordion" data-toggle="collapse"><i
-                                                class="fa fa-graduation-cap fa-1x" style="color: #fffafa"></i> Онлайн
-                                            тесты </a>
-                                    </h1>
-                                </div>
-
-                                <div id="collapse-1" class="panel-collapse collapse">
-
-                                    <ul>
-
-                                        <li><a href="#"><i class="fa fa-motorcycle fa-1x" style="color: #2370d5"></i>
-                                            Катигория А </a></li>
-                                        <li><a href="#"><i class="fa fa-car fa-1x" style="color: #2370d5"></i> Катигория
-                                            B </a></li>
-                                        <li><a href="#"><i class="fa fa-truck fa-1x" style="color: #2370d5"></i>
-                                            Катигория C </a></li>
-                                        <li><a href="#"><i class="fa fa-bus fa-1x" style="color: #2370d5"></i> Катигория
-                                            D </a></li>
-                                    </ul>
-
+                    <div>
+                        <div class="roleMenu">
+                            <div class="container-fluid">
+                                <h3 style="color: #ffffff"><i class="fa fa-book"></i> Студент</h3>
+                                <br/>
+                                <div class="list-group">
+                                    <a class="list-group-item" href="#"><i class="fa fa-calendar-o"></i> Расписание группы</a>
+                                    <a class="list-group-item" href="#"><i class="fa fa-users"></i> Новости группы</a>
+                                    <a class="list-group-item" href="#"><i class="fa fa-history"></i> История тестов</a>
+                                    <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий по вождению</a>
                                 </div>
                             </div>
-                            <div class="panel panel-primary">
+                        </div>
+                    </div>
 
-                                <div class="panel-heading">
-                                    <h1 class="panel-title">
-                                        <a href="#collapse-2" data-parent="#accordion" data-toggle="collapse"><i
-                                                class="fa fa-tachometer fa-1x" style="color: #fffafa"></i> Автомобили
-                                        </a>
-                                    </h1>
-                                </div>
 
-                                <div id="collapse-2" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul>
-
-                                            <li><a href="#"> Ручная КПП </a></li>
-                                            <li><a href="#"> Автомат КПП </a></li>
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-primary">
-
-                                <div class="panel-heading">
-                                    <h1 class="panel-title">
-                                        <a href="#collapse-3" data-parent="#accordion" data-toggle="collapse"><i
-                                                class="fa fa-male fa-1x" style="color: #fffafa"></i> Преподаватели</a>
-                                    </h1>
-                                </div>
-
-                                <div id="collapse-3" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-mars fa-1x" style="color: #2370d5"></i>
-                                                Мужчины </a></li>
-                                            <li><a href="#"><i class="fa fa-venus fa-1x" style="color: #2370d5"></i>
-                                                Женщины </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <sec:authorize access="isAuthenticated()">
+                    <!--Аккордеон-->
+                    <div class="roleMenu">
+                        <div class="container-fluid">
+                            <div id="accordion" class="panel-group">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <h1 class="panel-title">
-                                            <a href="/schedule"><i
-                                                    class="fa fa-male fa-1x" style="color: #fffafa"></i> График занятий
-                                                по вождению</a>
+                                            <a href="#collapse-1" data-parent="#accordion" data-toggle="collapse"><i
+                                                    class="fa fa-graduation-cap fa-1x"></i> Онлайн
+                                                тесты</a>
+                                        </h1>
+                                    </div>
+                                    <div id="collapse-1" class="panel-collapse collapse">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-motorcycle fa-1x"></i> Катигория А </a></li>
+                                            <li><a href="#"><i class="fa fa-car fa-1x"></i> Катигория B </a></li>
+                                            <li><a href="#"><i class="fa fa-truck fa-1x"></i> Катигория C </a></li>
+                                            <li><a href="#"><i class="fa fa-bus fa-1x"></i> Катигория D </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h1 class="panel-title">
+                                            <a href="#collapse-2" data-parent="#accordion" data-toggle="collapse">
+                                                <i                                                class="fa fa-tachometer fa-1x"></i>Группа
+                                            </a>
+                                        </h1>
+                                    </div>
+
+                                    <div id="collapse-2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li><a href="#">Расписание группы</a></li>
+                                                <li><a href="#">Новости группы</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-primary">
+
+                                    <div class="panel-heading">
+                                        <h1 class="panel-title">
+                                            <a href="#collapse-3" data-parent="#accordion" data-toggle="collapse"><i
+                                                    class="fa fa-male fa-1x" style="color: #fffafa"></i> Преподаватели</a>
+                                        </h1>
+                                    </div>
+
+                                    <div id="collapse-3" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-mars fa-1x"></i> Мужчины</a></li>
+                                                <li><a href="#"><i class="fa fa-venus fa-1x"></i> Женщины</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h1 class="panel-title">
+                                            <a href="/schedule"><i class="fa fa-male fa-1x"></i> График занятий по вождению</a>
                                         </h1>
                                     </div>
                                 </div>
-                            </sec:authorize>
-                        </div>
-
-                        <div class="container">
-                            <!--Вконтакте-->
-                            <div class="roleMenu" style="margin-top: 1%;  margin-left: 5px">
-                                <div id="vk_groups"></div>
                             </div>
-                        </div>
 
+
+
+                        </div>
                     </div>
+
+                </sec:authorize>
+
+                <sec:authorize access="isAuthenticated()">
+                    <div class="roleMenu">
+                        <div class="container-fluid">
+                            <form:form action="/logout" method="post">
+                                <h3 style="color:#ffffff;">Hello <sec:authentication property="principal.username"/>!
+                                    <sec:authentication property="authorities"/></h3>
+                                <input class="btn btn-warning btn-block" type="submit" value="Logout"/>
+                            </form:form>
+                        </div>
+                    </div>
+                </sec:authorize>
+
+
+                <!--Вконтакте-->
+                <div class="roleMenu">
+                        <div id="vk_groups" style="margin: 5em auto;"></div>
                 </div>
 
             </div>

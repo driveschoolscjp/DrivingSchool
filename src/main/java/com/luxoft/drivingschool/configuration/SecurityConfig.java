@@ -21,17 +21,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .authorizeRequests()
+            .authorizeRequests()
                 .antMatchers("/admin/**").hasAuthority(UserRoleEnum.ROLE_ADMIN.name())
                 .antMatchers("/student/**").hasAuthority(UserRoleEnum.ROLE_STUDENT.name())
                 .anyRequest().permitAll()
                 .and()
-                .formLogin()
+            .formLogin()
                 .loginPage("/home")
                 .loginProcessingUrl("/login")
                 .failureUrl("/home")
                 .and()
-                .logout()
+            .logout()
                 .logoutSuccessUrl("/home");
     }
 
