@@ -38,6 +38,7 @@ $(document).ready(function () {
     };
 
     if (typeof currentUser != undefined && currentUser != null && !currentUser.isadmin) {
+        console.log(currentUser);
         getAllAppointments(currentUser.s.instructor["id"]);
     }
     dp.onTimeRangeSelected = function (args) {

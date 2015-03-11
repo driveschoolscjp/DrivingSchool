@@ -6,8 +6,8 @@ import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.enums.Transmission;
 import com.luxoft.drivingschool.model.enums.UserRoleEnum;
 import com.luxoft.drivingschool.service.CarService;
-import com.luxoft.drivingschool.service.RegistrationService;
 import com.luxoft.drivingschool.service.GroupService;
+import com.luxoft.drivingschool.service.RegistrationService;
 import com.luxoft.drivingschool.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -66,9 +66,7 @@ public class HomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
-            model.addAttribute("user_id", student.getId());
-            model.addAttribute("instr_id", student.getInstructor().getId());
-            model.addAttribute("user_name", student.getFirstname() + " " + student.getLastname());
+            model.addAttribute("student", student);
         }
         return SCHEDULE_HOME_PATH;
     }
