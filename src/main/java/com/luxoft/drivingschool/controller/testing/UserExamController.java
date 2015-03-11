@@ -1,5 +1,7 @@
 package com.luxoft.drivingschool.controller.testing;
 
+import com.luxoft.drivingschool.model.Student;
+import com.luxoft.drivingschool.model.enums.UserRoleEnum;
 import com.luxoft.drivingschool.model.testing.*;
 import com.luxoft.drivingschool.repository.StudentRepository;
 import com.luxoft.drivingschool.repository.testing.ResultRepository;
@@ -7,6 +9,9 @@ import com.luxoft.drivingschool.service.StudentService;
 import com.luxoft.drivingschool.service.testing.*;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -70,12 +75,19 @@ public class UserExamController {
     @RequestMapping(value = SEARCH_EXAM_MAPPING_PATH, method = RequestMethod.GET)
     public String searchMode(@RequestParam(ID_EXAM) long idExam, Model model) {
 
+        long idStudent = 0;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
+            Student student = studentService.findByLogin(auth.getName());
+            idStudent = student.getId();
+        }
+
 //----------------------------------------------------------------------------------
         Map<Ticket, Integer> resMap = new TreeMap<>();
         Exam exam = examService.findOne(idExam);
         List<Ticket>tickets = ticketService.findByExamId(idExam);
         for(Ticket ticket:tickets){
-            resMap.put(ticket, resultService.countCorrect(1L, ticket.getId()));
+            resMap.put(ticket, resultService.countCorrect(idStudent, ticket.getId()));
         }
         model.addAttribute("resMap", resMap);
         model.addAttribute("passAnswers", exam.getQuestionPerTicketQuantity()-3);
@@ -115,7 +127,12 @@ public class UserExamController {
         long idTicket = answer.getQuestion().getTicket().getId();
         int number = answer.getQuestion().getNumber();
         //TODO get students id
-        long idStudent = 1;
+        long idStudent = 0;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
+            Student student = studentService.findByLogin(auth.getName());
+            idStudent = student.getId();
+        }
         Result result = new Result();
         result.setStudent(studentService.findOne(idStudent));
         result.setAnswer(answerService.findOne(idAnswer));
@@ -164,8 +181,13 @@ public class UserExamController {
     //Показ результата
     @RequestMapping(value = RESULTS_PATH, method = RequestMethod.GET)
     public String showResults(@RequestParam(ID_TICKET) long idTicket, Model model, HttpSession session){
-
-        List<Result> results = resultService.findByStudentId(1L, idTicket);
+        long idStudent = 0;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
+            Student student = studentService.findByLogin(auth.getName());
+            idStudent = student.getId();
+        }
+        List<Result> results = resultService.findByStudentId(idStudent, idTicket);
 //        List<Result> results = resultService.findByStudentIdAndTicketId(1L, idTicket);
         Map<Integer, Integer> resMap = new TreeMap<>();
         Ticket ticket = ticketService.findOne(idTicket);
@@ -179,5 +201,5 @@ public class UserExamController {
         model.addAttribute("resMap", resMap);
         model.addAttribute("ticket", ticket);
         return RESULTS_VIEW;
-    };
+    }
 }
