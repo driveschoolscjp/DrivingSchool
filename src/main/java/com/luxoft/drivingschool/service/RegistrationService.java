@@ -25,4 +25,14 @@ public class RegistrationService {
     public List<Registration> findAll() {
         return registrationRepository.findAll();
     }
+
+    public Registration findOne(long id){
+        return registrationRepository.findOne(id);
+
+    }
+
+    @Transactional
+    public  void  delete(long registrationId){
+        registrationRepository.delete(registrationId);
+    }
 }
