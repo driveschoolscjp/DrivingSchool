@@ -291,8 +291,8 @@ if (typeof DayPilot.Global === 'undefined') {
         
         this.api = 2;
         this.borderColor = "#CED2CE";
-        this.businessBeginsHour = 9;
-        this.businessEndsHour = 18;
+        this.businessBeginsHour = 7;
+        this.businessEndsHour = 21;
         this.cellBackColor = "#ffffff";
         this.cellBorderColor = "#DEDFDE";
         this.cellHeight = 20;
@@ -303,6 +303,7 @@ if (typeof DayPilot.Global === 'undefined') {
         this.days = 1;
         this.durationBarVisible = true;
         this.eventBackColor = '#638EDE';
+        this.eventBackColorNW = '#de6963';
         this.eventBorderColor = "#2951A5";
         this.eventFontFamily = 'Tahoma, Arial, Helvetica, sans-serif';
         this.eventFontSize = '8pt';
@@ -337,7 +338,7 @@ if (typeof DayPilot.Global === 'undefined') {
         this.selectedColor = "#316AC5";
         this.showToolTip = true;
         this.startDate = new DayPilot.Date().getDatePart();
-        this.timeFormat = 'Clock12Hours';
+        this.timeFormat = 'Clock24Hours';
 
         this.timeRangeSelectedHandling = 'Enabled';
         this.eventClickHandling = 'Enabled';
@@ -1116,6 +1117,7 @@ if (typeof DayPilot.Global === 'undefined') {
             if (this.heightSpec === 'BusinessHoursNoScroll') {
                 start = start.addHours(this.businessBeginsHour);
             }
+
             
             for (var i = 0; i < days; i++) {
 
@@ -1342,7 +1344,13 @@ if (typeof DayPilot.Global === 'undefined') {
                     inside.push(height);
                 }
                 inside.push("px;background-color:");
-                inside.push(this.eventBackColor);
+                if (data.data.resource.student != null)
+                {
+                    inside.push(this.eventBackColor);
+                } else {
+                    inside.push(this.eventBackColorNW);
+                }
+
                 if (radius) {
                     inside.push(";border:1px solid ");
                     inside.push(borderColor);

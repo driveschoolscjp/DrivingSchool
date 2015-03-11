@@ -43,6 +43,6 @@ public class TeacherService {
     }
 
     public List<Teacher> findAllTeachersLike(String like) {
-        return teacherRepository.findByFirstnameLikeOrLastnameLike("%" + like + "%", "%" + like + "%");
+        return teacherRepository.findByFirstnameLikeOrLastnameLikeIgnoreCase("%" + like + "%", "%" + like + "%");
     }
 }

@@ -7,8 +7,9 @@ dp.viewType = "Week";
 dp.heightSpec = "Full";
 dp.ShowToolTip = true;
 dp.eventMoveHandling = "Update";
-//HeightSpec = "Full";
+dp.HeightSpec = "BusinessHoursNoScroll";
 dp.theme = "my";
+dp.cssOnly=false;
 nav.init();
 dp.init();
 
@@ -85,13 +86,17 @@ $(document).ready(function () {
             alert("Время занято!");
             return;
         }
-        var textHint = (s == null ? i.firstname + " " + i.lastname : s.firstname + " " + s.lastname);
+        var textTT = (s == null ? "Инструктор " + i.firstname + " " + i.lastname + " " + i.tel :
+            "Студент " + s.firstname + " " + s.lastname + " " + s.tel);
+        var textHint = (s == null ? i.firstname + " " + i.lastname:
+            s.firstname + " " + s.lastname);
         var e = new DayPilot.Event({
             start: lesson.start,
             end: lesson.end,
             id: result,
             resource: {"instructor": i, "student": s},
-            text: textHint
+            text: textHint,
+            toolTip: textTT
         });
         dp.events.add(e);
         dp.update();
@@ -193,7 +198,7 @@ $(document).ready(function () {
     $('#studentField .typeahead').on('typeahead:selected', function (evt, data) {
         console.log(evt);
         console.log(data);
-        $('#instructorField .typeahead').typeahead('val', data.instructor["lastname"] + " " + data.instructor["firstname"] + +" " + data.instructor["patronymic"]);
+        $('#instructorField .typeahead').typeahead('val', data.instructor["lastname"] + " " + data.instructor["firstname"] + " " + data.instructor["patronymic"]);
         currentAdmin.s = data;
         currentAdmin.i = data.instructor;
         dp.events.removeAll();

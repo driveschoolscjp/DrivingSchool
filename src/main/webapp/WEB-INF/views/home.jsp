@@ -52,9 +52,9 @@
                     <div class="carousel-inner">
 
                         <div class="item active" >
+                            <a href="/cars">
                             <img src="/images/hat.png" alt="">
                             <!-- Описание слайда -->
-                            <a href="/cars">
                                 <div class="carousel-caption">
                                 <h3> Лучшие автомобили</h3>
                                 <p>Самый большой выбор авто для обучения </p>
@@ -63,9 +63,10 @@
                         </div>
 
                         <div class="item" >
+                            <a href="#">
                             <img src="/images/Porshe.png" alt="">
                             <!-- Описание слайда -->
-                            <a href="#"><div class="carousel-caption">
+                            <div class="carousel-caption">
                                 <h3> Тесты онлайн</h3>
                                 <p>Вопросы по всем категориям </p>
                             </div>
@@ -73,9 +74,9 @@
                         </div>
 
                         <div class="item" >
+                            <a href="/futuregroups">
                             <img src="/images/hat_3.png" alt="">
                             <!-- Описание слайда -->
-                            <a href="/futuregroups">
                                 <div class="carousel-caption">
                                 <h3> Наши преподаватели</h3>
                                 <p>У нас работают только лучшие </p>
@@ -85,14 +86,7 @@
 
                     </div>
 
-                    <!--Стрелки переклучения слайдов-->
-                    <a href="#carousel" class="left carousel-control" data-slide = "prev" >
-                        <span class="glyphicon glyphicon-chevron-left" ></span>
-                    </a>
 
-                    <a href="#carousel" class="right carousel-control" data-slide = "next" >
-                        <span class="glyphicon glyphicon-chevron-right" ></span>
-                    </a>
                 </div>
                 <br/>
 

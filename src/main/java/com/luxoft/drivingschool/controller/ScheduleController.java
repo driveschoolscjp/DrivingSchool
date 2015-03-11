@@ -19,18 +19,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/scheduler")
 public class ScheduleController {
-    private static final String GET_ALL_APPOINTMENTS_MAPPING_PATH = "getallappointments/{id}";
-    private static final String GET_ALL_SCHEDULES_MAPPING_PATH = "getallschedules/{id}";
-    private static final String LESSON_ACTION_MAPPING_PATH = "lesson/action/{action}";
-    private static final String GET_ALL_APPOINTMENTS_BETWEEN_MAPPING_PATH = "lesson/between";
-    private static final String GET_ALL_APPOINTMENTS_SOME_WEEK_MAPPING_PATH = "lesson/week";
-    private static final String GET_ALL_APPOINTMENTS_SOME_MONTH_MAPPING_PATH = "lesson/month";
-    private static final String DELETE_INTERVAL_MAPPING_PATH = "lesson/action/delete/{id}";
-    private static final String SEARCH_STUDENTS_LIKE_MAPPING_PATH = "search/student/{like}";
-    private static final String SEARCH_TEACHERS_LIKE_MAPPING_PATH = "search/teacher/{like}";
 
     private Map<String, Object> result = new HashMap<String, Object>();
-
     @Autowired
     private ScheduleService scheduleService;
     @Autowired
@@ -38,32 +28,32 @@ public class ScheduleController {
     @Autowired
     private TeacherService teacherService;
 
-    @RequestMapping(value = DELETE_INTERVAL_MAPPING_PATH, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "lesson/action/delete/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteInterval(@PathVariable long id) {
         scheduleService.deleteIntervalById(id);
     }
 
-    @RequestMapping(value = GET_ALL_APPOINTMENTS_MAPPING_PATH, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "getallappointments/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> getAllAppointments(@PathVariable long id) {
         return scheduleService.findAllSchedulesByInstructorId(id);
     }
 
-    @RequestMapping(value = SEARCH_STUDENTS_LIKE_MAPPING_PATH, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "search/student/{like}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Student> getStudentsByQuery(@PathVariable String like) {
         return studentService.findAllStudentsLike(like);
     }
 
-    @RequestMapping(value = SEARCH_TEACHERS_LIKE_MAPPING_PATH, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "search/teacher/{like}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Teacher> getTeachersByQuery(@PathVariable String like) {
         return teacherService.findAllTeachersLike(like);
     }
 
-    @RequestMapping(value = GET_ALL_SCHEDULES_MAPPING_PATH, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "getallschedules/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> getAllSchedules(@PathVariable long id) {
         return scheduleService.findAllSchedulesByInstructorId(id);
     }
 
-    @RequestMapping(value = GET_ALL_APPOINTMENTS_BETWEEN_MAPPING_PATH, method = RequestMethod.POST,
+    @RequestMapping(value = "lesson/between", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> getAllAppointmentsBetween(@RequestBody Map<String, Object> map) {
         Long iid = new Long(map.get("instructor_id").toString());
@@ -72,7 +62,7 @@ public class ScheduleController {
         return scheduleService.findInstructorAppointmentsBetween(iid, sd, ed);
     }
 
-    @RequestMapping(value = GET_ALL_APPOINTMENTS_SOME_WEEK_MAPPING_PATH, method = RequestMethod.POST,
+    @RequestMapping(value = "lesson/week", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> getAllAppointmentsSomeWeek(@RequestBody Map<String, Object> map) {
         Long iid = new Long(map.get("instructor_id").toString());
@@ -82,7 +72,7 @@ public class ScheduleController {
         return scheduleService.findInstructorAppointmentsBetween(iid, weekStart, weekEnd);
     }
 
-    @RequestMapping(value = GET_ALL_APPOINTMENTS_SOME_MONTH_MAPPING_PATH, method = RequestMethod.POST,
+    @RequestMapping(value = "lesson/month", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> getAllAppointmentsSomeMonth(@RequestBody Map<String, Object> map) {
         Long iid = new Long(map.get("instructor_id").toString());
@@ -92,7 +82,7 @@ public class ScheduleController {
         return scheduleService.findInstructorAppointmentsBetween(iid, monthStart, monthEnd);
     }
 
-    @RequestMapping(value = LESSON_ACTION_MAPPING_PATH, method = RequestMethod.POST,
+    @RequestMapping(value = "lesson/action/{action}", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> lessonAction(@RequestBody Map<String, Object> map, @PathVariable String action) {
         Long eid = new Long(map.get("id").toString());
