@@ -56,6 +56,7 @@
                                 <th>Телефон</th>
                                 <th>Email</th>
                                 <th>Авто</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,7 +70,6 @@
                                     <td>${registration.car.brand} ${registration.car.model}</td>
                                     <td>
                                         <div class="btn-group pull-right">
-
                                             <a href= "/admin/student/register?id=${registration.id}"
                                                type="button"
                                                class="btn btn-success"><i class="fa fa-plus"></i></a>

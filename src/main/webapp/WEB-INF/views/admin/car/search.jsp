@@ -62,6 +62,7 @@
                                 <th>Цена/час (UAH)</th>
                                 <th>КПП</th>
                                 <th>Инструктор</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -74,13 +75,11 @@
                                     <td>${car.transmission}</td>
                                     <td>${car.instructor.firstname} ${car.instructor.lastname}</td>
                                     <td>
-                                        <div class="btn-group-vertical pull-right">
-                                            <a href="/admin/car/edit?id=${car.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-xs">
-                                                Редактировать</i></a>
+                                        <div class="btn-group pull-right">
                                             <a href="/admin/car/show?id=${car.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
-                                                Просмотреть</i></a>
+                                               class="btn btn-success"><i class="fa fa-search"></i></a>
+                                            <a href="/admin/car/edit?id=${car.id}" type="button"
+                                               class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                                         </div>
                                     </td>
                                 </tr>

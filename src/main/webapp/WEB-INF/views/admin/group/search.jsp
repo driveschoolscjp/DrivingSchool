@@ -75,6 +75,7 @@
                                 <th>Учитель</th>
                                 <th>Дата начала занятий</th>
                                 <th>Дата окончания занятий</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -85,13 +86,11 @@
                                     <td><joda:format value="${group.startDate}" style="M-"/></td>
                                     <td><joda:format value="${group.startDate}" style="M-"/></td>
                                     <td>
-                                        <div class="btn-group-vertical pull-right">
-                                            <a href="/admin/group/edit?id=${group.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-xs">
-                                                Редактировать</i></a>
+                                        <div class="btn-group pull-right">
                                             <a href="/admin/group/show?id=${group.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
-                                                Просмотреть</i></a>
+                                               class="btn btn-success"><i class="fa fa-search"></i></a>
+                                            <a href="/admin/group/edit?id=${group.id}" type="button"
+                                               class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                                         </div>
                                     </td>
                                 </tr>

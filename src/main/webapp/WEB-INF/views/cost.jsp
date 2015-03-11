@@ -51,7 +51,7 @@
                             <th>КПП</th>
                             <th>л.c.</th>
                             <th>Инструктор</th>
-                            <th> </th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -135,17 +135,17 @@
                         <div class="col-xs-12">
                             <div class="row">
                                 <label>10 занятий: $</label>
-                                <b id="total-label" style="font-size: 20"></b>
+                                <b id="total-label" style="font-size: 20px;"></b>
                             </div>
 
                             <div class="row">
                                 <label>15 занятий: $</label>
-                                <b id="total-label1" style="font-size: 20"></b>
+                                <b id="total-label1" style="font-size: 20px;"></b>
                             </div>
 
                             <div class="row">
                                 <label>20 занятий: $</label>
-                                <b id="total-label2" style="font-size: 20"></b>
+                                <b id="total-label2" style="font-size: 20px;"></b>
                             </div>
                             <br/>
 
