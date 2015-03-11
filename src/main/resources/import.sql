@@ -84,7 +84,10 @@ INSERT INTO students (id, birthday, email, firstname, gender, inn, lastname, pas
   (40, '1987-09-01', 'friske@mail.ru', 'Janna', 'FEMALE', 20099838, 'Friske', 'SD675563', 'Vyacheslavovna','097-945-55-09', 'friske', 'friske', 10, 5, 1);
 
 INSERT INTO registrations (id, firstname, lastname, patronymic, tel, email, car_id) VALUES
-  (1, 'Sergey', 'Govorov', 'Fedorovich','093-678-09-54','dovoddv@mail.ru', 1);
+  (1, 'Ivan', 'Victorov', 'Fedorovich', '093-678-09-54', 'dovoddv@mail.ru', 1),
+  (2, 'Sergey', 'Simonenko', 'Ivanovich', '093-678-09-54', 'dovoddv@mail.ru', 3),
+  (3, 'Konstantin', 'Rozembaum', 'Fedorovich', '093-678-09-54', 'dovoddv@mail.ru', 5),
+  (4, 'Svetlana', 'Akimenko', 'Sergeevna', '093-678-09-54', 'dovoddv@mail.ru', 1);
 
 insert into themes (id, name) values (1, 'Вождение велосипедов'), (2, 'Вождение мотоциклов');
 insert into exams (id, name, questionperticketquantity, ticketquantity) VALUES

@@ -34,9 +34,7 @@
         <hr/>
 
             <div class="row">
-                <hr/>
                 <br/>
-                <div class="col-xs-5 col-md-2">
 
                 <div class="col-xs-5 col-md-2">
                     <img class="img-responsive img-rounded" src="${car.instructor.photoURL}"
@@ -53,9 +51,9 @@
                 <div class="col-xs-12 col-md-6">
                     <div class="thumbnailhover">
                         <div class="caption">
-                            <form:form action="/registration?id=${car.id}" method="post">
+                            <form:form action="/registration" method="post">
                                 <input type="hidden" value="${car.id}"/>
-                                <h1>Хороший выбор! ${car.brand} ${car.model}!</h1>
+                                <h1>Хороший выбор ${car.brand} ${car.model}!</h1>
                                 <button class="btn btn-primary" type="submit"><i
                                         class="fa fa-user-plus fa-xs"></i><b> Подать заявку на обучение</b></button>
                             </form:form>
@@ -78,54 +76,55 @@
                 <br/>
                 <hr/>
             </div>
+
         <div><h1>Еще машины и инструктора</h1></div>
 
-        <div class="row">
-                <c:forEach var="car" items="${cars}">
-                    <hr/>
+            <c:forEach var="car" items="${cars}">
+                <hr/>
+
+                <div class="row">
                     <br/>
-                    <div class="row">
 
-                        <div class="col-xs-5 col-md-2">
-                            <br/>
-                            <img class="img-responsive img-rounded" src="${car.instructor.photoURL}"
-                                 alt="${car.instructor.firstname} ${car.instructor.lastname}"/>
-                        </div>
-
-                        <div class="col-xs-7 col-md-4">
-                            <h1>${car.instructor.firstname} ${car.instructor.lastname}</h1>
-
-                            <p><b>${car.instructor.description}</b></p>
-                        </div>
-
-                        <div class="col-xs-12 col-md-6">
-                            <div class="thumbnailhover">
-                                <div class="caption">
-                                    <form:form action="/registration?id=${car.id}" method="post">
-                                        <input type="hidden" value="${car.id}"/>
-                                        <h1>Выберай ${car.brand} ${car.model}!</h1>
-                                        <button class="btn btn-primary" type="submit"><i
-                                                class="fa fa-user-plus fa-xs"></i><b> Подать заявку на обучение</b></button>
-                                    </form:form>
-                                </div>
-                                <img class="img-responsive img-rounded" src="${car.photoURL}" alt="${car.brand} ${car.model}"/>
-                            </div>
-
-                            <table>
-                                <tr>
-                                    <th colspan="6">${car.brand} ${car.model}<th>
-                                </tr>
-                                <tr>
-                                    <th><i class="fa fa-tachometer fa-2x"></i></th><th>${car.horsePower} л.с.</th>
-                                    <th><i class="fa fa-cog fa-2x"></i></th><th>${car.transmission} КПП</th>
-                                    <th><i class="fa fa-money fa-2x"></i></th><th>${car.pricePerHour} $/час</th>
-                                </tr>
-                            </table>
-                        </div>
-
+                    <div class="col-xs-5 col-md-2">
+                        <img class="img-responsive img-rounded" src="${car.instructor.photoURL}"
+                             alt="${car.instructor.firstname} ${car.instructor.lastname}"/>
+                        <br/>
                     </div>
-                </c:forEach>
-        </div>
+
+                    <div class="col-xs-7 col-md-4">
+                        <h1>${car.instructor.firstname} ${car.instructor.lastname}</h1>
+
+                        <p><b>${car.instructor.description}</b></p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6">
+                        <div class="thumbnailhover">
+                            <div class="caption">
+                                <form:form action="/registration" method="post">
+                                    <input type="hidden" value="${car.id}"/>
+                                    <h1>А может ${car.brand} ${car.model}?</h1>
+                                    <button class="btn btn-primary" type="submit"><i
+                                            class="fa fa-user-plus fa-xs"></i><b> Подать заявку на обучение</b></button>
+                                </form:form>
+                            </div>
+                            <img class="img-responsive img-rounded" src="${car.photoURL}" alt="${car.brand} ${car.model}"/>
+                        </div>
+
+                        <table>
+                            <tr>
+                                <th colspan="6">${car.brand} ${car.model}<th>
+                            </tr>
+                            <tr>
+                                <th><i class="fa fa-tachometer fa-2x"></i></th><th>${car.horsePower} л.с.</th>
+                                <th><i class="fa fa-cog fa-2x"></i></th><th>${car.transmission} КПП</th>
+                                <th><i class="fa fa-money fa-2x"></i></th><th>${car.pricePerHour} $/час</th>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </c:forEach>
+
 
             </div>
 

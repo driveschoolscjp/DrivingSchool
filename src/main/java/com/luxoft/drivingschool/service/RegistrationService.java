@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 
 
 @Service
@@ -18,7 +19,10 @@ public class RegistrationService {
 
     @Transactional
     public Registration save(Registration registration){
-
         return registrationRepository.save(registration);
+    }
+
+    public List<Registration> findAll() {
+        return registrationRepository.findAll();
     }
 }

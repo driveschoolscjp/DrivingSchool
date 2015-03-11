@@ -4,9 +4,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
 }
-
 .page {
     min-height:100%;
     position:relative;
@@ -16,7 +14,10 @@ body {
     background: #f5f5f5;
     border-radius: 15px;
 }
-
+.blackback{
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 15px;
+}
 .content {
     padding:10px;
     padding-bottom:20px; /* Height of the footer element */
@@ -133,7 +134,19 @@ body {
 #imgInLineLogo2 {
     display: inline;
 }
-
 .headerbar a {
     font-size: 13px;
+}
+#locations a{
+    color:#ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.zeropadding{
+    padding: 0;
+}
+#map_canvas {
+    height: 450px;
+    width: auto;
+    border-radius: 10px;
 }

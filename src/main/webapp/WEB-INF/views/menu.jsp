@@ -61,6 +61,8 @@
                         </div>
 
                         <div class="list-group">
+                            <a class="list-group-item" href="/admin/registration/search"><i class="fa fa-list"></i>
+                                Заявки на обучение</a>
                             <a class="list-group-item" href="/admin/student/search"><i class="fa fa-child"></i> Студенты</a>
                             <a class="list-group-item" href="/admin/group/search"><i class="fa fa-users"></i> Группы</a>
                             <a class="list-group-item" href="/admin/teacher/search"><i class="fa fa-user-secret"></i>
