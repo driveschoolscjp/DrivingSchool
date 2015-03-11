@@ -23,7 +23,15 @@ public class ResultService {
         return resultRepository.save(result);
     }
 
-    public List<Result> findByStudentId(long studentId){
-        return resultRepository.findByStudentId(studentId);
+    public List<Result> findByStudentId(long studentId, long ticketId){
+        return resultRepository.findByStudentId(studentId, ticketId);
     }
+
+    public int countCorrect(long studentId, long ticketId) {
+        return resultRepository.countCorrect(studentId,ticketId);
+    }
+
+//    public List<Result> findByStudentIdAndTicketId(long studentId) {
+//        return resultRepository.findByStudentId(studentId);
+//    }
 }

@@ -33,7 +33,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-5 col-xs-offset-1">
-            <form:form action="/saveRegistration" method="post" modelAttribute="registration" id = "myForm">
+            <form:form action="/registration/save" method="post" modelAttribute="registration" id = "myForm">
             <form:hidden path="id"/>
 
                 <h1 class = "myHead">Запись в автошколу</h1>

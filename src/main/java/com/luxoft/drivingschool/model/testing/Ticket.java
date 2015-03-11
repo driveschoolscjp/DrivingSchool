@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tickets")
-public class Ticket extends AbstractPersistable<Long> {
+public class Ticket extends AbstractPersistable<Long> implements Comparable<Ticket> {
     private int number;
     @ManyToOne
     @JsonIgnore
@@ -34,5 +34,11 @@ public class Ticket extends AbstractPersistable<Long> {
 
     public void setExam(Exam exam) {
         this.exam = exam;
+    }
+
+
+    @Override
+    public int compareTo(Ticket o) {
+        return this.number-((Ticket)o).number;
     }
 }

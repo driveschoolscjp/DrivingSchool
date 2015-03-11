@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-xs-11 whiteback">
 
-                <h3 class="text-center">Просмот заявок</h3>
+                <h3 class="text-center">Просмотр заявок</h3>
                 <hr>
                 <%--три верхние кнопки--%>
                 <div class="row">
@@ -69,10 +69,11 @@
                                     <td>${registration.car.brand} ${registration.car.model}</td>
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <a href="/admin/student/register?registrationId=${registration.id}"
+
+                                            <a href= "/admin/student/register?id=${registration.id}"
                                                type="button"
                                                class="btn btn-success"><i class="fa fa-plus"></i></a>
-                                            <a href="/admin/registration/delete?registrationId=${registration.id}"
+                                            <a href= "/admin/registration/delete?id=${registration.id}"
                                                type="button"
                                                class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                         </div>

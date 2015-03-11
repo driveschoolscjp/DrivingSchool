@@ -1,9 +1,10 @@
 package com.luxoft.drivingschool.controller;
 
+import com.luxoft.drivingschool.model.Car;
+import com.luxoft.drivingschool.model.Registration;
 import com.luxoft.drivingschool.model.Student;
-import com.luxoft.drivingschool.service.GroupService;
-import com.luxoft.drivingschool.service.StudentService;
-import com.luxoft.drivingschool.service.TeacherService;
+import com.luxoft.drivingschool.model.Teacher;
+import com.luxoft.drivingschool.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @RequestMapping("/admin/student")
 @Controller
@@ -24,6 +27,10 @@ public class AdminStudentController {
 
     @Autowired
     GroupService groupService;
+
+
+    @Autowired
+    private RegistrationService registrationService;
 
     // Поиск
     @RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -83,12 +90,24 @@ public class AdminStudentController {
 
     // Переход на форму сохранения
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String showFilledRegistration(@RequestParam("registrationId") long id, Model model) {
+    public String showFilledRegistration(@RequestParam("id") long id, Model model) {
 
-        //TODO перетянуть данные из registration в student и передать его на страницу
+
+        Registration registration = registrationService.findOne(id);
+
         Student student = new Student();
-        model.addAttribute(student);
+        student.setInstructor(registration.getCar().getInstructor());
+        student.setFirstname(registration.getFirstname());
+        student.setLastname(registration.getLastname());
+        student.setPatronymic(registration.getPatronymic());
+        student.setEmail(registration.getEmail());
+        student.setTel(registration.getTel());
 
+        model.addAttribute("student", student);
+        model.addAttribute("instructors", teacherService.findByCarIsNotNull());
+        model.addAttribute("groups", groupService.findAll());
+
+//переход на станицу регистрации студента
         return "admin/student/edit";
     }
 }
