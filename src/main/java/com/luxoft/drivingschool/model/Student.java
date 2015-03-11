@@ -1,7 +1,5 @@
 package com.luxoft.drivingschool.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -15,7 +13,6 @@ public class Student extends Person {
     @ManyToOne
     private Group group;
     @ManyToOne
-    @JsonIgnore
     private Teacher instructor;
     private int rideNumber;
 

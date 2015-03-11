@@ -34,13 +34,14 @@
 
         <c:forEach var="car" items="${cars}">
             <hr/>
-            <br/>
+
             <div class="row">
+                <br/>
 
                 <div class="col-xs-5 col-md-2">
-                    <br/>
                     <img class="img-responsive img-rounded" src="${car.instructor.photoURL}"
                          alt="${car.instructor.firstname} ${car.instructor.lastname}"/>
+                    <br/>
                 </div>
 
                 <div class="col-xs-7 col-md-4">
@@ -50,13 +51,22 @@
                 </div>
 
                 <div class="col-xs-12 col-md-6">
-                    <img class="img-responsive img-rounded" src="${car.photoURL}" alt="${car.brand} ${car.model}"/>
+                    <div class="thumbnailhover">
+                        <div class="caption">
+                            <form:form action="/registration?id=${car.id}" method="post">
+                                <input type="hidden" value="${car.id}"/>
+                                <h1>Хочу катать на ${car.brand} ${car.model}!</h1>
+
+                                <button class="btn btn-primary" type="submit"><i
+                                        class="fa fa-user-plus fa-xs"></i><b> Подать заявку на обучение</b></button>
+                            </form:form>
+                        </div>
+                        <img class="img-responsive img-rounded" src="${car.photoURL}" alt="${car.brand} ${car.model}"/>
+                    </div>
 
                     <table>
                         <tr>
-                            <th colspan="6">${car.brand} ${car.model}&nbsp;   <a href="#" type="button"
-                                                                                 class="btn btn-primary btn-sm"><i class="fa fa-user-plus fa-xs">
-                                подать заявку</i> </a></th>
+                            <th colspan="6">${car.brand} ${car.model}<th>
                         </tr>
                         <tr>
                             <th><i class="fa fa-tachometer fa-2x"></i></th><th>${car.horsePower} л.с.</th>
@@ -75,7 +85,16 @@
 <jsp:include page="footer.jsp"/>
 </div>
 
-
+<script>
+    $('.thumbnailhover').hover(
+            function(){
+                $(this).find('.caption').fadeIn(250); //.slideDown(250)
+            },
+            function(){
+                $(this).find('.caption').fadeOut(250); //.slideUp(250)
+            }
+    );
+</script>
 
 </body>
 </html>

@@ -1,7 +1,6 @@
 package com.luxoft.drivingschool.repository.testing;
 
 import com.luxoft.drivingschool.model.testing.Answer;
-import com.luxoft.drivingschool.model.testing.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

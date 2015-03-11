@@ -2,6 +2,7 @@ DELETE FROM students;
 DELETE FROM cars;
 DELETE FROM groups;
 DELETE FROM teachers;
+DELETE FROM registrations;
 DELETE FROM results;
 DELETE FROM answers;
 DELETE FROM questions;
@@ -33,11 +34,12 @@ INSERT INTO cars (id, brand, model, horsepower, transmission, priceperhour, phot
   (5, 'Ferrari', '458 Italia Spider', 457, 'AUTO', 190, 'http://cs621222.vk.me/v621222392/16826/2evXSBDLhpM.jpg', 9);
 
 INSERT INTO groups (id, name, description, startdate, finishdate, teacher_id) VALUES
-  (1, 'E5-03-2015', 'ПН СР 17:30-19:45', '2015-04-24', '2015-06-05', 2),
-  (2, 'M7-03-2015', 'ВТ ЧТ 18:00-20:15', '2015-03-07', '2015-05-08', 5),
-  (3, 'D11-05-2015', 'ПН СР 19:00-21:15', '2015-05-11', '2015-07-12', 6),
+  (1, 'E5-03-2015', 'ПН СР 17:30-19:45', '2015-01-24', '2015-03-05', 2),
+  (2, 'M7-03-2015', 'ВТ ЧТ 18:00-20:15', '2015-03-19', '2015-05-20', 5),
+  (3, 'D11-05-2015', 'ПН СР 19:00-21:15', '2015-04-11', '2015-06-12', 6),
   (4, 'E19-07-2015', 'ВТ ЧТ 18:30-20:45', '2015-07-09', '2015-09-20', 7),
-  (5, 'D24-08-2015', 'ПН СР 17:00-19:15', '2015-08-20', '2015-10-25', 10);
+  (5, 'D24-08-2015', 'ПН СР 17:00-19:15', '2015-08-20', '2015-10-25', 10),
+  (6, 'D32-10-2015', 'ПН СР 17:15-19:30', '2015-10-20', '2015-12-25', 2);
 
 INSERT INTO students (id, birthday, email, firstname, gender, inn, lastname, passport, patronymic, tel, login, password, ridenumber, group_id, instructor_id) VALUES
   (1, '1988-03-19', 'govorov@mail.ru', 'Sergey', 'MALE', 37430098, 'Govorov', 'DR477865', 'Fedorovich', '093-678-09-54','govorov', 'govorov', 10, 1, 1),
@@ -80,6 +82,12 @@ INSERT INTO students (id, birthday, email, firstname, gender, inn, lastname, pas
   (38, '1984-05-23', 'grigoryeva@mail.ru', 'Olga', 'FEMALE', 22775645, 'Grigoryeva', 'HH657756', 'Vitalyevna','067-745-67-76', 'grigoryeva', 'grigoryeva', 10, 5, 9),
   (39, '1983-08-27', 'vakulenko@mail.ru', 'Nina', 'FEMALE', 22988453, 'Vakulenko', 'DD769877', 'Vladimirovna','067-856-56-54', 'vakulenko', 'vakulenko', 10, 5, 8),
   (40, '1987-09-01', 'friske@mail.ru', 'Janna', 'FEMALE', 20099838, 'Friske', 'SD675563', 'Vyacheslavovna','097-945-55-09', 'friske', 'friske', 10, 5, 1);
+
+INSERT INTO registrations (id, firstname, lastname, patronymic, tel, email, car_id) VALUES
+  (1, 'Ivan', 'Victorov', 'Fedorovich', '093-678-09-54', 'dovoddv@mail.ru', 1),
+  (2, 'Sergey', 'Simonenko', 'Ivanovich', '093-678-09-54', 'dovoddv@mail.ru', 3),
+  (3, 'Konstantin', 'Rozembaum', 'Fedorovich', '093-678-09-54', 'dovoddv@mail.ru', 5),
+  (4, 'Svetlana', 'Akimenko', 'Sergeevna', '093-678-09-54', 'dovoddv@mail.ru', 1);
 
 insert into themes (id, name) values (1, 'Вождение велосипедов'), (2, 'Вождение мотоциклов');
 insert into exams (id, name, questionperticketquantity, ticketquantity) VALUES
@@ -202,7 +210,5 @@ insert into answers (id, answer, correct, question_id) values
 
 (58, 'не обязательна', FALSE , 25),
 (59, 'обязательна', TRUE , 25);
-
-
 
 ALTER SEQUENCE hibernate_sequence RESTART WITH 175;

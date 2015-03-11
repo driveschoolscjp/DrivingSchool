@@ -41,4 +41,8 @@ public class TeacherService {
         instructors.addAll(teacherRepository.findByCarId(carId));
         return instructors;
     }
+
+    public List<Teacher> findAllTeachersLike(String like) {
+        return teacherRepository.findByFirstnameLikeOrLastnameLike("%" + like + "%", "%" + like + "%");
+    }
 }

@@ -374,7 +374,7 @@
 .my_eventNW_bar_inner
 {
     position: absolute;
-    width: 4px;
+    width: 0px;
     background-color: #1066a8;
 }
 

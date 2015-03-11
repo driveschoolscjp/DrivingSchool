@@ -24,15 +24,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/admin/**").hasAuthority(UserRoleEnum.ROLE_ADMIN.name())
                 .antMatchers("/student/**").hasAuthority(UserRoleEnum.ROLE_STUDENT.name())
+            .antMatchers("/scheduler/**").authenticated()
+            .antMatchers("/schedule/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
             .formLogin()
-                .loginPage("/home")
+            .loginPage("/")
                 .loginProcessingUrl("/login")
-                .failureUrl("/home")
+            .failureUrl("/")
                 .and()
             .logout()
-                .logoutSuccessUrl("/home");
+            .logoutSuccessUrl("/")
+
+            .and().csrf().disable();      // temporarily
     }
 
     // Устанавливаем, где брать пользователей

@@ -1,11 +1,6 @@
 var nav = new DayPilot.Navigator("nav");
 nav.showMonths = 1;
 nav.selectMode = "week";
-nav.startDate = "2011-11-11";
-nav.onTimeRangeSelected = function (args) {
-    dp.startDate = args.start;
-    dp.update();
-};
 
 var dp = new DayPilot.Calendar("dp");
 dp.viewType = "Week";
@@ -14,58 +9,211 @@ dp.ShowToolTip = true;
 dp.eventMoveHandling = "Update";
 //HeightSpec = "Full";
 dp.theme = "my";
-dp.startDate = "2011-11-11";
 nav.init();
 dp.init();
 
-dp.onTimeRangeSelected = function(args) {
-    dp.clearSelection();
-    console.log(currentUser);
-    console.log(currentUser.id);
-    console.log(currentUser.fullName);
-    console.log(currentUser.iid);
-    if (currentUser.admin) {
-        var form = document.getElementById("onCreateForm");
-        var intervalType = form.elements["interval_type"].value;
-        var sid = (intervalType === "lesson" ? 1 : -1);
-        var iid = 1;     //  must be selected, not const
-    } else {
-        var sid = currentUser.id;
-        var iid = currentUser.iid;
-    }
-  //  dp.preventDefault();
-    var lesson = new Object ({
-        id: 0,
-        start: args.start,
-        end: args.end,
-        instructor_id: iid,
-        student_id: sid
-    });
-    var result = operateLesson(lesson, "take");
-    if (result === -1) {
-        alert("Ошибка соединения!");
-        return;
-    }
-    if (result === 0) {
-        args.e.preventDefault();
-        alert("Время занято!");
-        return;
-    }
-    var student = (sid === -1 ? null : {id: sid});
-    var textHint = (sid === -1 ? "" : currentUser.fullName);
-    var instructor = {id: (sid === -1 ? 1 : currentUser.iid)};    // must be selected, not const(1)
-    var e = new DayPilot.Event({
-        start: lesson.start,
-        end: lesson.end,
-        id: result,
-        resource: {"instructor": instructor, "student": student},
-        text: textHint
-    });
-    dp.events.add(e);
-    dp.update();
+var currentAdmin = {};
 
-  //  var name = prompt("Student name:", "");
-};
+var students = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: '/scheduler/search/student/%QUERY',
+    cache: false
+});
+
+var instructors = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: '/scheduler/search/teacher/%QUERY',
+    cache: false
+});
+
+students.initialize();
+instructors.initialize();
+
+$(document).ready(function () {
+    nav.onTimeRangeSelected = function (args) {
+        dp.startDate = args.start;
+        dp.update();
+    };
+
+    if (typeof currentUser != undefined && currentUser != null && !currentUser.isadmin) {
+        console.log(currentUser);
+        getAllAppointments(currentUser.s.instructor["id"]);
+    }
+    dp.onTimeRangeSelected = function (args) {
+        dp.clearSelection();
+
+        if (currentUser.isadmin) {
+            var form = document.getElementById("onCreateForm");
+            var intervalType = form.elements["interval_type"].value;
+            var i = currentAdmin.i;
+            if (intervalType === "lesson") {
+                var s = currentAdmin.s;
+                if (typeof s == "undefined" || s == null) {
+                    return;
+                }
+            } else {
+                var s = null;
+                if (typeof i == "undefined" || i == null) {
+                    return;
+                }
+            }
+        } else {
+            var s = currentUser.s;
+            if (typeof s == "undefined" || s == null) {
+                return;
+            }
+            var i = s.instructor;
+        }
+        //  dp.preventDefault();
+        var lesson = new Object({
+            id: 0,
+            start: args.start,
+            end: args.end,
+            instructor_id: i.id,
+            student_id: typeof s == "undefined" || s == null ? -1 : s.id
+        });
+        console.log(lesson);
+        var result = operateLesson(lesson, "take");
+        if (result === -1) {
+            alert("Ошибка соединения!");
+            return;
+        }
+        if (result === 0) {
+         //   args.e.preventDefault();
+            alert("Время занято!");
+            return;
+        }
+        var textHint = (s == null ? i.firstname + " " + i.lastname : s.firstname + " " + s.lastname);
+        var e = new DayPilot.Event({
+            start: lesson.start,
+            end: lesson.end,
+            id: result,
+            resource: {"instructor": i, "student": s},
+            text: textHint
+        });
+        dp.events.add(e);
+        dp.update();
+    };
+
+    dp.onEventClicked = function (args) {
+        if (!currentUser.isadmin && (args.e.data.resource.student == null ||
+            args.e.data.resource.student.id != currentUser.s.id)) {
+            alert("Не имеете права");
+            args.e.preventDefault();
+            return;
+        }
+        deleteInterval(args);
+        dp.events.remove(args.e);
+        dp.update();
+    };
+
+    dp.onEventMoved = function (args) {
+
+    };
+
+    dp.onEventResize = function (args) {
+        if (!currentUser.isadmin && (args.e.data.resource.student == null ||
+            args.e.data.resource.student.id != currentUser.s.id)) {
+            alert("Не имеете права");
+            args.e.preventDefault();
+            return;
+        }
+        var sid = (args.e.data.resource.student == null ? -1 : args.e.data.resource.student["id"]);
+        var lesson = new Object({
+            id: args.e.id(),
+            start: args.newStart,
+            end: args.newEnd,
+            instructor_id: args.e.data.resource.instructor["id"],
+            student_id: sid
+        });
+        var result = operateLesson(lesson, "move");
+        if (result === -1) {
+            alert("Ошибка соединения!");
+            return;
+        }
+        if (result === 0) {
+            args.preventDefault();
+            alert("Время занято!");
+            return;
+        }
+    };
+
+    dp.onEventMove = function (args) {
+        if (!currentUser.isadmin && (args.e.data.resource.student == null ||
+            args.e.data.resource.student.id != currentUser.s.id)) {
+            alert("Не имеете права");
+            args.e.preventDefault();
+            return;
+        }
+        var sid = (args.e.data.resource.student == null ? -1 : args.e.data.resource.student["id"]);
+        var lesson = new Object({
+            id: args.e.id(),
+            start: args.newStart,
+            end: args.newEnd,
+            instructor_id: args.e.data.resource.instructor["id"],
+            student_id: sid
+        });
+        var result = operateLesson(lesson, "move");
+        if (result === -1) {
+            alert("Ошибка соединения!");
+            return;
+        }
+        if (result === 0) {
+            args.preventDefault();
+            alert("Время занято!");
+            return;
+        }
+    }
+
+    $('#studentField .typeahead').typeahead(null, {
+        displayKey: function (d) {
+            return d['firstname'] + " " + d['lastname'] + " " + d.group['name']
+        },
+        source: students.ttAdapter()
+    })
+
+    $('#instructorField .typeahead').typeahead(null, {
+        displayKey: function (d) {
+            return d['lastname'] + " " + d['firstname'] + " " + d['patronymic']
+        },
+        source: instructors.ttAdapter()
+    })
+
+    $('#instructorField .typeahead').on('typeahead:selected', function (evt, data) {
+        $('#studentField .typeahead').typeahead('val', "");
+        currentAdmin.i = data;
+        currentAdmin.s = null;
+        dp.events.removeAll();
+        dp.update();
+        getAllAppointments(currentAdmin.i.id);
+    })
+
+    $('#studentField .typeahead').on('typeahead:selected', function (evt, data) {
+        console.log(evt);
+        console.log(data);
+        $('#instructorField .typeahead').typeahead('val', data.instructor["lastname"] + " " + data.instructor["firstname"] + +" " + data.instructor["patronymic"]);
+        currentAdmin.s = data;
+        currentAdmin.i = data.instructor;
+        dp.events.removeAll();
+        dp.update();
+        getAllAppointments(currentAdmin.i.id);
+    })
+
+    $(function () {
+        $('#onCreateForm input:radio').click(function () {
+            $('#onCreateForm input:radio').each(function () {
+                var sw = true;
+                if (this.checked) {
+                    if (this.value === "nolesson") {
+
+                    }
+                }
+            });
+        });
+    });
+})
 
 function operateLesson(lesson, operation) {
     var id;
@@ -86,12 +234,6 @@ function operateLesson(lesson, operation) {
     return id;
 }
 
-dp.onEventClicked = function (args) {
-    deleteInterval(args);
-    dp.events.remove(args.e);
-    dp.update();
-};
-
 function deleteInterval(args) {
     $.ajax({
         url: "/scheduler/lesson/action/delete/" + args.e.data.id,
@@ -107,52 +249,6 @@ function deleteInterval(args) {
     })
 }
 
-dp.onEventMoved = function (args) {
-
-};
-
-dp.onEventResize = function (args) {
-    var sid = (args.e.data.resource.student == null ? -1 : args.e.data.resource.student["id"]);
-    var lesson = new Object ({
-        id: args.e.id(),
-        start: args.newStart,
-        end: args.newEnd,
-        instructor_id: args.e.data.resource.instructor["id"],
-        student_id: sid
-    });
-    var result = operateLesson(lesson, "move");
-    if (result === -1) {
-        alert("Ошибка соединения!");
-        return;
-    }
-    if (result === 0) {
-        args.preventDefault();
-        alert("Время занято!");
-        return;
-    }
-};
-
-dp.onEventMove = function (args) {
-    var sid = (args.e.data.resource.student == null ? -1 : args.e.data.resource.student["id"]);
-    var lesson = new Object ({
-        id: args.e.id(),
-        start: args.newStart,
-        end: args.newEnd,
-        instructor_id: args.e.data.resource.instructor["id"],
-        student_id: sid
-    });
-    var result = operateLesson(lesson, "move");
-    if (result === -1) {
-        alert("Ошибка соединения!");
-        return;
-    }
-    if (result === 0) {
-        args.preventDefault();
-        alert("Время занято!");
-        return;
-    }
-}
-
 function getAllAppointments(instructorId) {
     $.ajax({
         url: "/scheduler/getallschedules/" + instructorId,
@@ -162,7 +258,8 @@ function getAllAppointments(instructorId) {
             $.each(data, function (i, b) {
                 var startMoment = b.startInterval.split('.')[0];
                 var finishMoment = b.finishInterval.split('.')[0];
-                var textHint = (b.student == null ? "" : b.student["firstname"] + " " + b.student["lastname"]);
+                var textHint = (b.student == null ? b.instructor["firstname"] + " " + b.instructor["lastname"] :
+                b.student["firstname"] + " " + b.student["lastname"]);
                 var e = new DayPilot.Event({
                     start: new DayPilot.Date(startMoment),
                     end: new DayPilot.Date(finishMoment),
@@ -182,9 +279,3 @@ function getAllAppointments(instructorId) {
     })
 };
 
-if (currentUser.admin) {
-    getAllAppointments(1);
-} else {
-    getAllAppointments(currentUser.iid);
-}
-dp.update();

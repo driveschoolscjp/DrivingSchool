@@ -34,194 +34,187 @@
 <body>
 
 
-<jsp:include page="header.jsp" />
-<jsp:include page="menu.jsp" />
+<jsp:include page="header.jsp"/>
+<jsp:include page="menu.jsp"/>
 
 <div class="body">
-<div class="container-fluid">
-<div class="row">
-    <div class="col-xs-4 col-xs-offset-1">
+    <div class="container-fluid">
+        <div class="row">
+            <br/>
+            <div class="col-xs-7 blackback">
+                <div class="table-responsive">
+                    <table id="table" class="table">
+                        <thead>
+                        <tr>
+                            <th>Авто</th>
+                            <th>$/час</th>
+                            <th>КПП</th>
+                            <th>л.c.</th>
+                            <th>Инструктор</th>
+                            <th> </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="car" items="${cars}">
+                            <form:form action="/registration?id=${car.id}" method="post">
+                                <tr>
+                                    <td>${car.brand} ${car.model}</td>
+                                    <td>${car.pricePerHour}</td>
+                                    <td>${car.transmission}</td>
+                                    <td>${car.horsePower}</td>
+                                    <td>
+                                       ${car.instructor.firstname} ${car.instructor.lastname}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="/show?id=${car.id}" title="Посмотреть подробности" type="button"
+                                               class="btn btn-primary"><i class="fa fa-search"></i></a>
+                                            <button class="btn btn-primary" type="submit" title="Подать заявку"><i
+                                                    class="fa fa-pencil-square-o"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </form:form>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-        <div class="price-box">
+            <div class="col-xs-4 col-xs-offset-1">
+                <div class="price-box">
 
-            <form:form class="form-horizontal form-pricing" role="form" id="myForm" action="/searchCost" method="post"
-                       modelAttribute="car">
+                    <form:form class="form-horizontal form-pricing" role="form" id="myForm" action="/searchCost"
+                               method="post"
+                               modelAttribute="car">
 
-                <form:hidden path="id"/>
+                    <form:hidden path="id"/>
 
-                <div class="price-slider">
-                    <h4 class="great">Количство занятий</h4>
-                    <div class="col-xs-12">
-                        <div class="row">
-                            <input type="radio"  name="days" id="TenDays" value="TenDays" checked="checked" onClick= "autoSelectDays(this,document.myForm.funds)"  /> 10 дней
-                            <input type="radio"  name="days" id="FifteenDays" value="FifteenDays"   onClick= "autoSelectDays(this,document.myForm.funds)" />15 дней
-                            <input type="radio"  name="days" id="TwentyDays" value="TwentyDays"    onClick= "autoSelectDays(this,document.myForm.funds)" />20 дней
+
+                    <div class="price-slider">
+                        <h4 class="great">Трансмиссия</h4>
+
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <form:radiobutton path="transmission" name="transmission" id="AKPP" value="AUTO"
+                                                  checked="checked" onClick="autoSelect(this,document.myForm.funds)"/>АКПП
+                                <img id="imgInLine2" class="img-responsive"
+                                     src="/images/horse.png"/>
+                                <form:radiobutton path="transmission" name="transmission" id="MKPP" value="MANUAL"
+                                                  onClick="autoSelect(this,document.myForm.funds)"/>МКПП <img
+                                    id="imgInLine"
+                                    class="img-responsive"
+                                    src="/images/horse.png"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-slider">
+                        <h4 class="great">Максимальная мощьность двигателя</h4>
+                    <img id="imgInLine3" class="img-responsive"
+                                          src="/images/kpp.png"/>
+
+                        <div class="col-xs-12">
+                            <div id="slider"></div>
+                        </div>
+                    </div>
+                    <div class="price-slider">
+                        <h4 class="great">Максимальная цена/ час аренды</h4>
+                    <img id="imgInLine4" class="img-responsive"
+                                        src="/images/dollars.png"/>
+
+                        <div class="col-xs-12">
+                            <div id="slider2"></div>
+                            <br>
+                        </div>
+                    </div>
+
+
+                    <div class="price-slider">
+                        <h4 class="great">Стоимость курса</h4>
+
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <label>10 занятий: $</label>
+                                <b id="total-label" style="font-size: 20"></b>
+                            </div>
+
+                            <div class="row">
+                                <label>15 занятий: $</label>
+                                <b id="total-label1" style="font-size: 20"></b>
+                            </div>
+
+                            <div class="row">
+                                <label>20 занятий: $</label>
+                                <b id="total-label2" style="font-size: 20"></b>
+                            </div>
+                            <br/>
+
+                            <div class="col-xs-8 col-xs-offset-2">
+                                <button type="submit" class="btn btn-primary">Подобрать авто</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-
-                <div class="price-slider">
-                    <h4 class="great">Трансмиссия</h4>
-                    <div class="col-xs-12">
-                        <div class="row">
-                            <form:radiobutton path="transmission" name="transmission" id="AKPP" value="AUTO"
-                                              checked="checked" onClick="autoSelect(this,document.myForm.funds)"/>АКПП
-                            <img id="imgInLine2" class="img-responsive"
-                                                                                                                                                                                                     src="/images/horse.png"/>
-                            <form:radiobutton path="transmission" name="transmission" id="MKPP" value="MANUAL"
-                                              onClick="autoSelect(this,document.myForm.funds)"/>МКПП <img id="imgInLine"
-                                                                                                          class="img-responsive"
-                                                                                                          src="/images/horse.png"/>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <form:input path="horsePower" type="hidden" id="horse" class="form-control"/>
                 </div>
 
-                <div class="price-slider">
-                    <h4 class="great">Мощьность двигателя</h4>
-                    <span>150 - 1200 <img id="imgInLine3" class="img-responsive"
-                                          src="/images/kpp.png"/></span>
-                    <div class="col-xs-12">
-                        <div id="slider"></div>
-                    </div>
+                <div class="form-group">
+                    <form:input path="pricePerHour" type="hidden" id="cost" class="form-control"/>
                 </div>
 
-                <div class="price-slider">
-                    <h4 class="great">Цена/ час аренды авто</h4>
-                    <span>1 - 1000 <img id="imgInLine4" class="img-responsive"
-                                          src="/images/dollars.png"/></span>
-                    <div class="col-xs-12">
-                        <div id="slider2"></div>
-                        <br>
-                        <label  class="col-xs-3 control-label col-xs-offset-1"><strong> Стоимость: </strong></label>
-                        &nbsp;
-                        <p class="price lead" id="total-label"></p>
-                        <br>
-                    </div>
-                </div>
-
-                <div class="col-sm-8 col-xs-offset-2">
-                    <button type="submit" class="btn btn-primary btn-block">Подобрать авто</button>
-                </div>
+                </form:form>
+            </div>
 
 
-                    <div class="form-group">
-                        <form:input path="horsePower" type="hidden" id="horse" class="form-control"/>
-                    </div>
-
-                    <div class="form-group">
-                        <form:input path="pricePerHour" type="hidden" id="cost" class="form-control"/>
-                    </div>
-
-            </form:form>
         </div>
 
     </div>
 
-    <div class="container-fluid">
-    <div class = "col-xs-7">
+</div>
 
 
-        <table class="table-fill" id="table">
-            <thead>
-            <tr>
-                <th  class="text-left">&nbsp;Марка&nbsp;</th>
-                <th  class="text-left">&nbsp;Модель&nbsp;</th>
-                <th  class="text-left">&nbsp;Usd/Час&nbsp;</th>
-                <th  class="text-left">&nbsp;КПП&nbsp;</th>
-                <th  class="text-left">&nbsp;Мощьность л.c.&nbsp;</th>
-                <th  class="text-left">&nbsp;Инструктор&nbsp;</th>
-                <th  class="text-left">&nbsp;/&nbsp;</th>
-            </tr>
-            </thead>
-            <tbody class="table-hover">
-            <c:forEach var="car" items="${cars}">
-                <tr>
-                    <td   class="text-left">&nbsp;${car.brand}&nbsp;</td>
-                    <td   class="text-left">&nbsp;${car.model}&nbsp;</td>
-                    <td   class="text-left">&nbsp;${car.pricePerHour}&nbsp;</td>
-                    <td   class="text-left">&nbsp;${car.transmission}&nbsp;</td>
-                    <td   class="text-left">&nbsp;${car.horsePower}&nbsp;</td>
-                    <td   class="text-left">&nbsp;${car.instructor.firstname}&nbsp; ${car.instructor.lastname} &nbsp;</td>
-                    <td   class="text-left">&nbsp;
-                            <div class="btn-group-vertical" role="group">
-                             <a href="/show?id=${car.id}" type="button"
-                               class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
-                                смотреть детали</i> </a>
-                            <a href="#" type="button"
-                               class="btn btn-primary btn-sm"><i class="fa fa-user-plus fa-xs">
-                                подать заявку</i> </a>
-                        </div>
-                        &nbsp;
-                        </td>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
+<div class="row">
+    <div class="col-xs-12">
+        <jsp:include page="footer.jsp"/>
     </div>
 </div>
-</div>
-    </div>
-<jsp:include page="footer.jsp" />
+
+
 <script>
+    $(document).ready(function () {
 
-
-
-
-    $(document).ready(function() {
-
-        function autoSelect(memberType, fundsType)
-        {
-       if(memberType.value=="AKPP")
-            {    fundsType[0].checked=true;
-                  }
-
-            else
-            { fundsType[1].checked=true;
-                 }
-        }
-
-
-        function autoSelectDays(memberType, fundsType)
-        {
-            if(memberType.value=="TenDays")
-            {    fundsType[0].checked=true;
+        function autoSelect(memberType, fundsType) {
+            if (memberType.value == "AKPP") {
+                fundsType[0].checked = true;
             }
 
-            else if (memberType.value=="FifteenDays")
-            { fundsType[1].checked=true;
-            }
-            else  if (memberType.value=="TwentyDays"){
-                fundsType[2].checked=true;
+            else {
+                fundsType[1].checked = true;
             }
         }
-
-
 
 
         $("#slider").slider({
             animate: true,
-            value:0,
+            value: 0,
             min: 150,
             max: 1200,
             step: 1,
 
-            slide: function(event, ui) {
-                update(1,ui.value); //changed
+            slide: function (event, ui) {
+                update(1, ui.value); //changed
             }
         });
 
         $("#slider2").slider({
             animate: true,
-            value:0,
+            value: 0,
             min: 1,
             max: 1000,
             step: 1,
-            slide: function(event, ui) {
-                update(2,ui.value); //changed
+            slide: function (event, ui) {
+                update(2, ui.value); //changed
             }
         });
 
@@ -235,42 +228,35 @@
     });
 
 
-
     //changed. now with parameter
-    function update(slider,val) {
+    function update(slider, val) {
 
 
         //changed. Now, directly take value from ui.value. if not set (initial, will use current value.)
-        var $horse = slider == 1?val:$("#horse").val();
-        var $cost = slider == 2?val:$("#cost").val();
-
-        if(document.getElementById('MKPP').checked && document.getElementById('TenDays').checked ) {
-            $total = (($horse / 100) * $cost * 10 * 2).toFixed(2) + " $";
-        }else if(document.getElementById('AKPP').checked && document.getElementById('TenDays').checked) {
-            $total = (($horse/ 100) * $cost * 10 * 2 * 1.2).toFixed(2) + " $";
-        }
-
-       else if(document.getElementById('MKPP').checked && document.getElementById('FifteenDays').checked ) {
-            $total = (($horse / 100) * $cost * 15 * 2).toFixed(2) + " $";
-        }else if(document.getElementById('AKPP').checked && document.getElementById('FifteenDays').checked) {
-            $total = (($horse/ 100) * $cost * 15 * 2 * 1.2).toFixed(2) + " $";
-        }
-        else if(document.getElementById('MKPP').checked && document.getElementById('TwentyDays').checked ) {
-            $total = (($horse / 100) * $cost * 20 * 2).toFixed(2) + " $";
-        }else if(document.getElementById('AKPP').checked && document.getElementById('TwentyDays').checked) {
-            $total = (($horse/ 100) * $cost * 20 * 2 * 1.2).toFixed(2) + " $";
-        }
+        var $horse = slider == 1 ? val : $("#horse").val();
+        var $cost = slider == 2 ? val : $("#cost").val();
 
 
-        $( "#horse" ).val($horse);
-        $( "#horse-label" ).text($horse);
-        $( "#cost" ).val($cost);
-        $( "#cost-label" ).text($cost);
-        $( "#total" ).val($total);
-        $( "#total-label" ).text($total);
+        $total = ( $cost * 10 * 2).toFixed(2);
+        $total1 = ( $cost * 15 * 2).toFixed(2);
+        $total2 = ($cost * 20 * 2).toFixed(2);
 
-        $('#slider a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+$horse+' <span class="glyphicon glyphicon-chevron-right"></span></label>');
-        $('#slider2 a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+$cost+' <span class="glyphicon glyphicon-chevron-right"></span></label>');
+        $("#horse").val($horse);
+        $("#horse-label").text($horse);
+        $("#cost").val($cost);
+        $("#cost-label").text($cost);
+
+        $("#total").val($total);
+        $("#total-label").text($total);
+
+        $("#total1").val($total1);
+        $("#total-label1").text($total1);
+
+        $("#total2").val($total2);
+        $("#total-label2").text($total2);
+
+        $('#slider a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> ' + $horse + ' <span class="glyphicon glyphicon-chevron-right"></span></label>');
+        $('#slider2 a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> ' + $cost + ' <span class="glyphicon glyphicon-chevron-right"></span></label>');
     }
 
 </script>

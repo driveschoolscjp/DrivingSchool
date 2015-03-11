@@ -35,4 +35,8 @@ public class StudentService {
     public Student findByLogin(String login) {
         return studentRepository.findByLogin(login);
     }
+
+    public List<Student> findAllStudentsLike(String like) {
+        return studentRepository.findByFirstnameLikeOrLastnameLikeAllIgnoreCase("%" + like + "%", "%" + like + "%");
+    }
 }

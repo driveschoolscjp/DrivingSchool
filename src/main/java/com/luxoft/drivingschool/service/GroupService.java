@@ -2,6 +2,7 @@ package com.luxoft.drivingschool.service;
 
 import com.luxoft.drivingschool.model.Group;
 import com.luxoft.drivingschool.repository.GroupRepository;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,10 +20,6 @@ public class GroupService {
         return groupRepository.findOne(id);
     }
 
-    public List<Group> findByName(String name){
-        return groupRepository.findByName(name);
-    }
-
     public List<Group> findAll(){
         return groupRepository.findAll();
     }
@@ -38,5 +35,9 @@ public class GroupService {
 
     public List<Group> findByTeacherId(long id) {
         return groupRepository.findByTeacherId(id);
+    }
+
+    public List<Group> findFutureGroups() {
+        return groupRepository.findByStartDateAfter(new LocalDate());
     }
 }
