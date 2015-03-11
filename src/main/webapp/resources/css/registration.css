@@ -17,7 +17,6 @@
     -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    text-transform:capitalize;
 }
 
 .email {
@@ -32,7 +31,6 @@
     -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    text-transform:capitalize;
 }
 .email-help {
     color: #ffffff;
@@ -66,7 +64,7 @@
     -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    text-transform:capitalize;
+
 }
 
 .patronymic{
@@ -81,7 +79,7 @@
     -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    text-transform:capitalize;
+
 }
 .tel{
      font-size: 21px;
@@ -95,7 +93,7 @@
      -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
      -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
      box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-     text-transform:capitalize;
+ 
  }
 
 .mySelect{
@@ -110,5 +108,5 @@
     -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
     box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    text-transform:capitalize;
+
 }

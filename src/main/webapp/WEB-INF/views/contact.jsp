@@ -43,6 +43,7 @@
 
                 <div class="col-xs-10 zeropadding">
                     <div id="map_canvas"></div>
+                    <br/>
                 </div>
 
 
