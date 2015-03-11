@@ -12,61 +12,99 @@
 <html>
 <head>
     <title>Schedule</title>
-    <link href="/css/my.css" rel="stylesheet">
     <script src="/js/jquery-1.11.2.min.js"></script>
     <script src="/js/daypilot-calendar.src.js"></script>
     <script src="/js/daypilot-navigator.src.js"></script>
     <script src="/js/daypilot-common.src.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/typeahead.bundle.js"></script>
 
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/default.css" rel="stylesheet">
     <link href="/css/font-awesome.css" rel="stylesheet">
-    <script src="/js/bootstrap.js"></script>
+    <link href="/css/schedule.css" rel="stylesheet">
+    <link href="/css/my.css" rel="stylesheet">
+
 
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
 
-<style type="text/css">
-    .container11 {
-        font-family: Verdana, Arial, Helvetica, sans-serif;
-        color:#c7ddef;
-        background-color: #66afe9;
-    }
-</style>
 <div class="row">
     <div class="col-md-1">
+
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
         <div id="nav"></div>
+        <br>
         <script>
             var currentUser = {
-                admin: false,
-                id: "${user_id}",
-                iid: "${instr_id}",
-                fullName: "${user_name}"
+                isadmin: false,
+                s: {
+                    "id": "${student.id}",
+                    "firstname": "${student.firstname}",
+                    "lastname": "${student.lastname}",
+                    "group": {"name": "${student.group.name}"},
+                    "instructor": {
+                        "id": "${student.instructor.id}",
+                        "firstname": "${student.instructor.firstname}",
+                        "lastname": "${student.instructor.lastname}",
+                        "patronymic": "${student.instructor.patronymic}"
+                    }
+                }
             }
         </script>
-        <sec:authorize ifAnyGranted="ADMIN">
+        <sec:authorize ifAnyGranted="ROLE_ADMIN">
             <script>
-                currentUser.admin=true;
+                currentUser.isadmin = true;
             </script>
-        <div class="container11 col-md-2">
-            <p>Создавать:</p>
-            <form role="form" id="onCreateForm">
-                <div class="radio">
-                    <label><input type="radio" name="interval_type" value = "lesson" checked>Новое занятие</label>
+            <div class="sheduler_panel">
+                <div>
+                    <div class="row">
+                        <div class=" col-xs-offset-1">
+                            <div class="list-group">
+                                <h4><span class="label label-primary"> Поиск студента:</span></h4>
+                            </div>
+                            <div class="list-group">
+                                <div id="studentField" list-group-item>
+                                    <input class="typeahead" type="text" placeholder="Students">
+                                </div>
+                            </div>
+                            <div class="list-group">
+                                <h4><span class="label label-primary"> Поиск инструктора:</span></h4>
+                            </div>
+                            <div class="list-group">
+                                <div id="instructorField" list-group-item>
+                                    <input class="typeahead" type="text" placeholder="Instructors">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="list-group">
+                                <form id="onCreateForm" name="onCreateForm" style="color: white">
+                                    <p><b>Создавать:</b></p>
+
+                                    <p><input type="radio" name="interval_type" value="nolesson"> Неактивное время<Br>
+                                    </p>
+
+                                    <p><input type="radio" name="interval_type" value="lesson" checked="checked"> Урок
+                                        вождения<Br></p>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="radio">
-                    <label><input type="radio" name="interval_type" value = "nolesson">Неактивный интервал</label>
-                </div>
-            </form>
-        </div>
+            </div>
         </sec:authorize>
     </div>
-    <div class="col-md-8">
-            <div id="dp"></div>
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-7">
+        <div id="dp">
+
+        </div>
 
     </div>
     <div class="col-md-1">
@@ -74,7 +112,7 @@
     </div>
 
 </div>
-<script src="/js/schedule.js"></script>
 
+<script src="/js/schedule.js"></script>
 </body>
 </html>

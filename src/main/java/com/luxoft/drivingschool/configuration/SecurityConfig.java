@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAuthority(UserRoleEnum.ROLE_ADMIN.name())
                 .antMatchers("/student/**").hasAuthority(UserRoleEnum.ROLE_STUDENT.name())
             .antMatchers("/scheduler/**").authenticated()
+            .antMatchers("/schedule/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
             .formLogin()
@@ -33,7 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .failureUrl("/")
                 .and()
             .logout()
-            .logoutSuccessUrl("/");
+            .logoutSuccessUrl("/")
+
+            .and().csrf().disable();      // temporarily
     }
 
     // Устанавливаем, где брать пользователей

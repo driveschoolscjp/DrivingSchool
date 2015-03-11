@@ -6,8 +6,8 @@ import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.enums.Transmission;
 import com.luxoft.drivingschool.model.enums.UserRoleEnum;
 import com.luxoft.drivingschool.service.CarService;
-import com.luxoft.drivingschool.service.RegistrationService;
 import com.luxoft.drivingschool.service.GroupService;
+import com.luxoft.drivingschool.service.RegistrationService;
 import com.luxoft.drivingschool.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -66,9 +66,7 @@ public class HomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
-            model.addAttribute("user_id", student.getId());
-            model.addAttribute("instr_id", student.getInstructor().getId());
-            model.addAttribute("user_name", student.getFirstname() + " " + student.getLastname());
+            model.addAttribute("student", student);
         }
         return SCHEDULE_HOME_PATH;
     }
@@ -84,14 +82,14 @@ public class HomeController {
         return CARS_HOME_PATH    ;
     }
 
-    // переход на страницу расчета стоимости обучения
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     @RequestMapping(value = COST_MAPPING_PATH, method = RequestMethod.GET)
     public String cost(Model model) {
         model.addAttribute(CAR_ATTRIBUTE, new Car());
         return COST_HOME_PATH;
     }
 
-    //выбор всех машин из заданых параметров, при подсчете стоимости обучения
+    //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     @RequestMapping(value = SEARCH_COST_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute(CAR_ATTRIBUTE) Car car, Model model) {
         Set<Car> carsTotalList = new HashSet<>();
@@ -128,7 +126,7 @@ public class HomeController {
 
 
 
-    // Показ одного инструктора и его авто, отдельно от всех инструкторов
+    // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     @RequestMapping(value = SHOW_MAPPING_PATH, method = RequestMethod.GET)
     public String show(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
 
@@ -153,7 +151,7 @@ public class HomeController {
     }
 
 
-    // переход на страницу "запись в автошколу"
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
     @RequestMapping(value = REGISTRATION_MAPPING_PATH, method = RequestMethod.GET)
     public String registration(Model model) {
 
@@ -163,17 +161,17 @@ public class HomeController {
     }
 
 
-    // Сохранение "запись в автошколу" и переход на home page
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ home page
     @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute(REGISTRATION_HOME_PATH) Registration registration) {
 
         registration = registrationService.save(registration);
-        return "home"; // На страничку просмотра
+        return "home"; // пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 
 
 
-    // переход на страницу "запись в автошколу" с звыбранной уже машиной
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     @RequestMapping(value =  REGISTRATION_MAPPING_PATH, method = RequestMethod.POST)
     public String defaultCarRegistration(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
 

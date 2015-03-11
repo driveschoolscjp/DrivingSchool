@@ -2591,9 +2591,17 @@ if (typeof DayPilot.Global === 'undefined') {
             var index = DayPilot.indexOf(calendar.events.list, e.data);
             calendar.events.list.splice(index, 1);
             calendar.update();
-            calendar._angular.notify();
-        };        
-        
+            //calendar._angular.notify();
+        };
+
+        this.events.removeAll = function() {
+            if(typeof calendar.events.list != "undefined") {
+                calendar.events.list.splice(0, calendar.events.list.length);
+                calendar.update();
+                //calendar._angular.notify();
+            }
+        };
+
         this.update = function() {
             /*
             this.tableCreated = false;
@@ -3029,7 +3037,7 @@ if (typeof DayPilot.Global === 'undefined') {
     }
 
     (function registerAngularModule() {
-
+        return;
         var app = DayPilot.am();
 
         if (!app) {
