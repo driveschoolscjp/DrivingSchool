@@ -30,12 +30,12 @@
 <body>
 
 <jsp:include page="header.jsp"/>
+<jsp:include page="menu.jsp"/>
 
-<div class="row">
-    <div class="col-md-1">
+<div class="body container-fluid">
+<div class="container-fluid">
+    <div class="col-xs-3">
 
-    </div>
-    <div class="col-md-1">
         <div id="nav"></div>
         <br>
         <script>
@@ -45,6 +45,7 @@
                     "id": "${student.id}",
                     "firstname": "${student.firstname}",
                     "lastname": "${student.lastname}",
+                    "tel": "${student.tel}",
                     "group": {"name": "${student.group.name}"},
                     "instructor": {
                         "id": "${student.instructor.id}",
@@ -59,59 +60,50 @@
             <script>
                 currentUser.isadmin = true;
             </script>
-            <div class="sheduler_panel">
-                <div>
-                    <div class="row">
-                        <div class=" col-xs-offset-1">
-                            <div class="list-group">
-                                <h4><span class="label label-primary"> Поиск студента:</span></h4>
-                            </div>
-                            <div class="list-group">
-                                <div id="studentField" list-group-item>
-                                    <input class="typeahead" type="text" placeholder="Students">
-                                </div>
-                            </div>
-                            <div class="list-group">
-                                <h4><span class="label label-primary"> Поиск инструктора:</span></h4>
-                            </div>
-                            <div class="list-group">
-                                <div id="instructorField" list-group-item>
-                                    <input class="typeahead" type="text" placeholder="Instructors">
-                                </div>
-                            </div>
-                            <br>
-                            <div class="list-group">
-                                <form id="onCreateForm" name="onCreateForm" style="color: white">
-                                    <p><b>Создавать:</b></p>
 
-                                    <p><input type="radio" name="interval_type" value="nolesson"> Неактивное время<Br>
-                                    </p>
 
-                                    <p><input type="radio" name="interval_type" value="lesson" checked="checked"> Урок
-                                        вождения<Br></p>
-                                </form>
-                            </div>
-                        </div>
-
+                    <div class="list-group">
+                        <h4><span class="label label-primary"> Студент:</span></h4>
                     </div>
-                </div>
+                    <div class="list-group">
+                        <div id="studentField">
+                            <input class="typeahead form-control" type="text" placeholder="Students">
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <h4><span class="label label-primary"> Инструктор:</span></h4>
+                    </div>
+                    <div class="list-group">
+                        <div id="instructorField">
+                            <input class="typeahead form-control" type="text" placeholder="Instructors">
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="list-group">
+                        <form id="onCreateForm" name="onCreateForm" style="color: white">
+                            <p><b>Создавать:</b></p>
+
+                            <p><input type="radio" name="interval_type" value="nolesson"> Нерабочее время<Br>
+                            </p>
+
+                            <p><input type="radio" name="interval_type" value="lesson" checked="checked"> Занятие<Br></p>
+                        </form>
+
+
+
             </div>
         </sec:authorize>
     </div>
-    <div class="col-md-2">
-
-    </div>
-    <div class="col-md-7">
+    <div class="col-xs-9">
         <div id="dp">
 
         </div>
-
     </div>
-    <div class="col-md-1">
-
-    </div>
+</div>
 
 </div>
+<jsp:include page="footer.jsp"/></div>
 
 <script src="/js/schedule.js"></script>
 </body>
