@@ -83,7 +83,7 @@
                                                                 </a>
                                                             </div>
                                                         </c:if>
-                                                        <c:if test="${entry.value<passAnswers && entry.value>0}">
+                                                        <c:if test="${entry.value<passAnswers && (entry.value>0 || entry.value<0)}">
                                                             <div class="col-xs-12">
                                                                 <a href="/testing/question?idTicket=${entry.key.id}" type="button"
                                                                    class="btn btn-primary btn-success"

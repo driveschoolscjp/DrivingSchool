@@ -31,7 +31,7 @@ public class ResultService {
         return resultRepository.countCorrect(studentId,ticketId);
     }
 
-//    public List<Result> findByStudentIdAndTicketId(long studentId) {
-//        return resultRepository.findByStudentId(studentId);
-//    }
+    public Integer countIncorrect(long studentId, Long ticketId) {
+        return resultRepository.countIncorrect(studentId, ticketId);
+    }
 }

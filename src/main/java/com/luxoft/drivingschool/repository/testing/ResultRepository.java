@@ -34,4 +34,17 @@ public interface ResultRepository  extends JpaRepository<Result, Long> {
             "  WHERE questions.ticket_id = ?2 and results.student_id= ?1" +
             ")", nativeQuery = true)
     int countCorrect(long studentId, long ticketId);
+
+    @Query(value = "SELECT count(answers.correct) from answers" +
+            "  join results on answers.id = results.answer_id" +
+            "  join questions on questions.id = answers.question_id" +
+            " WHERE questionS.ticket_id = ?2 and results.student_id= ?1 and answers.correct = false and results.dateof = (" +
+            "  select MAX(results.dateof) from results" +
+            "    join answers on answers.id = results.answer_id" +
+            "    join questions on questions.id = answers.question_id" +
+            "  WHERE questions.ticket_id = ?2 and results.student_id= ?1" +
+            ")", nativeQuery = true)
+    int countIncorrect(long studentId, long ticketId);
+
+
 }

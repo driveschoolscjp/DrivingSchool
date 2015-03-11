@@ -88,7 +88,12 @@ public class UserExamController {
         Exam exam = examService.findOne(idExam);
         List<Ticket>tickets = ticketService.findByExamId(idExam);
         for(Ticket ticket:tickets){
-            resMap.put(ticket, resultService.countCorrect(idStudent, ticket.getId()));
+            int correctAnswers = resultService.countCorrect(idStudent, ticket.getId());
+            if(correctAnswers>0) {
+                resMap.put(ticket, correctAnswers);
+            } else {
+                resMap.put(ticket, resultService.countIncorrect(idStudent, ticket.getId())*-1);
+            }
         }
         model.addAttribute("resMap", resMap);
         model.addAttribute("passAnswers", exam.getQuestionPerTicketQuantity()-3);
