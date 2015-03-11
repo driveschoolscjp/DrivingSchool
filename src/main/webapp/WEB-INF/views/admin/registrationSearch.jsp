@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-xs-11 whiteback">
 
-                <h3 class="text-center">Просмот заявок</h3>
+                <h3 class="text-center">Просмотр заявок</h3>
                 <hr>
                 <%--три верхние кнопки--%>
                 <div class="row">
