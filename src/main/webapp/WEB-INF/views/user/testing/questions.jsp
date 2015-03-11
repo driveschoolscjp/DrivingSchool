@@ -43,7 +43,7 @@
                 <table class="table" id="table">
                     <thead>
                     <tr>
-                        <th>Экзамены</th>
+                        <th><Билет ${ticket.number}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -70,39 +70,22 @@
                                 <div class="col-xs-12">
                                     <table class="table">
                                         <tr>
+                                            <c:forEach items="${tickets}" var="ticket">
+                                            <div class="row">
+                                            <div class="form-group col-xs-1">
 
-                                            <c:forEach var="entry" items="${resMap}">
-                                                <div class="row">
-                                                    <td>
-                                                        <c:if test="${entry.value>=passAnswers}">
-                                                            <div class="col-xs-12">
-                                                                <a href="/testing/question?idTicket=${entry.key.id}" type="button"
-                                                                   class="btn btn-primary btn-success"
-                                                                   style="background-color: darkgreen">
-                                                                        ${entry.key.number}
-                                                                </a>
-                                                            </div>
-                                                        </c:if>
-                                                        <c:if test="${entry.value<passAnswers && entry.value>0}">
-                                                            <div class="col-xs-12">
-                                                                <a href="/testing/question?idTicket=${entry.key.id}" type="button"
-                                                                   class="btn btn-primary btn-success"
-                                                                   style="background-color: #ac2925">
-                                                                        ${entry.key.number}
-                                                                </a>
-                                                            </div>
-                                                        </c:if>
-                                                        <c:if test="${entry.value==0}">
-                                                            <div class="col-xs-12">
-                                                                <a href="/testing/question?idTicket=${entry.key.id}" type="button"
-                                                                   class="btn btn-primary btn-success"
-                                                                   style="background-color: #000000">
-                                                                        ${entry.key.number}
-                                                                </a>
-                                                            </div>
-                                                        </c:if>
-                                                    </td>
+                                                <a href="/testing/question?idTicket=${ticket.id}" type="button"
+                                                   class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-pencil fa-xs">${ticket.number}</i>
+                                                </a>
+                                            </div>
+                                                <c:if test="${ticket.number%10==0}">
                                                 </div>
+                                        </tr>
+                                        <tr>
+                                            <div class="row">
+                                                </c:if>
+                                            </div>
                                             </c:forEach>
                                         </tr>
                                     </table>
