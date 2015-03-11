@@ -86,7 +86,7 @@
                         <div class="list-group">
                             <a class="list-group-item" href="#"><i class="fa fa-calendar-o"></i> Расписание группы</a>
                             <a class="list-group-item" href="#"><i class="fa fa-users"></i> Новости группы</a>
-                            <a class="list-group-item" href="#"><i class="fa fa-history"></i> История тестов</a>
+                            <a class="list-group-item" href="/testing/search?idExam=1"><i class="fa fa-history"></i> Экзамен ПДД</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий по
                                 вождению</a>
                         </div>

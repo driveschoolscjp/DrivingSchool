@@ -26,7 +26,8 @@
 </head>
 <body>
 
-<jsp:include page="../../header.jsp"/>
+<jsp:include page="/WEB-INF/views/header.jsp"/>
+<jsp:include page="/WEB-INF/views/menu.jsp"/>
 
 
 <div class="body">
@@ -47,7 +48,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <form action="/testing/start" method="post" modelAttribute="typeMode">
+                    <form action="/testing/start" method="post">
                         <tr>
                             <c:forEach var="exam" items="${exams}">
                                 <div class="row">
@@ -66,7 +67,6 @@
                     <label>Билеты</label>
                     <tr>
                         <td>
-                            <form action="/testing/question" method="get">
                                 <div class="col-xs-12">
                                     <table class="table">
                                         <tr>
@@ -79,7 +79,7 @@
                                                                 <a href="/testing/question?idTicket=${entry.key.id}" type="button"
                                                                    class="btn btn-primary btn-success"
                                                                    style="background-color: darkgreen">
-                                                                        ${entry.key.number}
+                                                                        Билет ${entry.key.number}
                                                                 </a>
                                                             </div>
                                                         </c:if>
@@ -88,7 +88,7 @@
                                                                 <a href="/testing/question?idTicket=${entry.key.id}" type="button"
                                                                    class="btn btn-primary btn-success"
                                                                    style="background-color: #ac2925">
-                                                                        ${entry.key.number}
+                                                                    Билет ${entry.key.number}
                                                                 </a>
                                                             </div>
                                                         </c:if>
@@ -97,7 +97,7 @@
                                                                 <a href="/testing/question?idTicket=${entry.key.id}" type="button"
                                                                    class="btn btn-primary btn-success"
                                                                    style="background-color: #000000">
-                                                                        ${entry.key.number}
+                                                                    Билет ${entry.key.number}
                                                                 </a>
                                                             </div>
                                                         </c:if>
@@ -107,7 +107,6 @@
                                         </tr>
                                     </table>
                                 </div>
-                            </form>
                         </td>
                     </tr>
                     </tbody>

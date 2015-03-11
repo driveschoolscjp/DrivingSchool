@@ -26,7 +26,8 @@
 </head>
 <body>
 
-<jsp:include page="../../header.jsp"/>
+<jsp:include page="/WEB-INF/views/header.jsp"/>
+<jsp:include page="/WEB-INF/views/menu.jsp"/>
 
 
 <div class="body">
@@ -66,7 +67,6 @@
                     <label>Билеты</label>
                     <tr>
                         <td>
-                            <form action="/testing/question" method="get">
                                 <div class="col-xs-12">
                                     <table class="table">
                                         <tr>
@@ -90,7 +90,6 @@
                                         </tr>
                                     </table>
                                 </div>
-                            </form>
                         </td>
                     </tr>
                     </tbody>

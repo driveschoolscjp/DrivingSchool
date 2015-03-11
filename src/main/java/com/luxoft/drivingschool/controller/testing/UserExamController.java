@@ -73,7 +73,7 @@ public class UserExamController {
 
     //переход на форму выбора режима
     @RequestMapping(value = SEARCH_EXAM_MAPPING_PATH, method = RequestMethod.GET)
-    public String searchMode(@RequestParam(ID_EXAM) long idExam, Model model) {
+    public String searchMode(@RequestParam(ID_EXAM) long idExam, Model model, HttpSession session) {
 
         long idStudent = 0;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -82,6 +82,7 @@ public class UserExamController {
             idStudent = student.getId();
         }
 
+        session.setAttribute("idQuestion", -1);
 //----------------------------------------------------------------------------------
         Map<Ticket, Integer> resMap = new TreeMap<>();
         Exam exam = examService.findOne(idExam);
@@ -102,11 +103,15 @@ public class UserExamController {
     //Показ вопроса
     @RequestMapping(value = QUESTION_PATH, method = RequestMethod.GET)
     public String showQuestion(@RequestParam(ID_TICKET) long idTicket, Model model, HttpSession session){
+        Object iT = session.getAttribute("idTicket");
+        if(iT==null){
+            session.setAttribute("idTicket", idTicket);
+        }
         Object iQ = session.getAttribute("idQuestion");
         long idQuestion;
-        if(iQ==null){
+        if(iQ==null || iQ==-1){
             idQuestion = questionService.findByTicketIdAndNumber(idTicket, 1).getId();
-            session.setAttribute("idQuestion", 1);
+            session.setAttribute("idQuestion", idQuestion);
         } else {
             idQuestion = Long.parseLong(iQ.toString());
         }
@@ -142,7 +147,6 @@ public class UserExamController {
             Question question = answer.getQuestion();
             Exam exam = question.getTicket().getExam();
             if(question.getNumber()>= exam.getQuestionPerTicketQuantity()){
-                session.setAttribute("idQuestion", -1);
                 return REDIRECT_SHOW_RESULTS+idTicket;
             }
             long idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
@@ -155,23 +159,23 @@ public class UserExamController {
     //Показ правильного ответа
     @RequestMapping(value = TRUE_PATH, method = RequestMethod.GET)
     public String showAnswer(@RequestParam(ID_ANSWER) long idAnswer, Model model, HttpSession session){
-        long idQuestion = Long.parseLong(session.getAttribute("idQuestion").toString());
-        Question question = questionService.findOne(idQuestion);
-        List<Answer> answers = answerService.findByQuestionId(idQuestion);
+
+        Answer answer = answerService.findOne(idAnswer);
+        Question question = answer.getQuestion();
+        List<Answer> answers = answerService.findByQuestionId(question.getId());
         model.addAttribute("question", question);
         model.addAttribute("answers", answers);
         model.addAttribute("showAnswer", true);
         model.addAttribute("idWrongAnswer", idAnswer);
-
-        Answer answer = answerService.findOne(idAnswer);
         long idTicket = answer.getQuestion().getTicket().getId();
         int number = answer.getQuestion().getNumber();
         Exam exam = question.getTicket().getExam();
+        long idQuestion=0;
         if(question.getNumber()>= exam.getQuestionPerTicketQuantity()){
-            session.setAttribute("idQuestion", -1);
             return REDIRECT_SHOW_RESULTS+idTicket;
+        } else if(question.getNumber()<exam.getQuestionPerTicketQuantity()) {
+            idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
         }
-        idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
         session.setAttribute("idQuestion", idQuestion);
 
 
@@ -180,7 +184,7 @@ public class UserExamController {
 
     //Показ результата
     @RequestMapping(value = RESULTS_PATH, method = RequestMethod.GET)
-    public String showResults(@RequestParam(ID_TICKET) long idTicket, Model model, HttpSession session){
+    public String showResults(@RequestParam(ID_TICKET) long idTicket, Model model){
         long idStudent = 0;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
@@ -188,18 +192,20 @@ public class UserExamController {
             idStudent = student.getId();
         }
         List<Result> results = resultService.findByStudentId(idStudent, idTicket);
-//        List<Result> results = resultService.findByStudentIdAndTicketId(1L, idTicket);
-        Map<Integer, Integer> resMap = new TreeMap<>();
+        Map<Question, Answer> resMap = new TreeMap<>();
         Ticket ticket = ticketService.findOne(idTicket);
         Exam exam = ticket.getExam();
-        for(int i=1;i<=exam.getQuestionPerTicketQuantity();++i){
-            resMap.put(i, 0);
+        List<Question> questions = questionService.findByTicketId(idTicket);
+        for(Question question:questions){
+            resMap.put(question, null);
         }
         for(Result res:results){
-            resMap.put(res.getAnswer().getQuestion().getNumber(), (res.getAnswer().getCorrect()?1:-1));
+            resMap.put(res.getAnswer().getQuestion(), (res.getAnswer()));
         }
+
         model.addAttribute("resMap", resMap);
         model.addAttribute("ticket", ticket);
+
         return RESULTS_VIEW;
     }
 }

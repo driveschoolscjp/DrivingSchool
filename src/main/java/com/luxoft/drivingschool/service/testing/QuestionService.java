@@ -29,10 +29,6 @@ public class QuestionService {
         return questionRepository.findOne(id);
     }
 
-    public List<Question> findAllByTicket() {
-        return questionRepository.findAll();
-    }
-
     public List<Question> findByTicketId(Long ticketId) {
         return questionRepository.findByTicketId(ticketId);
     }

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "questions")
-public class Question extends AbstractPersistable<Long> {
+public class Question extends AbstractPersistable<Long> implements Comparable<Question> {
 
     private int number;
     private String question;
@@ -69,5 +69,10 @@ public class Question extends AbstractPersistable<Long> {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public int compareTo(Question o) {
+        return this.number-((Question)o).number;
     }
 }

@@ -26,7 +26,8 @@
 </head>
 <body>
 
-<jsp:include page="../../header.jsp"/>
+<jsp:include page="/WEB-INF/views/header.jsp"/>
+<jsp:include page="/WEB-INF/views/menu.jsp"/>
 
 
 <div class="body">
@@ -47,33 +48,39 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <form action="/testing/start" method="post" modelAttribute="typeMode">
+                    <form action="/testing/start" method="post">
                         <tr>
                             <c:forEach var="entry" items="${resMap}">
                                 <div class="row">
                                     <td>
-                                            <c:if test="${entry.value==1}">
-                                                <div class="col-xs-12">
-                                                    <a href="#" type="button"
-                                                       class="btn btn-primary btn-success"
-                                                       style="background-color: darkgreen">
-                                                            ${entry.key}
-                                                    </a>
-                                                </div>
-                                            </c:if>
-                                            <c:if test="${entry.value==-1}">
-                                                <div class="col-xs-12">
-                                                    <a href="#" type="button"
-                                                       class="btn btn-primary btn-success" style="background-color: #ac2925">
-                                                            ${entry.key}
-                                                    </a>
-                                                </div>
-                                            </c:if>
-                                        <c:if test="${entry.value==-0}">
+                                        <c:if test="${entry.value != null}">
+                                            <c:if test="${entry.value.correct}">
                                             <div class="col-xs-12">
-                                                <a href="#" type="button"
-                                                   class="btn btn-primary btn-success" style="background-color: #ffffff">
-                                                        ${entry.key}
+                                                <a href="/testing/true?idAnswer=${entry.value.id}" type="button"
+                                                   class="btn btn-primary btn-success"
+                                                   style="background-color: darkgreen">
+                                                    Вопрос ${entry.key.number}
+                                                </a>
+                                            </div>
+                                            </c:if>
+                                        </c:if>
+                                        <c:if test="${entry.value != null}">
+                                        <c:if test="${!entry.value.correct}">
+                                            <div class="col-xs-12">
+                                                <a href="/testing/true?idAnswer=${entry.value.id}" type="button"
+                                                   class="btn btn-primary btn-success"
+                                                   style="background-color: #ac2925">
+                                                    Вопрос ${entry.key.number}
+                                                </a>
+                                            </div>
+                                        </c:if>
+                                        </c:if>
+                                        <c:if test="${entry.value==null}">
+                                            <div class="col-xs-12">
+                                                <a href="/testing/true?idAnswer=${entry.value.id}" type="button"
+                                                   class="btn btn-primary btn-success"
+                                                   style="background-color: #ffffff">
+                                                    Вопрос ${entry.key.number}
                                                 </a>
                                             </div>
                                         </c:if>

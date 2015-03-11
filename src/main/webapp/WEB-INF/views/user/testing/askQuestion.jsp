@@ -25,7 +25,8 @@
 </head>
 
 <body>
-<jsp:include page="../../header.jsp"/>
+<jsp:include page="/WEB-INF/views/header.jsp"/>
+<jsp:include page="/WEB-INF/views/menu.jsp"/>
 
 <div class="body">
     <div class="container-fluid">
