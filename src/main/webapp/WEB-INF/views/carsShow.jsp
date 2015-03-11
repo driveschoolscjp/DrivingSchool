@@ -76,8 +76,8 @@
                 <br/>
                 <hr/>
             </div>
-        <div><h1>Еще машины и инструктора</h1></div>
 
+        <div><h1>Еще машины и инструктора</h1></div>
 
             <c:forEach var="car" items="${cars}">
                 <hr/>
