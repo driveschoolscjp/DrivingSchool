@@ -55,7 +55,7 @@
                         <div class="caption">
                             <form:form action="/registration?id=${car.id}" method="post">
                                 <input type="hidden" value="${car.id}"/>
-                                <h1>Выберай ${car.brand} ${car.model}!</h1>
+                                <h1>Хочу катать на ${car.brand} ${car.model}!</h1>
 
                                 <button class="btn btn-primary" type="submit"><i
                                         class="fa fa-user-plus fa-xs"></i><b> Подать заявку на обучение</b></button>

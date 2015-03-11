@@ -16,24 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class AdminStudentController {
 
-    private static final String VIEW_SEARCH_PATH = "/admin/student/search";
-    private static final String VIEW_SHOW_PATH = "admin/student/show";
-    private static final String VIEW_EDIT_PATH = "admin/student/edit";
-    private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:show?id=";
-
-    private static final String SEARCH_MAPPING_PATH = "/search";
-    private static final String ADD_MAPPING_PATH = "/add";
-    private static final String SAVE_MAPPING_PATH = "/save";
-    private static final String SHOW_MAPPING_PATH = "/show";
-    private static final String EDIT_MAPPING_PATH = "/edit";
-
-    private static final String STUDENT_ATTRIBUTE = "student";
-    private static final String STUDENTS_ATTRIBUTE = "students";
-    private static final String INSTRUCTORS_ATTRIBUTE = "instructors";
-    private static final String GROUPS_ATTRIBUTE = "groups";
-
-    private static final String ID_REQUEST_PARAM = "id";
-
     @Autowired
     StudentService studentService;
 
@@ -44,58 +26,69 @@ public class AdminStudentController {
     GroupService groupService;
 
     // Поиск
-    @RequestMapping(value = SEARCH_MAPPING_PATH, method = RequestMethod.GET)
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String showAllStudents(Model model) {
 
-        model.addAttribute(STUDENTS_ATTRIBUTE, studentService.findAll());
-        model.addAttribute(GROUPS_ATTRIBUTE, groupService.findAll());
-        return VIEW_SEARCH_PATH;
+        model.addAttribute("students", studentService.findAll());
+        model.addAttribute("groups", groupService.findAll());
+        return "/admin/student/search";
     }
 
     // Поиск по параметрам
-    @RequestMapping(value = SEARCH_MAPPING_PATH, method = RequestMethod.POST)
-    public String findStudents(@RequestParam(ID_REQUEST_PARAM) long groupId, Model model) {
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public String findStudents(@RequestParam("id") long groupId, Model model) {
 
-        model.addAttribute(STUDENTS_ATTRIBUTE, studentService.findByGroupId(groupId));
-        model.addAttribute(GROUPS_ATTRIBUTE, groupService.findAll());
-        return VIEW_SEARCH_PATH;
+        model.addAttribute("students", studentService.findByGroupId(groupId));
+        model.addAttribute("groups", groupService.findAll());
+        return "/admin/student/search";
     }
 
     // Переход на форму сохранения
-    @RequestMapping(value = ADD_MAPPING_PATH, method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showRegistration(Model model) {
 
-        model.addAttribute(STUDENT_ATTRIBUTE, new Student());
-        model.addAttribute(GROUPS_ATTRIBUTE, groupService.findAll());
-        model.addAttribute(INSTRUCTORS_ATTRIBUTE, teacherService.findByCarIsNotNull());
+        model.addAttribute("student", new Student());
+        model.addAttribute("groups", groupService.findAll());
+        model.addAttribute("instructors", teacherService.findByCarIsNotNull());
 
-        return VIEW_EDIT_PATH;
+        return "admin/student/edit";
     }
 
     // Сохранение и переход на форму просмотра
-    @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute(STUDENT_ATTRIBUTE) Student student) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String processRegistration(@ModelAttribute("student") Student student) {
 
         student = studentService.save(student);
-        return REDIRECT_SHOW_TO_ID_PATH + student.getId(); // На страничку просмотра
+        return "redirect:show?id=" + student.getId(); // На страничку просмотра
     }
 
     // Показ одного студента
-    @RequestMapping(value = SHOW_MAPPING_PATH, method = RequestMethod.GET)
-    public String show(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
+    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    public String show(@RequestParam("id") long id, Model model) {
 
-        model.addAttribute(STUDENT_ATTRIBUTE, studentService.findOne(id));
-        return VIEW_SHOW_PATH;
+        model.addAttribute("student", studentService.findOne(id));
+        return "admin/student/show";
     }
 
     // Редактирование одного студента
-    @RequestMapping(value = EDIT_MAPPING_PATH, method = RequestMethod.GET)
-    public String edit(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String edit(@RequestParam("id") long id, Model model) {
 
-        model.addAttribute(STUDENT_ATTRIBUTE, studentService.findOne(id));
-        model.addAttribute(GROUPS_ATTRIBUTE, groupService.findAll());
-        model.addAttribute(INSTRUCTORS_ATTRIBUTE, teacherService.findByCarIsNotNull());
+        model.addAttribute("student", studentService.findOne(id));
+        model.addAttribute("groups", groupService.findAll());
+        model.addAttribute("instructors", teacherService.findByCarIsNotNull());
 
-        return VIEW_EDIT_PATH;
+        return "admin/student/edit";
+    }
+
+    // Переход на форму сохранения
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String showFilledRegistration(@RequestParam("registrationId") long id, Model model) {
+
+        //TODO перетянуть данные из registration в student и передать его на страницу
+        Student student = new Student();
+        model.addAttribute(student);
+
+        return "admin/student/edit";
     }
 }

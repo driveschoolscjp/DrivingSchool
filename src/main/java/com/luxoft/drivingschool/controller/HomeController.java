@@ -84,14 +84,14 @@ public class HomeController {
         return CARS_HOME_PATH    ;
     }
 
-    // переход на страницу расчета стоимости обучения
+    // РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЂР°СЃС‡РµС‚Р° СЃС‚РѕРёРјРѕСЃС‚Рё РѕР±СѓС‡РµРЅРёСЏ
     @RequestMapping(value = COST_MAPPING_PATH, method = RequestMethod.GET)
     public String cost(Model model) {
         model.addAttribute(CAR_ATTRIBUTE, new Car());
         return COST_HOME_PATH;
     }
 
-    //выбор всех машин из заданых параметров, при подсчете стоимости обучения
+    //РІС‹Р±РѕСЂ РІСЃРµС… РјР°С€РёРЅ РёР· Р·Р°РґР°РЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ, РїСЂРё РїРѕРґСЃС‡РµС‚Рµ СЃС‚РѕРёРјРѕСЃС‚Рё РѕР±СѓС‡РµРЅРёСЏ
     @RequestMapping(value = SEARCH_COST_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute(CAR_ATTRIBUTE) Car car, Model model) {
         Set<Car> carsTotalList = new HashSet<>();
@@ -128,7 +128,7 @@ public class HomeController {
 
 
 
-    // Показ одного инструктора и его авто, отдельно от всех инструкторов
+    // РџРѕРєР°Р· РѕРґРЅРѕРіРѕ РёРЅСЃС‚СЂСѓРєС‚РѕСЂР° Рё РµРіРѕ Р°РІС‚Рѕ, РѕС‚РґРµР»СЊРЅРѕ РѕС‚ РІСЃРµС… РёРЅСЃС‚СЂСѓРєС‚РѕСЂРѕРІ
     @RequestMapping(value = SHOW_MAPPING_PATH, method = RequestMethod.GET)
     public String show(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
 
@@ -153,7 +153,7 @@ public class HomeController {
     }
 
 
-    // переход на страницу "запись в автошколу"
+    // РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ "Р·Р°РїРёСЃСЊ РІ Р°РІС‚РѕС€РєРѕР»Сѓ"
     @RequestMapping(value = REGISTRATION_MAPPING_PATH, method = RequestMethod.GET)
     public String registration(Model model) {
 
@@ -163,17 +163,17 @@ public class HomeController {
     }
 
 
-    // Сохранение "запись в автошколу" и переход на home page
+    // РЎРѕС…СЂР°РЅРµРЅРёРµ "Р·Р°РїРёСЃСЊ РІ Р°РІС‚РѕС€РєРѕР»Сѓ" Рё РїРµСЂРµС…РѕРґ РЅР° home page
     @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute(REGISTRATION_HOME_PATH) Registration registration) {
 
         registration = registrationService.save(registration);
-        return "home"; // На страничку просмотра
+        return "home";
     }
 
 
 
-    // переход на страницу "запись в автошколу" с звыбранной уже машиной
+    // РџРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЂРµРіРёСЃС‚СЂР°С†РёРё СЃ РІС‹Р±СЂР°РЅРЅС‹Рј Р°РІС‚Рѕ
     @RequestMapping(value =  REGISTRATION_MAPPING_PATH, method = RequestMethod.POST)
     public String defaultCarRegistration(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
 
