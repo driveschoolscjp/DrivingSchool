@@ -83,7 +83,7 @@
             <div class="col-xs-4 col-xs-offset-1">
                 <div class="price-box">
 
-                    <form:form class="form-horizontal form-pricing" role="form" id="myForm" action="/searchCost"
+                    <form:form class="form-horizontal form-pricing" role="form" id="myForm" action="/cost"
                                method="post"
                                modelAttribute="car">
 
@@ -173,12 +173,7 @@
 
 </div>
 
-
-<div class="row">
-    <div class="col-xs-12">
-        <jsp:include page="footer.jsp"/>
-    </div>
-</div>
+<jsp:include page="footer.jsp"/>
 
 
 <script>

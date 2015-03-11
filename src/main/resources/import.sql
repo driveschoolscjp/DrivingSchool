@@ -28,7 +28,7 @@ UPDATE teachers SET description = 'Experience since 2001 experience since 2001 e
 
 INSERT INTO cars (id, brand, model, horsepower, transmission, priceperhour, photourl, instructor_id) VALUES
   (1, 'Porsche', '911 GT3', 370, 'MANUAL', 170, 'http://cs621222.vk.me/v621222392/1653a/VKn6sCVrUX8.jpg', 1),
-  (2, 'BMV', 'M3', 270, 'MANUAL', 95, 'http://cs621222.vk.me/v621222392/16521/wCwSkD9YaeI.jpg', 3),
+  (2, 'BMW', 'M3', 270, 'MANUAL', 95, 'http://cs621222.vk.me/v621222392/16521/wCwSkD9YaeI.jpg', 3),
   (3, 'Lamborghini', 'Aventador', 835, 'MANUAL', 250, 'http://cs621222.vk.me/v621222392/16543/fjGBpQ_AarM.jpg', 4),
   (4, 'Audi', 'R8', 325, 'AUTO', 100, 'http://cs621222.vk.me/v621222392/1654c/CbkK4Whte48.jpg', 8),
   (5, 'Ferrari', '458 Italia Spider', 457, 'AUTO', 190, 'http://cs621222.vk.me/v621222392/16826/2evXSBDLhpM.jpg', 9);

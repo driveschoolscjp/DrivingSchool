@@ -1,13 +1,11 @@
 package com.luxoft.drivingschool.controller;
 
 import com.luxoft.drivingschool.model.Car;
-import com.luxoft.drivingschool.model.Registration;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.enums.Transmission;
 import com.luxoft.drivingschool.model.enums.UserRoleEnum;
 import com.luxoft.drivingschool.service.CarService;
 import com.luxoft.drivingschool.service.GroupService;
-import com.luxoft.drivingschool.service.RegistrationService;
 import com.luxoft.drivingschool.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -35,61 +33,42 @@ public class HomeController {
     @Autowired
     private GroupService groupService;
 
-    private static final String SCHEDULE_MAPPING_PATH = "/schedule";
-    private static final String CONTACT_MAPPING_PATH = "/contact";
-    private static final String CARS_MAPPING_PATH = "/cars";
-    private static final String COST_MAPPING_PATH = "/cost";
-    private static final String REGISTRATION_MAPPING_PATH = "/registration";
-    private static final String SEARCH_COST_MAPPING_PATH = "/searchCost";
-    private static final String VIEW_SHOW_PATH = "carsShow";
-    private static final String SCHEDULE_HOME_PATH = "schedule";
-    private static final String CONTACT_HOME_PATH = "contact";
-    private static final String REGISTRATION_HOME_PATH = "registration";
-    private static final String CARS_HOME_PATH = "cars";
-    private static final String COST_HOME_PATH = "cost";
-    private static final String SHOW_MAPPING_PATH = "/show";
-    private static final String SAVE_MAPPING_PATH = "/saveRegistration";
-    private static final String CAR_ATTRIBUTE = "car";
-    private static final String CARS_ATTRIBUTE = "cars";
-    private static final String ID_REQUEST_PARAM = "id";
-    private static final String REGISTRATION_ATTRIBUTE = "registration";
-
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.HEAD})
     public String home() {
         return "home";
     }
 
-    @RequestMapping(value = SCHEDULE_MAPPING_PATH, method = RequestMethod.GET)
+    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
     public String scheduleView(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
             model.addAttribute("student", student);
         }
-        return SCHEDULE_HOME_PATH;
+        return "schedule";
     }
 
-    @RequestMapping(value = CONTACT_MAPPING_PATH, method = RequestMethod.GET)
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public String contact() {
-        return CONTACT_HOME_PATH;
+        return "contact";
     }
 
-    @RequestMapping(value = CARS_MAPPING_PATH, method = RequestMethod.GET)
+    @RequestMapping(value = "/cars", method = RequestMethod.GET)
     public String cars(Model model) {
-        model.addAttribute(CARS_ATTRIBUTE, carService.findAll());
-        return CARS_HOME_PATH    ;
+        model.addAttribute("cars", carService.findAll());
+        return "cars"    ;
     }
 
     // переход на страницу расчета стоимости обучения
-    @RequestMapping(value = COST_MAPPING_PATH, method = RequestMethod.GET)
+    @RequestMapping(value = "/cost", method = RequestMethod.GET)
     public String cost(Model model) {
-        model.addAttribute(CAR_ATTRIBUTE, new Car());
-        return COST_HOME_PATH;
+        model.addAttribute("car", new Car());
+        return "cost";
     }
 
     //выбор всех машин из заданых параметров, при подсчете стоимости обучения
-    @RequestMapping(value = SEARCH_COST_MAPPING_PATH, method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute(CAR_ATTRIBUTE) Car car, Model model) {
+    @RequestMapping(value = "/cost", method = RequestMethod.POST)
+    public String processRegistration(@ModelAttribute("car") Car car, Model model) {
         Set<Car> carsTotalList = new HashSet<>();
         Set<Car> carsPricePerHourList = new HashSet<>();
         Set<Car> carsHorsePowerList = new HashSet<>();
@@ -117,18 +96,18 @@ public class HomeController {
              }
             }
      }
-        model.addAttribute(CARS_ATTRIBUTE, carsTotalList);
+        model.addAttribute("cars", carsTotalList);
 
-        return COST_HOME_PATH;
+        return "cost";
     }
 
 
 
     // Показ одного инструктора и его авто, отдельно от всех инструкторов
-    @RequestMapping(value = SHOW_MAPPING_PATH, method = RequestMethod.GET)
-    public String show(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
+    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    public String show(@RequestParam("id") long id, Model model) {
 
-        List<Car> cars = new ArrayList<Car>();
+        List<Car> cars = new ArrayList<>();
         Car car = carService.findOne(id);
 
         for (Car c: carService.findAll()){
@@ -137,9 +116,9 @@ public class HomeController {
             }
         }
 
-        model.addAttribute(CARS_ATTRIBUTE,  cars);
-        model.addAttribute(CAR_ATTRIBUTE, carService.findOne(id));
-        return VIEW_SHOW_PATH;
+        model.addAttribute("cars",  cars);
+        model.addAttribute("car", carService.findOne(id));
+        return "carsShow";
     }
 
     @RequestMapping(value = "/futuregroups", method = RequestMethod.GET)

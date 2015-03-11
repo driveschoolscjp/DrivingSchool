@@ -70,6 +70,7 @@
                             <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car"></i> Автомобили</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий по
                                 вождению</a>
+                            <a class="list-group-item active" onclick="sbmt();"><i class="fa fa-sign-out"></i> Выйти</a>
                         </div>
                     </div>
 
@@ -80,7 +81,8 @@
                 <div class="container roleMenu">
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading"><i class="fa fa-book fa-2x"></i><span class="h3"> Студент</span>
+                        <div class="panel-heading"><i class="fa fa-book fa-2x"></i><span class="h3">
+                            <sec:authentication property="principal.username"/></span>
                         </div>
 
                         <div class="list-group">
@@ -89,24 +91,14 @@
                             <a class="list-group-item" href="#"><i class="fa fa-history"></i> История тестов</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий по
                                 вождению</a>
+                            <a class="list-group-item active" onclick="sbmt();"><i class="fa fa-sign-out"></i> Выйти</a>
                         </div>
                     </div>
 
                 </div>
             </sec:authorize>
 
-            <sec:authorize access="isAuthenticated()">
-                <div class="roleMenu">
-                    <div class="container-fluid">
-                        <form:form action="/logout" method="post">
-                            <h3 style="color:#ffffff;">Hello <sec:authentication property="principal.username"/>!
-                                <sec:authentication property="authorities"/></h3>
-                            <input class="btn btn-warning btn-block" type="submit" value="Logout"/>
-                        </form:form>
-                    </div>
-                </div>
-            </sec:authorize>
-
+            <form:form action="/logout" method="post" id="logoutForm"/>
 
             <!--Вконтакте-->
             <div class="roleMenu">
@@ -116,7 +108,11 @@
         </div>
     </div>
 </div>
-
+<script>
+    function sbmt(){
+        $('form#logoutForm').submit();
+    }
+</script>
 
 <script type="text/javascript">
     VK.Widgets.Group("vk_groups", {
