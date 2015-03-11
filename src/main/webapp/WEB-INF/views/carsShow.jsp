@@ -51,7 +51,7 @@
                 <div class="col-xs-12 col-md-6">
                     <div class="thumbnailhover">
                         <div class="caption">
-                            <form:form action="/registration" method="post">
+                            <form:form action="/registration?id=${car.id}" method="post">
                                 <input type="hidden" value="${car.id}"/>
                                 <h1>Хороший выбор ${car.brand} ${car.model}!</h1>
                                 <button class="btn btn-primary" type="submit"><i
@@ -100,7 +100,7 @@
                     <div class="col-xs-12 col-md-6">
                         <div class="thumbnailhover">
                             <div class="caption">
-                                <form:form action="/registration" method="post">
+                                <form:form action="/registration?id=${car.id}" method="post">
                                     <input type="hidden" value="${car.id}"/>
                                     <h1>А может ${car.brand} ${car.model}?</h1>
                                     <button class="btn btn-primary" type="submit"><i
