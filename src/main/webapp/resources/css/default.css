@@ -150,3 +150,15 @@ body {
     width: auto;
     border-radius: 10px;
 }
+
+#imgInLine8{
+    display: inline;
+    max-width: 100%;
+    height: auto;
+}
+
+#imgInLine9{
+    display: inline;
+    max-width: 100%;
+    height: auto;
+}

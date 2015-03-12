@@ -57,7 +57,8 @@
                 <div class="container roleMenu">
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading"><i class="fa fa-cog fa-2x"></i><span class="h3"> Админ</span>
+                        <div class="panel-heading"><img id="imgInLine8" class="img-responsive"
+                                                        src="/images/admin_logo.png"/><span class="h3"> Админ</span>
                         </div>
 
                         <div class="list-group">
@@ -81,7 +82,8 @@
                 <div class="container roleMenu">
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading"><i class="fa fa-book fa-2x"></i><span class="h3">
+                        <div class="panel-heading"> <img id="imgInLine9" class="img-responsive"
+                                                         src="/images/user_logo.png"/><span class="h3">
                             <sec:authentication property="principal.username"/></span>
                         </div>
 
