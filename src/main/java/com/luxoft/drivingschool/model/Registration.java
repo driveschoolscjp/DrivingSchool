@@ -3,21 +3,31 @@ package com.luxoft.drivingschool.model;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "registrations")
 public class Registration  extends AbstractPersistable<Long> {
 
-    @Column(length = 50)
+    @NotNull
+    @Size(min = 2, max = 50)
     private String firstname;
-    @Column(length = 50)
+    @NotNull
+    @Size(min = 2, max = 50)
     private String lastname;
-    @Column(length = 50)
+    @NotNull
+    @Size(min = 2, max = 50)
     private String patronymic;
+    @NotNull
+    @Size(min = 2, max = 30)
     private String tel;
+    @NotNull
+    @Size(min = 2, max = 30)
     private String email;
-
     @ManyToOne
     private Car car;
 

@@ -6,10 +6,13 @@ import com.luxoft.drivingschool.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/group")
@@ -51,7 +54,11 @@ public class AdminGroupController {
 
     // Сохранение и переход на форму просмотра
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("group") Group group) {
+    public String processRegistration(@ModelAttribute("group") @Valid Group group, Errors errors) {
+
+        if (errors.hasErrors()) {
+            return "admin/group/edit";
+        }
 
         group = groupService.save(group);
         return "redirect:show?id=" + group.getId(); // На страничку просмотра

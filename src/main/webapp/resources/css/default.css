@@ -22,6 +22,20 @@ body {
 .blackback th, .blackback td{
     color: #ffffff;
 }
+
+.errpg {
+    text-align: center;
+}
+
+.errpg img {
+    max-height: 450px;
+    max-width: 450px;
+}
+
+.errpg h1 {
+    display: inline-block;
+    padding: 10px;
+}
 .content {
     padding:10px;
     padding-bottom:20px; /* Height of the footer element */

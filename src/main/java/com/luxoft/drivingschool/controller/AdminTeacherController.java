@@ -7,10 +7,13 @@ import com.luxoft.drivingschool.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/teacher")
@@ -18,10 +21,8 @@ public class AdminTeacherController {
 
     @Autowired
     StudentService studentService;
-
     @Autowired
     TeacherService teacherService;
-
     @Autowired
     GroupService groupService;
 
@@ -63,7 +64,12 @@ public class AdminTeacherController {
 
     // Сохранение и переход на форму просмотра
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("teacher") Teacher teacher) {
+    public String processRegistration(@ModelAttribute("teacher") @Valid Teacher teacher, Errors errors) {
+
+        if (errors.hasErrors()) {
+            return "admin/teacher/edit";
+        }
+
         teacher = teacherService.save(teacher);
         return "redirect:show?id=" + teacher.getId(); // На страничку просмотра
     }
