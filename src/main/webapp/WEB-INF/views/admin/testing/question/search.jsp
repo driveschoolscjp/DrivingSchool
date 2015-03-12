@@ -36,10 +36,13 @@
         <div class="row">
             <div class="col-xs-11 whiteback">
 
-                <a href="/admin/testing/exam/edit?id=${ticket.exam.id}" type="button" class="btn btn-primary btn-success">
+                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
+                    Все экзамены
+                </a>
+                <a href="/admin/testing/ticket/search?id=${ticket.exam.id}" type="button" class="btn btn-primary btn-success">
                     Экзамен ${ticket.exam.name}
                 </a>
-                <a href="/admin/testing/ticket/edit?id=${ticket.id}" type="button" class="btn btn-primary btn-success">
+                <a href="/admin/testing/question/search?id=${ticket.id}" type="button" class="btn btn-primary btn-success">
                     Билет ${ticket.number}
                 </a>
 

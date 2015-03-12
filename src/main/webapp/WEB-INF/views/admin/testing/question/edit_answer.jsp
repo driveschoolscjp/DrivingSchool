@@ -33,15 +33,19 @@
         <div class="row">
             <div class="col-xs-11">
 
-                <a href="/admin/testing/exam/edit?id=${question.ticket.exam.id}" type="button" class="btn btn-primary btn-success">
+                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
+                    Все экзамены
+                </a>
+                <a href="/admin/testing/ticket/search?id=${question.ticket.exam.id}" type="button" class="btn btn-primary btn-success">
                     Экзамен ${question.ticket.exam.name}
                 </a>
-                <a href="/admin/testing/ticket/edit?id=${question.ticket.id}" type="button" class="btn btn-primary btn-success">
+                <a href="/admin/testing/question/search?id=${question.id}" type="button" class="btn btn-primary btn-success">
                     Билет ${question.ticket.number}
                 </a>
                 <a href="/admin/testing/question/edit?id=${question.id}" type="button" class="btn btn-primary btn-success">
                     Вопрос ${question.number}
                 </a>
+
                 <div class="container-fluid whiteback">
 
 
@@ -60,6 +64,9 @@
                             <label>Вопрос:</label><br/>
                             ${question.question}
                         </div>
+                        <c:if test="${question.pathToPicture!=null}">
+                            <img src="${question.pathToPicture}">
+                        </c:if>
                     </fieldset>
                     <fieldset>
                         <div class="row">

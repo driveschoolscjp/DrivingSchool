@@ -35,7 +35,7 @@
 
         <div class="row">
             <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
-                Экзамены
+                Все экзамены
             </a>
             <div class="col-xs-11 whiteback">
 

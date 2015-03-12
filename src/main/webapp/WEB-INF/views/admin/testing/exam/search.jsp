@@ -33,7 +33,9 @@
 
     <div class="container-fluid">
 
-        <div class="row">
+        <div class="row"><a href="/admin/testing/theme/search" type="button" class="btn btn-primary btn-success">
+            Темы
+        </a>
             <div class="col-xs-11 whiteback">
 
                 <h3 class="text-center">Экзамены</h3>

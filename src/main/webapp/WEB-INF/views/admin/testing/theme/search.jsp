@@ -32,7 +32,9 @@
 <div class="body">
 
     <div class="container-fluid">
-
+        <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
+            Все экзамены
+        </a>
         <div class="row">
             <div class="col-xs-11 whiteback">
 
