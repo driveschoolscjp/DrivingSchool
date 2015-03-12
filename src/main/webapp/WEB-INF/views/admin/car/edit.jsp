@@ -67,14 +67,14 @@
                         <fieldset>
 
                             <div class="form-group col-xs-3">
-                                <label for="transmission">Transmission</label><br>
+                                <label for="transmission">Коробка передач:</label><br>
 
                                 <div class="col-xs-6">
-                                    <form:radiobutton path="transmission" value="AUTO"/> <b>Auto</b>
+                                    <form:radiobutton path="transmission" value="AUTO"/> <b>Авто</b>
                                 </div>
 
                                 <div class="col-xs-6">
-                                    <form:radiobutton path="transmission" value="MANUAL"/> <b>Manual</b>
+                                    <form:radiobutton path="transmission" value="MANUAL"/> <b>Ручная</b>
                                 </div>
                             </div>
 

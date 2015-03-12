@@ -57,12 +57,12 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="passport">Passport:</label>
+                                <label for="passport">Пасспорт</label>
                                 <form:input path="passport" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="inn">INN:</label>
+                                <label for="inn">ИНН</label>
                                 <form:input path="inn" class="form-control" disabled="true"/>
                             </div>
                         </fieldset>
@@ -70,13 +70,13 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="birthday">Birthday: </label>
+                                <label for="birthday">День рождения</label>
                                 <form:input path="birthday" type="date" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="col-xs-6">
-                                <label for="gender">Gender</label><br>
-                                <form:input path="gender" class="form-control" disabled="true"/>
+                                <label for="gender">Пол</label><br>
+                                <input id="gender" class="form-control" value="${student.gender.value}" disabled="true"/>
                             </div>
 
                         </fieldset>

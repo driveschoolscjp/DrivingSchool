@@ -62,8 +62,8 @@
 
                             <div class="col-xs-4">
                                 <div class="form-group">
-                                    <label for="transmission">Transmission:</label>
-                                    <form:input path="transmission" class="form-control" disabled="true"/>
+                                    <label for="transmission">Коробка передач:</label>
+                                    <input id="transmission" class="form-control" value="${car.transmission.value}" disabled="true"/>
                                 </div>
 
                                 <div class="form-group">

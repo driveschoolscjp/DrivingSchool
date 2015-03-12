@@ -29,14 +29,21 @@
 <jsp:include page="/WEB-INF/views/menu.jsp"/>
 
 <div class="body">
+    <br/>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-11">
-
-                <div class="container-fluid whiteback">
-
+            <div class="col-xs-10 col-xs-offset-1 alltikets blackback">
                     <h3 class="text-center">Вопрос ${question.number}</h3>
-                    <hr>
+                <hr>
+                <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-10 col-md-10 col-lg-6 col-xs-offset-1 col-md-offset-1  col-lg-offset-3">
+                    <img class="img-rounded testImages"
+                         src="/images/test1.jpg"/>
+                    </div>
+                </div>
+                </div>
+                <hr/>
                     <%--строка с полями--%>
                     <fieldset>
                         <div class="form-group col-xs-6">
@@ -55,28 +62,29 @@
                             <div class="col-xs-10 table-responsive">
                                 <table class="table" id="table">
                                     <tr>
-                                        <td>
+                                        <div class="btn-group btn-group-sm" role="group" aria-label="...">
                                             <c:forEach var="ans" items="${answers}">
                                                 <c:choose>
                                                     <c:when test="${showAnswer}">
                                                         <c:choose>
                                                             <c:when test="${ans.correct}">
+
                                                                 <a href="#" type="button" class="btn btn-primary btn-sm"
                                                                    style="background-color: darkgreen">
-                                                                    <i class="fa fa-pencil fa-xs">${ans.answer}</i>
+                                                                    &nbsp;${ans.answer}
                                                                 </a>
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <c:if test="${ans.id==idWrongAnswer}">
                                                                     <a href="#" type="button" class="btn btn-primary btn-sm"
                                                                        style="background-color: #ac2925">
-                                                                        <i class="fa fa-pencil fa-xs">${ans.answer}</i>
+                                                                        &nbsp;${ans.answer}
                                                                     </a>
                                                                 </c:if>
                                                                 <c:if test="${ans.id!=idWrongAnswer}">
                                                                 <a href="#" type="button"
                                                                    class="btn btn-primary btn-sm">
-                                                                    <i class="fa fa-pencil fa-xs">${ans.answer}</i>
+                                                                   &nbsp;${ans.answer}
                                                                 </a>
                                                                 </c:if>
                                                             </c:otherwise>
@@ -85,21 +93,22 @@
                                                     <c:otherwise>
                                                         <a href="/testing/answer?idAnswer=${ans.id}" type="button"
                                                            class="btn btn-primary btn-sm">
-                                                            <i class="fa fa-pencil fa-xs">${ans.answer}</i>
+                                                            &nbsp;${ans.answer}
                                                         </a>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:forEach>
-                                        </td>
+                                        </div>
                                     </tr>
                                 </table>
                                 <c:if test="${showAnswer}">
                                     <div class="row">
-                                    ${question.description}
+                                        &nbsp; ${question.description}
                                     </div>
+                                    <br/>
                                     <a href="/testing/question?idTicket=${question.ticket.id}" type="button"
                                        class="btn btn-primary btn-sm">
-                                        <i class="fa fa-pencil fa-xs">Следующий вопрос</i>
+                                        &nbsp;Следующий вопрос
                                     </a>
                                 </c:if>
                             </div>
@@ -107,11 +116,10 @@
                     </fieldset>
                     <hr/>
                 </div>
-
-            </div>
         </div>
     </div>
 </div>
+
 <jsp:include page="../../footer.jsp"/>
 </body>
 </html>

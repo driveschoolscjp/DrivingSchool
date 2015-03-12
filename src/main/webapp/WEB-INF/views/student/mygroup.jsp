@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 
 <html>
 <head>
@@ -42,12 +43,16 @@
             </div>
 
             <div class="col-xs-8">
-                Описание препода/группы
+                <h3 class="zerotopmargin">${me.group.teacher.firstname} ${me.group.teacher.lastname}</h3>
+                <br/>
+                <h4><i class="fa fa-flag-o"></i> <joda:format value="${me.group.startDate}" style="M-"/></h4>
+                <h4><i class="fa fa-flag-checkered"></i> <joda:format value="${me.group.finishDate}" style="M-"/></h4>
+                <h4><i class="fa fa-clock-o"></i> ${me.group.description}</h4>
             </div>
 
             <div class="clearfix"></div>
 
-            <h1>Моя группа</h1>
+            <h1>Моя группа ${me.group.name}</h1>
             <hr/>
             <div class="col-xs-12 table-responsive">
                 <table class="table">
@@ -78,18 +83,21 @@
                 <img class="img-responsive img-rounded" src="${me.instructor.photoURL}"
                      alt="${me.instructor.firstname} ${me.instructor.lastname}"/>
             </div>
+
             <div class="col-xs-8">
-                Описание инструктора/машины
+                <h3 class="zerotopmargin">${me.instructor.firstname} ${me.instructor.lastname}</h3>
+
             </div>
 
             <div class="clearfix"></div>
 
-            <h1>Машина</h1>
+            <h1>${me.instructor.car.brand} ${me.instructor.car.model}</h1>
             <hr/>
             <div class="col-xs-12">
                 <img class="img-responsive img-rounded" src="${me.instructor.car.photoURL}"
                      alt="${me.instructor.car.brand} ${me.instructor.car.model}"/>
-                <br/>
+                <h4><i class="fa fa-tachometer"></i> ${me.instructor.car.horsePower} л.с. <i
+                        class="fa fa-cog"></i> ${me.instructor.car.transmission.value} КПП</h4>
             </div>
         </div>
 
