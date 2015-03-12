@@ -1,8 +1,10 @@
 package com.luxoft.drivingschool.controller;
 
+import com.luxoft.drivingschool.model.Group;
 import com.luxoft.drivingschool.model.Schedule;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.Teacher;
+import com.luxoft.drivingschool.service.GroupService;
 import com.luxoft.drivingschool.service.ScheduleService;
 import com.luxoft.drivingschool.service.StudentService;
 import com.luxoft.drivingschool.service.TeacherService;
@@ -27,6 +29,8 @@ public class ScheduleController {
     private StudentService studentService;
     @Autowired
     private TeacherService teacherService;
+    @Autowired
+    private GroupService groupService;
 
     @RequestMapping(value = "lesson/action/delete/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteInterval(@PathVariable long id) {
@@ -36,6 +40,11 @@ public class ScheduleController {
     @RequestMapping(value = "getallappointments/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Schedule> getAllAppointments(@PathVariable long id) {
         return scheduleService.findAllSchedulesByInstructorId(id);
+    }
+
+    @RequestMapping(value = "search/group/{like}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Group> getGroupsByQuery(@PathVariable String like) {
+        return groupService.findAllGroupsLike(like);
     }
 
     @RequestMapping(value = "search/student/{like}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
