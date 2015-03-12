@@ -81,7 +81,7 @@
             </div>
 
             <div class="col-xs-4 col-xs-offset-1">
-                <div class="price-box">
+                <div class="price-box  blackback">
 
                     <form:form class="form-horizontal form-pricing" role="form" id="myForm" action="/cost"
                                method="post"
@@ -109,20 +109,21 @@
                     </div>
 
                     <div class="price-slider">
-                        <h4 class="great">Максимальная мощьность двигателя</h4>
-                    <img id="imgInLine3" class="img-responsive"
-                                          src="/images/kpp.png"/>
+                        Максимальная мощьность двигателя
+                        <i class="fa fa-tachometer fa-1x"></i>
 
                         <div class="col-xs-12">
                             <div id="slider"></div>
                         </div>
                     </div>
                     <div class="price-slider">
-                        <h4 class="great">Максимальная цена/ час аренды</h4>
-                    <img id="imgInLine4" class="img-responsive"
-                                        src="/images/dollars.png"/>
+                                    <p style="font-size: 12px">
+                        Максимальная цена/ час аренды</p>
+                        <i class="fa fa-money fa-2x"></i>
+                        <br/>
+                        <br/>
+                         <div class="col-xs-12">
 
-                        <div class="col-xs-12">
                             <div id="slider2"></div>
                             <br>
                         </div>

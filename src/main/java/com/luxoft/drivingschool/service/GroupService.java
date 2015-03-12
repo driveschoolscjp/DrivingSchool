@@ -40,4 +40,8 @@ public class GroupService {
     public List<Group> findFutureGroups() {
         return groupRepository.findByStartDateAfter(new LocalDate());
     }
+
+    public List<Group> findAllGroupsLike(String like) {
+        return groupRepository.findByNameLikeIgnoreCase("%" + like + "%");
+    }
 }

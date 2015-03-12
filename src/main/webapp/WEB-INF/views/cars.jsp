@@ -70,7 +70,7 @@
                         </tr>
                         <tr>
                             <th><i class="fa fa-tachometer fa-2x"></i></th><th>${car.horsePower} л.с.</th>
-                            <th><i class="fa fa-cog fa-2x"></i></th><th>${car.transmission} КПП</th>
+                            <th><i class="fa fa-cog fa-2x"></i></th><th>${car.transmission.value} КПП</th>
                             <th><i class="fa fa-money fa-2x"></i></th><th>${car.pricePerHour} $/час</th>
                         </tr>
                     </table>

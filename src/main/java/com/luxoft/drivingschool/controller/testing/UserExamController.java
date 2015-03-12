@@ -149,14 +149,13 @@ public class UserExamController {
             Question question = answer.getQuestion();
             Exam exam = question.getTicket().getExam();
             if(question.getNumber()>= exam.getQuestionPerTicketQuantity()){
-                return REDIRECT_SHOW_RESULTS+((Long)idTicket).intValue();
-            } else {
-                long idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
-                session.setAttribute("idQuestion", idQuestion);
-                return REDIRECT_NEXT_QUESTION + "?idTicket=" + ((Long)idTicket).intValue();
+                return REDIRECT_SHOW_RESULTS+idTicket;
             }
+            long idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
+            session.setAttribute("idQuestion", idQuestion);
+                return REDIRECT_NEXT_QUESTION+"?idTicket="+idTicket;
         } else {
-            return REDIRECT_TRUE_ANSWER+"?idAnswer="+((Long)idAnswer).intValue();
+            return REDIRECT_TRUE_ANSWER+"?idAnswer="+idAnswer;
         }
     }
     //Показ правильного ответа
