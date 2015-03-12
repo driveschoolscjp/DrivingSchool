@@ -31,22 +31,21 @@
 
 
 <div class="body">
-
+    <br/>
     <div class="container-fluid">
 
-        <div class="col-xs-11 whiteback">
+        <div class="col-xs-10 col-xs-offset-1 alltikets blackback">
 
-            <h3 class="text-center">Экзамен</h3>
+            <h3 class="text-center">Результаты</h3>
             <hr>
-
+            <div class="col-xs-4 ">
+            <h4>Билет ${ticket.number}</h4>
+            </div>
+            <th>
             <%--таблица с билетами--%>
             <div class="col-xs-12 table-responsive">
-                <table class="table" id="table">
-                    <thead>
-                    <tr>
-                        <th>Билет ${ticket.number}</th>
-                    </tr>
-                    </thead>
+                <table class="table">
+
                     <tbody>
                     <form action="/testing/start" method="post">
                         <tr>
@@ -95,16 +94,13 @@
         </div>
     </div>
 
+    </div>
     <jsp:include page="../../footer.jsp"/>
-    <script>
-        $(function () {
-            $('#table').searchable({
-                striped: true,
-                oddRow: {'background-color': '#f5f5f5'},
-                evenRow: {'background-color': '#fff'},
-                searchType: 'fuzzy'
-            });
-        });</script>
+
+
+
+
+
     <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 
 </body>

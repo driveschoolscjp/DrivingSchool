@@ -169,3 +169,39 @@ body {
     max-width: 100%;
     height: auto;
 }
+
+
+.alltikets{
+    color:#ffffff;
+}
+.alltikets table{
+    width: 100%;
+    vertical-align: middle;
+}
+.alltikets table th {
+    height: 32px;
+    color: #ffffff;
+}
+.alltikets h1 {
+    margin-top: 0;
+}
+
+
+.alltikets .row{
+    border-radius: 15px;
+}
+
+.alltikets table tr{
+    padding: 8px;
+    vertical-align: top;
+    border-bottom: 1px solid #ddd;
+}
+
+.testImages {
+    align:"center" ;
+    height:300;
+    width:750;
+    display: inline;
+    max-width: 100%;
+    max-high: 100%;
+}
