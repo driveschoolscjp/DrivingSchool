@@ -70,12 +70,12 @@
                                     <td>${registration.car.brand} ${registration.car.model}</td>
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <a href= "/admin/student/register?id=${registration.id}"
-                                               type="button"
-                                               class="btn btn-success"><i class="fa fa-plus"></i></a>
-                                            <a href= "/admin/registration/delete?id=${registration.id}"
-                                               type="button"
-                                               class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="/admin/student/register?id=${registration.id}"
+                                               type="button" class="btn btn-success" title="Добавить студента">
+                                                <i class="fa fa-plus"></i></a>
+                                            <a href="/admin/registration/delete?id=${registration.id}"
+                                               type="button" class="btn btn-danger" title="Удалить заявку">
+                                                <i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

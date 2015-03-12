@@ -17,6 +17,7 @@
     <link href="/css/font-awesome.css" rel="stylesheet">
     <!--for VK-->
     <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+    <script src="/js/menu.js"></script>
 </head>
 
 <body>
@@ -57,8 +58,7 @@
                 <div class="container roleMenu">
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading"><img id="imgInLine8" class="img-responsive"
-                                                        src="/images/admin_logo.png"/><span class="h3"> Админ</span>
+                        <div class="panel-heading"><i class="fa fa-cog fa-2x"></i><span class="h3"> Админ</span>
                         </div>
 
                         <div class="list-group">
@@ -82,14 +82,13 @@
                 <div class="container roleMenu">
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading"> <img id="imgInLine9" class="img-responsive"
-                                                         src="/images/user_logo.png"/><span class="h3">
+                        <div class="panel-heading"><i class="fa fa-book fa-2x"></i><span class="h3">
                             <sec:authentication property="principal.username"/></span>
                         </div>
 
                         <div class="list-group">
-                            <a class="list-group-item" href="#"><i class="fa fa-calendar-o"></i> Расписание группы</a>
-                            <a class="list-group-item" href="#"><i class="fa fa-users"></i> Новости группы</a>
+                            <a class="list-group-item" href="/student/news"><i class="fa fa-newspaper-o"></i> Новости</a>
+                            <a class="list-group-item" href="/student/mygroup"><i class="fa fa-university"></i> Моя группа</a>
                             <a class="list-group-item" href="/testing/search?idExam=1"><i class="fa fa-history"></i> Экзамен ПДД</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий по
                                 вождению</a>
@@ -110,8 +109,6 @@
         </div>
     </div>
 </div>
-<script src="/js/menu.js"></script>
-
 
 </body>
 </html>

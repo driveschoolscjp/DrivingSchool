@@ -17,6 +17,10 @@ body {
 .blackback{
     background: rgba(0, 0, 0, 0.45);
     border-radius: 15px;
+    color:#ffffff;
+}
+.blackback th, .blackback td{
+    color: #ffffff;
 }
 .content {
     padding:10px;

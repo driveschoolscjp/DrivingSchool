@@ -87,9 +87,9 @@
                                     <td><joda:format value="${group.startDate}" style="M-"/></td>
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <a href="/admin/group/show?id=${group.id}" type="button"
+                                            <a href="/admin/group/show?id=${group.id}" type="button" title="Посмотреть"
                                                class="btn btn-success"><i class="fa fa-search"></i></a>
-                                            <a href="/admin/group/edit?id=${group.id}" type="button"
+                                            <a href="/admin/group/edit?id=${group.id}" type="button" title="Редактировать"
                                                class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                                         </div>
                                     </td>

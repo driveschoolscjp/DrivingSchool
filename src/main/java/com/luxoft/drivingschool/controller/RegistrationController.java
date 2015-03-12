@@ -4,7 +4,6 @@ import com.luxoft.drivingschool.model.Car;
 import com.luxoft.drivingschool.model.Registration;
 import com.luxoft.drivingschool.service.CarService;
 import com.luxoft.drivingschool.service.RegistrationService;
-import com.luxoft.drivingschool.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,11 +61,7 @@ public class RegistrationController {
     @RequestMapping(value = "admin/registration/delete", method = RequestMethod.GET)
     public String deleteRegistration(@RequestParam("id") long id, Model model) {
 
-
-        Registration registration = registrationService.findOne(id);
-        registrationService.delete(registration.getId());
-
-//переход на станицу поиска регистраций
+        registrationService.delete(id);
         return "redirect:/admin/registration/search";
     }
 }

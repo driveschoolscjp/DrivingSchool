@@ -28,7 +28,6 @@ public class RegistrationService {
 
     public Registration findOne(long id){
         return registrationRepository.findOne(id);
-
     }
 
     @Transactional

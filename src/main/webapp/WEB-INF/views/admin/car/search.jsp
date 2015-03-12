@@ -76,9 +76,9 @@
                                     <td>${car.instructor.firstname} ${car.instructor.lastname}</td>
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <a href="/admin/car/show?id=${car.id}" type="button"
+                                            <a href="/admin/car/show?id=${car.id}" type="button" title="Посмотреть"
                                                class="btn btn-success"><i class="fa fa-search"></i></a>
-                                            <a href="/admin/car/edit?id=${car.id}" type="button"
+                                            <a href="/admin/car/edit?id=${car.id}" type="button" title="Редактировать"
                                                class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                                         </div>
                                     </td>

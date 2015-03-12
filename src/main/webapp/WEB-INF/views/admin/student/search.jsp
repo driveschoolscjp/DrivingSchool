@@ -90,9 +90,9 @@
                                     <td>${student.group.name}</td>
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <a href="/admin/student/show?id=${student.id}" type="button"
+                                            <a href="/admin/student/show?id=${student.id}" type="button" title="Посмотреть"
                                                class="btn btn-success"><i class="fa fa-search"></i></a>
-                                            <a href="/admin/student/edit?id=${student.id}" type="button"
+                                            <a href="/admin/student/edit?id=${student.id}" type="button" title="Редактировать"
                                                class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                                         </div>
                                     </td>

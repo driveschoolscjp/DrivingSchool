@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@RequestMapping("/admin/teacher")
 @Controller
+@RequestMapping("/admin/teacher")
 public class AdminTeacherController {
 
     @Autowired

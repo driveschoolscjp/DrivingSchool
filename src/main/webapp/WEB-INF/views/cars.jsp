@@ -81,11 +81,8 @@
 
     </div>
 </div>
-<div class="container-fluid col-xs-12">
+
 <jsp:include page="footer.jsp"/>
-</div>
-
-
 <script src="/js/cars.js"></script>
 </body>
 </html>

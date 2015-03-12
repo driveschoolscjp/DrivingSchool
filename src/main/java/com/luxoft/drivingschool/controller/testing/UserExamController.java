@@ -3,8 +3,6 @@ package com.luxoft.drivingschool.controller.testing;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.enums.UserRoleEnum;
 import com.luxoft.drivingschool.model.testing.*;
-import com.luxoft.drivingschool.repository.StudentRepository;
-import com.luxoft.drivingschool.repository.testing.ResultRepository;
 import com.luxoft.drivingschool.service.StudentService;
 import com.luxoft.drivingschool.service.testing.*;
 import org.joda.time.LocalDate;
@@ -14,14 +12,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * Created by Svetlana Lawrentyeva on 08.03.15.
@@ -114,7 +112,7 @@ public class UserExamController {
         }
         Object iQ = session.getAttribute("idQuestion");
         long idQuestion;
-        if(iQ==null || iQ==-1){
+        if(iQ==null || ((Integer) iQ)==-1){
             idQuestion = questionService.findByTicketIdAndNumber(idTicket, 1).getId();
             session.setAttribute("idQuestion", idQuestion);
         } else {

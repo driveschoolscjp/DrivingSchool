@@ -29,7 +29,7 @@ public class StudentService {
     }
 
     public List<Student> findByGroupId(long id) {
-        return studentRepository.findByGroupId(id);
+        return studentRepository.findByGroupIdOrderByLastnameAsc(id);
     }
 
     public Student findByLogin(String login) {
