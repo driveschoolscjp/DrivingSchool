@@ -123,7 +123,7 @@
                 <h4>Отправить сообщение</h4>
             </div>
             <div class="modal-body">
-                <form id="MessageForm1" method="post" onsubmit="">
+                <form id="MessageForm1" method="post" action="submitMF">
                     <div class="row">
                         <div id="selector1" class="btn-group col-xs-4" data-toggle="buttons">
                             <label class="btn btn-primary active" id="student1">
@@ -139,24 +139,20 @@
                                        placeholder="Получатель" style="width:100%">
                             </div>
                         </div>
-
                     </div>
-
                     <br/>
                     <div class="form-group">
                         <label for="theme">Тема:</label>
-                        <input type="text" name="theme" id="theme" class="input-xlarge form-control">
+                        <input type="text" name="theme" id="theme" class="input-xlarge form-control control-label">
                     </div>
-
-                        <div class="form-group">
-                            <label for="message1">Сообщение:</label>
-                            <textarea name="message1" id="message1" rows="7" class="form-control"></textarea>
-                        </div>
-
+                    <div class="form-group">
+                        <label for="message1">Сообщение:</label>
+                        <textarea name="message1" id="message1" rows="7" class="form-control control-label"></textarea>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <input class="btn btn-success" type="submit" value="Отправить" id="submit2">
+                <input class="btn btn-success" type="submit" id="submitMF" value="Отправить">
                 <a href="#" class="btn btn-danger" data-dismiss="modal">Отмена</a>
             </div>
         </div>

@@ -37,9 +37,7 @@ $(document).ready(function () {
         dp.startDate = args.start;
         dp.update();
     };
-
     if (typeof currentUser != undefined && currentUser != null && !currentUser.isadmin) {
-        console.log(currentUser);
         getAllAppointments(currentUser.s.instructor["id"]);
     }
     dp.onTimeRangeSelected = function (args) {
@@ -75,7 +73,6 @@ $(document).ready(function () {
             instructor_id: i.id,
             student_id: typeof s == "undefined" || s == null ? -1 : s.id
         });
-        console.log(lesson);
         var result = operateLesson(lesson, "take");
         if (result === -1) {
             alert("Ошибка соединения!");
@@ -196,8 +193,6 @@ $(document).ready(function () {
     })
 
     $('#studentField .typeahead').on('typeahead:selected', function (evt, data) {
-        console.log(evt);
-        console.log(data);
         $('#instructorField .typeahead').typeahead('val', data.instructor["lastname"] + " " + data.instructor["firstname"] + " " + data.instructor["patronymic"]);
         currentAdmin.s = data;
         currentAdmin.i = data.instructor;
