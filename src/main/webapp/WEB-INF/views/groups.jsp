@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 
 <html>
 <head>
@@ -61,7 +61,7 @@
                     <h4><i class="fa fa-calendar"></i> <joda:format value="${group.finishDate}" style="L-"/> </h4>
 
                     <h3>Расписание занятий</h3>
-                    <h4><i class="fa fa-book"></i> ${group.description}</h4>
+                    <h4><i class="fa fa-clock-o"></i> ${group.description}</h4>
                 </div>
             </div>
         </c:forEach>

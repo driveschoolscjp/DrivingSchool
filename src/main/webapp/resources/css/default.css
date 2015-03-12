@@ -149,6 +149,9 @@ body {
 .zeropadding{
     padding: 0;
 }
+.zerotopmargin{
+    margin-top: 0;
+}
 #map_canvas {
     height: 450px;
     width: auto;
