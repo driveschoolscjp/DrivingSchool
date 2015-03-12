@@ -112,7 +112,7 @@ public class UserExamController {
         }
         Object iQ = session.getAttribute("idQuestion");
         long idQuestion;
-        if(iQ==null || ((Integer) iQ)==-1){
+        if(iQ==null || (Long.parseLong(iQ.toString()))==-1){
             idQuestion = questionService.findByTicketIdAndNumber(idTicket, 1).getId();
             session.setAttribute("idQuestion", idQuestion);
         } else {

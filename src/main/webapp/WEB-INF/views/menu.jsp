@@ -89,7 +89,7 @@
                         <div class="list-group">
                             <a class="list-group-item" href="/student/news"><i class="fa fa-newspaper-o"></i> Новости</a>
                             <a class="list-group-item" href="/student/mygroup"><i class="fa fa-university"></i> Моя группа</a>
-                            <a class="list-group-item" href="/testing/search?idExam=1"><i class="fa fa-history"></i> Экзамен ПДД</a>
+                            <a class="list-group-item" href="/testing/search?idExam=1"><i class="fa fa-pencil-square-o"></i> Тесты ПДД</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий по
                                 вождению</a>
                             <a class="list-group-item active" onclick="sbmt();"><i class="fa fa-sign-out"></i> Выйти</a>
