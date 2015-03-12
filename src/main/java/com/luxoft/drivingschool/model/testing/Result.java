@@ -43,4 +43,8 @@ public class Result  extends AbstractPersistable<Long> {
     public void setDateOf(LocalDate dateOf) {
         this.dateOf = dateOf;
     }
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
 }

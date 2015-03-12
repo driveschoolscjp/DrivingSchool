@@ -36,6 +36,13 @@
         <div class="row">
             <div class="col-xs-11 whiteback">
 
+                <a href="/admin/testing/exam/edit?id=${ticket.exam.id}" type="button" class="btn btn-primary btn-success">
+                    Экзамен ${ticket.exam.name}
+                </a>
+                <a href="/admin/testing/ticket/edit?id=${ticket.id}" type="button" class="btn btn-primary btn-success">
+                    Билет ${ticket.number}
+                </a>
+
                 <h3 class="text-center">Билет ${ticket.number}</h3>
                 <h3 class="text-center">Редактор вопросов</h3>
                 <hr>

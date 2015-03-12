@@ -112,7 +112,7 @@ public class UserExamController {
         }
         Object iQ = session.getAttribute("idQuestion");
         long idQuestion;
-        if(iQ==null || ((Integer) iQ)==-1){
+        if(iQ==null || Long.parseLong(iQ.toString())==-1L){
             idQuestion = questionService.findByTicketIdAndNumber(idTicket, 1).getId();
             session.setAttribute("idQuestion", idQuestion);
         } else {
@@ -134,7 +134,6 @@ public class UserExamController {
         Answer answer = answerService.findOne(idAnswer);
         long idTicket = answer.getQuestion().getTicket().getId();
         int number = answer.getQuestion().getNumber();
-        //TODO get students id
         long idStudent = 0;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
@@ -150,13 +149,14 @@ public class UserExamController {
             Question question = answer.getQuestion();
             Exam exam = question.getTicket().getExam();
             if(question.getNumber()>= exam.getQuestionPerTicketQuantity()){
-                return REDIRECT_SHOW_RESULTS+idTicket;
+                return REDIRECT_SHOW_RESULTS+((Long)idTicket).intValue();
+            } else {
+                long idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
+                session.setAttribute("idQuestion", idQuestion);
+                return REDIRECT_NEXT_QUESTION + "?idTicket=" + ((Long)idTicket).intValue();
             }
-            long idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
-            session.setAttribute("idQuestion", idQuestion);
-                return REDIRECT_NEXT_QUESTION+"?idTicket="+idTicket;
         } else {
-            return REDIRECT_TRUE_ANSWER+"?idAnswer="+idAnswer;
+            return REDIRECT_TRUE_ANSWER+"?idAnswer="+((Long)idAnswer).intValue();
         }
     }
     //Показ правильного ответа

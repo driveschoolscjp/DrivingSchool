@@ -65,6 +65,16 @@ public class AdminTicketController {
         return REDIRECT_SEARCH_PATH + examId;
     }
 
+    //Редактирование вопроса
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String editQuestion(@RequestParam(ID_REQUEST_PARAM) long ticketId, Model model) {
+
+        Ticket ticket = ticketService.findOne(ticketId);
+        model.addAttribute(TICKET_ATTRIBUTE, ticket);
+        ticket = ticketService.save(ticket);
+        return REDIRECT_SEARCH_PATH + ticket.getExam().getId();
+    }
+
     // Сохранение и переход на форму просмотра
     @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute(TICKET_ATTRIBUTE) Ticket ticket) {

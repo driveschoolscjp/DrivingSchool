@@ -14,6 +14,14 @@ public class Answer extends AbstractPersistable<Long> {
     @ManyToOne
     private Question question;
 
+    public String getAns() {
+        return answer;
+    }
+
+    public void setAns(String ans) {
+        this.answer = ans;
+    }
+
     public String getAnswer() {
         return answer;
     }
@@ -36,5 +44,9 @@ public class Answer extends AbstractPersistable<Long> {
 
     public void setQuestion(Question question) {
         this.question = question;
+    }
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
     }
 }

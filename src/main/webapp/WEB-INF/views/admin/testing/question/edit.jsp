@@ -32,9 +32,16 @@
         <div class="row">
             <div class="col-xs-11">
 
+                <a href="/admin/testing/exam/edit?id=${question.ticket.exam.id}" type="button" class="btn btn-primary btn-success">
+                    Экзамен ${question.ticket.exam.name}
+                </a>
+                <a href="/admin/testing/ticket/edit?id=${question.ticket.id}" type="button" class="btn btn-primary btn-success">
+                    Билет ${question.ticket.number}
+                </a>
                 <div class="container-fluid whiteback">
-                    <form:form action="/admin/testing/question/save?id=${question.ticket.id}" method="post" modelAttribute="question">
-                        <form:hidden path="id"/>
+                    <form:form action="/admin/testing/question/save" method="post" modelAttribute="question">
+                        <form:hidden path="id" />
+                        <form:hidden path="ticket.id" />
 
                         <h3>Редактирование вопроса</h3>
                         <hr>
@@ -50,9 +57,8 @@
 
                         <fieldset>
                             <div class="form-group col-xs-4">
-                                <label>Билет:</label><br/>
-                                <form:input path="ticket.number" class="form-control" placeholder="Black"
-                                            readonly="true"/>
+                                <label>Билет:</label><br/> ${question.ticket.number}
+                                <%--<input hidden name="ticketId" value="${question.ticket.id}"/>--%>
                             </div>
                             <div class="form-group col-xs-4">
                                 <label>Тема:</label><br/>
@@ -66,16 +72,44 @@
                         <hr>
 
                         <fieldset>
-                            <form:textarea path="question" class="form-control" cols= "20" rows= "6"
+                            <form:textarea path="ques" class="form-control" cols= "20" rows= "6"
                                            placeholder="Question" required="required" autofocus=""/>
+                        </fieldset>
+                        <fieldset>
+                            <form:textarea path="description" class="form-control" cols= "20" rows= "6"
+                                           placeholder="Description" required="required" autofocus=""/>
                         </fieldset>
                         <hr/>
                         <div class="text-center">
                             <button class="btn  btn-primary" type="submit">Сохранить вопрос</button>
                         </div>
                     </form:form>
+                    <c:forEach items="${answers}" var="answ">
+                        <c:choose>
+                    <c:when test="${answ.correct}">
+                        <textarea style="background-color: #67b168" class="form-control" cols="10" rows="3"
+                                  readonly="true">
+                                ${answ.ans}
+                        </textarea>
+                        <a href="/admin/testing/question/editAnswer?id=${answ.id}" type="button" class="btn btn-primary btn-success">
+                           Редактировать
+                        </a>
+                    </c:when>
+                            <c:otherwise>
+                                <textarea style="background-color: #ce8483" class="form-control" cols="10" rows="3"
+                                          readonly="true">
+                                        ${answ.ans}
+                                </textarea>
+                                <a href="/admin/testing/question/editAnswer?id=${answ.id}" type="button" class="btn btn-primary btn-success">
+                                    Редактировать
+                                </a>
+                            </c:otherwise>
+                    </c:choose>
+                    </c:forEach>
                 </div>
-
+                <a href="/admin/testing/question/addAnswer?id=${question.id}" type="button" class="btn btn-primary btn-success">
+                    Добавить ответ
+                </a>
             </div>
         </div>
     </div>

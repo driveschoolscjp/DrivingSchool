@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by Svetlana Lawrentyeva on 07.03.15.
@@ -42,6 +43,14 @@ public class AdminExamController {
     public String showRegistration(Model model) {
 
         model.addAttribute(EXAM_ATTRIBUTE, new Exam());
+        return VIEW_EDIT_PATH;
+    }
+
+    // Редактирование экзамена
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String editExam(@RequestParam("id") long idExam, Model model) {
+
+        model.addAttribute(EXAM_ATTRIBUTE, examService.findOne(idExam));
         return VIEW_EDIT_PATH;
     }
 

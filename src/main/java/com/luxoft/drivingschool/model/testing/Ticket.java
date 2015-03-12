@@ -41,4 +41,8 @@ public class Ticket extends AbstractPersistable<Long> implements Comparable<Tick
     public int compareTo(Ticket o) {
         return this.number-((Ticket)o).number;
     }
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
 }

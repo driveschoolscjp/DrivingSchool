@@ -35,6 +35,13 @@ public class Question extends AbstractPersistable<Long> implements Comparable<Qu
         return question;
     }
 
+    public void setQues(String ques) {
+        this.question = ques;
+    }
+    public String getQues() {
+        return question;
+    }
+
     public void setQuestion(String question) {
         this.question = question;
     }
@@ -74,5 +81,9 @@ public class Question extends AbstractPersistable<Long> implements Comparable<Qu
     @Override
     public int compareTo(Question o) {
         return this.number-((Question)o).number;
+    }
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
     }
 }

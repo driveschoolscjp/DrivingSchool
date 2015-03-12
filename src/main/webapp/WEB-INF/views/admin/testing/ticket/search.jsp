@@ -34,7 +34,11 @@
     <div class="container-fluid">
 
         <div class="row">
+            <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
+                Экзамены
+            </a>
             <div class="col-xs-11 whiteback">
+
 
                 <h3 class="text-center">Экзамен ${exam.name}</h3>
                 <h3 class="text-center">Редактор билетов</h3>

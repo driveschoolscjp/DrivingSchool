@@ -51,7 +51,6 @@
                     <form action="/testing/start" method="post">
                         <tr>
                             <c:forEach var="exam" items="${exams}">
-                                <div class="row">
                                     <td>
                                         <div class="col-xs-12">
                                             <a href="/testing/search?idExam=${exam.id}" type="button"
@@ -60,7 +59,7 @@
                                             </a>
                                         </div>
                                     </td>
-                                </div>
+
                             </c:forEach>
                         </tr>
                     </form>

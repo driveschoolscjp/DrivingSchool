@@ -6,6 +6,7 @@ import com.luxoft.drivingschool.model.testing.Exam;
 import com.luxoft.drivingschool.model.testing.Question;
 import com.luxoft.drivingschool.model.testing.Ticket;
 import com.luxoft.drivingschool.service.testing.*;
+import com.sun.javafx.collections.transformation.SortedList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Collections;
+import java.util.List;
 
 @RequestMapping("/admin/testing/question")
 @Controller
@@ -66,7 +70,9 @@ public class AdminQuestionController {
         Exam exam = examService.findOne(ticket.getExam().getId());
         model.addAttribute(TICKET_ATTRIBUTE, ticket);
         model.addAttribute(MORE_QUESTIONS_ATTRIBUTE, questionService.lastNumber(ticketId) < exam.getQuestionPerTicketQuantity());
-        model.addAttribute(QUESTIONS_ATTRIBUTE, questionService.findByTicketId(ticket.getId()));
+        List<Question> questions = questionService.findByTicketId(ticket.getId());
+        Collections.sort(questions);
+        model.addAttribute(QUESTIONS_ATTRIBUTE, questions);
         return VIEW_SEARCH_PATH;
     }
 
@@ -83,21 +89,43 @@ public class AdminQuestionController {
         return VIEW_EDIT_PATH;
     }
 
-    // Сохранение ответа и переход на форму просмотра
+    // Сохранение вопроса и переход на форму добавления ответа
     @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
-        public String saveQuestion(@ModelAttribute(QUESTION_ATTRIBUTE) Question question,
-                                   @RequestParam(ID_REQUEST_PARAM) long ticketId) {
-        question.setTicket(ticketService.findOne(ticketId));
+        public String saveQuestion(@ModelAttribute(QUESTION_ATTRIBUTE) Question question) {
+//        question.setTicket(ticketService.findOne(ticketId));
         question = questionService.save(question);
         return REDIRECT_ADD_ANSWER + question.getId(); // На страничку просмотра
+    }
+
+    // Добавление ответа
+    @RequestMapping(value = ADD_ANSWER_MAPPING_PATH, method = RequestMethod.GET)
+    public String addAnswer(@RequestParam(ID_REQUEST_PARAM) long questionId, Model model) {
+
+        Answer answer = new Answer();
+        Question question = questionService.findOne(questionId);
+        answer.setQuestion(question);
+        model.addAttribute(ANSWER_ATTRIBUTE, answer);
+        model.addAttribute(ANSWERS_ATTRIBUTE, answerService.findByQuestionId(question.getId()));
+        model.addAttribute(QUESTION_ATTRIBUTE, question);
+
+        return VIEW_EDIT_ANSWER_PATH;
     }
 
     // Сохранение ответа и переход на форму просмотра
     @RequestMapping(value = SAVE_ANSWER_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistrationQuestion(@ModelAttribute(ANSWER_ATTRIBUTE) Answer answer,
-                                              @RequestParam(ID_REQUEST_PARAM) long questionId) {
+                                              @RequestParam("questionId") long questionId) {
         answer.setQuestion(questionService.findOne(questionId));
         answer = answerService.save(answer);
+        if(answer.getCorrect()) {
+            List<Answer> answers = answerService.findByQuestionId(questionId);
+            for (Answer a : answers) {
+                if (!a.getId().equals(answer.getId())) {
+                    a.setCorrect(false);
+                    answerService.save(a);
+                }
+            }
+        }
         return REDIRECT_ADD_ANSWER + questionId; // На страничку просмотра
     }
 
@@ -129,20 +157,6 @@ public class AdminQuestionController {
         Question question = answer.getQuestion();
         model.addAttribute(ANSWER_ATTRIBUTE, answer);
         model.addAttribute(QUESTION_ATTRIBUTE, question);
-        model.addAttribute(ANSWERS_ATTRIBUTE, answerService.findByQuestionId(question.getId()));
-        model.addAttribute(QUESTION_ATTRIBUTE, question);
-
-        return VIEW_EDIT_ANSWER_PATH;
-    }
-
-    // Добавление ответа
-    @RequestMapping(value = ADD_ANSWER_MAPPING_PATH, method = RequestMethod.GET)
-    public String addAnswer(@RequestParam(ID_REQUEST_PARAM) long questionId, Model model) {
-
-        Answer answer = new Answer();
-        Question question = questionService.findOne(questionId);
-        answer.setQuestion(question);
-        model.addAttribute(ANSWER_ATTRIBUTE, answer);
         model.addAttribute(ANSWERS_ATTRIBUTE, answerService.findByQuestionId(question.getId()));
         model.addAttribute(QUESTION_ATTRIBUTE, question);
 

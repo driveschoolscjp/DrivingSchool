@@ -43,4 +43,8 @@ public class Exam extends AbstractPersistable<Long> {
     public void setQuestionPerTicketQuantity(int questionPerTicketQuantity) {
         this.questionPerTicketQuantity = questionPerTicketQuantity;
     }
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+    }
 }
