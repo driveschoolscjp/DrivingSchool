@@ -17,6 +17,7 @@
     <link href="/css/font-awesome.css" rel="stylesheet">
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -105,39 +106,7 @@
 </div>
 
 
-<script>
-    $(".name").focus(function(){
-        $(".name-help").slideDown(500);
-    }).blur(function(){
-        $(".name-help").slideUp(500);
-    });
-
-    $(".lastname").focus(function(){
-        $(".lastname-help").slideDown(500);
-    }).blur(function(){
-        $(".lastname-help").slideUp(500);
-    });
-
-    $(".patronymic").focus(function(){
-        $(".patronymic-help").slideDown(500);
-    }).blur(function(){
-        $(".patronymic-help").slideUp(500);
-    });
-
-    $(".tel").focus(function(){
-        $(".tel-help").slideDown(500);
-    }).blur(function(){
-        $(".tel-help").slideUp(500);
-    });
-
-
-    $(".email").focus(function(){
-        $(".email-help").slideDown(500);
-    }).blur(function(){
-        $(".email-help").slideUp(500);
-    });
-
-</script>
+<script src="/js/registration.js"></script>
 
 </body>
 </html>

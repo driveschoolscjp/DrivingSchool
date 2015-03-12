@@ -32,7 +32,9 @@
 <jsp:include page="menu.jsp" />
 
 <div class="body">
-
+    <br/>
+    <br/>
+    <br/>
     <div class="container-fluid">
         <div class="row">
             <div id="contentText" class="col-xs-11">
@@ -103,20 +105,11 @@
     </div>
 
 </div>
-
+<br/>
+<br/>
 <jsp:include page="footer.jsp" />
 
-<!--Вращение  слайдов-->
-<script type='text/javascript'>
-    $(document).ready(function() {
-        $('.carousel').carousel({
-            interval: 5000
-        })
-    });
-</script>
-
-
-
+<script src="/js/home.js"></script>
 
 </body>
 </html>

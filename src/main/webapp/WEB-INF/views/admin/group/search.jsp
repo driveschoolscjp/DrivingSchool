@@ -106,17 +106,9 @@
 </div>
 
 <jsp:include page="../../footer.jsp"/>
-<script>
-    $(function () {
-        $('#table').searchable({
-            striped: true,
-            oddRow: {'background-color': '#f5f5f5'},
-            evenRow: {'background-color': '#fff'},
-            searchType: 'fuzzy'
-        });
-    });</script>
-<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 
+<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+<script src="/js/search.js"></script>
 </body>
 </html>
 

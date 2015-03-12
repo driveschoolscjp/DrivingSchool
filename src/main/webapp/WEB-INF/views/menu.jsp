@@ -108,21 +108,8 @@
         </div>
     </div>
 </div>
-<script>
-    function sbmt(){
-        $('form#logoutForm').submit();
-    }
-</script>
+<script src="/js/menu.js"></script>
 
-<script type="text/javascript">
-    VK.Widgets.Group("vk_groups", {
-        mode: 0,
-        width: "150",
-        height: "20",
-        color1: 'FFFFFF',
-        color2: '337ab7',
-        color3: '337ab7'
-    }, 88282564);
-</script>
+
 </body>
 </html>
