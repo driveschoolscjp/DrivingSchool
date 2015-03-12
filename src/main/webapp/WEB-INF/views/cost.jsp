@@ -81,7 +81,7 @@
             </div>
 
             <div class="col-xs-4 col-xs-offset-1">
-                <div class="price-box  blackback">
+                <div class="price-box  blackbackCost">
 
                     <form:form class="form-horizontal form-pricing" role="form" id="myForm" action="/cost"
                                method="post"
@@ -91,7 +91,8 @@
 
 
                     <div class="price-slider">
-                        <h4 class="great">Трансмиссия</h4>
+                        <p style="font-size: 12px">
+                            Трансмиссия</p>
 
                         <div class="col-xs-12">
                             <div class="row">
@@ -109,18 +110,14 @@
                     </div>
 
                     <div class="price-slider">
-                        Максимальная мощьность двигателя
-                        <i class="fa fa-tachometer fa-1x"></i>
-
+                        <p style="font-size: 12px">Максимальная мощьность двигателя&nbsp;<i class="fa fa-tachometer fa-2x"> </i></p>
+                        <br/>
                         <div class="col-xs-12">
                             <div id="slider"></div>
                         </div>
                     </div>
                     <div class="price-slider">
-                                    <p style="font-size: 12px">
-                        Максимальная цена/ час аренды</p>
-                        <i class="fa fa-money fa-2x"></i>
-                        <br/>
+                                    <p style="font-size: 12px"> Максимальная цена/ час аренды&nbsp;<i class="fa fa-money fa-2x"></i></p>
                         <br/>
                          <div class="col-xs-12">
 
@@ -129,30 +126,20 @@
                         </div>
                     </div>
 
-
+                        <div class="col-xs-10 col-xs-offset-1">
                     <div class="price-slider">
-                        <h4 class="great">Стоимость курса</h4>
-
-                        <div class="col-xs-12">
-                            <div class="row">
-                                <label>10 занятий: $</label>
+                        <h4>Стоимость курса:</h4>
+                                <b>10 занятий: $</b>
                                 <b id="total-label" style="font-size: 20px;"></b>
-                            </div>
-
-                            <div class="row">
-                                <label>15 занятий: $</label>
+                        <br/>
+                                <b>15 занятий: $</b>
                                 <b id="total-label1" style="font-size: 20px;"></b>
-                            </div>
-
-                            <div class="row">
-                                <label>20 занятий: $</label>
+                        <br/>
+                                <b>20 занятий: $</b>
                                 <b id="total-label2" style="font-size: 20px;"></b>
-                            </div>
-                            <br/>
-
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <button type="submit" class="btn btn-primary">Подобрать авто</button>
-                            </div>
+                        <br/>
+                        <br/>
+                        &nbsp;&nbsp; <button type="submit" class="btn btn-primary">Подобрать авто</button>
                         </div>
                     </div>
                 </div>
