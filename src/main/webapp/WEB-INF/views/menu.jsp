@@ -73,7 +73,7 @@
                             <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car"></i> Автомобили</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График
                                 занятий</a>
-                            <a class="list-group-item" href="/admin/testing/exam/search"><i class="fa fa-calendar"></i> Редактор экзаменов ПДД</a>
+                            <a class="list-group-item" href="/admin/testing/exam/search"><i class="fa fa-file-text-o"></i> Тесты ПДД</a>
                             <a class="list-group-item" href="#myModal2" data-toggle="modal"><i
                                     class="fa fa-envelope-o"></i> Отправка сообщений</a>
                             <a class="list-group-item active" onclick="sbmt();"><i class="fa fa-sign-out"></i> Выйти</a>
