@@ -4,19 +4,26 @@ import com.luxoft.drivingschool.model.enums.Transmission;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "cars")
 public class Car extends AbstractPersistable<Long> {
 
-    @Column(length = 50)
+    @NotNull
+    @Size(max = 50)
     private String brand;
-    @Column(length = 50)
+    @NotNull
+    @Size(max = 50)
     private String model;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
+    @NotNull
     private int horsePower;
     private float pricePerHour;
+    @NotNull
     @OneToOne
     private Teacher instructor;
     private String photoURL;
