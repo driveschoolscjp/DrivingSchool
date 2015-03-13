@@ -85,6 +85,7 @@
                                     <table class="table" id="table">
                                         <c:forEach var="answ" items="${answers}">
                                         <div class="form-group col-xs-11">
+                                            checking id ${answ.id}
                                         <tr>
                                             <td>
                                                 <c:choose>
@@ -109,6 +110,7 @@
                                                         </form:form>
                                             </td>
                                         </tr>
+                                            when ${answer.id} ${answer.correct} answers must be the same
                                             <tr>
                                                 <td>
                                                     </c:when>
@@ -134,6 +136,7 @@
                                                         </c:choose>
                                                 </td>
                                             </tr>
+                                            otherwice ${answer.id} ${answer.correct} answers are not the same
                                             <tr>
                                                 <td>
                                                     </c:otherwise>
