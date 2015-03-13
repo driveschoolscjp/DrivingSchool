@@ -37,10 +37,10 @@
                 <hr>
                 <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xs-10 col-md-10 col-lg-6 col-xs-offset-1 col-md-offset-1  col-lg-offset-3">
-                    <img class="img-rounded testImages"
-                         src="/images/test1.jpg"/>
-                    </div>
+                        <c:if test="${question.pathToPicture!=null || question.pathToPicture!=''}">
+                            <img src="${question.pathToPicture}">
+
+                        </c:if>
                 </div>
                 </div>
                 <hr/>
@@ -59,55 +59,70 @@
                     </fieldset>
                     <fieldset>
                         <div class="row">
-                            <div class="col-xs-10 table-responsive">
+                            <div class="col-xs-12 table-responsive">
                                 <table class="table" id="table">
                                     <tr>
                                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
+
                                             <c:forEach var="ans" items="${answers}">
+                                                <br/>
+
                                                 <c:choose>
                                                     <c:when test="${showAnswer}">
                                                         <c:choose>
                                                             <c:when test="${ans.correct}">
-
-                                                                <a href="#" type="button" class="btn btn-primary btn-sm"
-                                                                   style="background-color: darkgreen">
+                                                                <tr>
+                                                                <td class="answer right">
+                                                                <a href="#" type="text"
+                                                                   class="answer right">
                                                                     &nbsp;${ans.answer}
                                                                 </a>
+                                                                </td></tr>
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <c:if test="${ans.id==idWrongAnswer}">
-                                                                    <a href="#" type="button" class="btn btn-primary btn-sm"
-                                                                       style="background-color: #ac2925">
+                                                                    <tr>
+                                                                    <td class="answer wrong">
+                                                                    <a href="#" type="text"
+                                                                       class="answer wrong">
                                                                         &nbsp;${ans.answer}
                                                                     </a>
+                                                                    </td></tr>
                                                                 </c:if>
                                                                 <c:if test="${ans.id!=idWrongAnswer}">
-                                                                <a href="#" type="button"
-                                                                   class="btn btn-primary btn-sm">
+                                                                    <tr>
+                                                                    <td class="answer">
+                                                                <a href="#" type="text"
+                                                                   class="answer">
                                                                    &nbsp;${ans.answer}
                                                                 </a>
+                                                                    </td>
+                                                                    </tr>
                                                                 </c:if>
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <a href="/testing/answer?idAnswer=${ans.id}" type="button"
-                                                           class="btn btn-primary btn-sm">
+                                                        <tr>
+                                                        <td class="answer">
+                                                        <a href="/testing/answer?idAnswer=${ans.id}" type="text" class="answer">
                                                             &nbsp;${ans.answer}
                                                         </a>
+                                                        </td>
+                                                        </tr>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:forEach>
+                                            <hr/>
                                         </div>
                                     </tr>
                                 </table>
                                 <c:if test="${showAnswer}">
-                                    <div class="row">
+                                    <div>
                                         &nbsp; ${question.description}
                                     </div>
                                     <br/>
-                                    <a href="/testing/question?idTicket=${question.ticket.id}" type="button"
-                                       class="btn btn-primary btn-sm">
+                                    <a href="/testing/question?idTicket=${question.ticket.id}" class="btn btn-primary btn-success" >
                                         &nbsp;Следующий вопрос
                                     </a>
                                 </c:if>

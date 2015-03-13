@@ -130,7 +130,7 @@
                         </fieldset>
                         <hr/>
                         <div class="text-center">
-                            <button class="btn  btn-primary" type="submit">Назад</button>
+                            <button class="btn  btn-success" type="submit">Назад</button>
                         </div>
                     </form:form>
                 </div>
