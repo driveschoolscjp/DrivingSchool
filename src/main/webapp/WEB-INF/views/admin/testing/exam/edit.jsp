@@ -53,6 +53,7 @@
 
                                 <div class="form-group col-xs-1">
                                     <label for="name"><br/></label>
+                                    <br/>
                                     <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
                                         <i class="fa fa-undo"></i>
                                     </a>
