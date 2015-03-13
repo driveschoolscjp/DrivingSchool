@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Service
 @Transactional(readOnly = true)
@@ -15,10 +17,14 @@ public class RoadsignService {
     @Autowired
     RoadsignRepository roadsignRepository;
 
-    public List<Roadsign> findTwelveRandomRoadsigns(){
+    public List<Roadsign> findRandomRoadsigns(){
 
-        roadsignRepository.findAll();
+        long totalSigns = roadsignRepository.count();
 
-        return null;
+        Set<Long> setId = new TreeSet<>();
+        while (setId.size() < 12){
+            setId.add((long) (Math.random() * totalSigns));
+        }
+        return roadsignRepository.findByIdIn(setId);
     }
 }

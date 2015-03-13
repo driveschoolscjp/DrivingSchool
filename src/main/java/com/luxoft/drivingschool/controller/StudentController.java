@@ -1,6 +1,7 @@
 package com.luxoft.drivingschool.controller;
 
 import com.luxoft.drivingschool.model.Student;
+import com.luxoft.drivingschool.service.RoadsignService;
 import com.luxoft.drivingschool.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,8 @@ public class StudentController {
 
     @Autowired
     StudentService studentService;
+    @Autowired
+    RoadsignService roadsignService;
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String news() {
@@ -33,4 +36,10 @@ public class StudentController {
         return "/student/mygroup";
     }
 
+    @RequestMapping(value = "/roadsigns", method = RequestMethod.GET)
+    public String roadsigns(Model model) {
+
+        model.addAttribute("roadsigns", roadsignService.findRandomRoadsigns());
+        return "/student/roadsigns";
+    }
 }
