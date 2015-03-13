@@ -46,7 +46,7 @@
 
                    <c:if test="${moreTickets}">
                     <div class="col-xs-6 col-xs-offset-1">
-                        <h3 class="text-center">Экзамен ${exam.name}</h3>
+                        <h3 class="text-center">Добавить билет</h3>
                     </div>
                     </c:if>
 
