@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Menu</title>
     <script src="/js/typeahead.bundle.js"></script>
-    <script src="/js/messages.js"></script>
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -57,6 +56,7 @@
             <%-- Можно было бы проще: <sec:authorize url="/admin">--%>
             <%-- Это дублирует правила описанные в SecurityConfig для url /admin--%>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <script src="/js/adminmessages.js"></script>
                 <div class="container roleMenu">
 
                     <div class="panel panel-primary">
@@ -84,6 +84,7 @@
             </sec:authorize>
 
             <sec:authorize access="hasRole('ROLE_STUDENT')">
+                <script src="/js/studentmessages.js"></script>
                 <div class="container roleMenu">
 
                     <div class="panel panel-primary">
@@ -96,6 +97,8 @@
                             <a class="list-group-item" href="/student/mygroup"><i class="fa fa-university"></i> Моя группа</a>
                             <a class="list-group-item" href="/testing/search?idExam=1"><i class="fa fa-pencil-square-o"></i> Тесты ПДД</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий </a>
+                            <a class="list-group-item" href="" id="messagesItem"><i class="fa fa-envelope-o"></i> Сообщения
+                                <span id="amount" class="badge"></span> </a>
                             <a class="list-group-item active" onclick="sbmt();"><i class="fa fa-sign-out"></i> Выйти</a>
                         </div>
                     </div>

@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 public class MessageService {
@@ -25,10 +28,29 @@ public class MessageService {
         entity.setTheme(theme);
         Student student = studentRepository.findOne(sid);
         entity.setStudent(student);
+        entity.setId(0L);
+        entity.setOld(false);
         messageRepository.saveAndFlush(entity);
     }
 
-    public void sendGroupMessage(String theme, String message) {
+    @Transactional
+    public void sendGroupMessage(Long gid, String theme, String message) {
+        List<Message> entitites = new ArrayList<Message>();
+        List<Student> students = studentRepository.findByGroupId(gid);
+        for (Student student: students) {
+            Message entity = new Message();
+            entity.setDateTime(new LocalDateTime());
+            entity.setMessage(message);
+            entity.setTheme(theme);
+            entity.setId(0L);
+            entity.setOld(false);
+            entity.setStudent(student);
+            entitites.add(entity);
+        }
+        messageRepository.save(entitites);
+    }
 
+    public Integer getNewCount(Long id) {
+        return messageRepository.getCountOfNewMessages(id);
     }
 }
