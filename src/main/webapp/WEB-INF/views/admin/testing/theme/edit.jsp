@@ -33,26 +33,37 @@
             <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
-                    <form:form action="/admin/testing/theme/save" method="post" modelAttribute="theme">
-                        <form:hidden path="id"/>
+                        <form:form action="/admin/testing/theme/save" method="post" modelAttribute="theme">
+                            <form:hidden path="id"/>
+                             <div class="row">
+                                 <div class="col-xs-4 col-xs-offset-4">
+                            <h3>Добавление темы</h3>
+                             </div>
+                             </div>
+                            <hr>
 
-                        <h3>Добавление темы</h3>
-                        <hr>
-                        <%--строка с полями--%>
-                        <fieldset>
-                            <div class="form-group col-xs-12">
-                                <label for="name">Name:</label>
-                                <form:input path="name" class="form-control" placeholder="Theme"
-                                            required="required"/>
+                             <div class="row">
+
+                                     <div class="col-xs-10">
+                                         <form:input path="name" class="form-control" placeholder="Текст"
+                                                     required="required"/>
+                                     </div>
+
+
+
+                            <div class="pull-right">
+                                <div class="col-xs-1 col-xs-offset-1">
+                                    <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
+                                        <i class="fa fa-undo"></i></a>
                             </div>
+                            </div>
+                             </div>
+                            <hr>
 
-                        </fieldset>
-                        <hr>
-
-                        <div class="text-center">
-                            <button class="btn  btn-primary" type="submit">Сохранить тему</button>
-                        </div>
-                    </form:form>
+                            <div class="text-center">
+                                <button class="btn  btn-success" type="submit">Сохранить тему</button>
+                            </div>
+                        </form:form>
                 </div>
 
             </div>

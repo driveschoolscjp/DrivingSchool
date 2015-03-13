@@ -42,7 +42,7 @@
                 <%--три верхние кнопки--%>
                 <div class="row">
                     <div class="col-xs-3">
-                        <a href="/admin/group/add" type="button" class="btn btn-primary btn-success">Добавить
+                        <a href="/admin/group/add" type="button" class="btn btn-success">Добавить
                             группу</a>
                     </div>
 

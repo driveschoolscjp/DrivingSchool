@@ -36,24 +36,24 @@
         <div class="row">
             <div class="col-xs-11 whiteback">
 
-                <a href="/admin/testing/exam/edit?id=${ticket.exam.id}" type="button"
-                   class="btn btn-primary btn-success">
-                    Экзамен ${ticket.exam.name}
-                </a>
-                <a href="/admin/testing/ticket/edit?id=${ticket.id}" type="button" class="btn btn-primary btn-success">
-                    Билет ${ticket.number}
-                </a>
+                <br/>
+
+                <div class="btn-group" role="group" aria-label="...">
+                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
+                    <i class="fa fa-undo"> экзамены</i></a>
+                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Выбранный экзамен">
+                    <i class="fa fa-undo"> ${ ticket.exam.name}</i></a>
+                </div>
+
 
                 <h3 class="text-center">Билет ${ticket.number}</h3>
-
                 <h3 class="text-center">Редактор вопросов</h3>
                 <hr>
                 <%--новый билет--%>
                 <c:if test="${moreQuestions}">
                     <div class="row">
                         <div class="col-xs-4">
-                            <a href="/admin/testing/question/add?id=${ticket.id}" type="button"
-                               class="btn btn-primary btn-success">Добавить
+                            <a href="/admin/testing/question/add?id=${ticket.id}" type="button" class="btn btn-primary btn-success">Добавить
                                 вопрос</a>
                         </div>
                     </div>
@@ -73,15 +73,13 @@
                                 <c:forEach var="question" items="${questions}">
                                 <td>
                                     <div class="col-xs-4">
-                                        <a href="/admin/testing/question/edit?id=${question.id}" type="button"
-                                           class="btn btn-primary btn-success">
+                                        <a href="/admin/testing/question/edit?id=${question.id}" type="button" class="btn btn-primary btn-success">
                                                 ${question.number}
                                         </a>
                                     </div>
                                 </td>
                                 <c:if test="${question.number%10==0}">
-                            </tr>
-                            <tr>
+                            </tr><tr>
                                 </c:if>
                                 </c:forEach>
                             </tr>

@@ -12,10 +12,11 @@ import javax.persistence.Table;
 public class Message extends AbstractPersistable<Long> {
     private String theme;
     private String message;
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     private LocalDateTime dateTime;
     @ManyToOne
     private Student student;
+    private boolean old;
 
     public String getTheme() {
         return theme;
@@ -47,5 +48,17 @@ public class Message extends AbstractPersistable<Long> {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public boolean isOld() {
+        return old;
+    }
+
+    public void setOld(boolean old) {
+        this.old = old;
+    }
+
+    public void setId(Long id) {
+        super.setId(id);
     }
 }

@@ -73,7 +73,7 @@ display: inline-block;
 .price-slider {
 margin-bottom: 70px;
 width: 250px;
-height: 45px;
+height: 15px;
 }
 
 .price-slider span {
@@ -85,7 +85,7 @@ font-size: 13px;
 
 .form-horizontal.form-pricing {
 width: 280px;
-height: 620px;
+height: 360px;
 }
 
 .form-pricing {
@@ -140,4 +140,15 @@ height: auto;
     display: inline;
     max-width: 100%;
     height: auto;
+}
+.blackbackCost{
+    width: 280px;
+    height: 470px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 15px;
+    color:#ffffff;
+}
+
+.blackbackCost th, .blackbackCost td{
+    color: #ffffff;
 }

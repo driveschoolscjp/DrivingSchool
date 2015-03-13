@@ -30,7 +30,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-11">
-
+                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
+                    Все экзамены
+                </a>
                 <div class="container-fluid whiteback">
                     <form:form action="/admin/testing/theme/search" method="get" modelAttribute="theme">
                         <form:hidden path="id"/>

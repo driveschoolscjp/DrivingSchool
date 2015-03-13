@@ -18,7 +18,7 @@ public class AdminThemeController {
     private static final String VIEW_SEARCH_PATH = "admin/testing/theme/search";
     private static final String VIEW_SHOW_PATH = "admin/testing/theme/show";
     private static final String VIEW_EDIT_PATH = "admin/testing/theme/edit";
-    private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:show?id=";
+    private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:search";
 
     private static final String SEARCH_MAPPING_PATH="/search";
     private static final String ADD_MAPPING_PATH="/add";
@@ -54,15 +54,7 @@ public class AdminThemeController {
     @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute(THEME_ATTRIBUTE) Theme theme) {
         theme = themeService.save(theme);
-        return REDIRECT_SHOW_TO_ID_PATH + theme.getId(); // На страничку просмотра
-    }
-
-    // Показ одной темы
-    @RequestMapping(value = SHOW_MAPPING_PATH, method = RequestMethod.GET)
-    public String show(@RequestParam(ID_REQUEST_PARAM) long id, Model model) {
-
-        model.addAttribute(THEME_ATTRIBUTE, themeService.findOne(id));
-        return VIEW_SHOW_PATH;
+        return REDIRECT_SHOW_TO_ID_PATH ;
     }
 
     // Редактирование одной темы
