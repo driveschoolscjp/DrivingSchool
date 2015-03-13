@@ -49,32 +49,32 @@
 
                 <div class="col-xs-4 blackback">
 
-                    <li data-geo-lat="48.458085" data-geo-long="35.057470">
+                    <div data-geo-lat="48.458085" data-geo-long="35.057470">
                         <a href="#" onClick="showNext();">
                             <h3>Офис автошколы</h3>
 
-                            <p class="longdesc">
+                            <p>
                                 Адрес:<br/>
                                 ул. Гоголя, 1. Днепропетровск<br/>
                                 Днепропетровская область, Украина<br/>
                                 Телефон:(056) 770-04-57<br/>
                                 e-mail: classes@ds.dp.ua</p>
-                        </a></li>
+                        </a></div>
                 </div>
 
                 <div class="col-xs-offset-2 col-xs-4 blackback">
 
-                    <li data-geo-lat="48.376040" data-geo-long="34.462065">
+                    <div data-geo-lat="48.376040" data-geo-long="34.462065">
                         <a href="#" onClick="show();">
                             <h3>Автодром</h3>
 
-                            <p class="longdesc">
+                            <p>
                                 Адрес:<br/>
                                 ул.Школьная, 1. пгт.Кринички,<br/>
                                 Днепропетровская область, Украина<br/>
                                 Телефон:(059) 740-54-17<br/>
                                 e-mail: driving@ds.dp.ua</p>
-                        </a></li>
+                        </a></div>
                 </div>
 
 
