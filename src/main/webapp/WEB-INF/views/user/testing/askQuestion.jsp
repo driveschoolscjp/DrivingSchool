@@ -74,9 +74,9 @@
                                                         <c:choose>
                                                             <c:when test="${ans.correct}">
                                                                 <tr>
-                                                                <td class="answer right">
+                                                                <td class="answer correct">
                                                               <li>  <a href="#" type="text"
-                                                                   class="answer right">
+                                                                   class="answer correct">
                                                                     &nbsp;${ans.answer}
                                                                 </a></li>
                                                                 </td></tr>
