@@ -19,6 +19,8 @@ var currentId = {};
 var isGM = false;
 
 $(document).ready(function () {
+
+
     $('#messageField .typeahead').typeahead(null, {
         displayKey: function(d) {
             return d['firstname'] + " " + d['lastname'] + " " + d.group['name']
@@ -61,7 +63,7 @@ $(document).ready(function () {
     $('#submitMF').click(function() {
         var obj = { theme: $('#theme').val(),
                     message: $('#message1').val(),
-                    student_id: currentId,
+                    current_id: currentId,
                     isGroupMessage: isGM };
         var success = true;
         $.ajax({
@@ -72,11 +74,18 @@ $(document).ready(function () {
             data: JSON.stringify(obj),
             error: function (jqXHR, textStatus, errorThrown) {
                 success = false;
+                console.log(jqXHR);
+                console.log(errorThrown);
             },
             dataType: 'json'
         })
-        if (success) {
-            $('#myModal2').modal('hide');
+        $('#myModal2').modal('hide');
+        $('#messageField .typeahead').typeahead('val', "");
+        $('#theme').val('');
+        $('#message1').val('');
+
+        if (!success) {
+            alert("Ошибка. Сообщение не доставлено!")
         }
     });
 })

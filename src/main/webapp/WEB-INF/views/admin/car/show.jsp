@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
@@ -30,60 +30,62 @@
     <div class="container-fluid">
         <div class="row">
             <div class="container-fluid whiteback col-xs-11">
-                    <form:form action="/admin/car/search" method="get" modelAttribute="car">
-                        <form:hidden path="id"/>
+                <form:form action="/admin/car/search" method="get" modelAttribute="car">
+                    <form:hidden path="id"/>
 
-                        <h3>Просмотр автомобиля</h3>
-                        <hr>
-                        <%--строка с полями--%>
-                        <fieldset>
-                            <div class="form-group col-xs-4">
-                                <label for="brand">Brand:</label>
-                                <form:input path="brand" class="form-control" disabled="true"/>
-                            </div>
-
-                            <div class="form-group col-xs-4">
-                                <label for="model">Model:</label>
-                                <form:input path="model" class="form-control" disabled="true"/>
-                            </div>
-
-                            <div class="form-group col-xs-4">
-                                <label>Инструктор:</label><br/>
-                                <form:input path="instructor.firstname" class="form-control" disabled="true"/>
-                            </div>
-
-                        </fieldset>
-                        <hr>
-
-                        <fieldset>
-                            <div class="col-xs-8">
-                                <img src="${car.photoURL}" class="img-responsive img-thumbnail" alt="${car.brand} ${car.model}">
-                            </div>
-
-                            <div class="col-xs-4">
-                                <div class="form-group">
-                                    <label for="transmission">Коробка передач:</label>
-                                    <input id="transmission" class="form-control" value="${car.transmission.value}" disabled="true"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="horsePower">Hp:</label>
-                                    <form:input path="horsePower" class="form-control" disabled="true"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="pricePerHour">Rrice/Hour: UAH</label>
-                                    <form:input path="pricePerHour" class="form-control" disabled="true"/>
-                                </div>
-                            </div>
-                        </fieldset>
-                        <hr/>
-
-                        <div class="text-center">
-                            <button class="btn  btn-primary" type="submit">Назад</button>
+                    <h3>Просмотр автомобиля</h3>
+                    <hr>
+                    <%--строка с полями--%>
+                    <fieldset>
+                        <div class="form-group col-xs-4">
+                            <label for="brand">Brand:</label>
+                            <form:input path="brand" class="form-control" disabled="true"/>
                         </div>
-                    </form:form>
-                </div>
+
+                        <div class="form-group col-xs-4">
+                            <label for="model">Model:</label>
+                            <form:input path="model" class="form-control" disabled="true"/>
+                        </div>
+
+                        <div class="form-group col-xs-4">
+                            <label>Инструктор:</label><br/>
+                            <form:input path="instructor.firstname" class="form-control" disabled="true"/>
+                        </div>
+
+                    </fieldset>
+                    <hr>
+
+                    <fieldset>
+                        <div class="col-xs-8">
+                            <img src="${car.photoURL}" class="img-responsive img-thumbnail"
+                                 alt="${car.brand} ${car.model}">
+                        </div>
+
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label for="transmission">Коробка передач:</label>
+                                <input id="transmission" class="form-control" value="${car.transmission.value}"
+                                       disabled="true"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="horsePower">Hp:</label>
+                                <form:input path="horsePower" class="form-control" disabled="true"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pricePerHour">Rrice/Hour: UAH</label>
+                                <form:input path="pricePerHour" class="form-control" disabled="true"/>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <hr/>
+
+                    <div class="text-center">
+                        <button class="btn  btn-primary" type="submit">Назад</button>
+                    </div>
+                </form:form>
+            </div>
 
 
         </div>

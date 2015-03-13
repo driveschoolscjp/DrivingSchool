@@ -6,7 +6,6 @@ import com.luxoft.drivingschool.model.testing.Exam;
 import com.luxoft.drivingschool.model.testing.Question;
 import com.luxoft.drivingschool.model.testing.Ticket;
 import com.luxoft.drivingschool.service.testing.*;
-import com.sun.javafx.collections.transformation.SortedList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

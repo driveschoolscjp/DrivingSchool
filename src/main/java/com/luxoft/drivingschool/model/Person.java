@@ -9,24 +9,41 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @MappedSuperclass
 public abstract class Person extends AbstractPersistable<Long> {
-    @Column(length = 50)
+
+    @NotNull
+    @Size(min = 2, max = 50)
     private String firstname;
-    @Column(length = 50)
+    @NotNull
+    @Size(min = 2, max = 50)
     private String lastname;
-    @Column(length = 50)
+    @NotNull
+    @Size(min = 2, max = 50)
     private String patronymic;
     @Column(length = 8)
+    @NotNull
+    @Pattern(regexp = "^[А-Я]{2}\\d{6}$")
     private String passport;
     @Column(length = 8)
+    @NotNull
+    @Pattern(regexp = "^\\d{8}$")
     private String inn;
+    @NotNull
+    @Past
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate birthday;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Gender gender;
+    @Size(min = 2, max = 30)
     private String tel;
+    @Size(min = 2, max = 30)
     private String email;
 
     public String getFirstname() {

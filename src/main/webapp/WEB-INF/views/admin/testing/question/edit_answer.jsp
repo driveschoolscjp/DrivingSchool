@@ -33,20 +33,21 @@
         <div class="row">
             <div class="col-xs-11">
 
-                <a href="/admin/testing/exam/edit?id=${question.ticket.exam.id}" type="button"
-                   class="btn btn-primary btn-success">
+                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
+                    Все экзамены
+                </a>
+                <a href="/admin/testing/ticket/search?id=${question.ticket.exam.id}" type="button" class="btn btn-primary btn-success">
                     Экзамен ${question.ticket.exam.name}
                 </a>
-                <a href="/admin/testing/ticket/edit?id=${question.ticket.id}" type="button"
-                   class="btn btn-primary btn-success">
+                <a href="/admin/testing/question/search?id=${question.id}" type="button" class="btn btn-primary btn-success">
                     Билет ${question.ticket.number}
                 </a>
-                <a href="/admin/testing/question/edit?id=${question.id}" type="button"
-                   class="btn btn-primary btn-success">
+                <a href="/admin/testing/question/edit?id=${question.id}" type="button" class="btn btn-primary btn-success">
                     Вопрос ${question.number}
                 </a>
 
                 <div class="container-fluid whiteback">
+
 
 
                     <h3>Редактор ответа</h3>
@@ -63,82 +64,77 @@
                             <label>Вопрос:</label><br/>
                             ${question.question}
                         </div>
+                        <c:if test="${question.pathToPicture!=null}">
+                            <img src="${question.pathToPicture}">
+                        </c:if>
                     </fieldset>
                     <fieldset>
                         <div class="row">
                             <div class="col-xs-10 table-responsive">
                                 <table class="table" id="table">
                                     <c:forEach var="answ" items="${answers}">
-                                        <div class="form-group col-xs-11">
-                                        <tr>
-                                            <td>
-                                                <c:choose>
-                                                    <c:when test="${answer.id==answ.id}">
-                                                        <form:form action="/admin/testing/question/saveAnswer"
-                                                                   method="post"
-                                                                   modelAttribute="answer">
-                                                            <form:textarea path="ans" class="form-control" cols="10"
-                                                                           rows="3"
-                                                                           placeholder="Answer" required="required"
-                                                                           autofocus=""/>
-                                                            <form:hidden path="id"/>
-                                                            <form:checkbox path="correct"/>
+                                    <tr>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${answer.id==answ.id}">
+                                                    <form:form action="/admin/testing/question/saveAnswer" method="post"
+                                                               modelAttribute="answer">
+                                                        <form:textarea path="ans" class="form-control" cols="10"
+                                                                       rows="3"
+                                                                       placeholder="Answer" required="required"
+                                                                       autofocus=""/>
+                                                        <form:hidden path="id" />
+                                                        <form:checkbox path="correct" />
                                                             Установить верным
-                                                            <input hidden name="questionId" value="${question.id}">
-
-                                                            <div class="btn-group-vertical pull-right">
-                                                                <button class="btn  btn-primary" type="submit">Сохранить
-                                                                    ответ
-                                                                </button>
-                                                            </div>
-                                                        </form:form>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <c:choose>
-                                                            <c:when test="${answ.correct}">
-                                                        <textarea class="form-control" style="background-color: #67b168"
-                                                                  cols="10" rows="3"
+                                                        <input hidden name="questionId" value="${question.id}">
+                                                        <div class="btn-group-vertical pull-right">
+                                                            <button class="btn  btn-primary" type="submit">Сохранить
+                                                                ответ
+                                                            </button>
+                                                        </div>
+                                                    </form:form>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <c:choose>
+                                                    <c:when test="${answ.correct}">
+                                                        <textarea class="form-control" style="background-color: #67b168" cols="10" rows="3"
                                                                   readonly="true">
                                                                 ${answ.ans}
                                                         </textarea>
-                                                            </c:when>
-                                                            <c:otherwise><textarea class="form-control"
-                                                                                   style="background-color: #ce8483"
-                                                                                   cols="10" rows="3"
-                                                                                   readonly="true">
-                                                                    ${answ.ans}
-                                                            </textarea>
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </td>
-                                            <td>
-                                        </tr>
-                                        <tr>
-                                            <td>
+                                                    </c:when>
+                                                        <c:otherwise><textarea class="form-control" style="background-color: #ce8483" cols="10" rows="3"
+                                                                               readonly="true">
+                                                                ${answ.ans}
+                                                        </textarea>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </td>
+                                        <td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group col-xs-11">
                                                 </c:forEach>
                                                 <c:if test="${answer.id==null}">
-                                                <form:form action="/admin/testing/question/saveAnswer" method="post"
-                                                           modelAttribute="answer">
-                                                    <form:textarea path="ans" class="form-control" cols="10"
-                                                                   rows="3"
-                                                                   placeholder="Answer" required="required"
-                                                                   autofocus=""/>
-                                                    <form:checkbox path="correct"/>
-                                                    <form:hidden path="id"/>
-                                                <input hidden name="questionId" value="${question.id}">
-
-                                                <div class="btn-group-vertical pull-right">
-                                                    <button class="btn  btn-primary" type="submit">Сохранить
-                                                        ответ
-                                                    </button>
-                                                </div>
-                                                </form:form>
+                                                    <form:form action="/admin/testing/question/saveAnswer" method="post"
+                                                               modelAttribute="answer">
+                                                        <form:textarea path="ans" class="form-control" cols="10"
+                                                                       rows="3"
+                                                                       placeholder="Answer" required="required"
+                                                                       autofocus=""/>
+                                                        <form:checkbox path="correct" />
+                                                        <form:hidden path="id" />
+                                                        <input hidden name="questionId" value="${question.id}">
+                                                        <div class="btn-group-vertical pull-right">
+                                                            <button class="btn  btn-primary" type="submit">Сохранить ответ</button>
+                                                        </div>
+                                                    </form:form>
                                                 </c:if>
-                                    </td>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    </div>
                                 </table>
                             </div>
                         </div>

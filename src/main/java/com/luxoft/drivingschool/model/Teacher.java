@@ -14,8 +14,8 @@ public class Teacher extends Person {
     private String photoURL;
     @Column(columnDefinition="TEXT")
     private String description;
-    @OneToOne(mappedBy = "instructor")
     @JsonIgnore
+    @OneToOne(mappedBy = "instructor")
     private Car car;
 
     public String getPhotoURL() {

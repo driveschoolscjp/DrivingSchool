@@ -5,23 +5,31 @@ import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "groups")
 public class Group extends AbstractPersistable<Long> {
-    @Column(length = 40)
+
+    @NotNull
+    @Size(max = 25)
     private String name;
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate startDate;
+    @NotNull
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     private LocalDate finishDate;
-    @ManyToOne
     @JsonIgnore
+    @NotNull
+    @ManyToOne
     private Teacher teacher;
+    @NotNull
     private String description;
 
     public String getName() {

@@ -3,17 +3,24 @@ package com.luxoft.drivingschool.model;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "students")
 public class Student extends Person {
 
+    @NotNull
     private String login;
+    @NotNull
     private String password;
+    @NotNull
     @ManyToOne
     private Group group;
+    @NotNull
     @ManyToOne
     private Teacher instructor;
+    @Min(10)
     private int rideNumber;
 
     public String getLogin() {

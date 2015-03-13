@@ -31,11 +31,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-11">
-
-                <a href="/admin/testing/exam/edit?id=${question.ticket.exam.id}" type="button" class="btn btn-primary btn-success">
+                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
+                    Все экзамены
+                </a>
+                <a href="/admin/testing/ticket/search?id=${question.ticket.exam.id}" type="button" class="btn btn-primary btn-success">
                     Экзамен ${question.ticket.exam.name}
                 </a>
-                <a href="/admin/testing/ticket/edit?id=${question.ticket.id}" type="button" class="btn btn-primary btn-success">
+                <a href="/admin/testing/question/search?id=${question.ticket.id}" type="button" class="btn btn-primary btn-success">
                     Билет ${question.ticket.number}
                 </a>
                 <div class="container-fluid whiteback">
@@ -60,6 +62,11 @@
                                 <label>Билет:</label><br/> ${question.ticket.number}
                                 <%--<input hidden name="ticketId" value="${question.ticket.id}"/>--%>
                             </div>
+                            <c:if test="${question.pathToPicture!=null}">
+                                <img src="${question.pathToPicture}">
+                            </c:if>
+                            <form:input path="pathToPicture" class="form-control" placeholder="Картинка"
+                                        required="required"/>
                             <div class="form-group col-xs-4">
                                 <label>Тема:</label><br/>
                             <form:select path="theme.id" class="selectpicker form-control" required="required">

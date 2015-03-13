@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
@@ -30,7 +30,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-11">
-
+                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
+                    Все экзамены
+                </a>
                 <div class="container-fluid whiteback">
                     <form:form action="/admin/testing/theme/search" method="get" modelAttribute="theme">
                         <form:hidden path="id"/>

@@ -43,7 +43,7 @@
                             <div class="form-group col-xs-6">
                                 <label for="name">Название группы:</label>
                                 <form:input path="name" class="form-control" placeholder="Группа 1"
-                                            required="required"/>
+                                            required="required" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-6">
@@ -62,17 +62,20 @@
                         <fieldset>
                             <div class="form-group col-xs-6">
                                 <label for="description">Описание:</label>
-                                <form:input path="description" class="form-control" required="required"/>
+                                <form:input path="description" class="form-control" required="required"
+                                            cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-3">
                                 <label for="startDate">Дата начала занятий:</label>
-                                <form:input path="startDate" class="form-control" type="date" required="required"/>
+                                <form:input path="startDate" class="form-control" type="date" required="required"
+                                            cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-3">
                                 <label for="finishDate">Дата окончания занятий:</label>
-                                <form:input path="finishDate" class="form-control" type="date" required="required"/>
+                                <form:input path="finishDate" class="form-control" type="date" required="required"
+                                            cssErrorClass="error form-control"/>
                             </div>
                         </fieldset>
                         <hr>

@@ -33,63 +33,64 @@
 
     <div class="container-fluid">
 
-        <div class="row">
             <div class="col-xs-11 whiteback">
 
                 <h3 class="text-center">Экзамены</h3>
                 <hr>
-                <%--новый билет--%>
-                <div class="row">
-                    <div class="col-xs-4">
-                        <a href="/admin/testing/exam/add" type="button" class="btn btn-primary btn-success">Добавить
-                            экзамен</a>
-                    </div>
-                </div>
-                <hr>
                 <%--таблица с билетами--%>
                 <div class="row">
                     <div class="col-xs-12 table-responsive">
-                        <table class="table" id="table">
-                            <thead>
-                            <tr>
-                                <th>Экзамены</th>
-                            </tr>
-                            </thead>
+                        <table class="table">
                             <tbody>
-                            <tr>
-                                <div class="row">
-                                    <td>
-                                    <c:forEach var="exam" items="${exams}">
-                                            <div class="col-xs-12">
-                                                <a href="/admin/testing/ticket/search?id=${exam.id}" type="button"
-                                                   class="btn btn-primary btn-success">
-                                                        ${exam.name}
-                                                </a>
-                                            </div>
 
-                                    </c:forEach>
-                                    </td>
+                            <div class="row">
+                            <tr>
+                                <%--новый билет--%>
+                                <div class="row">
+
+                                    <div  class="pull-left">
+                                        <div class="col-xs-3">
+                                            <a href="/admin/testing/exam/add" type="button" class="btn btn-success"> Добавить
+                                                экзамен</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="pull-right">
+                                        <div class="col-xs-3">
+                                            <a href="/admin/testing/theme/search" type="button" class="btn btn-primary">
+                                                Темы
+                                            </a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </tr>
+                            </div>
+                            <hr/>
+                            <br/>
+                            <div class="row">
+                            <tr>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                    <c:forEach var="exam" items="${exams}">
+                                                <a href="/admin/testing/ticket/search?id=${exam.id}" type="button"
+                                                   class="btn btn-primary">
+                                                        ${exam.name}
+                                                </a>
+                                    </c:forEach>
+                                 </div>
+                            </tr>
+                            </div>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>
 
+
 <jsp:include page="../../../footer.jsp"/>
-<script>
-    $(function () {
-        $('#table').searchable({
-            striped: true,
-            oddRow: {'background-color': '#f5f5f5'},
-            evenRow: {'background-color': '#fff'},
-            searchType: 'fuzzy'
-        });
-    });</script>
+
 <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 
 </body>
