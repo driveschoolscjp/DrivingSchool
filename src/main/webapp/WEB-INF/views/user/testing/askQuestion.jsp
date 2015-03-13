@@ -39,6 +39,7 @@
                 <div class="row">
                         <c:if test="${question.pathToPicture!=null || question.pathToPicture!=''}">
                             <img src="${question.pathToPicture}">
+
                         </c:if>
                 </div>
                 </div>
