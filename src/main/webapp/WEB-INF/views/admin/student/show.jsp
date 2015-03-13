@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
@@ -76,7 +76,8 @@
 
                             <div class="col-xs-6">
                                 <label for="gender">Пол</label><br>
-                                <input id="gender" class="form-control" value="${student.gender.value}" disabled="true"/>
+                                <input id="gender" class="form-control" value="${student.gender.value}"
+                                       disabled="true"/>
                             </div>
 
                         </fieldset>
@@ -104,7 +105,9 @@
 
                             <div class="form-group col-xs-4">
                                 <label>Инструктор:</label><br/>
-                                <input id="instructor" class="form-control" type="text" value="${student.instructor.firstname} ${student.instructor.lastname} - ${student.instructor.car.brand} ${student.instructor.car.model}" disabled="true"/>
+                                <input id="instructor" class="form-control" type="text"
+                                       value="${student.instructor.firstname} ${student.instructor.lastname} - ${student.instructor.car.brand} ${student.instructor.car.model}"
+                                       disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-4">

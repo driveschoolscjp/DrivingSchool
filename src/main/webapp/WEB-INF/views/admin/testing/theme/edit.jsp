@@ -33,26 +33,26 @@
             <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
-                        <form:form action="/admin/testing/theme/save" method="post" modelAttribute="theme">
-                            <form:hidden path="id"/>
+                    <form:form action="/admin/testing/theme/save" method="post" modelAttribute="theme">
+                        <form:hidden path="id"/>
 
-                            <h3>Добавление темы</h3>
-                            <hr>
-                            <%--строка с полями--%>
-                            <fieldset>
-                                <div class="form-group col-xs-12">
-                                    <label for="name">Name:</label>
-                                    <form:input path="name" class="form-control" placeholder="Theme"
-                                                required="required"/>
-                                </div>
-
-                            </fieldset>
-                            <hr>
-
-                            <div class="text-center">
-                                <button class="btn  btn-primary" type="submit">Сохранить тему</button>
+                        <h3>Добавление темы</h3>
+                        <hr>
+                        <%--строка с полями--%>
+                        <fieldset>
+                            <div class="form-group col-xs-12">
+                                <label for="name">Name:</label>
+                                <form:input path="name" class="form-control" placeholder="Theme"
+                                            required="required"/>
                             </div>
-                        </form:form>
+
+                        </fieldset>
+                        <hr>
+
+                        <div class="text-center">
+                            <button class="btn  btn-primary" type="submit">Сохранить тему</button>
+                        </div>
+                    </form:form>
                 </div>
 
             </div>

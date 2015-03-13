@@ -42,9 +42,10 @@ public class AdminCarController {
 
     // Сохранение и переход на форму просмотра
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("car") @Valid Car car, Errors errors) {
+    public String processRegistration(@ModelAttribute("car") @Valid Car car, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("instructors", teacherService.findInstructorForCar(car.getId()));
             return "admin/car/edit";
         }
 

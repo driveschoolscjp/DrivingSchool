@@ -33,17 +33,20 @@
         <div class="row">
             <div class="col-xs-11">
 
-                <a href="/admin/testing/exam/edit?id=${question.ticket.exam.id}" type="button" class="btn btn-primary btn-success">
+                <a href="/admin/testing/exam/edit?id=${question.ticket.exam.id}" type="button"
+                   class="btn btn-primary btn-success">
                     Экзамен ${question.ticket.exam.name}
                 </a>
-                <a href="/admin/testing/ticket/edit?id=${question.ticket.id}" type="button" class="btn btn-primary btn-success">
+                <a href="/admin/testing/ticket/edit?id=${question.ticket.id}" type="button"
+                   class="btn btn-primary btn-success">
                     Билет ${question.ticket.number}
                 </a>
-                <a href="/admin/testing/question/edit?id=${question.id}" type="button" class="btn btn-primary btn-success">
+                <a href="/admin/testing/question/edit?id=${question.id}" type="button"
+                   class="btn btn-primary btn-success">
                     Вопрос ${question.number}
                 </a>
-                <div class="container-fluid whiteback">
 
+                <div class="container-fluid whiteback">
 
 
                     <h3>Редактор ответа</h3>
@@ -76,10 +79,11 @@
                                                                        rows="3"
                                                                        placeholder="Answer" required="required"
                                                                        autofocus=""/>
-                                                        <form:hidden path="id" />
-                                                        <form:checkbox path="correct" />
-                                                            Установить верным
+                                                        <form:hidden path="id"/>
+                                                        <form:checkbox path="correct"/>
+                                                        Установить верным
                                                         <input hidden name="questionId" value="${question.id}">
+
                                                         <div class="btn-group-vertical pull-right">
                                                             <button class="btn  btn-primary" type="submit">Сохранить
                                                                 ответ
@@ -89,13 +93,16 @@
                                                 </c:when>
                                                 <c:otherwise>
                                                     <c:choose>
-                                                    <c:when test="${answ.correct}">
-                                                        <textarea class="form-control" style="background-color: #67b168" cols="10" rows="3"
+                                                        <c:when test="${answ.correct}">
+                                                        <textarea class="form-control" style="background-color: #67b168"
+                                                                  cols="10" rows="3"
                                                                   readonly="true">
                                                                 ${answ.ans}
                                                         </textarea>
-                                                    </c:when>
-                                                        <c:otherwise><textarea class="form-control" style="background-color: #ce8483" cols="10" rows="3"
+                                                        </c:when>
+                                                        <c:otherwise><textarea class="form-control"
+                                                                               style="background-color: #ce8483"
+                                                                               cols="10" rows="3"
                                                                                readonly="true">
                                                                 ${answ.ans}
                                                         </textarea>
@@ -117,11 +124,14 @@
                                                                        rows="3"
                                                                        placeholder="Answer" required="required"
                                                                        autofocus=""/>
-                                                        <form:checkbox path="correct" />
-                                                        <form:hidden path="id" />
+                                                        <form:checkbox path="correct"/>
+                                                        <form:hidden path="id"/>
                                                         <input hidden name="questionId" value="${question.id}">
+
                                                         <div class="btn-group-vertical pull-right">
-                                                            <button class="btn  btn-primary" type="submit">Сохранить ответ</button>
+                                                            <button class="btn  btn-primary" type="submit">Сохранить
+                                                                ответ
+                                                            </button>
                                                         </div>
                                                     </form:form>
                                                 </c:if>

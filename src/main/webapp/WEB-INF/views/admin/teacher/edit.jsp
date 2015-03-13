@@ -35,106 +35,110 @@
             <div class="col-xs-11">
 
                 <div class="container-fluid whiteback">
-                        <form:form action="/admin/teacher/save" method="post" modelAttribute="teacher">
-                            <form:hidden path="id"/>
+                    <form:form action="/admin/teacher/save" method="post" modelAttribute="teacher">
+                        <form:hidden path="id"/>
 
-                            <h3>Добавление преподавателя</h3>
-                            <hr>
-                            <%--строка с полями--%>
-                            <fieldset>
-                                <div class="form-group col-xs-4">
-                                    <label for="lastname">Lastname:</label>
-                                    <form:input path="lastname" class="form-control" placeholder="Black"
-                                                required="required"/>
-                                </div>
+                        <h3>Добавление преподавателя</h3>
+                        <hr>
+                        <%--строка с полями--%>
+                        <fieldset>
+                            <div class="form-group col-xs-4">
+                                <label for="lastname">Lastname:</label>
+                                <form:input path="lastname" class="form-control" placeholder="Black"
+                                            required="required" cssErrorClass="error form-control"/>
+                            </div>
 
-                                <div class="form-group col-xs-4">
-                                    <label for="firstname">Name:</label>
-                                    <form:input path="firstname" class="form-control" placeholder="Jack"
-                                                required="required"/>
-                                </div>
+                            <div class="form-group col-xs-4">
+                                <label for="firstname">Name:</label>
+                                <form:input path="firstname" class="form-control" placeholder="Jack"
+                                            required="required" cssErrorClass="error form-control"/>
+                            </div>
 
-                                <div class="form-group col-xs-4">
-                                    <label for="patronymic">Patronymic:</label>
-                                    <form:input path="patronymic" class="form-control" placeholder="Robertovich"
-                                                required="required"/>
-                                </div>
-                            </fieldset>
-                            <hr>
+                            <div class="form-group col-xs-4">
+                                <label for="patronymic">Patronymic:</label>
+                                <form:input path="patronymic" class="form-control" placeholder="Robertovich"
+                                            required="required" cssErrorClass="error form-control"/>
+                            </div>
+                        </fieldset>
+                        <hr>
 
-                            <fieldset>
-                                <div class="form-group col-xs-6">
-                                    <label for="passport">Passport:</label>
-                                    <form:input path="passport" class="form-control" placeholder="AA571175"
-                                                pattern="[А-Я]{2}[0-9]{6}" required="required"/>
-                                </div>
+                        <fieldset>
+                            <div class="form-group col-xs-6">
+                                <label for="passport">Passport:</label>
+                                <form:input path="passport" class="form-control" placeholder="AA571175"
+                                            pattern="[А-Я]{2}[0-9]{6}" required="required"
+                                            cssErrorClass="error form-control"/>
+                            </div>
 
-                                <div class="form-group col-xs-6">
-                                    <label for="inn">INN:</label>
-                                    <form:input path="inn" class="form-control" placeholder="12345678"
-                                                pattern="[0-9]{8}" required="required"/>
-                                </div>
-                            </fieldset>
-                            <hr>
+                            <div class="form-group col-xs-6">
+                                <label for="inn">INN:</label>
+                                <form:input path="inn" class="form-control" placeholder="12345678"
+                                            pattern="[0-9]{8}" required="required" cssErrorClass="error form-control"/>
+                            </div>
+                        </fieldset>
+                        <hr>
 
-                            <fieldset>
-                                <div class="form-group col-xs-6">
-                                    <label for="birthday">Birthday: </label>
-                                    <form:input path="birthday" type="date" class="form-control" required="required"/>
+                        <fieldset>
+                            <div class="form-group col-xs-6">
+                                <label for="birthday">Birthday: </label>
+                                <form:input path="birthday" type="date" class="form-control" required="required"
+                                            cssErrorClass="error form-control"/>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <label for="gender">Gender</label><br>
+                                    <%--<form:radiobuttons path="gender" class="radio-inline"/>--%>
+                                <div class="col-xs-6">
+                                    <form:radiobutton path="gender" value="MALE"/> <b>Мужской</b>
                                 </div>
 
                                 <div class="col-xs-6">
-                                    <label for="gender">Gender</label><br>
-                                        <%--<form:radiobuttons path="gender" class="radio-inline"/>--%>
-                                    <div class="col-xs-6">
-                                        <form:radiobutton path="gender" value="MALE"/> <b>Мужской</b>
-                                    </div>
-
-                                    <div class="col-xs-6">
-                                        <form:radiobutton path="gender" value="FEMALE"/> <b>Женский</b>
-                                    </div>
+                                    <form:radiobutton path="gender" value="FEMALE"/> <b>Женский</b>
                                 </div>
-
-                            </fieldset>
-                            <hr>
-
-
-                            <fieldset>
-                                <div class="form-group col-xs-4">
-                                    <label for="tel">Telephone:</label>
-                                    <form:input path="tel" type="tel" class="form-control" placeholder="987-654-32-10"
-                                                required="required"/>
-                                </div>
-
-                                <div class="form-group col-xs-4">
-                                    <label for="email">Email address:</label>
-                                    <form:input path="email" type="email" class="form-control"
-                                                placeholder="nickname@mail.com" required="required"/>
-
-                                </div>
-
-                                <div class="form-group col-xs-4">
-                                    <label for="photoURL">Photo URI:</label>
-                                    <form:input path="photoURL" class="form-control" type="url"
-                                                placeholder="http//photo.com/teacher5.png" required="required"/>
-                                </div>
-                            </fieldset>
-                            <hr>
-
-                            <fieldset>
-                                <div class="form-group">
-                                    <label for="description">Description:</label>
-                                    <form:textarea path="description" class="form-control" rows="3"
-                                                   placeholder="Description"
-                                                   required="required"/>
-                                </div>
-                            </fieldset>
-                            <hr>
-
-                            <div class="text-center">
-                                <button class="btn  btn-primary" type="submit">Сохранить преподавателя</button>
                             </div>
-                        </form:form>
+
+                        </fieldset>
+                        <hr>
+
+
+                        <fieldset>
+                            <div class="form-group col-xs-4">
+                                <label for="tel">Telephone:</label>
+                                <form:input path="tel" type="tel" class="form-control" placeholder="987-654-32-10"
+                                            required="required" cssErrorClass="error form-control"/>
+                            </div>
+
+                            <div class="form-group col-xs-4">
+                                <label for="email">Email address:</label>
+                                <form:input path="email" type="email" class="form-control"
+                                            placeholder="nickname@mail.com" required="required"
+                                            cssErrorClass="error form-control"/>
+
+                            </div>
+
+                            <div class="form-group col-xs-4">
+                                <label for="photoURL">Photo URI:</label>
+                                <form:input path="photoURL" class="form-control" type="url"
+                                            placeholder="http//photo.com/teacher5.png" required="required"
+                                            cssErrorClass="error form-control"/>
+                            </div>
+                        </fieldset>
+                        <hr>
+
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="description">Description:</label>
+                                <form:textarea path="description" class="form-control" rows="3"
+                                               placeholder="Description"
+                                               required="required" cssErrorClass="error form-control"/>
+                            </div>
+                        </fieldset>
+                        <hr>
+
+                        <div class="text-center">
+                            <button class="btn  btn-primary" type="submit">Сохранить преподавателя</button>
+                        </div>
+                    </form:form>
                 </div>
 
             </div>

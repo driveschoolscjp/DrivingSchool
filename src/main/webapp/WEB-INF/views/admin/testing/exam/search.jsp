@@ -59,7 +59,7 @@
                             <tr>
                                 <div class="row">
                                     <td>
-                                    <c:forEach var="exam" items="${exams}">
+                                        <c:forEach var="exam" items="${exams}">
                                             <div class="col-xs-12">
                                                 <a href="/admin/testing/ticket/search?id=${exam.id}" type="button"
                                                    class="btn btn-primary btn-success">
@@ -67,7 +67,7 @@
                                                 </a>
                                             </div>
 
-                                    </c:forEach>
+                                        </c:forEach>
                                     </td>
                                 </div>
                             </tr>

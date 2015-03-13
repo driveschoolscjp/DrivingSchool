@@ -43,13 +43,13 @@
                             <div class="form-group col-xs-4">
                                 <label for="brand">Brand:</label>
                                 <form:input path="brand" class="form-control" placeholder="Honda"
-                                            required="required"/>
+                                            required="required" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-4">
                                 <label for="model">Model:</label>
                                 <form:input path="model" class="form-control" placeholder="H2000"
-                                            required="required"/>
+                                            required="required" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-4">
@@ -82,19 +82,20 @@
                                 <label for="horsePower">Hp:</label>
                                 <form:input path="horsePower" class="form-control" placeholder="1.8"
                                             type="number" min="0" max="1500"
-                                            step="1" required="required"/>
+                                            step="1" required="required" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-3">
                                 <label for="pricePerHour">Price/Hour: UAH</label>
                                 <form:input path="pricePerHour" class="form-control" type="number" min="10"
-                                            max="1000" step="1" required="required"/>
+                                            max="1000" step="1" required="required" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-3">
                                 <label for="photoURL">Photo URI:</label>
                                 <form:input path="photoURL" class="form-control" type="url"
-                                            placeholder="http//photo.com/car5.png" required="required"/>
+                                            placeholder="http//photo.com/car5.png" required="required"
+                                            cssErrorClass="error form-control"/>
                             </div>
 
                         </fieldset>

@@ -37,20 +37,23 @@
             <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
                 Экзамены
             </a>
+
             <div class="col-xs-11 whiteback">
 
 
                 <h3 class="text-center">Экзамен ${exam.name}</h3>
+
                 <h3 class="text-center">Редактор билетов</h3>
                 <hr>
                 <%--новый билет--%>
                 <c:if test="${moreTickets}">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <a href="/admin/testing/ticket/add?id=${exam.id}" type="button" class="btn btn-primary btn-success">Добавить
-                            билет</a>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <a href="/admin/testing/ticket/add?id=${exam.id}" type="button"
+                               class="btn btn-primary btn-success">Добавить
+                                билет</a>
+                        </div>
                     </div>
-                </div>
                 </c:if>
                 <hr>
                 <%--таблица с билетами--%>
@@ -63,20 +66,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                            <tr>
                                 <c:forEach var="ticket" items="${tickets}">
-                                    <td>
-                                        <div class="col-xs-12">
-                                        <a href="/admin/testing/question/search?id=${ticket.id}" type="button" class="btn btn-primary btn-success">
-                                            ${ticket.number}
+                                <td>
+                                    <div class="col-xs-12">
+                                        <a href="/admin/testing/question/search?id=${ticket.id}" type="button"
+                                           class="btn btn-primary btn-success">
+                                                ${ticket.number}
                                         </a>
-                                        </div>
-                                    </td>
-                                        <c:if test="${ticket.id%10==0}">
-                                            </tr><tr>
-                                        </c:if>
-                            </c:forEach>
-                                </tr>
+                                    </div>
+                                </td>
+                                <c:if test="${ticket.id%10==0}">
+                            </tr>
+                            <tr>
+                                </c:if>
+                                </c:forEach>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

@@ -42,10 +42,10 @@
                 <div class="row">
                     <div class="col-xs-3">
                         <select name="id" class="selectpicker form-control">
-                        <c:forEach items="${teachers}" var="teacher">
+                            <c:forEach items="${teachers}" var="teacher">
                             <a href="/admin/group/add" type="button" class="btn btn-primary btn-success">Добавить
                                 группу</a>
-                        </c:forEach>
+                            </c:forEach>
                     </div>
                 </div>
                 <hr>

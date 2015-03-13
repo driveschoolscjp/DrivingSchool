@@ -54,9 +54,10 @@ public class AdminGroupController {
 
     // Сохранение и переход на форму просмотра
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("group") @Valid Group group, Errors errors) {
+    public String processRegistration(@ModelAttribute("group") @Valid Group group, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("teachers", teacherService.findAll());
             return "admin/group/edit";
         }
 

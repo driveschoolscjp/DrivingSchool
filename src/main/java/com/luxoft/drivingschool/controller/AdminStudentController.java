@@ -65,9 +65,11 @@ public class AdminStudentController {
 
     // Сохранение и переход на форму просмотра
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("student") @Valid Student student, Errors errors) {
+    public String processRegistration(@ModelAttribute("student") @Valid Student student, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("groups", groupService.findAll());
+            model.addAttribute("instructors", teacherService.findByCarIsNotNull());
             return "admin/student/edit";
         }
 
