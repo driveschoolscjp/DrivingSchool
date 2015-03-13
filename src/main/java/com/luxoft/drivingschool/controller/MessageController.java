@@ -1,5 +1,6 @@
 package com.luxoft.drivingschool.controller;
 
+import com.luxoft.drivingschool.model.Message;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.enums.UserRoleEnum;
 import com.luxoft.drivingschool.service.MessageService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -44,11 +46,7 @@ public class MessageController {
     @RequestMapping(value = "/student/message/newamount", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> amount(@RequestBody Map<String, Object> map) {
-        Student student = null;
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
-            student = studentService.findByLogin(auth.getName());
-        }
+        Student student = getCurrentStudent();
         if (student == null) {
             //throw new ServiceException();
             return null;
@@ -57,4 +55,24 @@ public class MessageController {
         result.put("amount", messageService.getNewCount(student.getId()));
         return result;
     }
+
+    @RequestMapping(value = "/student/message/getmessages", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
+        consumes = MediaType.APPLICATION_JSON_VALUE)
+    public List<Message> getMessages(@RequestBody Map<String, Object> map) {
+        Student student = getCurrentStudent();
+        Long message_id = Long.parseLong(map.get("message_id").toString());
+        Long rows = Long.parseLong(map.get("rows").toString());
+        return messageService.getMessages(message_id, student.getId(), rows);
+    }
+
+    private Student getCurrentStudent() {
+        Student student = null;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
+            student = studentService.findByLogin(auth.getName());
+        }
+        return student;
+    }
 }
+
+

@@ -50,6 +50,10 @@ public class MessageService {
         messageRepository.save(entitites);
     }
 
+    public List<Message> getMessages(Long message_id, Long student_id, Long rows) {
+        return messageRepository.findMessageByStudentId(student_id);
+    }
+
     public Integer getNewCount(Long id) {
         return messageRepository.getCountOfNewMessages(id);
     }
