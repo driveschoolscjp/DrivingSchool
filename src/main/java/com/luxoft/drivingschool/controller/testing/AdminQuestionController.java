@@ -93,7 +93,7 @@ public class AdminQuestionController {
         public String saveQuestion(@ModelAttribute(QUESTION_ATTRIBUTE) Question question) {
 //        question.setTicket(ticketService.findOne(ticketId));
         question = questionService.save(question);
-        return REDIRECT_ADD_ANSWER + question.getId(); // На страничку просмотра
+        return "edit?id=" + question.getId(); // На страничку просмотра
     }
 
     // Добавление ответа
@@ -125,7 +125,7 @@ public class AdminQuestionController {
                 }
             }
         }
-        return REDIRECT_ADD_ANSWER + questionId; // На страничку просмотра
+        return "redirect:edit?id=" + questionId; // На страничку просмотра
     }
 
     // Показ одного вопроса
