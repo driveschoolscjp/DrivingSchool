@@ -205,3 +205,16 @@ body {
     max-width: 100%;
     max-high: 100%;
 }
+
+a.list-group-item.active:hover, a.list-group-item.active:focus {
+    color: #555;
+    background-color: #99bddb;
+    cursor: hand;
+}
+
+.panel-primary > .panel-heading {
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
