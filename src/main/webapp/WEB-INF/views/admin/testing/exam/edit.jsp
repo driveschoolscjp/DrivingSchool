@@ -31,32 +31,43 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-11">
-                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
-                    Все экзамены
-                </a>
+
                 <div class="container-fluid whiteback">
                         <form:form action="/admin/testing/exam/save" method="post" modelAttribute="exam">
                             <form:hidden path="id"/>
 
-                            <h3>Редактор экзамена</h3>
+                            <div class="row">
+                                <div class="col-xs-4 col-xs-offset-4">
+                                <h3>Редактор экзамена</h3>
+                            </div>
+                            </div>
                             <hr>
+
                             <%--строка с полями--%>
                             <fieldset>
-                                <div class="form-group col-xs-12">
-                                    <label for="name">Name:</label>
-                                    <form:input path="name" class="form-control" placeholder="Название"
+                                <div class="form-group col-xs-11">
+                                    <label for="name">Название:</label>
+                                    <form:input path="name" class="form-control" placeholder="Текст"
                                                 required="required"/>
                                 </div>
+
+                                <div class="form-group col-xs-1">
+                                    <label for="name"><br/></label>
+                                    <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
+                                        <i class="fa fa-undo"></i>
+                                    </a>
+                                </div>
+
                             </fieldset>
 
                             <fieldset>
-                                <div class="form-group col-xs-6">
-                                    <label for="ticketQuantity">Количество билетов</label>
+                                <div class="form-group col-xs-3 col-xs-offset-2">
+                                    <label for="ticketQuantity">Количество билетов:</label>
                                     <form:input path="ticketQuantity" class="form-control" type="number" min="10"
                                                 max="10000" step="10" required="required"/>
                                 </div>
-                                <div class="form-group col-xs-6">
-                                    <label for="questionPerTicketQuantity">Количество вопросов в билете</label>
+                                <div class="form-group col-xs-3 col-xs-offset-2">
+                                    <label for="questionPerTicketQuantity">Количество вопросов:</label>
                                     <form:input path="questionPerTicketQuantity" class="form-control" type="number" min="10"
                                                 max="10000" step="10" required="required"/>
                                 </div>
@@ -64,7 +75,7 @@
                             <hr>
 
                             <div class="text-center">
-                                <button class="btn  btn-primary" type="submit">Сохранить экзамен</button>
+                                <button class="btn  btn-success" type="submit">Сохранить экзамен</button>
                             </div>
                         </form:form>
                 </div>

@@ -53,9 +53,8 @@
 
                             <div class="pull-right">
                                 <div class="col-xs-1 col-xs-offset-1">
-                            <a href="/admin/testing/exam/search" type="button" class="btn btn-primary">
-                                Экзамены
-                            </a>
+                                    <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
+                                        <i class="fa fa-undo"></i></a>
                             </div>
                             </div>
                              </div>
