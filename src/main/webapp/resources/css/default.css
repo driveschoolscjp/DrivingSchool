@@ -5,6 +5,39 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+.answer {
+    color: #ffffff;
+}
+.answer:hover {
+    color: #ffffff;
+}
+.wrong {
+    background-color: #FFA07A;
+    color: Firebrick;
+}
+.wrong:hover {
+    background-color: #FFA07A;
+    color: Firebrick;
+}
+.right{
+    background-color: #9AFF9A;
+    color: #008B00;
+}
+.right:hover{
+    background-color: #9AFF9A;
+    color: #008B00;
+}
+
 .page {
     min-height:100%;
     position:relative;

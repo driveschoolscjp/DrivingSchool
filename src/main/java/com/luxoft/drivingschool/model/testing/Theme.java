@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "themes")
 public class Theme extends AbstractPersistable<Long> {
-    @Column(length = 50)
     private String name;
 
     public String getName() {
