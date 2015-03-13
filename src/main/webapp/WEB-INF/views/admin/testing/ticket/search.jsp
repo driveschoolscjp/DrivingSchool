@@ -33,42 +33,56 @@
 
     <div class="container-fluid">
 
-        <div class="row">
-            <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
-                Все экзамены
-            </a>
+
             <div class="col-xs-11 whiteback">
 
 
-                <h3 class="text-center">Экзамен ${exam.name}</h3>
                 <h3 class="text-center">Редактор билетов</h3>
                 <hr>
-                <%--новый билет--%>
-                <c:if test="${moreTickets}">
                 <div class="row">
-                    <div class="col-xs-4">
-                        <a href="/admin/testing/ticket/add?id=${exam.id}" type="button" class="btn btn-primary btn-success">Добавить
-                            билет</a>
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h3 class="text-center">Экзамен ${exam.name}</h3>
+                        </div>
+
+                   <c:if test="${moreTickets}">
+                    <div class="col-xs-6 col-xs-offset-1">
+                        <h3 class="text-center">Экзамен ${exam.name}</h3>
                     </div>
+                    </c:if>
+
+                    <div class="pull-right">
+                        <div class="col-xs-1 col-xs-offset-1">
+                            <br/>
+                            <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
+                                <i class="fa fa-undo"></i></a>
+                        </div>
+                    </div>
+
+                    <%--новый билет--%>
+                    <div class="pull-left">
+                        <div class="col-xs-1 col-xs-offset-1">
+                    <c:if test="${moreTickets}">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <a href="/admin/testing/ticket/add?id=${exam.id}" type="button" class="btn btn-success">Добавить
+                                    билет</a>
+                            </div>
+                        </div>
+                    </c:if>
                 </div>
-                </c:if>
-                <hr>
+              </div>
+
                 <%--таблица с билетами--%>
                 <div class="row">
                     <div class="col-xs-12 table-responsive">
                         <table class="table" id="table">
-                            <thead>
-                            <tr>
-                                <th>Билеты</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+
                                 <tr>
                                 <c:forEach var="ticket" items="${tickets}">
                                     <td>
                                         <div class="col-xs-12">
-                                        <a href="/admin/testing/question/search?id=${ticket.id}" type="button" class="btn btn-primary btn-success">
-                                            ${ticket.number}
+                                        <a href="/admin/testing/question/search?id=${ticket.id}" type="button" class="btn btn-success">
+                                          билет № ${ticket.number}
                                         </a>
                                         </div>
                                     </td>
@@ -87,15 +101,7 @@
 </div>
 
 <jsp:include page="../../../footer.jsp"/>
-<script>
-    $(function () {
-        $('#table').searchable({
-            striped: true,
-            oddRow: {'background-color': '#f5f5f5'},
-            evenRow: {'background-color': '#fff'},
-            searchType: 'fuzzy'
-        });
-    });</script>
+
 <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 
 </body>

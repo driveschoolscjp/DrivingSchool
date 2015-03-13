@@ -21,6 +21,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/js/bootstrap.js"></script>
+    <script src="/js/search.js"></script>
 
 </head>
 <body>
@@ -32,24 +33,33 @@
 <div class="body">
 
     <div class="container-fluid">
-        <a href="/admin/testing/exam/search" type="button" class="btn btn-primary btn-success">
-            Все экзамены
-        </a>
         <div class="row">
             <div class="col-xs-11 whiteback">
 
-                <h3 class="text-center">Поиск темы</h3>
+                <h3 class="text-center">Темы</h3>
                 <hr>
                 <%--три верхние кнопки--%>
                 <div class="row">
-                    <div class="col-xs-4">
-                        <a href="/admin/testing/theme/add" type="button" class="btn btn-primary btn-success">Добавить
+                    <div class="pull-left">
+                    <div class="col-xs-2 col-xs-offset-1">
+                        <a href="/admin/testing/theme/add" type="button" class="btn btn-success">Добавить
                             тему</a>
                     </div>
+                    </div>
 
-                    <div class="col-xs-4 col-xs-offset-4">
+
+                    <div class="col-xs-4 col-xs-offset-1">
                         <input type="search" id="search" value="" class="form-control" placeholder="Поиск">
                     </div>
+
+                    <div class="pull-right">
+                    <div class="col-xs-2 col-xs-offset-1">
+                        <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
+                            <i class="fa fa-undo"></i></a>
+                    </div>
+                        <div class="col-xs-1"></div>
+                    </div>
+
                 </div>
                 <hr>
                 <%--таблица с данными--%>
@@ -59,6 +69,7 @@
                             <thead>
                             <tr>
                                 <th>Название</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -87,15 +98,7 @@
 </div>
 
 <jsp:include page="../../../footer.jsp"/>
-<script>
-    $(function () {
-        $('#table').searchable({
-            striped: true,
-            oddRow: {'background-color': '#f5f5f5'},
-            evenRow: {'background-color': '#fff'},
-            searchType: 'fuzzy'
-        });
-    });</script>
+
 <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 
 </body>
