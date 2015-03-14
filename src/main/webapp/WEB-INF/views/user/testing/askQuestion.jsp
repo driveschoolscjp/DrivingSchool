@@ -35,17 +35,6 @@
             <div class="col-xs-10 col-xs-offset-1 alltikets blackback">
                     <h3 class="text-center">Вопрос ${question.number}</h3>
                 <hr>
-                <div class="container-fluid">
-                <div class="row">
-                    <div class="text-center">
-                        <c:if test="${question.pathToPicture!=null || question.pathToPicture!=''}">
-                            <img src="${question.pathToPicture}">
-
-                        </c:if>
-                    </div>
-                </div>
-                </div>
-                <hr/>
                     <%--строка с полями--%>
                     <fieldset>
                         <div class="form-group col-xs-6">
@@ -58,6 +47,17 @@
                             <label>Вопрос:</label><br/>
                             ${question.question}
                         </div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="text-center">
+                                    <c:if test="${question.pathToPicture!=null || question.pathToPicture!=''}">
+                                        <img src="${question.pathToPicture}">
+
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
                     </fieldset>
                     <fieldset>
                         <div class="row">

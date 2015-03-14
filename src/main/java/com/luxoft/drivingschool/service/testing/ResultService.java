@@ -20,6 +20,7 @@ public class ResultService {
 
     @Transactional
     public Result save(Result result){
+
         return resultRepository.save(result);
     }
 
