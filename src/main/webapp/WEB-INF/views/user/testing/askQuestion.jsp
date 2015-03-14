@@ -37,10 +37,12 @@
                 <hr>
                 <div class="container-fluid">
                 <div class="row">
+                    <div class="text-center">
                         <c:if test="${question.pathToPicture!=null || question.pathToPicture!=''}">
                             <img src="${question.pathToPicture}">
 
                         </c:if>
+                    </div>
                 </div>
                 </div>
                 <hr/>
@@ -61,7 +63,7 @@
                         <div class="row">
                             <div class="col-xs-12 table-responsive">
                                 <table class="table" id="table">
-                                    <tr>
+
                                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
 
                                             <c:forEach var="ans" items="${answers}">
@@ -72,30 +74,30 @@
                                                         <c:choose>
                                                             <c:when test="${ans.correct}">
                                                                 <tr>
-                                                                <td class="answer right">
-                                                                <a href="#" type="text"
-                                                                   class="answer right">
+                                                                <td class="answer correct">
+                                                              <li>  <a href="#" type="text"
+                                                                   class="answer correct">
                                                                     &nbsp;${ans.answer}
-                                                                </a>
+                                                                </a></li>
                                                                 </td></tr>
                                                             </c:when>
                                                             <c:otherwise>
                                                                 <c:if test="${ans.id==idWrongAnswer}">
                                                                     <tr>
                                                                     <td class="answer wrong">
-                                                                    <a href="#" type="text"
+                                                                        <li>  <a href="#" type="text"
                                                                        class="answer wrong">
                                                                         &nbsp;${ans.answer}
-                                                                    </a>
+                                                                    </a></li>
                                                                     </td></tr>
                                                                 </c:if>
                                                                 <c:if test="${ans.id!=idWrongAnswer}">
                                                                     <tr>
                                                                     <td class="answer">
-                                                                <a href="#" type="text"
+                                                                        <li>   <a href="#" type="text"
                                                                    class="answer">
                                                                    &nbsp;${ans.answer}
-                                                                </a>
+                                                                </a></li>
                                                                     </td>
                                                                     </tr>
                                                                 </c:if>
@@ -105,31 +107,32 @@
                                                     <c:otherwise>
                                                         <tr>
                                                         <td class="answer">
-                                                        <a href="/testing/answer?idAnswer=${ans.id}" type="text" class="answer">
+                                                            <li>    <a href="/testing/answer?idAnswer=${ans.id}" type="text" class="answer">
                                                             &nbsp;${ans.answer}
-                                                        </a>
+                                                        </a></li>
                                                         </td>
                                                         </tr>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:forEach>
-                                            <hr/>
                                         </div>
-                                    </tr>
+
                                 </table>
                                 <c:if test="${showAnswer}">
                                     <div>
                                         &nbsp; ${question.description}
                                     </div>
-                                    <br/>
-                                    <a href="/testing/question?idTicket=${question.ticket.id}" class="btn btn-primary btn-success" >
-                                        &nbsp;Следующий вопрос
+                                    <div class="text-center">
+                                        <br/>
+                                    <a href="/testing/question?idTicket=${question.ticket.id}" class="btn btn-primary" >
+                                        Следующий вопрос
                                     </a>
+                                   </div>
                                 </c:if>
                             </div>
                         </div>
+                        <br>
                     </fieldset>
-                    <hr/>
                 </div>
         </div>
     </div>

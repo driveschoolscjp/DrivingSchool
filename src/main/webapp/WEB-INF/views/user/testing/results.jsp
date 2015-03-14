@@ -38,7 +38,7 @@
 
             <h3 class="text-center">Результаты</h3>
             <hr>
-            <div class="col-xs-4 ">
+            <div class="text-center">
             <h4>Билет ${ticket.number}</h4>
             </div>
             <th>
@@ -50,7 +50,6 @@
                     <form action="/testing/start" method="post">
                         <tr>
                             <c:forEach var="entry" items="${resMap}">
-                                <div class="row">
                                     <td>
                                         <c:if test="${entry.value != null}">
                                             <c:if test="${entry.value.correct}">
@@ -83,10 +82,13 @@
                                                 </a>
                                             </div>
                                         </c:if>
-                                    </td>
-                                </div>
-                            </c:forEach>
-                        </tr>
+                                               </td>
+                                            <c:if test="${entry.key.number%5==0}">
+                                   </tr><tr>
+                                       </c:if>
+
+                                    </c:forEach>
+                              </tr>
                     </form>
                     </tbody>
                 </table>
