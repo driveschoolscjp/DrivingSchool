@@ -107,6 +107,22 @@
                                 </div>
                             </div>
 
+                            <div class="row allcars blackback">
+
+
+                                <hr/>
+                                <div class="text-center">
+                                    <h3>Видео с автодрома</h3>
+                                    <hr/>
+                                    <div class="vid">
+                                        <iframe  style="height: 80%; width: 100%;" src="//www.youtube.com/embed/watch?v=_48lDuqObg0&index=6&list=PLHNePkYz57bG_Zgwan874fmp-2k4Z2nj8" allowfullscreen=""></iframe>
+                                    </div>
+
+                                </div>
+                                <hr/>
+                                <br/>
+                            </div>
+                            <br/>
                         </div>
 
                         <div class="container-fluid" id="2" style="display:block">
