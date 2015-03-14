@@ -81,7 +81,7 @@
 
 
                     <fieldset>
-                        <div class="form-group col-xs-4">
+                        <div class="form-group col-xs-10">
                             <label>Вопрос:</label><br/>
                             ${question.question}
                             <br/>
@@ -95,18 +95,20 @@
                         <div class="form-group col-xs-12">
                             <label>Текст ответа:</label><br/>
                             <table class="table" id="table">
-                                <form:form action="/admin/testing/question/saveAnswer" method="post"
-                                           modelAttribute="answer">
-                                    <div class="form-group col-xs-11">
-                                        <c:forEach var="answ" items="${answers}">
-                                            <tr>
-                                                <td class="${answ.correct?'right':'wrong'}">
-                                                    <div class="${(answer.id==answ.id)?'show':'hide'}">
+                                <div class="form-group col-xs-11">
+                                    <c:forEach var="answ" items="${answers}">
+                                        <tr>
+                                            <td class="${answ.correct?'correct':'wrong'}">
+                                                <div class="${(answer.id==answ.id)?'show':'hide'}">
+
+                                                    <form:form action="/admin/testing/question/saveAnswer" method="post"
+                                                               modelAttribute="answer">
+
                                                         <form:textarea path="ans" class="form-control" cols="10"
                                                                        rows="2"
                                                                        placeholder="Answer" required="required"
                                                                        autofocus=""/>
-                                                        <form:hidden path="id"/><br/>
+                                                        <form:hidden path="id"/>
                                                         <c:if test="${!answ.correct}">
                                                             <form:checkbox path="correct"/>
                                                             Установить верным
@@ -118,18 +120,17 @@
                                                                 ответ
                                                             </button>
                                                         </div>
-                                                    </div>
-                                                    <div class="${(answer.id==answ.id)?'hide':'show'}">
-                                                            ${answ.answer}
-                                                    </div>
-                                                </td>
-                                            </tr>
 
-                                            <hr>
-                                        </c:forEach>
-                                    </div>
-                                    FORM CLOSE
-                                </form:form>
+                                                    </form:form>
+
+                                                </div>
+                                                <div class="${(answer.id==answ.id)?'hide':'show'}">
+                                                        ${answ.answer}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </div>
                             </table>
                         </div>
                     </div>

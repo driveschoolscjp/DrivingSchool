@@ -32,10 +32,12 @@
         <div class="row">
             <div class="col-xs-11">
                 <br/>
+
                 <div class="container-fluid whiteback">
-                    <form:form action="/admin/testing/question/save" method="post" modelAttribute="question">
-                        <form:hidden path="id" />
-                        <form:hidden path="ticket.id" />
+                    <form:form action="/admin/testing/question/save" method="post" modelAttribute="question"
+                               id="formId">
+                        <form:hidden path="id"/>
+                        <form:hidden path="ticket.id"/>
                         <h3 class="text-center">Редактор вопросов</h3>
                         <hr/>
                         <div class="row">
@@ -45,43 +47,39 @@
 
                             <div class="col-xs-5 col-xs-offset-2 pull-right">
                                 <br/>
+
                                 <div class="btn-group" role="group" aria-label="...">
-                                    <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
-                                        <i class="fa fa-undo"> экзамены</i></a>
-
-                                    <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Выбранный экзамен">
-                                        <i class="fa fa-undo"> ${ question.ticket.exam.name}</i></a>
-
-                                    <a href="/admin/testing/question/search?id=${question.ticket.id}" type="button" class="btn btn-primary"   title="Выбранный билет">
-                                        <i class="fa fa-undo"> ${question.ticket.number}</i></a>
+                                    <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"
+                                       title="Экзамены">
+                                        <i class="fa fa-undo"> экзамены</i>
+                                    </a>
+                                    <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"
+                                       title="Выбранный экзамен">
+                                        <i class="fa fa-undo"> ${ question.ticket.exam.name}</i>
+                                    </a>
+                                    <a href="/admin/testing/question/search?id=${question.ticket.id}" type="button"
+                                       class="btn btn-primary" title="Выбранный билет">
+                                        <i class="fa fa-undo"> ${question.ticket.number}</i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
-
-
                         <hr>
-
                         <fieldset>
                             <div class="form-group col-xs-1">
                                 <label for="number">Вопрос:</label>
-                                <form:input path="number" class="form-control" placeholder="Black"
-                                            readonly="true"/>
+                                <form:input path="number" class="form-control" placeholder="Black" readonly="true"/>
                             </div>
-
-
                             <div class="form-group col-xs-3 col-xs-offset-1">
                                 <label for="pathToPicture">Картинка:</label>
-                                <form:input path="pathToPicture" class="form-control" placeholder="http://"
-                                            />
+                                <form:input path="pathToPicture" class="form-control" placeholder="http://"/>
                                 <c:if test="${question.pathToPicture!=null}">
                                     <div class="text-center">
                                         <br/>
-                                    <img src="${question.pathToPicture}">
+                                        <img src="${question.pathToPicture}">
                                     </div>
                                 </c:if>
                             </div>
-
                             <div class="form-group col-xs-6 ">
                                 <label>Тема:</label><br/>
                                 <form:select path="theme.id" class="selectpicker form-control" required="required">
@@ -90,70 +88,49 @@
                                     </c:forEach>
                                 </form:select>
                             </div>
-
                         </fieldset>
                         <hr>
-
                         <fieldset>
                             <label>Текст вопроса:</label><br/>
-                            <form:textarea path="ques" class="form-control" cols= "20" rows= "3"
+                            <form:textarea path="ques" class="form-control" cols="20" rows="3"
                                            placeholder="Question" required="required" autofocus=""/>
                         </fieldset>
                         <hr/>
                         <fieldset>
                             <label>Текст обьяснения:</label><br/>
-                            <form:textarea path="description" class="form-control" cols= "20" rows= "6"
+                            <form:textarea path="description" class="form-control" cols="20" rows="6"
                                            placeholder="Description" required="required" autofocus=""/>
                         </fieldset>
-
-                    <hr/>
-                    <c:forEach items="${answers}" var="answ">
-                        <c:choose>
-                    <c:when test="${answ.correct}">
-
-                        <div class="form-group col-xs-3 col-xs-offset-1">
-                            <label>Правильный ответ:</label><br/>
-                            <textarea style="background-color: #00e019" class="form-control" cols="10" rows="3"
-                                      readonly="true">${answ.ans}</textarea>
-
-                            <div class="col-xs-10 col-xs-offset-1">
-                                <br/>
-                            <a href="/admin/testing/question/editAnswer?id=${answ.id}" type="button" class="btn btn-success">
-                                Редактировать
-                            </a>
-                                </div>
-                        </div>
-
-                    </c:when>
-                            <c:otherwise>
-                        <div class="form-group col-xs-3 col-xs-offset-1">
-                            <label>Неправильный ответ:</label><br/>
-                            <textarea style="background-color: #ff1000" class="form-control" cols="10" rows="3"
-                                      readonly="true">${answ.ans}</textarea>
-
-                           <div class="col-xs-10 col-xs-offset-1">
-                               <br/>
-                            <a href="/admin/testing/question/editAnswer?id=${answ.id}" type="button" class="btn btn-primary btn-success">
-                                Редактировать
-                            </a>
-                         </div>
-                        </div>
-                            </c:otherwise>
-                        </c:choose>
-                       </c:forEach>
-                        <label><br/></label>
-                        </fieldset>
+                        <table class="table">
+                            <c:forEach items="${answers}" var="answ">
+                                <tr class="${answ.correct?'correct':'wrong'}">
+                                    <td>
+                                            ${answ.answer}
+                                    </td>
+                                    <td>
+                                        <a href="/admin/testing/question/editAnswer?id=${answ.id}" type="button"
+                                           class="btn btn-success">
+                                            Редактировать
+                                        </a>
+                                        <a href="/admin/testing/question/deleteAnswer?questionId=${question.id}&answerId=${answ.id}" type="button"
+                                           class="btn btn-success">
+                                            Удалить
+                                        </a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
 
                         <div class="text-center">
                             <div class="btn-group" role="group" aria-label="...">
-                                <a href="/admin/testing/question/addAnswer?id=${question.id}" type="button" class="btn btn-primary">
+                                <a href="/admin/testing/question/addAnswer?id=${question.id}" type="button"
+                                   class="btn btn-primary">
                                     Добавить ответ
                                 </a>
-                            <button class="btn  btn-primary" type="submit">Сохранить вопрос</button>
-                        </div>
+                                <button form="formId" class="btn btn-primary" type="submit">Сохранить вопрос</button>
                             </div>
+                        </div>
                     </form:form>
-
                 </div>
             </div>
         </div>
