@@ -67,7 +67,6 @@
                                         <div class="btn-group btn-group-sm" role="group" aria-label="...">
 
                                             <c:forEach var="ans" items="${answers}">
-                                                <br/>
 
                                                 <c:choose>
                                                     <c:when test="${showAnswer}">
