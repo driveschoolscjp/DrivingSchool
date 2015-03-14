@@ -9,8 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Menu</title>
-    <script src="/js/typeahead.bundle.js"></script>
+    <link rel="shortcut icon" href="http://s3.gazu.ru/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -19,6 +18,7 @@
     <link href="/css/messageform.css" rel="stylesheet">
     <!--for VK-->
     <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+    <script src="/js/typeahead.bundle.js"></script>
 </head>
 
 <body>

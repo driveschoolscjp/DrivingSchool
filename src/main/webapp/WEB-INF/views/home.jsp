@@ -7,11 +7,11 @@
 
 <head>
 
-
+    <title>Автошкола</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <link rel="shortcut icon" href="http://s3.gazu.ru/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
