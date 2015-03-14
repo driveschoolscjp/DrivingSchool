@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Student</title>
+    <title>Редактирование студента</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,40 +36,40 @@
                     <form:form action="/admin/student/save" method="post" modelAttribute="student">
                         <form:hidden path="id"/>
 
-                        <h3>Добавление студента</h3>
+                        <h3>Редактирование студента</h3>
                         <hr>
 
                         <fieldset>
                             <div class="form-group col-xs-4">
-                                <label for="lastname">Lastname:</label>
-                                <form:input path="lastname" class="form-control" placeholder="Black"
-                                            required="required" cssErrorClass="error form-control"/>
+                                <label for="lastname">Фамилия</label>
+                                <form:input path="lastname" class="form-control" placeholder="Иванов"
+                                            required="required" pattern="[А-Яа-я]{2,50}" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="firstname">Name:</label>
-                                <form:input path="firstname" class="form-control" placeholder="Jack"
-                                            required="required" cssErrorClass="error form-control"/>
+                                <label for="firstname">Имя</label>
+                                <form:input path="firstname" class="form-control" placeholder="Алексей"
+                                            required="required" pattern="[А-Яа-я]{2,50}" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="patronymic">Patronymic:</label>
-                                <form:input path="patronymic" class="form-control" placeholder="Robertovich"
-                                            required="required" cssErrorClass="error form-control"/>
+                                <label for="patronymic">Отчество</label>
+                                <form:input path="patronymic" class="form-control" placeholder="Геннадьевич"
+                                            required="required" pattern="[А-Яа-я]{2,50}" cssErrorClass="error form-control"/>
                             </div>
                         </fieldset>
                         <hr>
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="passport">Passport:</label>
-                                <form:input path="passport" class="form-control" placeholder="AA571175"
+                                <label for="passport">Пасспорт</label>
+                                <form:input path="passport" class="form-control" placeholder="АН571175"
                                             pattern="[А-Я]{2}[0-9]{6}" required="required"
                                             cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="inn">INN:</label>
+                                <label for="inn">ИНН</label>
                                 <form:input path="inn" class="form-control" placeholder="12345678"
                                             pattern="[0-9]{8}" required="required" cssErrorClass="error form-control"/>
                             </div>
@@ -78,20 +78,20 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="birthday">Birthday: </label>
+                                <label for="birthday">День рождения</label>
                                 <form:input path="birthday" type="date" class="form-control" required="required"
                                             cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="col-xs-6">
-                                <label for="gender">Gender</label><br>
+                                <label for="gender">Пол</label><br>
 
                                 <div class="col-xs-6">
-                                    <form:radiobutton path="gender" value="MALE"/> <b>Male</b>
+                                    <form:radiobutton path="gender" value="MALE"/> <b>Мужской</b>
                                 </div>
 
                                 <div class="col-xs-6">
-                                    <form:radiobutton path="gender" value="FEMALE"/> <b>Female</b>
+                                    <form:radiobutton path="gender" value="FEMALE"/> <b>Женский</b>
                                 </div>
                             </div>
 
@@ -101,13 +101,13 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="tel">Telephone:</label>
+                                <label for="tel">Телефон</label>
                                 <form:input path="tel" type="tel" class="form-control" placeholder="987-654-32-10"
                                             required="required" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="email">Email address:</label>
+                                <label for="email">Email</label>
                                 <form:input path="email" type="email" class="form-control"
                                             placeholder="nickname@mail.com" required="required"
                                             cssErrorClass="error form-control"/>
@@ -118,7 +118,7 @@
 
                         <fieldset>
                             <div class="form-group col-xs-4">
-                                <label>Группа:</label><br/>
+                                <label>Группа</label><br/>
                                 <form:select path="group.id" class="selectpicker form-control" required="required">
                                     <c:forEach items="${groups}" var="group">
                                         <option value="${group.id}" ${student.group.id==group.id?"selected":""}>${group.name}</option>
@@ -127,7 +127,7 @@
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label>Инструктор:</label><br/>
+                                <label>Инструктор</label><br/>
                                 <form:select path="instructor.id" class="selectpicker form-control" required="required">
                                     <c:forEach items="${instructors}" var="instructor">
                                         <option value="${instructor.id}" ${student.instructor.id==instructor.id?"selected":""}>
@@ -138,7 +138,7 @@
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="rideNumber">Количество занятий вождением:</label>
+                                <label for="rideNumber">Количество занятий вождением</label>
                                 <form:input path="rideNumber" class="form-control" type="number" min="10" max="20"
                                             step="5" placeholder="10" required="required"
                                             cssErrorClass="error form-control"/>
@@ -148,13 +148,13 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="login">Login:</label>
+                                <label for="login">Логин</label>
                                 <form:input path="login" class="form-control" placeholder="login"
                                             required="required" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="password">Password:</label>
+                                <label for="password">Пароль</label>
                                 <form:input path="password" class="form-control" placeholder="password"
                                             required="required" cssErrorClass="error form-control"/>
                             </div>

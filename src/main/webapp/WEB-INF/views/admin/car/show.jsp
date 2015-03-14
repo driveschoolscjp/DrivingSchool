@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Car</title>
+    <title>Просмотр автомобиля</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,24 +31,23 @@
         <div class="row">
             <div class="container-fluid whiteback col-xs-11">
                 <form:form action="/admin/car/search" method="get" modelAttribute="car">
-                    <form:hidden path="id"/>
 
                     <h3>Просмотр автомобиля</h3>
                     <hr>
                     <%--строка с полями--%>
                     <fieldset>
                         <div class="form-group col-xs-4">
-                            <label for="brand">Brand:</label>
+                            <label for="brand">Марка</label>
                             <form:input path="brand" class="form-control" disabled="true"/>
                         </div>
 
                         <div class="form-group col-xs-4">
-                            <label for="model">Model:</label>
+                            <label for="model">Модель</label>
                             <form:input path="model" class="form-control" disabled="true"/>
                         </div>
 
                         <div class="form-group col-xs-4">
-                            <label>Инструктор:</label><br/>
+                            <label>Инструктор</label><br/>
                             <form:input path="instructor.firstname" class="form-control" disabled="true"/>
                         </div>
 
@@ -63,18 +62,18 @@
 
                         <div class="col-xs-4">
                             <div class="form-group">
-                                <label for="transmission">Коробка передач:</label>
+                                <label for="transmission">Коробка передач</label>
                                 <input id="transmission" class="form-control" value="${car.transmission.value}"
                                        disabled="true"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="horsePower">Hp:</label>
+                                <label for="horsePower">Мощность (л.с.)</label>
                                 <form:input path="horsePower" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="pricePerHour">Rrice/Hour: UAH</label>
+                                <label for="pricePerHour">Стоимость обучения ($/час)</label>
                                 <form:input path="pricePerHour" class="form-control" disabled="true"/>
                             </div>
                         </div>

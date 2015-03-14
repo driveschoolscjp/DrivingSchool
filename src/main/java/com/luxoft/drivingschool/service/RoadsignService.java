@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -25,6 +26,9 @@ public class RoadsignService {
         while (setId.size() < 12){
             setId.add((long) (Math.random() * totalSigns));
         }
-        return roadsignRepository.findByIdIn(setId);
+
+        List<Roadsign> roadsigns = roadsignRepository.findByIdIn(setId);
+        Collections.shuffle(roadsigns);
+        return roadsigns;
     }
 }

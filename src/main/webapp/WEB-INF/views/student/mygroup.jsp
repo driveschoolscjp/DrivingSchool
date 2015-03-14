@@ -86,6 +86,10 @@
 
             <div class="col-xs-8">
                 <h3 class="zerotopmargin">${me.instructor.firstname} ${me.instructor.lastname}</h3>
+                <br/>
+                <h4><i class="fa fa-car"></i> ${me.instructor.car.brand} ${me.instructor.car.model}</h4>
+                <h4><i class="fa fa-tachometer"></i> ${me.instructor.car.horsePower} л.с. </h4>
+                <h4><i class="fa fa-cog"></i> ${me.instructor.car.transmission.value} КПП</h4>
 
             </div>
 
@@ -96,8 +100,7 @@
             <div class="col-xs-12">
                 <img class="img-responsive img-rounded" src="${me.instructor.car.photoURL}"
                      alt="${me.instructor.car.brand} ${me.instructor.car.model}"/>
-                <h4><i class="fa fa-tachometer"></i> ${me.instructor.car.horsePower} л.с. <i
-                        class="fa fa-cog"></i> ${me.instructor.car.transmission.value} КПП</h4>
+                <br/>
             </div>
         </div>
 

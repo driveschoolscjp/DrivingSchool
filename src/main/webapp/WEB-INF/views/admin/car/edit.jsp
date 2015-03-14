@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Car</title>
+    <title>Редактирование автомобиля</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,81 +30,79 @@
 <div class="body">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-11">
+            <div class="col-xs-11 container-fluid whiteback">
 
-                <div class="container-fluid whiteback">
-                    <form:form action="/admin/car/save" method="post" modelAttribute="car">
-                        <form:hidden path="id"/>
+                <form:form action="/admin/car/save" method="post" modelAttribute="car">
+                    <form:hidden path="id"/>
 
-                        <h3>Добавление автомобиля</h3>
-                        <hr>
-                        <%--строка с полями--%>
-                        <fieldset>
-                            <div class="form-group col-xs-4">
-                                <label for="brand">Brand:</label>
-                                <form:input path="brand" class="form-control" placeholder="Honda"
-                                            required="required" cssErrorClass="error form-control"/>
-                            </div>
-
-                            <div class="form-group col-xs-4">
-                                <label for="model">Model:</label>
-                                <form:input path="model" class="form-control" placeholder="H2000"
-                                            required="required" cssErrorClass="error form-control"/>
-                            </div>
-
-                            <div class="form-group col-xs-4">
-                                <label>Instructor:</label><br/>
-                                <form:select path="instructor.id" class="selectpicker form-control" required="required">
-                                    <c:forEach items="${instructors}" var="instructor">
-                                        <option value="${instructor.id}" ${car.instructor.id==instructor.id?"selected":""}>${instructor.firstname} ${instructor.lastname}</option>
-                                    </c:forEach>
-                                </form:select>
-                            </div>
-
-                        </fieldset>
-                        <hr>
-
-                        <fieldset>
-
-                            <div class="form-group col-xs-3">
-                                <label for="transmission">Коробка передач:</label><br>
-
-                                <div class="col-xs-6">
-                                    <form:radiobutton path="transmission" value="AUTO"/> <b>Авто</b>
-                                </div>
-
-                                <div class="col-xs-6">
-                                    <form:radiobutton path="transmission" value="MANUAL"/> <b>Ручная</b>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-xs-3">
-                                <label for="horsePower">Hp:</label>
-                                <form:input path="horsePower" class="form-control" placeholder="1.8"
-                                            type="number" min="0" max="1500"
-                                            step="1" required="required" cssErrorClass="error form-control"/>
-                            </div>
-
-                            <div class="form-group col-xs-3">
-                                <label for="pricePerHour">Price/Hour: UAH</label>
-                                <form:input path="pricePerHour" class="form-control" type="number" min="10"
-                                            max="1000" step="1" required="required" cssErrorClass="error form-control"/>
-                            </div>
-
-                            <div class="form-group col-xs-3">
-                                <label for="photoURL">Photo URI:</label>
-                                <form:input path="photoURL" class="form-control" type="url"
-                                            placeholder="http//photo.com/car5.png" required="required"
-                                            cssErrorClass="error form-control"/>
-                            </div>
-
-                        </fieldset>
-                        <hr>
-                        <div class="text-center">
-                            <button class="btn  btn-primary" type="submit">Сохранить автомобиль</button>
+                    <h3>Редактирование автомобиля</h3>
+                    <hr>
+                    <%--строка с полями--%>
+                    <fieldset>
+                        <div class="form-group col-xs-4">
+                            <label for="brand">Марка</label>
+                            <form:input path="brand" class="form-control" placeholder="Honda"
+                                        required="required" cssErrorClass="error form-control"/>
                         </div>
-                    </form:form>
-                </div>
+
+                        <div class="form-group col-xs-4">
+                            <label for="model">Модель</label>
+                            <form:input path="model" class="form-control" placeholder="H2000"
+                                        required="required" cssErrorClass="error form-control"/>
+                        </div>
+
+                        <div class="form-group col-xs-4">
+                            <label>Инструктор</label><br/>
+                            <form:select path="instructor.id" class="selectpicker form-control" required="required">
+                                <c:forEach items="${instructors}" var="instructor">
+                                    <option value="${instructor.id}" ${car.instructor.id==instructor.id?"selected":""}>${instructor.firstname} ${instructor.lastname}</option>
+                                </c:forEach>
+                            </form:select>
+                        </div>
+
+                    </fieldset>
+                    <hr>
+
+                    <fieldset>
+
+                        <div class="form-group col-xs-3">
+                            <label for="transmission">Коробка передач</label><br>
+
+                            <div class="col-xs-6">
+                                <form:radiobutton path="transmission" value="AUTO"/> <b>Авто</b>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <form:radiobutton path="transmission" value="MANUAL"/> <b>Ручная</b>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-xs-3">
+                            <label for="horsePower">Мощность (л.с.)</label>
+                            <form:input path="horsePower" class="form-control"
+                                        type="number" min="0" max="1500"
+                                        step="1" required="required" cssErrorClass="error form-control"/>
+                        </div>
+
+                        <div class="form-group col-xs-3">
+                            <label for="pricePerHour">Стоимость обучения ($/час)</label>
+                            <form:input path="pricePerHour" class="form-control" type="number" min="10"
+                                        max="1000" step="1" required="required" cssErrorClass="error form-control"/>
+                        </div>
+
+                        <div class="form-group col-xs-3">
+                            <label for="photoURL">URL фото</label>
+                            <form:input path="photoURL" class="form-control" type="url"
+                                        placeholder="http//photo.com/car5.png" required="required"
+                                        cssErrorClass="error form-control"/>
+                        </div>
+
+                    </fieldset>
+                    <hr>
+                    <div class="text-center">
+                        <button class="btn  btn-primary" type="submit">Сохранить автомобиль</button>
+                    </div>
+                </form:form>
 
             </div>
         </div>

@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Group</title>
+    <title>Просмотр группы</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,12 +39,12 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="name">Название группы:</label>
+                                <label for="name">Название группы</label>
                                 <form:input path="name" class="form-control" readonly="true"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="teacher">Преподаватель:</label>
+                                <label for="teacher">Преподаватель</label>
                                 <input class="form-control" id="teacher" type="text" readonly="true"
                                        value="${group.teacher.firstname} ${group.teacher.lastname}"/>
                             </div>
@@ -53,22 +53,21 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="description">Описание:</label>
+                                <label for="description">Описание</label>
                                 <form:input path="description" class="form-control" readonly="true"/>
                             </div>
 
                             <div class="form-group col-xs-3">
-                                <label for="startDate">Дата начала занятий:</label>
+                                <label for="startDate">Дата начала занятий</label>
                                 <form:input path="startDate" class="form-control" type="date" readonly="true"/>
                             </div>
 
                             <div class="form-group col-xs-3">
-                                <label for="finishDate">Дата окончания занятий:</label>
+                                <label for="finishDate">Дата окончания занятий</label>
                                 <form:input path="finishDate" class="form-control" type="date" readonly="true"/>
                             </div>
                         </fieldset>
                         <hr/>
-
 
                         <div class="text-center">
                             <button class="btn  btn-primary" type="submit">Назад</button>

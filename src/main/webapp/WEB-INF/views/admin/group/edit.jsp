@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Group</title>
+    <title>Редактирование группы</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,18 +36,18 @@
                     <form:form action="/admin/group/save" method="post" modelAttribute="group">
                         <form:hidden path="id"/>
 
-                        <h3>Добавление группы</h3>
+                        <h3>Редактирование группы</h3>
                         <hr>
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="name">Название группы:</label>
+                                <label for="name">Название группы</label>
                                 <form:input path="name" class="form-control" placeholder="Группа 1"
                                             required="required" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label>Преподаватель:</label><br/>
+                                <label>Преподаватель</label><br/>
                                 <form:select path="teacher.id" class="selectpicker form-control" required="required">
                                     <c:forEach items="${teachers}" var="teacher">
                                         <option value="${teacher.id}" ${group.teacher.id==teacher.id?"selected":""}>
@@ -61,19 +61,19 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="description">Описание:</label>
+                                <label for="description">Описание</label>
                                 <form:input path="description" class="form-control" required="required"
                                             cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-3">
-                                <label for="startDate">Дата начала занятий:</label>
+                                <label for="startDate">Дата начала занятий</label>
                                 <form:input path="startDate" class="form-control" type="date" required="required"
                                             cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-3">
-                                <label for="finishDate">Дата окончания занятий:</label>
+                                <label for="finishDate">Дата окончания занятий</label>
                                 <form:input path="finishDate" class="form-control" type="date" required="required"
                                             cssErrorClass="error form-control"/>
                             </div>
