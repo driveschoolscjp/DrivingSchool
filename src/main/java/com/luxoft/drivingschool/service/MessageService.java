@@ -51,10 +51,26 @@ public class MessageService {
     }
 
     public List<Message> getMessages(Long message_id, Long student_id, Long rows) {
-        return messageRepository.findMessageByStudentId(student_id);
+        return messageRepository.findFirst10MessageByStudentIdAndIdGreaterThanOrderByDateTimeDesc(student_id, message_id);
     }
 
-    public Integer getNewCount(Long id) {
+    public Message getMessage(Long message_id) {
+        return messageRepository.findOne(message_id);
+    }
+
+    @Transactional
+    public Message markMessageAsOld(Long message_id) {
+        Message message =  messageRepository.findOne(message_id);
+        message.setOld(true);
+        return messageRepository.saveAndFlush(message);
+    }
+
+    public Long getNewCount(Long id) {
         return messageRepository.getCountOfNewMessages(id);
     }
+
+    public Long getAllCount(Long id) {
+        return messageRepository.countByStudentId(id);
+    }
+
 }

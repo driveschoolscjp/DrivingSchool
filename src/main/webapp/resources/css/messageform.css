@@ -37,7 +37,6 @@
     padding: 8px 0;
     background-color: #fff;
     border: 1px solid #ccc;
-    border: 1px solid rgba(0, 0, 0, 0.2);
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -55,7 +54,7 @@
 .tt-suggestion.tt-cursor {
     color: #fff;
     background-color: #0097cf;
-
+    cursor: pointer;
 }
 
 .tt-suggestion p {
@@ -92,4 +91,56 @@
 #messageField .tt-dropdown-menu {
     max-height: 150px;
 
+}
+
+#messagesTable {
+    background-color: #fff;
+    color: #0077cc;
+    font-family: Arial, Tahoma, Verdana, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid #d2d2d2;
+    table-layout: fixed
+}
+
+#messagesTable thead {
+    background-color: #f2f3f3;
+    cursor: default;
+    border: 0px solid #d2d2d2;
+    font-weight: lighter;
+}
+
+#messagesTable tr:hover {
+    background-color: #F9F3BC;
+}
+
+.radio, .checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#messagesTable .message {
+     color: #c0c0c0;
+}
+
+#messagesTable .theme {
+    color: #0077cc;
+    overflow: hidden;
+}
+
+#messagesTable .deletecheckbox {
+    background-color: #DEE0FB;
+}
+
+#messagesTable .newmessage {
+    font-weight: bold;
+    background-color: #EEF1FE;
+}
+
+#messagesTable td {
+    white-space: nowrap;
+}
+
+td .dateofmessage {
+    text-align: right;
 }
