@@ -31,7 +31,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-11">
-
+                <br/>
                 <div class="container-fluid whiteback">
                     <form:form action="/admin/testing/question/save" method="post" modelAttribute="question">
                         <form:hidden path="id" />
@@ -72,11 +72,14 @@
 
                             <div class="form-group col-xs-3 col-xs-offset-1">
                                 <label for="pathToPicture">Картинка:</label>
-                                <c:if test="${question.pathToPicture!=null}">
-                                    <img src="${question.pathToPicture}">
-                                </c:if>
                                 <form:input path="pathToPicture" class="form-control" placeholder="http://"
-                                            required="required"/>
+                                            />
+                                <c:if test="${question.pathToPicture!=null}">
+                                    <div class="text-center">
+                                        <br/>
+                                    <img src="${question.pathToPicture}">
+                                    </div>
+                                </c:if>
                             </div>
 
                             <div class="form-group col-xs-6 ">

@@ -34,6 +34,7 @@
 
     <div class="container-fluid">
         <div class="row">
+            <br/>
             <div class="col-xs-11 whiteback">
 
                 <h3 class="text-center">Темы</h3>
@@ -77,13 +78,10 @@
                                 <tr>
                                     <td>${theme.name}</td>
                                     <td>
-                                        <div class="btn-group-vertical pull-right">
+                                        <div class="pull-right">
                                             <a href="/admin/testing/theme/edit?id=${theme.id}" type="button"
                                                class="btn btn-primary btn-sm"><i class="fa fa-pencil fa-xs">
                                                 Редактировать</i></a>
-                                            <a href="/admin/testing/theme/show?id=${theme.id}" type="button"
-                                               class="btn btn-primary btn-sm"><i class="fa fa-search fa-xs">
-                                                Просмотреть</i></a>
                                         </div>
                                     </td>
                                 </tr>

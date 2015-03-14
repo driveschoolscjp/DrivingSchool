@@ -31,7 +31,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-11">
-
+                <br/>
                 <div class="container-fluid whiteback">
                         <form:form action="/admin/testing/exam/save" method="post" modelAttribute="exam">
                             <form:hidden path="id"/>
@@ -53,6 +53,7 @@
 
                                 <div class="form-group col-xs-1">
                                     <label for="name"><br/></label>
+                                    <br/>
                                     <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
                                         <i class="fa fa-undo"></i>
                                     </a>

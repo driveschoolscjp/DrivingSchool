@@ -110,14 +110,14 @@
                     </div>
 
                     <div class="price-slider">
-                        <p style="font-size: 12px">Максимальная мощьность двигателя&nbsp;<i class="fa fa-tachometer fa-2x"> </i></p>
+                        <p style="font-size: 12px"><i class="fa fa-tachometer fa-2x"></i>&nbsp;&nbsp;Максимальная мощьность двигателя</p>
                         <br/>
                         <div class="col-xs-12">
                             <div id="slider"></div>
                         </div>
                     </div>
                     <div class="price-slider">
-                                    <p style="font-size: 12px"> Максимальная цена/ час аренды&nbsp;<i class="fa fa-money fa-2x"></i></p>
+                                    <p style="font-size: 12px"><i class="fa fa-money fa-2x"></i>&nbsp;&nbsp;Максимальная цена/ час аренды</p>
                         <br/>
                          <div class="col-xs-12">
 

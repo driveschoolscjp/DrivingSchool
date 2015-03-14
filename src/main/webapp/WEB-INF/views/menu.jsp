@@ -44,10 +44,7 @@
                                    required="required"/>
                         </div>
                         <br/>
-
-                        <div class="row text-center">
-                            <input type="submit" class="btn btn-primary btn-xs" value="Войти">
-                        </div>
+                        <input type="submit" class="btn btn-primary btn-block" value="Войти">
 
                     </form:form>
                 </div>
@@ -63,7 +60,7 @@
                         <div class="panel-heading"><i class="fa fa-cog fa-2x"></i><span class="h3"> Админ</span>
                         </div>
 
-                        <div class="list-group" style="width: auto">
+                        <div class="list-group">
                             <a class="list-group-item" href="/admin/registration/search"><i class="fa fa-list"></i>
                                 Заявки на обучение</a>
                             <a class="list-group-item" href="/admin/student/search"><i class="fa fa-child"></i> Студенты</a>
@@ -71,9 +68,8 @@
                             <a class="list-group-item" href="/admin/teacher/search"><i class="fa fa-user-secret"></i>
                                 Преподаватели</a>
                             <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car"></i> Автомобили</a>
-                            <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График
-                                занятий</a>
                             <a class="list-group-item" href="/admin/testing/exam/search"><i class="fa fa-file-text-o"></i> Тесты ПДД</a>
+                            <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий</a>
                             <a class="list-group-item" href="#myModal2" data-toggle="modal"><i
                                     class="fa fa-envelope-o"></i> Отправка сообщений</a>
                             <a class="list-group-item active" onclick="sbmt();"><i class="fa fa-sign-out"></i> Выйти</a>
@@ -138,9 +134,12 @@
                             <sec:authentication property="principal.username"/></span>
                         </div>
                         <div class="list-group">
+                            <a class="list-group-item" href="#" data-toggle="modal" id="messagesItem"><i class="fa fa-envelope-o"></i> Сообщения
+                                <span id="amount" class="badge"></span></a>
                             <a class="list-group-item" href="/student/news"><i class="fa fa-newspaper-o"></i> Новости</a>
                             <a class="list-group-item" href="/student/mygroup"><i class="fa fa-university"></i> Моя группа</a>
                             <a class="list-group-item" href="/testing/search?idExam=1"><i class="fa fa-pencil-square-o"></i> Тесты ПДД</a>
+                            <a class="list-group-item" href="/student/roadsigns"><i class="fa fa-minus-circle"></i> Дорожные знаки</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий </a>
                             <a class="list-group-item" href="#" data-toggle="modal" id="messagesItem"><i class="fa fa-envelope-o"></i> Сообщения
                                <span id="amount" class="badge" style="color: yellow"></span></a>

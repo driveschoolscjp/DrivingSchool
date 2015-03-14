@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Group</title>
+    <title>Поиск групп</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,7 +56,7 @@
                                 </select>
                             </div>
                             <div class="col-xs-5">
-                                <button type="submit" class="btn btn-primary">Поиск по учителю</button>
+                                <button type="submit" class="btn btn-primary">Поиск по преподавателю</button>
                             </div>
                         </form>
                     </div>
@@ -72,7 +72,7 @@
                             <thead>
                             <tr>
                                 <th>Название группы</th>
-                                <th>Учитель</th>
+                                <th>Преподаватель</th>
                                 <th>Дата начала занятий</th>
                                 <th>Дата окончания занятий</th>
                                 <th></th>

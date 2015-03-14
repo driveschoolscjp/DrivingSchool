@@ -33,59 +33,49 @@
 
     <div class="container-fluid">
 
-
+        <br/>
             <div class="col-xs-11 whiteback">
 
 
                 <h3 class="text-center">Редактор билетов</h3>
                 <hr>
                 <div class="row">
-                        <div class="col-xs-10 col-xs-offset-1">
-                            <h3 class="text-center">Экзамен ${exam.name}</h3>
+
+                       <div class="row">
+
+                           <%--новый билет--%>
+                           <div class="col-xs-3 col-xs-offset-1">
+                               <c:if test="${moreTickets}">
+                                           <a href="/admin/testing/ticket/add?id=${exam.id}" type="button" class="btn btn-success">Добавить
+                                               билет</a>
+                               </c:if>
+                           </div>
+
+                           <div class="col-xs-3 col-xs-offset-1">
+                            <h4>Экзамен ${exam.name}</h4>
                         </div>
 
-                   <c:if test="${moreTickets}">
-                    <div class="col-xs-6 col-xs-offset-1">
-                        <h3 class="text-center">Добавить билет</h3>
-                    </div>
-                    </c:if>
 
-                    <div class="pull-right">
-                        <div class="col-xs-1 col-xs-offset-1">
-                            <br/>
+                    <div class="col-xs-2 col-xs-offset-1">
+                        <div class="pull-right">
                             <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
                                 <i class="fa fa-undo"></i></a>
                         </div>
                     </div>
+                           <div class="col-xs-1"></div>
 
-                    <%--новый билет--%>
-                    <div class="pull-left">
-                        <div class="col-xs-1 col-xs-offset-1">
-                    <c:if test="${moreTickets}">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <a href="/admin/testing/ticket/add?id=${exam.id}" type="button" class="btn btn-success">Добавить
-                                    билет</a>
-                            </div>
-                        </div>
-                    </c:if>
-                </div>
-              </div>
-
+                       </div>
                 <%--таблица с билетами--%>
                 <div class="row">
                     <div class="col-xs-12 table-responsive">
                         <table class="table" id="table">
 
                                 <tr>
+                                    <hr/>
                                 <c:forEach var="ticket" items="${tickets}">
-                                    <td>
-                                        <div class="col-xs-12">
-                                        <a href="/admin/testing/question/search?id=${ticket.id}" type="button" class="btn btn-success">
-                                          билет № ${ticket.number}
-                                        </a>
-                                        </div>
-                                    </td>
+                                        <div class="col-xs-1 col-xs-offset-1">
+                                       <a href="/admin/testing/question/search?id=${ticket.id}" type="button" class="btn btn-success">билет № ${ticket.number}</a>
+                                       </div>
                                         <c:if test="${ticket.id%10==0}">
                                             </tr><tr>
                                         </c:if>

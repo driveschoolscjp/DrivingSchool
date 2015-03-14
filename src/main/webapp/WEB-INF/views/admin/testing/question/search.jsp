@@ -34,21 +34,29 @@
     <div class="container-fluid">
 
         <div class="row">
+            <br/>
             <div class="col-xs-11 whiteback">
 
                 <br/>
 
-                <div class="btn-group" role="group" aria-label="...">
-                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
-                    <i class="fa fa-undo"> экзамены</i></a>
-                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Выбранный экзамен">
-                    <i class="fa fa-undo"> ${ ticket.exam.name}</i></a>
-                </div>
 
-
-                <h3 class="text-center">Билет ${ticket.number}</h3>
                 <h3 class="text-center">Редактор вопросов</h3>
-                <hr>
+                <hr/>
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-1">
+                        <div class="pull-left">
+                <h4 class="text-center">Билет ${ticket.number}</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-3 pull-right">
+                <div class="btn-group" role="group" aria-label="...">
+                    <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
+                        <i class="fa fa-undo"> экзамены</i></a>
+                    <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Выбранный экзамен">
+                        <i class="fa fa-undo"> ${ ticket.exam.name}</i></a>
+                </div>
+                </div>
+                </div>
                 <%--новый билет--%>
                 <c:if test="${moreQuestions}">
                     <div class="row">
@@ -65,7 +73,9 @@
                         <table class="table" id="table">
                             <thead>
                             <tr>
-                                <th>Вопросы</th>
+                                <div class="text-center">
+                               <h4> Вопросы: </h4>
+                                </div>
                             </tr>
                             </thead>
                             <tbody>
@@ -73,12 +83,11 @@
                                 <c:forEach var="question" items="${questions}">
                                 <td>
                                     <div class="col-xs-4">
-                                        <a href="/admin/testing/question/edit?id=${question.id}" type="button" class="btn btn-primary btn-success">
-                                                ${question.number}
-                                        </a>
+                                        <a href="/admin/testing/question/edit?id=${question.id}" type="button" class="btn btn-success">
+                                         Вопрос ${question.number} </a>
                                     </div>
                                 </td>
-                                <c:if test="${question.number%10==0}">
+                                <c:if test="${question.number%5==0}">
                             </tr><tr>
                                 </c:if>
                                 </c:forEach>

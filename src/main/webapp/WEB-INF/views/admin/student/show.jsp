@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Student</title>
+    <title>Просмотр студента</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,17 +39,17 @@
 
                         <fieldset>
                             <div class="form-group col-xs-4">
-                                <label for="lastname">Lastname:</label>
+                                <label for="lastname">Фамилия</label>
                                 <form:input path="lastname" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="firstname">Name:</label>
+                                <label for="firstname">Имя</label>
                                 <form:input path="firstname" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="patronymic">Patronymic:</label>
+                                <label for="patronymic">Отчество</label>
                                 <form:input path="patronymic" class="form-control" disabled="true"/>
                             </div>
                         </fieldset>
@@ -85,12 +85,12 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="tel">Telephone:</label>
+                                <label for="tel">Телефон</label>
                                 <form:input path="tel" type="tel" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="email">Email address:</label>
+                                <label for="email">Email</label>
                                 <form:input path="email" type="email" class="form-control" disabled="true"/>
 
                             </div>
@@ -99,19 +99,19 @@
 
                         <fieldset>
                             <div class="form-group col-xs-4">
-                                <label>Группа:</label><br/>
+                                <label>Группа</label><br/>
                                 <form:input path="group.name" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label>Инструктор:</label><br/>
+                                <label>Инструктор</label><br/>
                                 <input id="instructor" class="form-control" type="text"
                                        value="${student.instructor.firstname} ${student.instructor.lastname} - ${student.instructor.car.brand} ${student.instructor.car.model}"
                                        disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="rideNumber">Количество занятий вождением:</label>
+                                <label for="rideNumber">Количество занятий вождением</label>
                                 <form:input path="rideNumber" class="form-control" disabled="true"/>
                             </div>
                         </fieldset>
@@ -119,18 +119,18 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="login">Login:</label>
+                                <label for="login">Логин</label>
                                 <form:input path="login" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="password">Password:</label>
+                                <label for="password">Пароль</label>
                                 <form:input path="password" class="form-control" disabled="true"/>
                             </div>
                         </fieldset>
                         <hr/>
                         <div class="text-center">
-                            <button class="btn  btn-success" type="submit">Назад</button>
+                            <button class="btn  btn-primary" type="submit">Назад</button>
                         </div>
                     </form:form>
                 </div>

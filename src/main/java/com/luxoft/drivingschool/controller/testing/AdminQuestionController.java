@@ -93,7 +93,7 @@ public class AdminQuestionController {
         public String saveQuestion(@ModelAttribute(QUESTION_ATTRIBUTE) Question question) {
 //        question.setTicket(ticketService.findOne(ticketId));
         question = questionService.save(question);
-        return REDIRECT_ADD_ANSWER + question.getId(); // На страничку просмотра
+        return "edit?id=" + question.getId(); // На страничку просмотра
     }
 
     // Добавление ответа
@@ -103,8 +103,10 @@ public class AdminQuestionController {
         Answer answer = new Answer();
         Question question = questionService.findOne(questionId);
         answer.setQuestion(question);
+        List<Answer> answers = answerService.findByQuestionId(question.getId());
+        answers.add(answer);
         model.addAttribute(ANSWER_ATTRIBUTE, answer);
-        model.addAttribute(ANSWERS_ATTRIBUTE, answerService.findByQuestionId(question.getId()));
+        model.addAttribute(ANSWERS_ATTRIBUTE, answers);
         model.addAttribute(QUESTION_ATTRIBUTE, question);
 
         return VIEW_EDIT_ANSWER_PATH;
@@ -125,7 +127,7 @@ public class AdminQuestionController {
                 }
             }
         }
-        return REDIRECT_ADD_ANSWER + questionId; // На страничку просмотра
+        return "redirect:edit?id=" + questionId; // На страничку просмотра
     }
 
     // Показ одного вопроса
@@ -155,7 +157,6 @@ public class AdminQuestionController {
         Answer answer = answerService.findOne(answerId);
         Question question = answer.getQuestion();
         model.addAttribute(ANSWER_ATTRIBUTE, answer);
-        model.addAttribute(QUESTION_ATTRIBUTE, question);
         model.addAttribute(ANSWERS_ATTRIBUTE, answerService.findByQuestionId(question.getId()));
         model.addAttribute(QUESTION_ATTRIBUTE, question);
 
