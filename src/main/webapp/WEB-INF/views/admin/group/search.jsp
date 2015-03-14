@@ -87,7 +87,8 @@
                                     <td><joda:format value="${group.startDate}" style="M-"/></td>
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <a href="#" type="button" title="Отправить сообщение"
+                                            <a onclick="adminMessageFromGroups('${group.id}', '${group.name}')"
+                                               type="button" title="Отправить сообщение"
                                                class="btn btn-warning"><i class="fa fa-envelope"></i></a>
                                             <a href="/admin/group/show?id=${group.id}" type="button" title="Посмотреть"
                                                class="btn btn-success"><i class="fa fa-search"></i></a>

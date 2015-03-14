@@ -2,14 +2,16 @@ var students = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: '/scheduler/search/student/%QUERY',
-    cache: false
+    cache: false,
+    charset: "utf-8"
 });
 
 var groups = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: '/scheduler/search/group/%QUERY',
-    cache: false
+    cache: false,
+    charset: "utf-8"
 });
 
 students.initialize();
@@ -19,8 +21,6 @@ var currentId = {};
 var isGM = false;
 
 $(document).ready(function () {
-
-
     $('#messageField .typeahead').typeahead(null, {
         displayKey: function(d) {
             return d['firstname'] + " " + d['lastname'] + " " + d.group['name']
@@ -66,6 +66,7 @@ $(document).ready(function () {
                     current_id: currentId,
                     isGroupMessage: isGM };
         var success = true;
+        console.log(JSON.stringify(obj));
         $.ajax({
             url: "/admin/message/send",
             type: "POST",
@@ -89,3 +90,21 @@ $(document).ready(function () {
         }
     });
 })
+
+function adminMessageFromStudents(id, fname, lname, gname) {
+    currentId = id;
+    isGM = false;
+    $('#messageField .typeahead').typeahead('val', fname + " " + lname + " " + gname);
+    $('#group1').removeClass('active');
+    $('#student1').addClass('active');
+    $('#myModal2').modal('show');
+}
+
+function adminMessageFromGroups(id, gname) {
+    currentId = id;
+    isGM = true;
+    $('#messageField .typeahead').typeahead('val', gname);
+    $('#student1').removeClass('active');
+    $('#group1').addClass('active');
+    $('#myModal2').modal('show');
+}
