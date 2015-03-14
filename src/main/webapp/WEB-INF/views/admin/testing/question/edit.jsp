@@ -108,6 +108,8 @@
                                             ${answ.answer}
                                     </td>
                                     <td>
+
+                                        <div class="btn-group btn-group-vertical" role="group" aria-label="...">
                                         <a href="/admin/testing/question/editAnswer?id=${answ.id}" type="button"
                                            class="btn btn-success">
                                             Редактировать
@@ -117,21 +119,31 @@
                                            class="btn btn-success">
                                             Удалить
                                         </a>
+                                            </div>
                                     </td>
                                 </tr>
                             </c:forEach>
                         </table>
 
                         <div class="text-center">
+
+                            <span class="${question.id==null?'hide':'show'}">
                             <div class="btn-group" role="group" aria-label="...">
-                                <span class="${question.id==null?'hide':'show'}">
+
                                     <a href="/admin/testing/question/addAnswer?id=${question.id}" type="button"
                                        class="btn btn-primary">
                                         Добавить ответ
                                     </a>
-                                </span>
+
                                 <button form="formId" class="btn btn-primary" type="submit">Сохранить вопрос</button>
                             </div>
+                            </span>
+
+
+
+                            <span class="${question.id!=null?'hide':'show'}">
+                            <button form="formId" class="btn btn-primary" type="submit">Сохранить вопрос</button>
+                           </span>
 
                         </div>
                     </form:form>

@@ -101,6 +101,7 @@
                                                                        autofocus=""/>
                                                         <form:hidden path="id"/>
                                                         <c:if test="${!answ.correct}">
+                                                            <br/>
                                                             <form:checkbox path="correct"/>
                                                             Установить верным
                                                         </c:if>
