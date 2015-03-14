@@ -169,7 +169,8 @@ public class UserExamController {
     }
     //Показ правильного ответа
     @RequestMapping(value = TRUE_PATH, method = RequestMethod.GET)
-    public String showAnswer(@RequestParam(ID_ANSWER) long idAnswer, Model model, HttpSession session){
+    public String showAnswer(@RequestParam(ID_ANSWER) long idAnswer, @RequestParam(value="res", required = false) Integer res,
+                             Model model, HttpSession session){
 
         Answer answer = answerService.findOne(idAnswer);
         Question question = answer.getQuestion();
@@ -178,6 +179,9 @@ public class UserExamController {
         model.addAttribute("answers", answers);
         model.addAttribute("showAnswer", true);
         model.addAttribute("idWrongAnswer", idAnswer);
+        if(res != null){
+            model.addAttribute("res", res);
+        }
         long idTicket = answer.getQuestion().getTicket().getId();
         int number = answer.getQuestion().getNumber();
         Exam exam = question.getTicket().getExam();

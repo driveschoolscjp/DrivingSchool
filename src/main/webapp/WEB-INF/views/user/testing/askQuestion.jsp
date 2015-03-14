@@ -37,20 +37,20 @@
                 <hr>
                     <%--строка с полями--%>
                     <fieldset>
-                        <div class="form-group col-xs-6">
+                        <div class="text-center">
                             <label>Тема:</label>
                             ${question.theme.name}
                         </div>
                     </fieldset>
                     <fieldset>
-                        <div class="form-group col-xs-6">
+                        <div class="textJustify form-group col-xs-${(empty question.pathToPicture)?'12':'6'}">
                             <label>Вопрос:</label><br/>
                             ${question.question}
                         </div>
                         <div class="container-fluid">
-                            <div class="row">
+                            <div class="form-group col-xs-6">
                                 <div class="text-center">
-                                    <c:if test="${question.pathToPicture!=null || question.pathToPicture!=''}">
+                                    <c:if test="${not empty question.pathToPicture}">
                                         <img src="${question.pathToPicture}">
 
                                     </c:if>
@@ -123,9 +123,11 @@
                                     </div>
                                     <div class="text-center">
                                         <br/>
+                                        <div class="${res==1?'hide':'show'}">
                                     <a href="/testing/question?idTicket=${question.ticket.id}" class="btn btn-primary" >
                                         Следующий вопрос
                                     </a>
+                                        </div>
                                    </div>
                                 </c:if>
                             </div>

@@ -46,6 +46,10 @@ a:visited {
     color: #008B00;
 }
 
+.textJustify{
+    text-align: justify;
+}
+
 .page {
     min-height:100%;
     position:relative;
