@@ -2,6 +2,7 @@ package com.luxoft.drivingschool.model.testing;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "answers")
 public class Answer extends AbstractPersistable<Long> {
+    @Column(columnDefinition="TEXT")
     private String answer;
     private boolean correct;
     @ManyToOne

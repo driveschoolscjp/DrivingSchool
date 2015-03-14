@@ -21,7 +21,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.js"></script>
+    <style>
+        .show {
+            display: block;
+        }
 
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,18 +54,25 @@
                         <div class="col-xs-6 pull-right">
                             <label><br/></label>
                             <br/>
+
                             <div class="btn-group" role="group" aria-label="...">
-                                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Экзамены">
+                                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"
+                                   title="Экзамены">
                                     <i class="fa fa-undo"> экзамены</i></a>
 
-                                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"  title="Выбранный экзамен">
+                                <a href="/admin/testing/exam/search" type="button" class="btn btn-primary"
+                                   title="Выбранный экзамен">
                                     <i class="fa fa-undo"> ${ question.ticket.exam.name}</i></a>
 
-                                <a href="/admin/testing/question/search?id=${question.ticket.id}" type="button" class="btn btn-primary"   title="Выбранный билет">
+                                <a href="/admin/testing/question/search?id=${question.ticket.id}" type="button"
+                                   class="btn btn-primary"
+                                   title="Выбранный билет">
                                     <i class="fa fa-undo"> ${question.ticket.number}</i></a>
 
-                                <a href="/admin/testing/question/edit?id=${question.id}" type="button" class="btn btn-primary" title="Выбранный вопрос">
-                                    <i class="fa fa-undo">   ${question.number}</i> </a>
+                                <a href="/admin/testing/question/edit?id=${question.id}" type="button"
+                                   class="btn btn-primary"
+                                   title="Выбранный вопрос">
+                                    <i class="fa fa-undo"> ${question.number}</i> </a>
                             </div>
                         </div>
                     </div>
@@ -70,103 +85,57 @@
                             <label>Вопрос:</label><br/>
                             ${question.question}
                             <br/>
-                        <c:if test="${question.pathToPicture!=null}">
-                            <img src="${question.pathToPicture}">
-                        </c:if>
-                       </div>
+                            <c:if test="${question.pathToPicture!=null}">
+                                <img src="${question.pathToPicture}">
+                            </c:if>
+                        </div>
                     </fieldset>
                     <hr/>
-
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <label>Текст ответа:</label><br/>
-
-
-                                    <table class="table" id="table">
+                            <table class="table" id="table">
+                                <form:form action="/admin/testing/question/saveAnswer" method="post"
+                                           modelAttribute="answer">
+                                    <div class="form-group col-xs-11">
                                         <c:forEach var="answ" items="${answers}">
-                                        <div class="form-group col-xs-11">
-                                            checking id ${answ.id}
-                                        <tr>
-                                            <td>
-                                                <c:choose>
-                                                    <c:when test="${answer.id==answ.id}">
-                                                        <form:form action="/admin/testing/question/saveAnswer" method="post"
-                                                                   modelAttribute="answer">
-                                                            <form:textarea path="ans" class="form-control" cols="10"
-                                                                           rows="2"
-                                                                           placeholder="Answer" required="required"
-                                                                           autofocus=""/>
-                                                            <form:hidden path="id" />
-                                                            <br/> <form:checkbox path="correct" />
-                                                            Установить верным
-                                                            <input hidden name="questionId" value="${question.id}">
-                                                            <div class="btn-group-vertical pull-right">
-
-                                                                <button class="btn  btn-primary" type="submit">Сохранить
-                                                                    ответ
-                                                                </button>
-                                                            </div>
-                                                            <hr>
-                                                        </form:form>
-                                            </td>
-                                        </tr>
-                                            when ${answer.id} ${answer.correct} answers must be the same
                                             <tr>
-                                                <td>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <c:choose>
-                                                            <c:when test="${answ.correct}">
+                                                <td class="${answ.correct?'right':'wrong'}">
+                                                    <div class="${(answer.id==answ.id)?'show':'hide'}">
+                                                        <form:textarea path="ans" class="form-control" cols="10"
+                                                                       rows="2"
+                                                                       placeholder="Answer" required="required"
+                                                                       autofocus=""/>
+                                                        <form:hidden path="id"/><br/>
+                                                        <c:if test="${!answ.correct}">
+                                                            <form:checkbox path="correct"/>
+                                                            Установить верным
+                                                        </c:if>
+                                                        <input hidden name="questionId" value="${question.id}">
 
-                                                    <fieldset>
-                                                                <div class="col-xs-4 col-xs-offset-1">
-                                                                <textarea class="form-control" style="background-color: #67b168" cols="10" rows="2"
-                                                                          readonly="true">${answ.ans}</textarea>
-                                                                </div>
-
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <div class="col-xs-4 col-xs-offset-2">
-                                                                <textarea class="form-control" style="background-color: #ce8483" cols="10" rows="2"
-                                                                                   readonly="true">${answ.ans}</textarea>
-                                                                    </div>
-                                                     </fieldset>
-                                                            </c:otherwise>
-
-                                                        </c:choose>
+                                                        <div class="btn-group-vertical pull-right">
+                                                            <button class="btn  btn-primary" type="submit">Сохранить
+                                                                ответ
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="${(answer.id==answ.id)?'hide':'show'}">
+                                                            ${answ.answer}
+                                                    </div>
                                                 </td>
                                             </tr>
-                                            otherwice ${answer.id} ${answer.correct} answers are not the same
-                                            <tr>
-                                                <td>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                                    </c:forEach>
-                                                    <c:if test="${answer.id==null}">
-                                                        <form:form action="/admin/testing/question/saveAnswer" method="post"
-                                                                   modelAttribute="answer">
-                                                            <form:textarea path="ans" class="form-control" cols="10"
-                                                                           rows="3"
-                                                                           placeholder="Answer" required="required"
-                                                                           autofocus=""/>
-                                                            <form:checkbox path="correct" />
-                                                            <form:hidden path="id" />
-                                                            <input hidden name="questionId" value="${question.id}">
-                                                            <div class="btn-group-vertical pull-right">
-                                                                <button class="btn  btn-primary" type="submit">Сохранить ответ</button>
-                                                            </div>
-                                                        </form:form>
-                                                    </c:if>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
+
+                                            <hr>
+                                        </c:forEach>
+                                    </div>
+                                    FORM CLOSE
+                                </form:form>
+                            </table>
                         </div>
                     </div>
-                 <hr/>
+                    <hr/>
                 </div>
-
-             </div>
+            </div>
         </div>
     </div>
 </div>
