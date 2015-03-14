@@ -21,6 +21,14 @@ a:visited {
 .answer:hover {
     color: #ffffff;
 }
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
 .wrong {
     background-color: #FFA07A;
     color: Firebrick;

@@ -112,7 +112,8 @@
                                            class="btn btn-success">
                                             Редактировать
                                         </a>
-                                        <a href="/admin/testing/question/deleteAnswer?questionId=${question.id}&answerId=${answ.id}" type="button"
+                                        <a href="/admin/testing/question/deleteAnswer?questionId=${question.id}&answerId=${answ.id}"
+                                           type="button"
                                            class="btn btn-success">
                                             Удалить
                                         </a>
@@ -123,12 +124,15 @@
 
                         <div class="text-center">
                             <div class="btn-group" role="group" aria-label="...">
-                                <a href="/admin/testing/question/addAnswer?id=${question.id}" type="button"
-                                   class="btn btn-primary">
-                                    Добавить ответ
-                                </a>
+                                <span class="${question.id==null?'hide':'show'}">
+                                    <a href="/admin/testing/question/addAnswer?id=${question.id}" type="button"
+                                       class="btn btn-primary">
+                                        Добавить ответ
+                                    </a>
+                                </span>
                                 <button form="formId" class="btn btn-primary" type="submit">Сохранить вопрос</button>
                             </div>
+
                         </div>
                     </form:form>
                 </div>
