@@ -2,14 +2,16 @@ var students = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: '/scheduler/search/student/%QUERY',
-    cache: false
+    cache: false,
+    charset: "utf-8"
 });
 
 var groups = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: '/scheduler/search/group/%QUERY',
-    cache: false
+    cache: false,
+    charset: "utf-8"
 });
 
 students.initialize();

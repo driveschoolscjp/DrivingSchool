@@ -135,14 +135,12 @@
                         </div>
                         <div class="list-group">
                             <a class="list-group-item" href="#" data-toggle="modal" id="messagesItem"><i class="fa fa-envelope-o"></i> Сообщения
-                                <span id="amount" class="badge"></span></a>
+                                <span id="amount" class="badge" style="color: yellow"></span></a>
                             <a class="list-group-item" href="/student/news"><i class="fa fa-newspaper-o"></i> Новости</a>
                             <a class="list-group-item" href="/student/mygroup"><i class="fa fa-university"></i> Моя группа</a>
                             <a class="list-group-item" href="/testing/search?idExam=1"><i class="fa fa-pencil-square-o"></i> Тесты ПДД</a>
                             <a class="list-group-item" href="/student/roadsigns"><i class="fa fa-minus-circle"></i> Дорожные знаки</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий </a>
-                            <a class="list-group-item" href="#" data-toggle="modal" id="messagesItem"><i class="fa fa-envelope-o"></i> Сообщения
-                               <span id="amount" class="badge" style="color: yellow"></span></a>
                             <a class="list-group-item active" onclick="sbmt();"><i class="fa fa-sign-out"></i> Выйти</a>
                         </div>
                     </div>
