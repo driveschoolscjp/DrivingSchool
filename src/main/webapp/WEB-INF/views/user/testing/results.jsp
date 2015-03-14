@@ -36,9 +36,19 @@
 
         <div class="col-xs-10 col-xs-offset-1 alltikets blackback">
 
-            <h3 class="text-center">Результаты</h3>
+            <div class="row">
+
+                <div class="col-xs-1 col-xs-offset-1">
+                    <br/>
+                    <a href="/testing/search?idExam=${ticket.exam.id}" type="button" class="btn btn-primary"  title="Список билетов">
+                        <i class="fa fa-undo"></i></a>
+                </div>
+                <div class="col-xs-2 col-xs-offset-3">
+            <h3>Результаты</h3>
+                </div>
+            </div>
             <hr>
-            <div class="text-center">
+              <div class="text-center">
             <h4>Билет ${ticket.number}</h4>
             </div>
             <th>
@@ -55,7 +65,7 @@
                                             <c:if test="${entry.value.correct}">
                                             <div class="col-xs-12">
                                                 <a href="/testing/true?idAnswer=${entry.value.id}" type="button"
-                                                   class="btn btn-primary btn-success"
+                                                   class="btn  btn-success"
                                                    style="background-color: darkgreen">
                                                     Вопрос ${entry.key.number}
                                                 </a>
@@ -66,7 +76,7 @@
                                         <c:if test="${!entry.value.correct}">
                                             <div class="col-xs-12">
                                                 <a href="/testing/true?idAnswer=${entry.value.id}" type="button"
-                                                   class="btn btn-primary btn-success"
+                                                   class="btn btn-success"
                                                    style="background-color: #ac2925">
                                                     Вопрос ${entry.key.number}
                                                 </a>
@@ -76,7 +86,7 @@
                                         <c:if test="${entry.value==null}">
                                             <div class="col-xs-12">
                                                 <a href="/testing/true?idAnswer=${entry.value.id}" type="button"
-                                                   class="btn btn-primary btn-success"
+                                                   class="btn  btn-success"
                                                    style="background-color: #ffffff">
                                                     Вопрос ${entry.key.number}
                                                 </a>
