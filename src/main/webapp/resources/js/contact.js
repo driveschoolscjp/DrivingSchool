@@ -12,15 +12,6 @@ var map = new google.maps.Map(document.getElementById('map_canvas'), {
 
 
 
-var line = new google.maps.Polyline({
-    path: [new google.maps.LatLng(48.458085, 35.057470), new google.maps.LatLng(48.376040, 34.462065)],
-    strokeColor: "#33CCFF",
-    strokeOpacity: 1.0,
-    strokeWeight: 1,
-    map: map
-});
-
-
 var infowindow = new google.maps.InfoWindow();
 
 var marker, i;
