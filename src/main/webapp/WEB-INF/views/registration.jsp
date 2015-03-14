@@ -41,15 +41,14 @@
                 <hr/>
                 <br/>
 
-                <form:input path="firstname" class="name" placeholder="Jack"
-                            required="required"/>
+                <form:input path="firstname" class="name" placeholder="Дуэйн"  pattern="[А-Яа-я]{2}" required="required"/>
 
                 <div>
                     <p class="name-help">Не менее двух букв.</p>
                 </div>
                 <br/>
 
-                    <form:input path="lastname" class="lastname" placeholder="Black"
+                    <form:input path="lastname" class="lastname" placeholder=" Джонсон"  pattern="[А-Яа-я]{2}"
                             required="required"/>
 
                 <div>
@@ -57,7 +56,7 @@
                 </div>
                 <br/>
 
-                <form:input path="patronymic" class="patronymic" placeholder="Robertovich"
+                <form:input path="patronymic" class="patronymic" placeholder=" Дугласович"  pattern="[А-Яа-я]{2}"
                             required="required"/>
 
                 <div>
