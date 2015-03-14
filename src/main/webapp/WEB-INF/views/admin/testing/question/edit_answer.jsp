@@ -95,9 +95,10 @@
                         <div class="form-group col-xs-12">
                             <label>Текст ответа:</label><br/>
                             <table class="table" id="table">
-                                <form:form action="/admin/testing/question/saveAnswer" method="post" modelAttribute="answer">
-                                <div class="form-group col-xs-11">
-                                    <c:forEach var="answ" items="${answers}">
+                                <form:form action="/admin/testing/question/saveAnswer" method="post"
+                                           modelAttribute="answer">
+                                    <div class="form-group col-xs-11">
+                                        <c:forEach var="answ" items="${answers}">
                                             <tr>
                                                 <td class="${answ.correct?'right':'wrong'}">
                                                     <div class="${(answer.id==answ.id)?'show':'hide'}">
@@ -125,27 +126,9 @@
                                             </tr>
 
                                             <hr>
-                                    </c:forEach>
-                                    <div class="${(answer.id==null)?'show':'hide'}">
-                                        <tr>
-                                            <td>
-                                                <form:textarea path="ans" class="form-control" cols="10"
-                                                               rows="2"
-                                                               placeholder="Answer" required="required"
-                                                               autofocus=""/>
-                                                <form:hidden path="id" /><br/>
-                                                <form:checkbox path="correct" />
-                                                <input hidden name="questionId" value="${question.id}" />
-
-                                                <div class="btn-group-vertical pull-right">
-                                                    <button class="btn  btn-primary" type="submit">Сохранить
-                                                        ответ
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        </c:forEach>
                                     </div>
-                                </div>
+                                    FORM CLOSE
                                 </form:form>
                             </table>
                         </div>
