@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Teacher</title>
+    <title>Просмотр преподавателя</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,17 +40,17 @@
 
                         <fieldset>
                             <div class="form-group col-xs-4">
-                                <label for="lastname">Lastname:</label>
+                                <label for="lastname">Фамилия</label>
                                 <form:input path="lastname" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="firstname">Name:</label>
+                                <label for="firstname">Имя</label>
                                 <form:input path="firstname" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="patronymic">Patronymic:</label>
+                                <label for="patronymic">Отчество</label>
                                 <form:input path="patronymic" class="form-control" disabled="true"/>
                             </div>
                         </fieldset>
@@ -58,12 +58,12 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="passport">Passport:</label>
+                                <label for="passport">Пасспорт</label>
                                 <form:input path="passport" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="inn">INN:</label>
+                                <label for="inn">ИНН</label>
                                 <form:input path="inn" class="form-control" disabled="true"/>
                             </div>
                         </fieldset>
@@ -71,12 +71,12 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="birthday">Birthday: </label>
+                                <label for="birthday">День рождения</label>
                                 <form:input path="birthday" type="date" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="col-xs-6">
-                                <label for="gender">Gender</label><br>
+                                <label for="gender">Пол</label><br>
                                 <form:input path="gender" class="form-control" disabled="true"/>
                             </div>
 
@@ -85,12 +85,12 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="tel">Telephone:</label>
+                                <label for="tel">Телефон</label>
                                 <form:input path="tel" type="tel" class="form-control" disabled="true"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="email">Email address:</label>
+                                <label for="email">Email</label>
                                 <form:input path="email" type="email" class="form-control" disabled="true"/>
 
                             </div>
@@ -106,7 +106,7 @@
                             </div>
 
                             <div class="form-group col-xs-8">
-                                <label for="description">Description:</label>
+                                <label for="description">Описание</label>
                                 <form:textarea path="description" class="form-control" rows="5"
                                                disabled="true"/>
                             </div>

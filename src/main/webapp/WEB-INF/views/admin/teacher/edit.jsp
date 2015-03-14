@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Teacher</title>
+    <title>Редактирование преподавателя</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,40 +38,40 @@
                     <form:form action="/admin/teacher/save" method="post" modelAttribute="teacher">
                         <form:hidden path="id"/>
 
-                        <h3>Добавление преподавателя</h3>
+                        <h3>Редактирование преподавателя</h3>
                         <hr>
                         <%--строка с полями--%>
                         <fieldset>
                             <div class="form-group col-xs-4">
-                                <label for="lastname">Lastname:</label>
-                                <form:input path="lastname" class="form-control" placeholder="Black"
-                                            required="required" cssErrorClass="error form-control"/>
+                                <label for="lastname">Фамилия</label>
+                                <form:input path="lastname" class="form-control" placeholder="Левченко"
+                                            required="required" pattern="[А-Яа-я]{2,50}" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="firstname">Name:</label>
-                                <form:input path="firstname" class="form-control" placeholder="Jack"
-                                            required="required" cssErrorClass="error form-control"/>
+                                <label for="firstname">Имя</label>
+                                <form:input path="firstname" class="form-control" placeholder="Иван"
+                                            required="required" pattern="[А-Яа-я]{2,50}" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="patronymic">Patronymic:</label>
-                                <form:input path="patronymic" class="form-control" placeholder="Robertovich"
-                                            required="required" cssErrorClass="error form-control"/>
+                                <label for="patronymic">Отчество</label>
+                                <form:input path="patronymic" class="form-control" placeholder="Владимирович"
+                                            required="required" pattern="[А-Яа-я]{2,50}" cssErrorClass="error form-control"/>
                             </div>
                         </fieldset>
                         <hr>
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="passport">Passport:</label>
-                                <form:input path="passport" class="form-control" placeholder="AA571175"
+                                <label for="passport">Пасспорт</label>
+                                <form:input path="passport" class="form-control" placeholder="АН571175"
                                             pattern="[А-Я]{2}[0-9]{6}" required="required"
                                             cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-6">
-                                <label for="inn">INN:</label>
+                                <label for="inn">ИНН</label>
                                 <form:input path="inn" class="form-control" placeholder="12345678"
                                             pattern="[0-9]{8}" required="required" cssErrorClass="error form-control"/>
                             </div>
@@ -80,13 +80,13 @@
 
                         <fieldset>
                             <div class="form-group col-xs-6">
-                                <label for="birthday">Birthday: </label>
+                                <label for="birthday">День рождения</label>
                                 <form:input path="birthday" type="date" class="form-control" required="required"
                                             cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="col-xs-6">
-                                <label for="gender">Gender</label><br>
+                                <label for="gender">Пол</label><br>
                                     <%--<form:radiobuttons path="gender" class="radio-inline"/>--%>
                                 <div class="col-xs-6">
                                     <form:radiobutton path="gender" value="MALE"/> <b>Мужской</b>
@@ -103,13 +103,13 @@
 
                         <fieldset>
                             <div class="form-group col-xs-4">
-                                <label for="tel">Telephone:</label>
+                                <label for="tel">Телефон</label>
                                 <form:input path="tel" type="tel" class="form-control" placeholder="987-654-32-10"
                                             required="required" cssErrorClass="error form-control"/>
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="email">Email address:</label>
+                                <label for="email">Email</label>
                                 <form:input path="email" type="email" class="form-control"
                                             placeholder="nickname@mail.com" required="required"
                                             cssErrorClass="error form-control"/>
@@ -117,7 +117,7 @@
                             </div>
 
                             <div class="form-group col-xs-4">
-                                <label for="photoURL">Photo URI:</label>
+                                <label for="photoURL">URL фото</label>
                                 <form:input path="photoURL" class="form-control" type="url"
                                             placeholder="http//photo.com/teacher5.png" required="required"
                                             cssErrorClass="error form-control"/>
@@ -127,9 +127,9 @@
 
                         <fieldset>
                             <div class="form-group">
-                                <label for="description">Description:</label>
+                                <label for="description">Описание</label>
                                 <form:textarea path="description" class="form-control" rows="3"
-                                               placeholder="Description"
+                                               placeholder="Описание преподавателя"
                                                required="required" cssErrorClass="error form-control"/>
                             </div>
                         </fieldset>

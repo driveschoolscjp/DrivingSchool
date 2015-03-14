@@ -10,6 +10,8 @@ var map = new google.maps.Map(document.getElementById('map_canvas'), {
     mapTypeId: google.maps.MapTypeId.ROADMAP
 });
 
+
+
 var infowindow = new google.maps.InfoWindow();
 
 var marker, i;

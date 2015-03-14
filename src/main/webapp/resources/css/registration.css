@@ -1,112 +1,11 @@
-.myHead {
-    font-size: 36px;
-    color: white;
-}
-
-
-
-.name {
-    font-size: 21px;
-    font-weight: bold;
-    outline:0;
-    border:0;
-    padding: 10px 10px;
-    font-size: 13px;
-    width: 300px;
-    border-radius: 4px;
-    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-}
-
-.email {
-    font-size: 21px;
-    font-weight: bold;
-    outline:0;
-    border:0;
-    padding: 10px 10px;
-    font-size: 13px;
-    width: 300px;
-    border-radius: 4px;
-    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-}
-.email-help {
+#myForm{
     color: #ffffff;
+    text-align: center;
 }
-
-.name-help {
-    color: #ffffff;
-}
-
-.patronymic-help {
-    color: #ffffff;
-}
-
-.tel-help {
-    color: #ffffff;
-}
-
-.lastname-help {
-    color: #ffffff;
-}
-
-.lastname{
-    font-size: 21px;
+#myForm p{
+    display: none;
+    text-align: left;
     font-weight: bold;
-    outline:0;
-    border:0;
-    padding: 10px 10px;
-    font-size: 13px;
-    width: 300px;
-    border-radius: 4px;
-    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-
-}
-
-.patronymic{
-    font-size: 21px;
-    font-weight: bold;
-    outline:0;
-    border:0;
-    padding: 10px 10px;
-    font-size: 13px;
-    width: 300px;
-    border-radius: 4px;
-    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-
-}
-.tel{
-     font-size: 21px;
-     font-weight: bold;
-     outline:0;
-     border:0;
-     padding: 10px 10px;
-     font-size: 13px;
-     width: 300px;
-     border-radius: 4px;
-     -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-     -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-     box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
- 
- }
-
-.mySelect{
-    font-size: 21px;
-    font-weight: bold;
-    outline:0;
-    border:0;
-    padding: 10px 10px;
-    font-size: 13px;
-    width: 300px;
-    border-radius: 4px;
-    -webkit-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    -moz-box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-    box-shadow: 1px 1px 5px 0px rgba(99,99,88,1);
-
+    padding-top: 5px;
+    padding-left: 10px;
 }

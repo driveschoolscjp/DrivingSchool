@@ -7,10 +7,13 @@ import com.luxoft.drivingschool.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 public class RegistrationController {
@@ -44,9 +47,14 @@ public class RegistrationController {
 
     // Сохранение "запись в автошколу" и переход на home page
     @RequestMapping(value = "/registration/save", method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("registration") Registration registration) {
+    public String processRegistration(@ModelAttribute("registration") @Valid Registration registration, Errors errors, Model model) {
 
-        registration = registrationService.save(registration);
+        if (errors.hasErrors()){
+            model.addAttribute("cars", carService.findAll());
+            return "registration";
+        }
+
+        registrationService.save(registration);
         return "home"; // На страничку просмотра
     }
 

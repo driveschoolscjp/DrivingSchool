@@ -31,8 +31,7 @@
         <hr/>
         <ul>
             <c:forEach var="roadsign" items="${roadsigns}">
-                <li onclick="window.location.href='${roadsign.description}'">
-
+                <li>
                     <a class="normal" href="#">
                         <img src="${roadsign.imageURL}" alt=""/>
                     </a>
@@ -41,9 +40,7 @@
                         <h3><b>${roadsign.number} ${roadsign.name}</b></h3>
                         <br/>
                         <p><b>Категория:</b><br/>${roadsign.category}</p>
-                        <a href="#">Подробней</a>
                     </div>
-
                 </li>
             </c:forEach>
         </ul>
