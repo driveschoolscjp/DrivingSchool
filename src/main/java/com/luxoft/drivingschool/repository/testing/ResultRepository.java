@@ -46,5 +46,9 @@ public interface ResultRepository  extends JpaRepository<Result, Long> {
             ")", nativeQuery = true)
     int countIncorrect(long studentId, long ticketId);
 
+    @Query(value = "delete from results where results.student_id=?1 AND results.answer_id in (" +
+            "select answers.id from answers where answers.question_id=?2" +
+            ")", nativeQuery = true)
+    void cleanResult(long studentId, long questionId);
 
 }
