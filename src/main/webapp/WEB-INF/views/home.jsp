@@ -20,6 +20,7 @@
 
     <!--for VK-->
     <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -42,9 +43,7 @@
                 <!--Карусель-->
                 <div id="carousel" class="carousel slide">
 
-
                     <!--Индикаторы слайдов-->
-
                     <ol class="carousel-indicators">
                         <li class="active" data-target="#carousel" data-slide-to="0"></li>
                         <li data-target="#carousel" data-slide-to="1"></li>
@@ -150,8 +149,12 @@
                         ГИБДД можете самостоятельно, Вы получаете полный комплект документов об окончании автошколы с
                         печатями ГИБДД.</p></div>
             </div>
+        </div>
 
-            <div class="col-xs-offset-1  col-xs-1 hidden-xs"></div>
+        <div class="row">
+            <div class="col-xs-11 text-center">
+                    <div id="vk_comments"></div>
+            </div>
         </div>
     </div>
 

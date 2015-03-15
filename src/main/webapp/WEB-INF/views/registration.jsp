@@ -41,39 +41,39 @@
                     <hr/>
 
                     <form:input path="lastname" class="lastname form-control" placeholder="Бурмистров"
-                                required="required" pattern="[А-Яа-я]{2,50}" cssErrorClass="error form-control"/>
+                                required="required" pattern="[А-Яа-я-]{2,50}" cssErrorClass="error form-control"/>
 
                     <div>
-                        <p class="lastname-help">Не менее двух букв.</p>
+                        <p class="lastname-help">Кириллица, не менее двух букв</p>
                     </div>
                     <br/>
 
                     <form:input path="firstname" class="name form-control" placeholder="Андрей"
-                                required="required" pattern="[А-Яа-я]{2,50}" cssErrorClass="error form-control"/>
+                                required="required" pattern="[А-Яа-я-]{2,50}" cssErrorClass="error form-control"/>
                     <div>
-                        <p class="name-help">Не менее двух букв.</p>
+                        <p class="name-help">Кириллица, не менее двух букв</p>
                     </div>
                     <br/>
 
                     <form:input path="patronymic" class="patronymic form-control" placeholder="Сергеевич"
-                                required="required" pattern="[А-Яа-я]{2,50}" cssErrorClass="error form-control"/>
+                                required="required" pattern="[А-Яа-я-]{2,50}" cssErrorClass="error form-control"/>
 
                     <div>
-                        <p class="patronymic-help">Не менее двух букв.</p>
+                        <p class="patronymic-help">Кириллица, не менее двух букв</p>
                     </div>
                     <br/>
 
                     <form:input path="email" type="email" class="email form-control"
                                 placeholder="nickname@mail.com" required="required" cssErrorClass="error form-control"/>
                     <div>
-                        <p class="email-help">На элекронную почту будет выслано уведомление о регистрации.</p>
+                        <p class="email-help">Почта будет использована для уведомления о предстоящих событиях</p>
                     </div>
                     <br/>
 
                     <form:input path="tel" type="tel" class="tel form-control" placeholder="987-654-32-10"
                                 required="required" cssErrorClass="error form-control"/>
                     <div>
-                        <p class="tel-help">Мы свяжемся с вами в течении суток.</p>
+                        <p class="tel-help">Мы свяжемся с вами в течение суток</p>
                     </div>
                     <br/>
 
