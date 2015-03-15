@@ -65,8 +65,7 @@
                                             <c:if test="${entry.value.correct}">
                                             <div class="col-xs-12">
                                                 <a href="/testing/true?idAnswer=${entry.value.id}&res=1" type="button"
-                                                   class="btn  btn-success"
-                                                   style="background-color: darkgreen">
+                                                   class="btn  btn-success">
                                                     Вопрос ${entry.key.number}
                                                 </a>
                                             </div>
@@ -76,8 +75,7 @@
                                         <c:if test="${!entry.value.correct}">
                                             <div class="col-xs-12">
                                                 <a href="/testing/true?idAnswer=${entry.value.id}&res=1" type="button"
-                                                   class="btn btn-success"
-                                                   style="background-color: #ac2925">
+                                                   class="btn btn-danger">
                                                     Вопрос ${entry.key.number}
                                                 </a>
                                             </div>
@@ -86,8 +84,7 @@
                                         <c:if test="${entry.value==null}">
                                             <div class="col-xs-12">
                                                 <a href="/testing/true?idAnswer=${entry.value.id}&res=1" type="button"
-                                                   class="btn  btn-success"
-                                                   style="background-color: #262626">
+                                                   class="btn  btn-default">
                                                     Вопрос ${entry.key.number}
                                                 </a>
                                             </div>

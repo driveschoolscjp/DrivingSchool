@@ -78,22 +78,19 @@
                                         <td>
                                             <c:if test="${entry.value>=passAnswers}">
                                                     <a href="/testing/question?idTicket=${entry.key.id}" type="button"
-                                                       class="btn btn-primary btn-success"
-                                                       style="background-color: darkgreen">
+                                                       class="btn btn-success">
                                                         Билет ${entry.key.number}
                                                     </a>
                                             </c:if>
                                             <c:if test="${entry.value<passAnswers && (entry.value>0 || entry.value<0)}">
                                                     <a href="/testing/question?idTicket=${entry.key.id}" type="button"
-                                                       class="btn btn-primary btn-success"
-                                                       style="background-color: #ac2925">
+                                                       class="btn btn-danger">
                                                         Билет ${entry.key.number}
                                                     </a>
                                             </c:if>
                                             <c:if test="${entry.value==0}">
                                                     <a href="/testing/question?idTicket=${entry.key.id}" type="button"
-                                                       class="btn btn-primary btn-success"
-                                                       style="background-color: #000000">
+                                                       class="btn btn-default">
                                                         Билет ${entry.key.number}
                                                     </a>
                                             </c:if>
