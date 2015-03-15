@@ -12,6 +12,11 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
 
     public List<Message> findByStudentId(Long id);
 
-    public List<Message> findFirst10MessageByStudentIdAndIdGreaterThanOrderByDateTimeDesc(Long student_id, Long message_id);
+    public List<Message> findFirst10MessageByStudentIdAndIdLessThanOrderByDateTimeDesc(Long student_id, Long message_id);
+
+    public List<Message> findFirst10MessageByStudentIdAndIdGreaterThanOrderByDateTimeAsc(Long student_id, Long message_id);
+    public List<Message> findFirst10MessageByStudentIdAndIdLessThanEqualOrderByDateTimeDesc(Long student_id, Long message_id);
+
+    public List<Message> findFirst10MessageByStudentIdOrderByDateTimeDesc(Long student_id);
     public Long countByStudentId(Long id);
 }

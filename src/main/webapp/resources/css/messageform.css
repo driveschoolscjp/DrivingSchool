@@ -143,4 +143,9 @@
 
 td .dateofmessage {
     text-align: right;
+    color: gray;
+}
+
+.pager {
+    cursor: pointer;
 }

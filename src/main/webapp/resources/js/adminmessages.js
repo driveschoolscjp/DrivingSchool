@@ -2,16 +2,14 @@ var students = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: '/scheduler/search/student/%QUERY',
-    cache: false,
-    charset: "utf-8"
+    cache: false
 });
 
 var groups = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: '/scheduler/search/group/%QUERY',
-    cache: false,
-    charset: "utf-8"
+    cache: false
 });
 
 students.initialize();
@@ -65,6 +63,7 @@ $(document).ready(function () {
                     message: $('#message1').val(),
                     current_id: currentId,
                     isGroupMessage: isGM };
+        console.log(obj);
         var success = true;
         console.log(JSON.stringify(obj));
         $.ajax({
