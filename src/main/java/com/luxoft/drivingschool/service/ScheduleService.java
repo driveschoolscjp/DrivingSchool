@@ -3,12 +3,16 @@ package com.luxoft.drivingschool.service;
 import com.luxoft.drivingschool.model.Schedule;
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.Teacher;
+import com.luxoft.drivingschool.model.enums.UserRoleEnum;
 import com.luxoft.drivingschool.repository.ScheduleRepository;
 import com.luxoft.drivingschool.repository.StudentRepository;
 import com.luxoft.drivingschool.repository.TeacherRepository;
 import com.luxoft.drivingschool.service.enums.LessonAction;
 import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +27,8 @@ public class ScheduleService {
     private TeacherRepository teacherRepository;
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private MessageService messageService;
 
     public List<Schedule> findAllAppointmentsByInstructorId(long id) {
         return scheduleRepository.findByInstructorIdAndStudentIdNotNull(id);
@@ -44,8 +50,19 @@ public class ScheduleService {
     @Transactional
     public void deleteIntervalById(long id) {
         Schedule deleted = scheduleRepository.findOne(id);
+        Student student = deleted.getStudent();
         scheduleRepository.delete(deleted);
         scheduleRepository.flush();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if ( student != null && auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_ADMIN.name()))) {
+            String theme;
+            String message;
+            theme = "Отмена занятия";
+            message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что вам отменено занятие" +
+                        " по вождению, которое должно было быть " + deleted.getStartInterval();
+            messageService.sendMessage(student.getId(), theme, message);
+        }
     }
 
     @Transactional
@@ -74,7 +91,25 @@ public class ScheduleService {
             lesson.setInstructor(instructor);
             lesson.setStartInterval(start);
             lesson.setFinishInterval(end);
-            return scheduleRepository.saveAndFlush(lesson).getId();
+            long id = scheduleRepository.saveAndFlush(lesson).getId();
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            if (student != null && auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_ADMIN.name()))) {
+                String theme;
+                String message;
+                if (action == LessonAction.TAKE) {
+                    theme = "Вам назначено занятие";
+                    message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что вам назначено занятие" +
+                        " по вождению на " + start + ". Ваш инструктор - " + instructor.getLastname() + " " + instructor.getFirstname() +
+                    " " + instructor.getPatronymic() + ".";
+                } else {
+                    theme = "Изменение расписания занятия";
+                    message = "Здравствуйте, " + student.getFirstname() + " " +student.getLastname() + ". Сообщаем Вам, что изменено расписание" +
+                            " вашего занятия по вождению. Теперь оно начнется " + start + " и закончится " + end + ". Ваш инструктор - " +
+                            instructor.getLastname() + " " + instructor.getFirstname() + " " + instructor.getPatronymic() + ".";
+                }
+                messageService.sendMessage(student.getId(), theme, message);
+            }
+            return id;
         }
         return 0;
     }

@@ -89,11 +89,11 @@ public class AdminQuestionController {
     }
 
     // Сохранение вопроса и переход на форму добавления ответа
-    @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
-        public String saveQuestion(@ModelAttribute(QUESTION_ATTRIBUTE) Question question) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveQuestion(@ModelAttribute(QUESTION_ATTRIBUTE) Question question) {
 //        question.setTicket(ticketService.findOne(ticketId));
         question = questionService.save(question);
-        return "edit?id=" + question.getId(); // На страничку просмотра
+        return "redirect:edit?id=" + question.getId(); // На страничку просмотра
     }
 
     // Добавление ответа
@@ -161,5 +161,12 @@ public class AdminQuestionController {
         model.addAttribute(QUESTION_ATTRIBUTE, question);
 
         return VIEW_EDIT_ANSWER_PATH;
+    }
+
+    // Сохранение ответа и переход на форму просмотра
+    @RequestMapping(value = "/deleteAnswer", method = RequestMethod.GET)
+    public String deleteAnswer(@RequestParam("questionId") long questionId, @RequestParam("answerId") long answerId) {
+        answerService.delete(answerId);
+        return "redirect:edit?id=" + questionId; // На страничку просмотра
     }
 }

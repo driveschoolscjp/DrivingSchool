@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -34,12 +35,7 @@ public class UserExamController {
     private static final String VIEW_SEARCH_EXAM_PATH = "/user/testing/search";
     private static final String REDIRECT_EXAM_PATH = "redirect:search?idExam=1";
     private static final String ID_EXAM = "idExam";
-    private static final String MODE_ATTRIBUTE = "typeMode";
-    private static final String START_EXAM_MAPPING_PATH = "/start";
     private static final String TICKET_QUANTITY = "ticketQuantity";
-    private static final String THEMES = "themes";
-    private static final String RANDOM_QUESTION = "/randomQuestion?i=";
-    private static final String THEME_QUESTIONS = "/theme?id=";
     private static final String EXAM_ATTRIBUTE = "exam";
     private static final String QUESTION_PATH = "/question";
     private static final String ASK_QUESTION_VIEW = "/user/testing/askQuestion";
@@ -50,7 +46,6 @@ public class UserExamController {
     private static final String REDIRECT_TRUE_ANSWER = "redirect:true";
     private static final String ID_TICKET = "idTicket";
     private static final String TICKETS = "tickets";
-    private static final String NUMBER = "number";
     private static final String REDIRECT_SHOW_RESULTS = "redirect:results?idTicket=";
     private static final String RESULTS_PATH = "/results";
     private static final String RESULTS_VIEW = "/user/testing/results";
@@ -78,6 +73,8 @@ public class UserExamController {
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
             idStudent = student.getId();
+        } else {
+            session.setAttribute("results", new ArrayList<Result> ());
         }
 
         session.setAttribute("idQuestion", -1);
@@ -139,12 +136,18 @@ public class UserExamController {
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
             idStudent = student.getId();
+        } else {
+            idStudent=-1;
         }
         Result result = new Result();
-        result.setStudent(studentService.findOne(idStudent));
         result.setAnswer(answerService.findOne(idAnswer));
         result.setDateOf(new LocalDate());
-        resultService.save(result);
+        if(idStudent>0) {
+            result.setStudent(studentService.findOne(idStudent));
+            resultService.save(result);
+        } else {
+            ((List<Result>) session.getAttribute("results")).add(result);
+        }
         if(answer.getCorrect()){
             Question question = answer.getQuestion();
             Exam exam = question.getTicket().getExam();
@@ -160,7 +163,8 @@ public class UserExamController {
     }
     //Показ правильного ответа
     @RequestMapping(value = TRUE_PATH, method = RequestMethod.GET)
-    public String showAnswer(@RequestParam(ID_ANSWER) long idAnswer, Model model, HttpSession session){
+    public String showAnswer(@RequestParam(ID_ANSWER) long idAnswer, @RequestParam(value="res", required = false) Integer res,
+                             Model model, HttpSession session){
 
         Answer answer = answerService.findOne(idAnswer);
         Question question = answer.getQuestion();
@@ -169,12 +173,16 @@ public class UserExamController {
         model.addAttribute("answers", answers);
         model.addAttribute("showAnswer", true);
         model.addAttribute("idWrongAnswer", idAnswer);
+        if(res != null){
+            model.addAttribute("res", res);
+        }
         long idTicket = answer.getQuestion().getTicket().getId();
         int number = answer.getQuestion().getNumber();
         Exam exam = question.getTicket().getExam();
         long idQuestion=0;
         if(question.getNumber()>= exam.getQuestionPerTicketQuantity()){
-            return REDIRECT_SHOW_RESULTS+idTicket;
+            model.addAttribute("res", 2);
+//            return REDIRECT_SHOW_RESULTS+idTicket;
         } else if(question.getNumber()<exam.getQuestionPerTicketQuantity()) {
             idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
         }
@@ -186,14 +194,17 @@ public class UserExamController {
 
     //Показ результата
     @RequestMapping(value = RESULTS_PATH, method = RequestMethod.GET)
-    public String showResults(@RequestParam(ID_TICKET) long idTicket, Model model){
+    public String showResults(@RequestParam(ID_TICKET) long idTicket, Model model, HttpSession session){
         long idStudent = 0;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        List<Result> results = null;
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
             idStudent = student.getId();
+            results = resultService.findByStudentId(idStudent, idTicket);
+        } else {
+            results = (List<Result>) session.getAttribute("results");
         }
-        List<Result> results = resultService.findByStudentId(idStudent, idTicket);
         Map<Question, Answer> resMap = new TreeMap<>();
         Ticket ticket = ticketService.findOne(idTicket);
         Exam exam = ticket.getExam();

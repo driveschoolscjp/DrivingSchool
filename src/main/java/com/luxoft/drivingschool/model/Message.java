@@ -4,13 +4,16 @@ import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity@Table(name = "messages")
 public class Message extends AbstractPersistable<Long> {
+    @Column(columnDefinition = "TEXT")
     private String theme;
+    @Column(columnDefinition = "TEXT")
     private String message;
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
     private LocalDateTime dateTime;

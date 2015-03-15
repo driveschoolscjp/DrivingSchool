@@ -97,9 +97,13 @@
                                             <div class="col-xs-8">
                                                 <div id="messageField">
                                                     <input class="typeahead form-control" type="text"
-                                                           placeholder="Получатель" style="width:100%">
+                                                           placeholder="Получатель">
                                                 </div>
                                             </div>
+                                        </div>
+                                        <br>
+                                        <div>
+                                            <input type="checkbox" id="isEmail"><label> Отправлять e-mail</label>
                                         </div>
                                         <br/>
                                         <div class="form-group">
@@ -131,7 +135,7 @@
                         </div>
                         <div class="list-group">
                             <a class="list-group-item" href="#" data-toggle="modal" id="messagesItem"><i class="fa fa-envelope-o"></i> Сообщения
-                                <span id="amount" class="badge"></span></a>
+                                <span id="amount" class="badge" style="color: yellow"></span></a>
                             <a class="list-group-item" href="/student/news"><i class="fa fa-newspaper-o"></i> Новости</a>
                             <a class="list-group-item" href="/student/mygroup"><i class="fa fa-university"></i> Моя группа</a>
                             <a class="list-group-item" href="/testing/search?idExam=1"><i class="fa fa-pencil-square-o"></i> Тесты ПДД</a>
@@ -152,12 +156,21 @@
                             <div class="modal-body">
 
                                 <table id="messagesTable" class="table">
+                                    <tbody></tbody>
                                 </table>
-
+                                <div class="form-group hide" id="messageText">
+                                    <label for="messagearea">Тема: <label id="themearea"></label></label>
+                                    <textarea  id="messagearea" rows="7" class="form-control control-label"></textarea>
+                                </div>
                             </div>
                             <div class="modal-footer">
-                                <input class="btn btn-success" type="submit" id="" value="Принять">
-                                <a href="#" class="btn btn-danger" data-dismiss="modal">Отмена</a>
+                                <button id="delButton" type="button" class="btn btn-default">Удалить</button>
+                                    <ul class="pager" id="pageList">
+                                        <li id="prev1"><a>Пред</a></li>
+                                        <li id="current1"><a></a></li>
+                                        <li id="next1"><a>След</a></li>
+                                    </ul>
+                                <a class="btn btn-success hide" onclick="backToTable()" id="backButton">Назад</a>
                             </div>
                         </div>
                     </div>

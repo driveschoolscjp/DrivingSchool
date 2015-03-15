@@ -35,29 +35,29 @@
             <div class="col-xs-10 col-xs-offset-1 alltikets blackback">
                     <h3 class="text-center">Вопрос ${question.number}</h3>
                 <hr>
-                <div class="container-fluid">
-                <div class="row">
-                    <div class="text-center">
-                        <c:if test="${question.pathToPicture!=null || question.pathToPicture!=''}">
-                            <img src="${question.pathToPicture}">
-
-                        </c:if>
-                    </div>
-                </div>
-                </div>
-                <hr/>
                     <%--строка с полями--%>
                     <fieldset>
-                        <div class="form-group col-xs-6">
+                        <div class="text-center">
                             <label>Тема:</label>
                             ${question.theme.name}
                         </div>
                     </fieldset>
                     <fieldset>
-                        <div class="form-group col-xs-6">
+                        <div class="textJustify form-group col-xs-${(empty question.pathToPicture)?'12':'6'}">
                             <label>Вопрос:</label><br/>
                             ${question.question}
                         </div>
+                        <div class="container-fluid">
+                            <div class="form-group col-xs-6">
+                                <div class="text-center">
+                                    <c:if test="${not empty question.pathToPicture}">
+                                        <img src="${question.pathToPicture}">
+
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
                     </fieldset>
                     <fieldset>
                         <div class="row">
@@ -123,9 +123,16 @@
                                     </div>
                                     <div class="text-center">
                                         <br/>
+                                        <div class="${(not empty res)?'hide':'show'}">
                                     <a href="/testing/question?idTicket=${question.ticket.id}" class="btn btn-primary" >
                                         Следующий вопрос
                                     </a>
+                                        </div>
+                                        <div class="${(res>0)?'show':'hide'}">
+                                            <a href="/testing/results?idTicket=${question.ticket.id}" class="btn btn-primary" >
+                                                Результаты
+                                            </a>
+                                        </div>
                                    </div>
                                 </c:if>
                             </div>

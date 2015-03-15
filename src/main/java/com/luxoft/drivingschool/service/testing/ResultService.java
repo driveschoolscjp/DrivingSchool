@@ -20,6 +20,10 @@ public class ResultService {
 
     @Transactional
     public Result save(Result result){
+        long studentId=result.getStudent().getId();
+        long questionId=result.getAnswer().getQuestion().getId();
+        List<Result>results = resultRepository.findByStudentIdAndQuestionId(studentId, questionId);
+        resultRepository.delete(results);
         return resultRepository.save(result);
     }
 

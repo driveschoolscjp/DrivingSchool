@@ -10,7 +10,13 @@ import java.util.List;
  * Created by SCJP on 10.03.2015.
  */
 public interface ResultRepository  extends JpaRepository<Result, Long> {
-//    List<Result> findByStudentId(long studentId);
+
+    @Query(value = "SELECT results.id, results.dateof," +
+            "results.answer_id, results.student_id from results" +
+            "  join answers on answers.id = results.answer_id" +
+            " WHERE answers.question_id = ?2 and results.student_id=?1",
+            nativeQuery = true)
+    List<Result> findByStudentIdAndQuestionId(long studentId, long questionId);
 
     @Query(value = "SELECT results.id, results.dateof," +
             "results.answer_id, results.student_id from results" +
@@ -46,5 +52,9 @@ public interface ResultRepository  extends JpaRepository<Result, Long> {
             ")", nativeQuery = true)
     int countIncorrect(long studentId, long ticketId);
 
+    @Query(value = "delete from results where results.student_id=?1 AND results.answer_id in (" +
+            "select answers.id from answers where answers.question_id=?2" +
+            ")", nativeQuery = true)
+    void cleanResult(long studentId, long questionId);
 
 }

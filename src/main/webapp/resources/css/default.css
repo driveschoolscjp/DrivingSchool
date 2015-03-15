@@ -21,6 +21,14 @@ a:visited {
 .answer:hover {
     color: #ffffff;
 }
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
 .wrong {
     background-color: #FFA07A;
     color: Firebrick;
@@ -36,6 +44,10 @@ a:visited {
 .correct:hover{
     background-color: #9AFF9A;
     color: #008B00;
+}
+
+.textJustify{
+    text-align: justify;
 }
 
 .page {

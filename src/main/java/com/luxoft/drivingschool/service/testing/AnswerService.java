@@ -40,4 +40,9 @@ public class AnswerService {
     public Question findQuestionByAnswerId(Long id) {
         return new Question();
     }
+
+    @Transactional
+    public void delete (long id){
+        answerRepository.delete(id);
+    }
 }
