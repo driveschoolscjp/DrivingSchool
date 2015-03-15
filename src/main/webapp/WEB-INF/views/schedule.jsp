@@ -89,7 +89,7 @@
 
                             <p><input type="radio" name="interval_type" value="lesson" checked="checked"> Занятие<Br></p>
                         </form>
-
+                       <p><input type="checkbox" id="isemail"  checked="checked"> Email</p>
 
 
             </div>

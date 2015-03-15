@@ -116,6 +116,7 @@ $(document).ready(function () {
     };
 
     dp.onEventResize = function (args) {
+        console.log(args);
         if (!currentUser.isadmin && (args.e.data.resource.student == null ||
             args.e.data.resource.student.id != currentUser.s.id)) {
             alert("Не имеете права");
@@ -217,6 +218,7 @@ $(document).ready(function () {
 
 function operateLesson(lesson, operation) {
     var id;
+    lesson.isemail = $('#isemail').is(':checked');
     $.ajax({
         url: "/scheduler/lesson/action/" + operation,
         type: "POST",
@@ -236,7 +238,7 @@ function operateLesson(lesson, operation) {
 
 function deleteInterval(args) {
     $.ajax({
-        url: "/scheduler/lesson/action/delete/" + args.e.data.id,
+        url: "/scheduler/lesson/action/delete/" + args.e.data.id + "/" + $('#isemail').is(':checked'),
         type: "POST",
         async: false,
         contentType: "application/json; charset=utf-8",
@@ -258,15 +260,18 @@ function getAllAppointments(instructorId) {
             $.each(data, function (i, b) {
                 var startMoment = b.startInterval.split('.')[0];
                 var finishMoment = b.finishInterval.split('.')[0];
-                var textHint = (b.student == null ? b.instructor["firstname"] + " " + b.instructor["lastname"] :
+                var textHint = (b.student == null ? b.instructor["lastname"] + " " + b.instructor["firstname"] :
                 b.student["firstname"] + " " + b.student["lastname"]);
+                var textTT = (b.student == null ? "Инструктор " + b.instructor["lastname"] + " " + b.instructor["firstname"] + " " +
+                    b.instructor["patronymic"] + " " + b.instructor.tel :
+                "Студент " + b.student["lastname"] + " " + b.student["firstname"] + " " + b.student.tel);
                 var e = new DayPilot.Event({
                     start: new DayPilot.Date(startMoment),
                     end: new DayPilot.Date(finishMoment),
                     id: b.id,
                     resource: {"instructor": b.instructor, "student": b.student},
                     text: textHint,
-                    toolTip: "my tooltip"
+                    toolTip: textTT
                 });
                 dp.events.add(e);
             });

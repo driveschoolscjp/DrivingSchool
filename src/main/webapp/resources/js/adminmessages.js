@@ -61,6 +61,7 @@ $(document).ready(function () {
     $('#submitMF').click(function() {
         var obj = { theme: $('#theme').val(),
                     message: $('#message1').val(),
+                    isEmail: $('#isEmail').is(':checked'),
                     current_id: currentId,
                     isGroupMessage: isGM };
         console.log(obj);

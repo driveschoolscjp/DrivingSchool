@@ -48,7 +48,7 @@ public class ScheduleService {
     }
 
     @Transactional
-    public void deleteIntervalById(long id) {
+    public void deleteIntervalById(long id, boolean isemail) {
         Schedule deleted = scheduleRepository.findOne(id);
         Student student = deleted.getStudent();
         scheduleRepository.delete(deleted);
@@ -58,15 +58,16 @@ public class ScheduleService {
         if ( student != null && auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_ADMIN.name()))) {
             String theme;
             String message;
-            theme = "Отмена занятия";
-            message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что вам отменено занятие" +
-                        " по вождению, которое должно было быть " + deleted.getStartInterval();
-            messageService.sendMessage(student.getId(), theme, message);
+            theme = "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+            message = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, " + student.getFirstname() + " " + student.getLastname() + ". пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" +
+                        " пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ " + deleted.getStartInterval();
+            messageService.sendMessage(student.getId(), theme, message, isemail);
         }
     }
 
     @Transactional
-    public long lessonAction(long eventId, long teacherId, Long studentId, LocalDateTime start, LocalDateTime end, LessonAction action) {
+    public long lessonAction(long eventId, long teacherId, Long studentId, LocalDateTime start, LocalDateTime end,
+                             LessonAction action, boolean isemail) {
         if (start.getYear() != end.getYear() || start.getDayOfYear() != end.getDayOfYear() || start.isAfter(end)) {
            // throw new ServiceException();
             return 0;
@@ -97,17 +98,17 @@ public class ScheduleService {
                 String theme;
                 String message;
                 if (action == LessonAction.TAKE) {
-                    theme = "Вам назначено занятие";
-                    message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что вам назначено занятие" +
-                        " по вождению на " + start + ". Ваш инструктор - " + instructor.getLastname() + " " + instructor.getFirstname() +
+                    theme = "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+                    message = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, " + student.getFirstname() + " " + student.getLastname() + ". пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ" +
+                        " пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ " + start + ". пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - " + instructor.getLastname() + " " + instructor.getFirstname() +
                     " " + instructor.getPatronymic() + ".";
                 } else {
-                    theme = "Изменение расписания занятия";
-                    message = "Здравствуйте, " + student.getFirstname() + " " +student.getLastname() + ". Сообщаем Вам, что изменено расписание" +
-                            " вашего занятия по вождению. Теперь оно начнется " + start + " и закончится " + end + ". Ваш инструктор - " +
+                    theme = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ";
+                    message = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, " + student.getFirstname() + " " +student.getLastname() + ". пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" +
+                            " пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + start + " пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + end + ". пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - " +
                             instructor.getLastname() + " " + instructor.getFirstname() + " " + instructor.getPatronymic() + ".";
                 }
-                messageService.sendMessage(student.getId(), theme, message);
+                messageService.sendMessage(student.getId(), theme, message, isemail);
             }
             return id;
         }
