@@ -123,10 +123,15 @@
                                     </div>
                                     <div class="text-center">
                                         <br/>
-                                        <div class="${res==1?'hide':'show'}">
+                                        <div class="${(not empty res)?'hide':'show'}">
                                     <a href="/testing/question?idTicket=${question.ticket.id}" class="btn btn-primary" >
                                         Следующий вопрос
                                     </a>
+                                        </div>
+                                        <div class="${(res>0)?'show':'hide'}">
+                                            <a href="/testing/results?idTicket=${question.ticket.id}" class="btn btn-primary" >
+                                                Результаты
+                                            </a>
                                         </div>
                                    </div>
                                 </c:if>
