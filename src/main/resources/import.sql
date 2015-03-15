@@ -1,3 +1,9 @@
+DELETE FROM results;
+DELETE FROM answers;
+DELETE FROM questions;
+delete from tickets;
+DELETE FROM themes;
+DELETE FROM exams;
 DELETE FROM messages;
 DELETE FROM schedule;
 DELETE FROM registrations;
@@ -5,12 +11,6 @@ DELETE FROM students;
 DELETE FROM cars;
 DELETE FROM groups;
 DELETE FROM teachers;
-DELETE FROM results;
-DELETE FROM answers;
-DELETE FROM questions;
-delete from tickets;
-DELETE FROM themes;
-DELETE FROM exams;
 DELETE FROM roadsigns;
 
 INSERT INTO teachers (id, birthday, email, firstname, gender, inn, lastname, passport, patronymic, tel, photourl) VALUES
