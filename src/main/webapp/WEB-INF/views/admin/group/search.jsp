@@ -57,7 +57,7 @@
                                 </select>
                             </div>
                             <div class="col-xs-5">
-                                <button type="submit" class="btn btn-primary">Поиск по преподавателю</button>
+                                <button type="submit" class="btn btn-primary">Преподаватель</button>
                             </div>
                         </form>
                     </div>
