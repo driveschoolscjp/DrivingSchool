@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="http://s3.gazu.ru/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -56,7 +57,7 @@
                                 </select>
                             </div>
                             <div class="col-xs-5">
-                                <button type="submit" class="btn btn-primary">Поиск по преподавателю</button>
+                                <button type="submit" class="btn btn-primary">Преподаватель</button>
                             </div>
                         </form>
                     </div>

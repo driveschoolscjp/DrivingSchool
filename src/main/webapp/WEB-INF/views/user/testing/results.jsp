@@ -5,10 +5,11 @@
 
 <html>
 <head>
-    <title>Exams</title>
+    <title>Результаты</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="http://s3.gazu.ru/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -65,8 +66,7 @@
                                             <c:if test="${entry.value.correct}">
                                             <div class="col-xs-12">
                                                 <a href="/testing/true?idAnswer=${entry.value.id}&res=1" type="button"
-                                                   class="btn  btn-success"
-                                                   style="background-color: darkgreen">
+                                                   class="btn  btn-success">
                                                     Вопрос ${entry.key.number}
                                                 </a>
                                             </div>
@@ -76,8 +76,7 @@
                                         <c:if test="${!entry.value.correct}">
                                             <div class="col-xs-12">
                                                 <a href="/testing/true?idAnswer=${entry.value.id}&res=1" type="button"
-                                                   class="btn btn-success"
-                                                   style="background-color: #ac2925">
+                                                   class="btn btn-danger">
                                                     Вопрос ${entry.key.number}
                                                 </a>
                                             </div>
@@ -86,8 +85,7 @@
                                         <c:if test="${entry.value==null}">
                                             <div class="col-xs-12">
                                                 <a href="/testing/true?idAnswer=${entry.value.id}&res=1" type="button"
-                                                   class="btn  btn-success"
-                                                   style="background-color: #262626">
+                                                   class="btn  btn-default">
                                                     Вопрос ${entry.key.number}
                                                 </a>
                                             </div>
@@ -108,10 +106,6 @@
 
     </div>
     <jsp:include page="../../footer.jsp"/>
-
-
-
-
 
     <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 

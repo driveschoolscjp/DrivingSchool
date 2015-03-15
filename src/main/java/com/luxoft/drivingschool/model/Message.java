@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity@Table(name = "messages")
 public class Message extends AbstractPersistable<Long> {
-    @Column(columnDefinition = "TEXT")
+
     private String theme;
     @Column(columnDefinition = "TEXT")
     private String message;

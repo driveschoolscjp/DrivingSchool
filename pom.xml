@@ -6,13 +6,13 @@
 
     <groupId>com.luxoft</groupId>
     <artifactId>DrivingSchool</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <packaging>war</packaging>
-
     <properties>
+        <skipTests>true</skipTests>
         <spring.version>4.1.5.RELEASE</spring.version>
-        <spring.securiry>3.2.5.RELEASE</spring.securiry>
+        <spring.security>3.2.6.RELEASE</spring.security>
     </properties>
 
     <dependencies>
@@ -58,25 +58,25 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${spring.securiry}</version>
+            <version>${spring.security}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>${spring.securiry}</version>
+            <version>${spring.security}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${spring.securiry}</version>
+            <version>${spring.security}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-            <version>${spring.securiry}</version>
+            <version>${spring.security}</version>
         </dependency>
 
         <!--junit-->

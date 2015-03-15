@@ -1,13 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Contacts</title>
-
-
+    <title>Контакты</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <link rel="shortcut icon" href="http://s3.gazu.ru/favicon.ico" type="image/x-icon">
 
     <!-- css -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -45,7 +43,6 @@
                     <div id="map_canvas"></div>
                     <br/>
                 </div>
-
 
                 <div class="col-xs-4 blackback">
 

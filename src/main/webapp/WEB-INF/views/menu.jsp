@@ -9,8 +9,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Menu</title>
-    <script src="/js/typeahead.bundle.js"></script>
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -19,6 +17,7 @@
     <link href="/css/messageform.css" rel="stylesheet">
     <!--for VK-->
     <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+    <script src="/js/typeahead.bundle.js"></script>
 </head>
 
 <body>
@@ -94,18 +93,20 @@
                                                     <input type="radio"> Группе
                                                 </label>
                                             </div>
-                                            <div class="col-xs-8">
+
+                                            <div class="col-xs-6">
                                                 <div id="messageField">
                                                     <input class="typeahead form-control" type="text"
                                                            placeholder="Получатель">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <br>
-                                        <div>
-                                            <input type="checkbox" id="isEmail"><label> Отправлять e-mail</label>
+
+                                            <div class="col-xs-2 checkbox">
+                                                <label><input type="checkbox" id="isEmail"> E-mail</label>
+                                            </div>
                                         </div>
                                         <br/>
+
                                         <div class="form-group">
                                             <label for="theme">Тема:</label>
                                             <input type="text" name="theme" id="theme" class="input-xlarge form-control control-label">

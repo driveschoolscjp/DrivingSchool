@@ -35,12 +35,7 @@ public class UserExamController {
     private static final String VIEW_SEARCH_EXAM_PATH = "/user/testing/search";
     private static final String REDIRECT_EXAM_PATH = "redirect:search?idExam=1";
     private static final String ID_EXAM = "idExam";
-    private static final String MODE_ATTRIBUTE = "typeMode";
-    private static final String START_EXAM_MAPPING_PATH = "/start";
     private static final String TICKET_QUANTITY = "ticketQuantity";
-    private static final String THEMES = "themes";
-    private static final String RANDOM_QUESTION = "/randomQuestion?i=";
-    private static final String THEME_QUESTIONS = "/theme?id=";
     private static final String EXAM_ATTRIBUTE = "exam";
     private static final String QUESTION_PATH = "/question";
     private static final String ASK_QUESTION_VIEW = "/user/testing/askQuestion";
@@ -51,7 +46,6 @@ public class UserExamController {
     private static final String REDIRECT_TRUE_ANSWER = "redirect:true";
     private static final String ID_TICKET = "idTicket";
     private static final String TICKETS = "tickets";
-    private static final String NUMBER = "number";
     private static final String REDIRECT_SHOW_RESULTS = "redirect:results?idTicket=";
     private static final String RESULTS_PATH = "/results";
     private static final String RESULTS_VIEW = "/user/testing/results";
@@ -187,7 +181,8 @@ public class UserExamController {
         Exam exam = question.getTicket().getExam();
         long idQuestion=0;
         if(question.getNumber()>= exam.getQuestionPerTicketQuantity()){
-            return REDIRECT_SHOW_RESULTS+idTicket;
+            model.addAttribute("res", 2);
+//            return REDIRECT_SHOW_RESULTS+idTicket;
         } else if(question.getNumber()<exam.getQuestionPerTicketQuantity()) {
             idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
         }

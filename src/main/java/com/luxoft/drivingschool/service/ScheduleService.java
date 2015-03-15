@@ -21,6 +21,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class ScheduleService {
+
     @Autowired
     private ScheduleRepository scheduleRepository;
     @Autowired
@@ -39,8 +40,7 @@ public class ScheduleService {
     }
 
     public List<Schedule> findAllSchedulesByInstructorId(long id) {
-        List<Schedule> l = scheduleRepository.findByInstructorId(id);
-        return l;
+        return scheduleRepository.findByInstructorId(id);
     }
 
     public List<Schedule> findInstructorAppointmentsBetween(long id, LocalDateTime startDate, LocalDateTime finishDate) {
@@ -58,10 +58,10 @@ public class ScheduleService {
         if ( student != null && auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_ADMIN.name()))) {
             String theme;
             String message;
-            theme = "������ �������";
-            message = "������������, " + student.getFirstname() + " " + student.getLastname() + ". �������� ���, ��� ��� �������� �������" +
-                        " �� ��������, ������� ������ ���� ���� " + deleted.getStartInterval();
-            messageService.sendMessage(student.getId(), theme, message, isemail);
+            theme = "Отмена занятия";
+            message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам об отмене занятия" +
+                        " по вождению, которое должно было быть " + deleted.getStartInterval();
+            messageService.sendMessage(student.getId(), theme, message);
         }
     }
 
@@ -98,14 +98,14 @@ public class ScheduleService {
                 String theme;
                 String message;
                 if (action == LessonAction.TAKE) {
-                    theme = "��� ��������� �������";
-                    message = "������������, " + student.getFirstname() + " " + student.getLastname() + ". ���� ��������, ��� ��� ��������� �������" +
-                        " �� �������� �� " + start + ". ��� ���������� - " + instructor.getLastname() + " " + instructor.getFirstname() +
+                    theme = "Вам назначено занятие";
+                    message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что вам назначено занятие" +
+                        " по вождению на " + start + ". Ваш инструктор - " + instructor.getLastname() + " " + instructor.getFirstname() +
                     " " + instructor.getPatronymic() + ".";
                 } else {
-                    theme = "��������� ���������� �������";
-                    message = "������������, " + student.getFirstname() + " " +student.getLastname() + ". �������� ���, ��� �������� ����������" +
-                            " ������ ������� �� ��������. ������ ��� �������� " + start + " � ���������� " + end + ". ��� ���������� - " +
+                    theme = "Изменение расписания занятия";
+                    message = "Здравствуйте, " + student.getFirstname() + " " +student.getLastname() + ". Сообщаем Вам, что перенесено" +
+                            " ваше занятие по вождению. Теперь оно начнется " + start + " и закончится " + end + ". Ваш инструктор - " +
                             instructor.getLastname() + " " + instructor.getFirstname() + " " + instructor.getPatronymic() + ".";
                 }
                 messageService.sendMessage(student.getId(), theme, message, isemail);

@@ -1,17 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: alexey
-  Date: 05.03.2015
-  Time: 9:49
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
+
 <html>
 <head>
-    <title>Schedule</title>
+    <title>Расписание занятий вождением</title>
+    <link rel="shortcut icon" href="http://s3.gazu.ru/favicon.ico" type="image/x-icon">
     <script src="/js/jquery-1.11.2.min.js"></script>
     <script src="/js/daypilot-calendar.src.js"></script>
     <script src="/js/daypilot-navigator.src.js"></script>
@@ -24,7 +19,6 @@
     <link href="/css/font-awesome.css" rel="stylesheet">
     <link href="/css/schedule.css" rel="stylesheet">
     <link href="/css/my.css" rel="stylesheet">
-
 
 </head>
 <body>
@@ -67,7 +61,7 @@
                     </div>
                     <div class="list-group">
                         <div id="studentField">
-                            <input class="typeahead form-control" type="text" placeholder="Students">
+                            <input class="typeahead form-control" type="text" placeholder="Поиск">
                         </div>
                     </div>
                     <div class="list-group">
@@ -75,19 +69,23 @@
                     </div>
                     <div class="list-group">
                         <div id="instructorField">
-                            <input class="typeahead form-control" type="text" placeholder="Instructors">
+                            <input class="typeahead form-control" type="text" placeholder="Поиск">
                         </div>
                     </div>
                     <br>
 
                     <div class="list-group">
                         <form id="onCreateForm" name="onCreateForm" style="color: white">
-                            <p><b>Создавать:</b></p>
+                            <p><b>Создать:</b></p>
 
-                            <p><input type="radio" name="interval_type" value="nolesson"> Нерабочее время<Br>
-                            </p>
-
-                            <p><input type="radio" name="interval_type" value="lesson" checked="checked"> Занятие<Br></p>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary active">
+                                    <input type="radio" name="interval_type" value="nolesson" id="option1" autocomplete="off" checked> Нерабочее время
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="interval_type" value="lesson" id="option2" autocomplete="off"> Занятие
+                                </label>
+                            </div>
                         </form>
                        <p><input type="checkbox" id="isemail"  checked="checked"> Email</p>
 

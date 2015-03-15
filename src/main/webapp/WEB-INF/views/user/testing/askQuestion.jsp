@@ -6,10 +6,11 @@
 
 <html>
 <head>
-    <title>Question</title>
+    <title>Вопрос</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="http://s3.gazu.ru/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -123,10 +124,15 @@
                                     </div>
                                     <div class="text-center">
                                         <br/>
-                                        <div class="${res==1?'hide':'show'}">
+                                        <div class="${(not empty res)?'hide':'show'}">
                                     <a href="/testing/question?idTicket=${question.ticket.id}" class="btn btn-primary" >
                                         Следующий вопрос
                                     </a>
+                                        </div>
+                                        <div class="${(res>0)?'show':'hide'}">
+                                            <a href="/testing/results?idTicket=${question.ticket.id}" class="btn btn-primary" >
+                                                Результаты
+                                            </a>
                                         </div>
                                    </div>
                                 </c:if>
