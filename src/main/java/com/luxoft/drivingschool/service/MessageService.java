@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -22,15 +23,15 @@ public class MessageService {
 
     @Transactional
     public void sendMessage(Long sid, String theme, String message) {
-        Message entity = new Message();
-        entity.setDateTime(new LocalDateTime());
-        entity.setMessage(message);
-        entity.setTheme(theme);
-        Student student = studentRepository.findOne(sid);
-        entity.setStudent(student);
-        entity.setId(0L);
-        entity.setOld(false);
-        messageRepository.saveAndFlush(entity);
+            Message entity = new Message();
+            entity.setDateTime(new LocalDateTime());
+            entity.setMessage(message);
+            entity.setTheme(theme);
+            Student student = studentRepository.findOne(sid);
+            entity.setStudent(student);
+            entity.setId(0L);
+            entity.setOld(false);
+            messageRepository.saveAndFlush(entity);
     }
 
     @Transactional
@@ -51,7 +52,21 @@ public class MessageService {
     }
 
     public List<Message> getMessages(Long message_id, Long student_id, Long rows) {
-        return messageRepository.findFirst10MessageByStudentIdAndIdGreaterThanOrderByDateTimeDesc(student_id, message_id);
+        return messageRepository.findFirst10MessageByStudentIdAndIdLessThanOrderByDateTimeDesc(student_id, message_id);
+    }
+
+    public List<Message> getMessagesForward(Long message_id, Long student_id, Long rows) {
+        List<Message> list = messageRepository.findFirst10MessageByStudentIdAndIdGreaterThanOrderByDateTimeAsc(student_id, message_id);
+        Collections.reverse(list);
+        return list;
+    }
+
+    public List<Message> getStartMessages(Long student_id, Long rows) {
+        return messageRepository.findFirst10MessageByStudentIdOrderByDateTimeDesc(student_id);
+    }
+
+    public List<Message> getMessagesEqual(Long message_id, Long student_id, Long rows) {
+        return messageRepository.findFirst10MessageByStudentIdAndIdLessThanEqualOrderByDateTimeDesc(student_id, message_id);
     }
 
     public Message getMessage(Long message_id) {
@@ -63,6 +78,15 @@ public class MessageService {
         Message message =  messageRepository.findOne(message_id);
         message.setOld(true);
         return messageRepository.saveAndFlush(message);
+    }
+
+    @Transactional
+    public void deleteMessages(List<Long> list) {
+        List<Message> messages = new ArrayList<Message>();
+        for (Long id: list) {
+            messages.add(messageRepository.findOne(id));
+        }
+        messageRepository.deleteInBatch(messages);
     }
 
     public Long getNewCount(Long id) {

@@ -164,11 +164,12 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <div>
-                                    <ul class="pagination" id="pageList">
-
+                                <button id="delButton" type="button" class="btn btn-default">Удалить</button>
+                                    <ul class="pager" id="pageList">
+                                        <li id="prev1"><a>Пред</a></li>
+                                        <li id="current1"><a></a></li>
+                                        <li id="next1"><a>След</a></li>
                                     </ul>
-                                </div>
                                 <a class="btn btn-success hide" onclick="backToTable()" id="backButton">Назад</a>
                             </div>
                         </div>
