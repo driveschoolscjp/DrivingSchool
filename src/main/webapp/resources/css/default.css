@@ -5,6 +5,10 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+
+.text-right{
+    text-align: right;
+}
 a {
     text-decoration: none;
 }

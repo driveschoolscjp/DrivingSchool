@@ -107,8 +107,7 @@
                                     <td>
                                             ${answ.answer}
                                     </td>
-                                    <td>
-
+                                    <td class="text-right">
                                         <div class="btn-group btn-group-vertical" role="group" aria-label="...">
                                         <a href="/admin/testing/question/editAnswer?id=${answ.id}" type="button"
                                            class="btn btn-success">
