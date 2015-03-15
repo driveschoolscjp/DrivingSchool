@@ -64,7 +64,7 @@
                                         <c:if test="${entry.value != null}">
                                             <c:if test="${entry.value.correct}">
                                             <div class="col-xs-12">
-                                                <a href="/testing/true?idAnswer=${entry.value.id}" type="button"
+                                                <a href="/testing/true?idAnswer=${entry.value.id}&res=1" type="button"
                                                    class="btn  btn-success"
                                                    style="background-color: darkgreen">
                                                     Вопрос ${entry.key.number}
@@ -75,7 +75,7 @@
                                         <c:if test="${entry.value != null}">
                                         <c:if test="${!entry.value.correct}">
                                             <div class="col-xs-12">
-                                                <a href="/testing/true?idAnswer=${entry.value.id}" type="button"
+                                                <a href="/testing/true?idAnswer=${entry.value.id}&res=1" type="button"
                                                    class="btn btn-success"
                                                    style="background-color: #ac2925">
                                                     Вопрос ${entry.key.number}
@@ -85,9 +85,9 @@
                                         </c:if>
                                         <c:if test="${entry.value==null}">
                                             <div class="col-xs-12">
-                                                <a href="/testing/true?idAnswer=${entry.value.id}" type="button"
+                                                <a href="/testing/true?idAnswer=${entry.value.id}&res=1" type="button"
                                                    class="btn  btn-success"
-                                                   style="background-color: #ffffff">
+                                                   style="background-color: #262626">
                                                     Вопрос ${entry.key.number}
                                                 </a>
                                             </div>

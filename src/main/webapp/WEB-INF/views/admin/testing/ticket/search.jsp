@@ -71,12 +71,13 @@
                         <table class="table" id="table">
 
                                 <tr>
-                                    <hr/>
                                 <c:forEach var="ticket" items="${tickets}">
+                                    <td>
                                         <div class="col-xs-1 col-xs-offset-1">
                                        <a href="/admin/testing/question/search?id=${ticket.id}" type="button" class="btn btn-success">билет № ${ticket.number}</a>
                                        </div>
-                                        <c:if test="${ticket.id%10==0}">
+                                   </td>
+                                        <c:if test="${ticket.number%5==0}">
                                             </tr><tr>
                                         </c:if>
                             </c:forEach>

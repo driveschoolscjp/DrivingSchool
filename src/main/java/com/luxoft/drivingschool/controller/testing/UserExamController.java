@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -78,6 +79,8 @@ public class UserExamController {
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
             idStudent = student.getId();
+        } else {
+            session.setAttribute("results", new ArrayList<Result> ());
         }
 
         session.setAttribute("idQuestion", -1);
@@ -139,12 +142,18 @@ public class UserExamController {
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
             idStudent = student.getId();
+        } else {
+            idStudent=-1;
         }
         Result result = new Result();
-        result.setStudent(studentService.findOne(idStudent));
         result.setAnswer(answerService.findOne(idAnswer));
         result.setDateOf(new LocalDate());
-        resultService.save(result);
+        if(idStudent>0) {
+            result.setStudent(studentService.findOne(idStudent));
+            resultService.save(result);
+        } else {
+            ((List<Result>) session.getAttribute("results")).add(result);
+        }
         if(answer.getCorrect()){
             Question question = answer.getQuestion();
             Exam exam = question.getTicket().getExam();
@@ -160,7 +169,8 @@ public class UserExamController {
     }
     //Показ правильного ответа
     @RequestMapping(value = TRUE_PATH, method = RequestMethod.GET)
-    public String showAnswer(@RequestParam(ID_ANSWER) long idAnswer, Model model, HttpSession session){
+    public String showAnswer(@RequestParam(ID_ANSWER) long idAnswer, @RequestParam(value="res", required = false) Integer res,
+                             Model model, HttpSession session){
 
         Answer answer = answerService.findOne(idAnswer);
         Question question = answer.getQuestion();
@@ -169,6 +179,9 @@ public class UserExamController {
         model.addAttribute("answers", answers);
         model.addAttribute("showAnswer", true);
         model.addAttribute("idWrongAnswer", idAnswer);
+        if(res != null){
+            model.addAttribute("res", res);
+        }
         long idTicket = answer.getQuestion().getTicket().getId();
         int number = answer.getQuestion().getNumber();
         Exam exam = question.getTicket().getExam();
@@ -186,14 +199,17 @@ public class UserExamController {
 
     //Показ результата
     @RequestMapping(value = RESULTS_PATH, method = RequestMethod.GET)
-    public String showResults(@RequestParam(ID_TICKET) long idTicket, Model model){
+    public String showResults(@RequestParam(ID_TICKET) long idTicket, Model model, HttpSession session){
         long idStudent = 0;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        List<Result> results = null;
         if (auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_STUDENT.name()))) {
             Student student = studentService.findByLogin(auth.getName());
             idStudent = student.getId();
+            results = resultService.findByStudentId(idStudent, idTicket);
+        } else {
+            results = (List<Result>) session.getAttribute("results");
         }
-        List<Result> results = resultService.findByStudentId(idStudent, idTicket);
         Map<Question, Answer> resMap = new TreeMap<>();
         Ticket ticket = ticketService.findOne(idTicket);
         Exam exam = ticket.getExam();

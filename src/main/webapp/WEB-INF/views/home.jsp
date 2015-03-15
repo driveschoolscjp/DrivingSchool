@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="item" >
-                            <a href="#">
+                            <a href="/testing/search?idExam=1">
                             <img src="/images/Porshe.png" alt="">
                             <!-- Описание слайда -->
                             <div class="carousel-caption">

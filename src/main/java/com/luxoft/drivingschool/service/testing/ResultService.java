@@ -20,6 +20,7 @@ public class ResultService {
 
     @Transactional
     public Result save(Result result){
+        resultRepository.cleanResult(result.getStudent().getId(), result.getAnswer().getQuestion().getId());
         return resultRepository.save(result);
     }
 
