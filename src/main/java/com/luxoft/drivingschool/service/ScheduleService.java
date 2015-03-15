@@ -21,6 +21,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class ScheduleService {
+
     @Autowired
     private ScheduleRepository scheduleRepository;
     @Autowired
@@ -39,8 +40,7 @@ public class ScheduleService {
     }
 
     public List<Schedule> findAllSchedulesByInstructorId(long id) {
-        List<Schedule> l = scheduleRepository.findByInstructorId(id);
-        return l;
+        return scheduleRepository.findByInstructorId(id);
     }
 
     public List<Schedule> findInstructorAppointmentsBetween(long id, LocalDateTime startDate, LocalDateTime finishDate) {
@@ -58,9 +58,9 @@ public class ScheduleService {
         if ( student != null && auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_ADMIN.name()))) {
             String theme;
             String message;
-            theme = "Отмена занятия";
-            message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что вам отменено занятие" +
-                        " по вождению, которое должно было быть " + deleted.getStartInterval();
+            theme = "РћС‚РјРµРЅР° Р·Р°РЅСЏС‚РёСЏ";
+            message = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, " + student.getFirstname() + " " + student.getLastname() + ". РЎРѕРѕР±С‰Р°РµРј Р’Р°Рј, С‡С‚Рѕ РІР°Рј РѕС‚РјРµРЅРµРЅРѕ Р·Р°РЅСЏС‚РёРµ" +
+                        " РїРѕ РІРѕР¶РґРµРЅРёСЋ, РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ Р±С‹Р»Рѕ Р±С‹С‚СЊ " + deleted.getStartInterval();
             messageService.sendMessage(student.getId(), theme, message);
         }
     }
@@ -76,8 +76,6 @@ public class ScheduleService {
             intersectList = scheduleRepository.findIntersectByInstructorIdAndInterval(teacherId, start, end);
         } else if (action == LessonAction.CHANGE) {
             intersectList = scheduleRepository.findIntersectByInstructorIdAndIntervalExcludeEvent(teacherId, start, end, eventId);
-        } else {
-            // throw new ServiceException();
         }
         if (intersectList.size() == 0) {
             Schedule lesson = new Schedule();
@@ -97,14 +95,14 @@ public class ScheduleService {
                 String theme;
                 String message;
                 if (action == LessonAction.TAKE) {
-                    theme = "Вам назначено занятие";
-                    message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что вам назначено занятие" +
-                        " по вождению на " + start + ". Ваш инструктор - " + instructor.getLastname() + " " + instructor.getFirstname() +
+                    theme = "Р’Р°Рј РЅР°Р·РЅР°С‡РµРЅРѕ Р·Р°РЅСЏС‚РёРµ";
+                    message = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, " + student.getFirstname() + " " + student.getLastname() + ". РЎРѕРѕР±С‰Р°РµРј Р’Р°Рј, С‡С‚Рѕ РІР°Рј РЅР°Р·РЅР°С‡РµРЅРѕ Р·Р°РЅСЏС‚РёРµ" +
+                        " РїРѕ РІРѕР¶РґРµРЅРёСЋ РЅР° " + start + ". Р’Р°С€ РёРЅСЃС‚СЂСѓРєС‚РѕСЂ - " + instructor.getLastname() + " " + instructor.getFirstname() +
                     " " + instructor.getPatronymic() + ".";
                 } else {
-                    theme = "Изменение расписания занятия";
-                    message = "Здравствуйте, " + student.getFirstname() + " " +student.getLastname() + ". Сообщаем Вам, что изменено расписание" +
-                            " вашего занятия по вождению. Теперь оно начнется " + start + " и закончится " + end + ". Ваш инструктор - " +
+                    theme = "РР·РјРµРЅРµРЅРёРµ СЂР°СЃРїРёСЃР°РЅРёСЏ Р·Р°РЅСЏС‚РёСЏ";
+                    message = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, " + student.getFirstname() + " " +student.getLastname() + ". РЎРѕРѕР±С‰Р°РµРј Р’Р°Рј, С‡С‚Рѕ РїРµСЂРµРЅРµСЃРµРЅРѕ" +
+                            " РІР°С€Рµ Р·Р°РЅСЏС‚РёРµ РїРѕ РІРѕР¶РґРµРЅРёСЋ. РўРµРїРµСЂСЊ РѕРЅРѕ РЅР°С‡РЅРµС‚СЃСЏ " + start + " Рё Р·Р°РєРѕРЅС‡РёС‚СЃСЏ " + end + ". Р’Р°С€ РёРЅСЃС‚СЂСѓРєС‚РѕСЂ - " +
                             instructor.getLastname() + " " + instructor.getFirstname() + " " + instructor.getPatronymic() + ".";
                 }
                 messageService.sendMessage(student.getId(), theme, message);
