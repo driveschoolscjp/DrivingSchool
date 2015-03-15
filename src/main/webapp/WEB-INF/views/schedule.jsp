@@ -1,17 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: alexey
-  Date: 05.03.2015
-  Time: 9:49
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
+
 <html>
 <head>
-    <title>Schedule</title>
+    <title>Расписание занятий вождением</title>
+    <link rel="shortcut icon" href="http://s3.gazu.ru/favicon.ico" type="image/x-icon">
     <script src="/js/jquery-1.11.2.min.js"></script>
     <script src="/js/daypilot-calendar.src.js"></script>
     <script src="/js/daypilot-navigator.src.js"></script>
@@ -24,7 +19,6 @@
     <link href="/css/font-awesome.css" rel="stylesheet">
     <link href="/css/schedule.css" rel="stylesheet">
     <link href="/css/my.css" rel="stylesheet">
-
 
 </head>
 <body>
