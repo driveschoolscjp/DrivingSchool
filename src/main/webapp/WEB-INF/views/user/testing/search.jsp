@@ -33,90 +33,90 @@
 
 <div class="body">
     <br/>
+
     <div class="container-fluid">
 
-            <div class="row">
-        <div class="col-xs-10 col-xs-offset-1 alltikets blackback">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 alltikets blackback">
 
-            <h3 class="text-center">Тесты ПДД</h3>
-               <hr>
+                <h3 class="text-center">Тесты ПДД</h3>
+                <hr>
 
-            <%--таблица с билетами--%>
-            <div class="col-xs-12 table-responsive">
-                <table class="table">
-                    <tbody>
+                <%--таблица с билетами--%>
+                <div class="col-xs-12 table-responsive">
+                    <table class="table">
+                        <tbody>
 
-                    <tr>
-                            <form action="/testing/start" method="post">
+                        <tr>
 
                                 <div class="pull-left">
-                                 <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                            <c:forEach var="exam" items="${exams}">
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                        <c:forEach var="exam" items="${exams}">
 
-                                       <button href="/testing/search?idExam=${exam.id}" type="button"  class="btn  btn-primary">
+                                            <a href="/testing/search?idExam=${exam.id}" type="button"
+                                                    class="btn  btn-primary">
                                                     ${exam.name}
-                                       </button>
+                                            </a>
 
-                            </c:forEach>
-                                        </div>
+                                        </c:forEach>
                                     </div>
-                            </form>
+                                </div>
 
 
-                    </tr>
+                        </tr>
 
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
 
-            <div class="row">
+                <div class="row">
 
                     <div class="col-xs-12 table-responsive">
                         <table class="table">
-                                    <tr>
+                            <tr>
 
                                 <c:forEach var="entry" items="${resMap}">
-                                        <td>
-                                            <c:if test="${entry.value>=passAnswers}">
-                                                    <a href="/testing/question?idTicket=${entry.key.id}" type="button"
-                                                       class="btn btn-success">
-                                                        Билет ${entry.key.number}
-                                                    </a>
-                                            </c:if>
-                                            <c:if test="${entry.value<passAnswers && (entry.value>0 || entry.value<0)}">
-                                                    <a href="/testing/question?idTicket=${entry.key.id}" type="button"
-                                                       class="btn btn-danger">
-                                                        Билет ${entry.key.number}
-                                                    </a>
-                                            </c:if>
-                                            <c:if test="${entry.value==0}">
-                                                    <a href="/testing/question?idTicket=${entry.key.id}" type="button"
-                                                       class="btn btn-default">
-                                                        Билет ${entry.key.number}
-                                                    </a>
-                                            </c:if>
-                                        </td>
-                                    <c:if test="${entry.key.number%5==0}">
-                                            </tr>
-                                            <tr>
-                                            </c:if>
+                                <td>
+                                    <c:if test="${entry.value>=passAnswers}">
+                                        <a href="/testing/question?idTicket=${entry.key.id}" type="button"
+                                           class="btn btn-success">
+                                            Билет ${entry.key.number}
+                                        </a>
+                                    </c:if>
+                                    <c:if test="${entry.value<passAnswers && (entry.value>0 || entry.value<0)}">
+                                        <a href="/testing/question?idTicket=${entry.key.id}" type="button"
+                                           class="btn btn-danger">
+                                            Билет ${entry.key.number}
+                                        </a>
+                                    </c:if>
+                                    <c:if test="${entry.value==0}">
+                                        <a href="/testing/question?idTicket=${entry.key.id}" type="button"
+                                           class="btn btn-default">
+                                            Билет ${entry.key.number}
+                                        </a>
+                                    </c:if>
+                                </td>
+                                <c:if test="${entry.key.number%5==0}">
+                            </tr>
+                            <tr>
+                                </c:if>
                                 </c:forEach>
                             </tr>
                         </table>
                     </div>
 
-           </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-
 </div>
 
-</div>
-</div>
-
-    <jsp:include page="../../footer.jsp"/>
+<jsp:include page="../../footer.jsp"/>
 
 
-    <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 
 </body>
 </html>
