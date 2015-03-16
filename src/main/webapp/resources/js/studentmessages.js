@@ -61,6 +61,12 @@ $(document).ready(function () {
         curIdNext = 0;
         curIdPrev = 0;
         curPages = 2;
+        $('#messageText').hide();
+        $('#backButton').hide();
+        loadDataIntoTable(curIdPrev, rowsNumber, -1);
+        $('#pageList').show();
+        $('#delButton').show();
+        $('#messagesTable').show();
         loadDataIntoTable(0, rowsNumber, true);
         updatePagination();
         $('#myModal1').modal('show');

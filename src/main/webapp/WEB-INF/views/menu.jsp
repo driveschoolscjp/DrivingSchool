@@ -159,6 +159,7 @@
                                 <table id="messagesTable" class="table">
                                     <tbody></tbody>
                                 </table>
+                                <button id="delButton" type="button" class="btn btn-default">Удалить</button>
                                 <div class="form-group hide" id="messageText">
                                     <label for="messagearea">Тема: <label id="themearea"></label></label>
                                     <textarea  readonly id="messagearea" rows="7" class="form-control control-label"></textarea>
@@ -170,7 +171,7 @@
                                         <li id="current1"><a></a></li>
                                         <li id="next1"><a>След</a></li>
                                     </ul>
-                                <button id="delButton" type="button" class="btn btn-default">Удалить</button>
+
 
                                 <a class="btn btn-success hide" onclick="backToTable()" id="backButton">Назад</a>
                             </div>
