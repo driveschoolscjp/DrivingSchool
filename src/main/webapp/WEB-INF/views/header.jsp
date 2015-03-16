@@ -29,7 +29,7 @@
                     <span class="icon-bar"> </span>
                 </button>
 
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="/images/logo.png"  id = "imgInLineLogo">
                 </a>
             </div>

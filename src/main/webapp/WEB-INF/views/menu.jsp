@@ -70,7 +70,7 @@
                             <a class="list-group-item" href="/admin/testing/exam/search"><i class="fa fa-file-text-o"></i> Тесты ПДД</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий</a>
                             <a class="list-group-item" href="" onclick="showModal2()" data-toggle="modal"><i
-                                    class="fa fa-envelope-o"></i> Отправка сообщений</a>
+                                    class="fa fa-envelope-o"></i> Сообщения</a>
                             <a class="list-group-item active" onclick="sbmt();"><i class="fa fa-sign-out"></i> Выйти</a>
                         </div>
                     </div>
