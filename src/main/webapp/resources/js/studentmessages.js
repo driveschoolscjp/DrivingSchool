@@ -149,6 +149,7 @@ function loadDataIntoTable(fromId, rowsNumber, isBack) {
                 + data.messages[i].message + "</span></div>";
 
                 var now = new Date();
+
                 var date = data.messages[i].dateTime.split('T')[0];
                 var time = data.messages[i].dateTime.split('T')[1].split(':')[0] + ":" + data.messages[i].dateTime.split('T')[1].split(':')[1];
 

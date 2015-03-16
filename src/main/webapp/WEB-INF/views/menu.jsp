@@ -69,7 +69,7 @@
                             <a class="list-group-item" href="/admin/car/search"><i class="fa fa-car"></i> Автомобили</a>
                             <a class="list-group-item" href="/admin/testing/exam/search"><i class="fa fa-file-text-o"></i> Тесты ПДД</a>
                             <a class="list-group-item" href="/schedule"><i class="fa fa-calendar"></i> График занятий</a>
-                            <a class="list-group-item" href="#myModal2" data-toggle="modal"><i
+                            <a class="list-group-item" href="" onclick="showModal2()" data-toggle="modal"><i
                                     class="fa fa-envelope-o"></i> Отправка сообщений</a>
                             <a class="list-group-item active" onclick="sbmt();"><i class="fa fa-sign-out"></i> Выйти</a>
                         </div>
@@ -78,7 +78,7 @@
                     <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header bg-primary">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     <h4>Отправить сообщение</h4>
                                 </div>
@@ -102,7 +102,7 @@
                                             </div>
 
                                             <div class="col-xs-2 checkbox">
-                                                <label><input type="checkbox" id="isEmail"> E-mail</label>
+                                                <label><input type="checkbox" id="isEmail"> <b>E-mail</b></label>
                                             </div>
                                         </div>
                                         <br/>
@@ -117,7 +117,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer bg-primary">
                                     <input class="btn btn-success" type="submit" id="submitMF" value="Отправить">
                                     <a href="#" class="btn btn-danger" data-dismiss="modal">Отмена</a>
                                 </div>
@@ -150,7 +150,7 @@
                 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <div class="modal-header">
+                            <div class="modal-header bg-primary">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <h4>Мои сообщения</h4>
                             </div>
@@ -164,13 +164,14 @@
                                     <textarea  id="messagearea" rows="7" class="form-control control-label"></textarea>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button id="delButton" type="button" class="btn btn-default">Удалить</button>
+                            <div class="modal-footer bg-primary">
                                     <ul class="pager" id="pageList">
                                         <li id="prev1"><a>Пред</a></li>
                                         <li id="current1"><a></a></li>
                                         <li id="next1"><a>След</a></li>
                                     </ul>
+                                <button id="delButton" type="button" class="btn btn-default">Удалить</button>
+
                                 <a class="btn btn-success hide" onclick="backToTable()" id="backButton">Назад</a>
                             </div>
                         </div>

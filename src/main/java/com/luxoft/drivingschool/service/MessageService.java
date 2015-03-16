@@ -26,7 +26,7 @@ public class MessageService {
     @Transactional
     public void sendMessage(Long sid, String theme, String message, boolean isEmail) {
             Message entity = new Message();
-            entity.setDateTime(new LocalDateTime());
+            entity.setDateTime((new LocalDateTime()).plusHours(2));
             entity.setMessage(message);
             entity.setTheme(theme);
             Student student = studentRepository.findOne(sid);

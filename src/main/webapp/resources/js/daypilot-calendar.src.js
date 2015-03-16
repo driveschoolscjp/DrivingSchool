@@ -587,7 +587,7 @@ if (typeof DayPilot.Global === 'undefined') {
         };
         
         this.rowCount = function() {
-            return 28;
+            return 48;
         };
         
         this._api2 = function() {
@@ -1511,7 +1511,7 @@ if (typeof DayPilot.Global === 'undefined') {
                             
                             e.part.width = 100 / block.lines.length;
                             e.part.left = e.part.width * j;
-                           // console.log(e);
+                            
                             var isLastBlock = (j === block.lines.length - 1);
                             if (!isLastBlock) {
                                 e.part.width = e.part.width * 1.5;
@@ -1756,8 +1756,8 @@ if (typeof DayPilot.Global === 'undefined') {
                 c.style.border = '0px none';
             }
 
-            var hours = 14;
-            for (var i = 7; i < 7 + hours; i++) {
+            var hours = 24;
+            for (var i = 0; i < hours; i++) {
                 this.createHourRow(table, i);
             }
             
@@ -1868,7 +1868,7 @@ if (typeof DayPilot.Global === 'undefined') {
         this.getScrollableHeight = function() {
             switch (this.heightSpec) {
                 case "Full":
-                    return (14 * 2 * this.cellHeight);
+                    return (24 * 2 * this.cellHeight);    
                 case "BusinessHours":
                     var dHours = this.businessHoursSpan();
                     return dHours * this.cellHeight * 2;
@@ -2668,7 +2668,7 @@ if (typeof DayPilot.Global === 'undefined') {
             }
 
             var length = events.length;
-            var duration = 14 * 60 * 60 * 1000;
+            var duration = 24 * 60 * 60 * 1000;
 
             this.cache.pixels = {};
 
