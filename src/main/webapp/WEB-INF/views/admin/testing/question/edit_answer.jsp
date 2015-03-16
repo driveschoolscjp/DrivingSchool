@@ -101,11 +101,13 @@
                                                                        placeholder="Answer" required="required"
                                                                        autofocus=""/>
                                                         <form:hidden path="id"/>
-                                                        <c:if test="${!answ.correct}">
+                                                        <div class="${answ.correct?'hide':'show'}">
+                                                        <%--<c:if test="${!answ.correct}">--%>
                                                             <br/>
                                                             <form:checkbox path="correct"/>
                                                             Установить верным
-                                                        </c:if>
+                                                        <%--</c:if>--%>
+                                                        </div>
                                                         <input hidden name="questionId" value="${question.id}">
 
                                                         <div class="btn-group-vertical pull-right">
