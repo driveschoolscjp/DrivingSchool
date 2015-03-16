@@ -161,7 +161,7 @@
                                 </table>
                                 <div class="form-group hide" id="messageText">
                                     <label for="messagearea">Тема: <label id="themearea"></label></label>
-                                    <textarea  id="messagearea" rows="7" class="form-control control-label"></textarea>
+                                    <textarea  readonly id="messagearea" rows="7" class="form-control control-label"></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer bg-primary">
