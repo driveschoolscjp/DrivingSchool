@@ -32,9 +32,9 @@ public class ScheduleController {
     @Autowired
     private GroupService groupService;
 
-    @RequestMapping(value = "lesson/action/delete/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void deleteInterval(@PathVariable long id) {
-        scheduleService.deleteIntervalById(id);
+    @RequestMapping(value = "lesson/action/delete/{id}/{isemail}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteInterval(@PathVariable long id, @PathVariable boolean isemail) {
+        scheduleService.deleteIntervalById(id, isemail);
     }
 
     @RequestMapping(value = "getallappointments/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -96,6 +96,7 @@ public class ScheduleController {
     public Map<String, Object> lessonAction(@RequestBody Map<String, Object> map, @PathVariable String action) {
         Long eid = new Long(map.get("id").toString());
         Long iid = new Long(map.get("instructor_id").toString());
+        String isemail = map.get("isemail").toString();
         if (iid == -1) {
             iid = null;
         }
@@ -104,9 +105,9 @@ public class ScheduleController {
         LocalDateTime ed = new LocalDateTime(map.get("end"));
         long id = 0;
         if (action.equals("take")) {
-            id = scheduleService.lessonAction(eid, iid, sid, sd, ed, LessonAction.TAKE);
+            id = scheduleService.lessonAction(eid, iid, sid, sd, ed, LessonAction.TAKE, isemail.equals("true"));
         } else if (action.equals("move")) {
-            id = scheduleService.lessonAction(eid, iid, sid, sd, ed, LessonAction.CHANGE);
+            id = scheduleService.lessonAction(eid, iid, sid, sd, ed, LessonAction.CHANGE, isemail.equals("true"));
         }
         result.put("id", id);
         return result;

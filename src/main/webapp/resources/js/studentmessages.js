@@ -43,6 +43,7 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             success: function (data, code, xhr) {
                 loadDataIntoTable(curIdPrev, rowsNumber, -1);
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 success = false;
@@ -61,6 +62,12 @@ $(document).ready(function () {
         curIdNext = 0;
         curIdPrev = 0;
         curPages = 2;
+        $('#messageText').hide();
+        $('#backButton').hide();
+        loadDataIntoTable(curIdPrev, rowsNumber, -1);
+        $('#pageList').show();
+        $('#delButton').show();
+        $('#messagesTable').show();
         loadDataIntoTable(0, rowsNumber, true);
         updatePagination();
         $('#myModal1').modal('show');
@@ -112,7 +119,7 @@ function loadDataIntoTable(fromId, rowsNumber, isBack) {
         data: JSON.stringify(obj),
         contentType: "application/json; charset=utf-8",
         success: function (data, code, xhr) {
-            if (data.messages.length == 0) {
+            if (data.all == 0) {
                 $('.pager').hide();
                 row = body.insertRow(i);
                 cell1 = row.insertCell(0);
@@ -149,6 +156,7 @@ function loadDataIntoTable(fromId, rowsNumber, isBack) {
                 + data.messages[i].message + "</span></div>";
 
                 var now = new Date();
+
                 var date = data.messages[i].dateTime.split('T')[0];
                 var time = data.messages[i].dateTime.split('T')[1].split(':')[0] + ":" + data.messages[i].dateTime.split('T')[1].split(':')[1];
 

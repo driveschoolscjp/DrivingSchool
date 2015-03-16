@@ -86,6 +86,7 @@
                                     <input type="radio" name="interval_type" value="lesson" id="option2" autocomplete="off"> Занятие
                                 </label>
                             </div>
+                            <p><input type="checkbox" id="isemail"  checked="checked"> <b>E-mail</b></p>
                         </form>
 
 

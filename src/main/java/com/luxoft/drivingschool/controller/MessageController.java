@@ -34,10 +34,11 @@ public class MessageController {
         String theme = (String)map.get("theme");
         String message = (String)map.get("message");
         Long id = Long.parseLong(map.get("current_id").toString());
+        String isEmail = map.get("isEmail").toString();
         if (isGroupMessage) {
-            messageService.sendGroupMessage(id, theme, message);
+            messageService.sendGroupMessage(id, theme, message, isEmail.equals("true"));
         } else {
-            messageService.sendMessage(id, theme, message);
+            messageService.sendMessage(id, theme, message, isEmail.equals("true"));
         }
         Map<String, Object> result = new HashMap<String, Object>();
         return result;

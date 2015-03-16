@@ -146,6 +146,28 @@ td .dateofmessage {
     color: gray;
 }
 
+#message1 {
+    resize:none;
+}
+
+#theme {
+    resize:none;
+}
+
+#messagearea {
+    resize:none;
+}
+
 .pager {
     cursor: pointer;
+}
+
+.modal-header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.modal-footer {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

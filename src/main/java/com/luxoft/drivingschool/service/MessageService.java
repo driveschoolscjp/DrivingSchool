@@ -20,11 +20,13 @@ public class MessageService {
     private MessageRepository messageRepository;
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private MailService mailService;
 
     @Transactional
-    public void sendMessage(Long sid, String theme, String message) {
+    public void sendMessage(Long sid, String theme, String message, boolean isEmail) {
             Message entity = new Message();
-            entity.setDateTime(new LocalDateTime());
+            entity.setDateTime((new LocalDateTime()).plusHours(2));
             entity.setMessage(message);
             entity.setTheme(theme);
             Student student = studentRepository.findOne(sid);
@@ -32,10 +34,13 @@ public class MessageService {
             entity.setId(0L);
             entity.setOld(false);
             messageRepository.saveAndFlush(entity);
+            if (isEmail) {
+                mailService.sendMail(student.getEmail(), theme, message);
+            }
     }
 
     @Transactional
-    public void sendGroupMessage(Long gid, String theme, String message) {
+    public void sendGroupMessage(Long gid, String theme, String message, boolean isEmail) {
         List<Message> entitites = new ArrayList<Message>();
         List<Student> students = studentRepository.findByGroupId(gid);
         for (Student student: students) {
@@ -47,8 +52,14 @@ public class MessageService {
             entity.setOld(false);
             entity.setStudent(student);
             entitites.add(entity);
+            if (isEmail) {
+                mailService.addMail(student.getEmail(), theme, message);
+            }
         }
         messageRepository.save(entitites);
+        if (isEmail) {
+            mailService.sendMails();
+        }
     }
 
     public List<Message> getMessages(Long message_id, Long student_id, Long rows) {

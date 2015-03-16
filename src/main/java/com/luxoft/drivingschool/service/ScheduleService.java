@@ -9,6 +9,8 @@ import com.luxoft.drivingschool.repository.StudentRepository;
 import com.luxoft.drivingschool.repository.TeacherRepository;
 import com.luxoft.drivingschool.service.enums.LessonAction;
 import org.joda.time.LocalDateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,6 +24,7 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class ScheduleService {
 
+    private final DateTimeFormatter fmt = DateTimeFormat.forPattern("MM/dd/yyyy HH:mm");
     @Autowired
     private ScheduleRepository scheduleRepository;
     @Autowired
@@ -48,7 +51,7 @@ public class ScheduleService {
     }
 
     @Transactional
-    public void deleteIntervalById(long id) {
+    public void deleteIntervalById(long id, boolean isemail) {
         Schedule deleted = scheduleRepository.findOne(id);
         Student student = deleted.getStudent();
         scheduleRepository.delete(deleted);
@@ -59,14 +62,17 @@ public class ScheduleService {
             String theme;
             String message;
             theme = "Отмена занятия";
-            message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что вам отменено занятие" +
-                        " по вождению, которое должно было быть " + deleted.getStartInterval();
-            messageService.sendMessage(student.getId(), theme, message);
+
+
+            message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам об отмене занятия" +
+                        " по вождению, которое должно было быть " + (deleted.getStartInterval()).toString(fmt);
+            messageService.sendMessage(student.getId(), theme, message, isemail);
         }
     }
 
     @Transactional
-    public long lessonAction(long eventId, long teacherId, Long studentId, LocalDateTime start, LocalDateTime end, LessonAction action) {
+    public long lessonAction(long eventId, long teacherId, Long studentId, LocalDateTime start, LocalDateTime end,
+                             LessonAction action, boolean isemail) {
         if (start.getYear() != end.getYear() || start.getDayOfYear() != end.getDayOfYear() || start.isAfter(end)) {
            // throw new ServiceException();
             return 0;
@@ -76,6 +82,8 @@ public class ScheduleService {
             intersectList = scheduleRepository.findIntersectByInstructorIdAndInterval(teacherId, start, end);
         } else if (action == LessonAction.CHANGE) {
             intersectList = scheduleRepository.findIntersectByInstructorIdAndIntervalExcludeEvent(teacherId, start, end, eventId);
+        } else {
+            // throw new ServiceException();
         }
         if (intersectList.size() == 0) {
             Schedule lesson = new Schedule();
@@ -96,16 +104,16 @@ public class ScheduleService {
                 String message;
                 if (action == LessonAction.TAKE) {
                     theme = "Вам назначено занятие";
-                    message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что вам назначено занятие" +
-                        " по вождению на " + start + ". Ваш инструктор - " + instructor.getLastname() + " " + instructor.getFirstname() +
+                    message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Рады сообщить, что Вам назначено занятие" +
+                        " по вождению на " + start.toString(fmt) + ". Ваш инструктор - " + instructor.getLastname() + " " + instructor.getFirstname() +
                     " " + instructor.getPatronymic() + ".";
                 } else {
-                    theme = "Изменение расписания занятия";
+                    theme = "Изменение расписания";
                     message = "Здравствуйте, " + student.getFirstname() + " " +student.getLastname() + ". Сообщаем Вам, что перенесено" +
-                            " ваше занятие по вождению. Теперь оно начнется " + start + " и закончится " + end + ". Ваш инструктор - " +
+                            " ваше занятие по вождению. Теперь оно начнется " + start.toString(fmt) + " и закончится " + end.toString(fmt) + ". Ваш инструктор - " +
                             instructor.getLastname() + " " + instructor.getFirstname() + " " + instructor.getPatronymic() + ".";
                 }
-                messageService.sendMessage(student.getId(), theme, message);
+                messageService.sendMessage(student.getId(), theme, message, isemail);
             }
             return id;
         }
