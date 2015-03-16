@@ -104,7 +104,7 @@ public class ScheduleService {
                 String message;
                 if (action == LessonAction.TAKE) {
                     theme = "Вам назначено занятие";
-                    message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Рады сообщеть, что Вам назначено занятие" +
+                    message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Рады сообщить, что Вам назначено занятие" +
                         " по вождению на " + start.toString(fmt) + ". Ваш инструктор - " + instructor.getLastname() + " " + instructor.getFirstname() +
                     " " + instructor.getPatronymic() + ".";
                 } else {

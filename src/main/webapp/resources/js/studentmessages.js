@@ -43,6 +43,7 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             success: function (data, code, xhr) {
                 loadDataIntoTable(curIdPrev, rowsNumber, -1);
+
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 success = false;
@@ -118,7 +119,7 @@ function loadDataIntoTable(fromId, rowsNumber, isBack) {
         data: JSON.stringify(obj),
         contentType: "application/json; charset=utf-8",
         success: function (data, code, xhr) {
-            if (data.messages.length == 0) {
+            if (data.all == 0) {
                 $('.pager').hide();
                 row = body.insertRow(i);
                 cell1 = row.insertCell(0);
