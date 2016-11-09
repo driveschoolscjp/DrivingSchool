@@ -32,8 +32,9 @@ public class RegistrationController {
         model.addAttribute("registration", new Registration());
         return "registration";
     }
+
     // переход на страницу "запись в автошколу" с выбраным авто
-    @RequestMapping(value =  "/registration", method = RequestMethod.POST)
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String defaultCarRegistration(@RequestParam("id") long id, Model model) {
 
         Registration registration = new Registration();
@@ -49,7 +50,7 @@ public class RegistrationController {
     @RequestMapping(value = "/registration/save", method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute("registration") @Valid Registration registration, Errors errors, Model model) {
 
-        if (errors.hasErrors()){
+        if (errors.hasErrors()) {
             model.addAttribute("cars", carService.findAll());
             return "registration";
         }

@@ -18,7 +18,7 @@ public class RegistrationService {
     private RegistrationRepository registrationRepository;
 
     @Transactional
-    public Registration save(Registration registration){
+    public Registration save(Registration registration) {
         return registrationRepository.save(registration);
     }
 
@@ -26,12 +26,12 @@ public class RegistrationService {
         return registrationRepository.findAll();
     }
 
-    public Registration findOne(long id){
+    public Registration findOne(long id) {
         return registrationRepository.findOne(id);
     }
 
     @Transactional
-    public  void  delete(long registrationId){
+    public void delete(long registrationId) {
         registrationRepository.delete(registrationId);
     }
 }

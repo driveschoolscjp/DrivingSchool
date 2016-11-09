@@ -24,16 +24,16 @@ public class AdminTicketController {
     private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:show?id=";
     private static final String REDIRECT_SEARCH_PATH = "redirect:search?id=";
 
-    private static final String SEARCH_MAPPING_PATH="/search";
-    private static final String ADD_MAPPING_PATH="/add";
-    private static final String SAVE_MAPPING_PATH="/save";
-    private static final String SHOW_MAPPING_PATH="/show";
-    private static final String EDIT_MAPPING_PATH="/edit";
+    private static final String SEARCH_MAPPING_PATH = "/search";
+    private static final String ADD_MAPPING_PATH = "/add";
+    private static final String SAVE_MAPPING_PATH = "/save";
+    private static final String SHOW_MAPPING_PATH = "/show";
+    private static final String EDIT_MAPPING_PATH = "/edit";
 
-    private static final String TICKETS_ATTRIBUTE="tickets";
-    private static final String TICKET_ATTRIBUTE="ticket";
+    private static final String TICKETS_ATTRIBUTE = "tickets";
+    private static final String TICKET_ATTRIBUTE = "ticket";
 
-    private static final String ID_REQUEST_PARAM="id";
+    private static final String ID_REQUEST_PARAM = "id";
     private static final String EXAM_ATTRIBUTE = "exam";
     private static final String MORE_TICKETS_ATTRIBUTE = "moreTickets";
 
@@ -47,7 +47,7 @@ public class AdminTicketController {
 
         Exam exam = examService.findOne(examId);
         model.addAttribute(EXAM_ATTRIBUTE, exam);
-        model.addAttribute(MORE_TICKETS_ATTRIBUTE, ticketService.countByExamId(examId)<exam.getTicketQuantity());
+        model.addAttribute(MORE_TICKETS_ATTRIBUTE, ticketService.countByExamId(examId) < exam.getTicketQuantity());
         model.addAttribute(TICKETS_ATTRIBUTE, ticketService.findByExamId(examId));
         return VIEW_SEARCH_PATH;
     }
@@ -57,7 +57,7 @@ public class AdminTicketController {
     public String showRegistration(@RequestParam(ID_REQUEST_PARAM) long examId, Model model) {
 
         Ticket ticket = new Ticket();
-        ticket.setNumber(ticketService.countByExamId(examId)+1);
+        ticket.setNumber(ticketService.countByExamId(examId) + 1);
         ticket.setExam(examService.findOne(examId));
         ticket = ticketService.save(ticket);
         model.addAttribute(TICKET_ATTRIBUTE, ticket);

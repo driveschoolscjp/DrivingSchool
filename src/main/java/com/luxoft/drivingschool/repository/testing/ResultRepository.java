@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by SCJP on 10.03.2015.
  */
-public interface ResultRepository  extends JpaRepository<Result, Long> {
+public interface ResultRepository extends JpaRepository<Result, Long> {
 
     @Query(value = "SELECT results.id, results.dateof," +
             "results.answer_id, results.student_id from results" +

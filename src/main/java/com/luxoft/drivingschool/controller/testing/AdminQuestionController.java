@@ -5,7 +5,11 @@ import com.luxoft.drivingschool.model.testing.Answer;
 import com.luxoft.drivingschool.model.testing.Exam;
 import com.luxoft.drivingschool.model.testing.Question;
 import com.luxoft.drivingschool.model.testing.Ticket;
-import com.luxoft.drivingschool.service.testing.*;
+import com.luxoft.drivingschool.service.testing.AnswerService;
+import com.luxoft.drivingschool.service.testing.ExamService;
+import com.luxoft.drivingschool.service.testing.QuestionService;
+import com.luxoft.drivingschool.service.testing.ThemeService;
+import com.luxoft.drivingschool.service.testing.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,21 +32,21 @@ public class AdminQuestionController {
     private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:show?id=";
     private static final String REDIRECT_ADD_ANSWER = "redirect:addAnswer?id=";
 
-    private static final String SEARCH_MAPPING_PATH="/search";
-    private static final String ADD_MAPPING_PATH="/add";
-    private static final String SAVE_MAPPING_PATH="/save";
-    private static final String SAVE_ANSWER_MAPPING_PATH="/saveAnswer";
-    private static final String SHOW_MAPPING_PATH="/show";
-    private static final String EDIT_MAPPING_PATH="/edit";
+    private static final String SEARCH_MAPPING_PATH = "/search";
+    private static final String ADD_MAPPING_PATH = "/add";
+    private static final String SAVE_MAPPING_PATH = "/save";
+    private static final String SAVE_ANSWER_MAPPING_PATH = "/saveAnswer";
+    private static final String SHOW_MAPPING_PATH = "/show";
+    private static final String EDIT_MAPPING_PATH = "/edit";
     private static final String ADD_ANSWER_MAPPING_PATH = "/addAnswer";
     private static final String EDIT_ANSWER_MAPPING_PATH = "/editAnswer";
 
-    private static final String QUESTIONS_ATTRIBUTE="questions";
-    private static final String QUESTION_ATTRIBUTE="question";
-    private static final String TICKET_ATTRIBUTE="ticket";
+    private static final String QUESTIONS_ATTRIBUTE = "questions";
+    private static final String QUESTION_ATTRIBUTE = "question";
+    private static final String TICKET_ATTRIBUTE = "ticket";
 
-    private static final String ID_REQUEST_PARAM="id";
-    private static final String TICKET_REQUEST_PARAM="ticket";
+    private static final String ID_REQUEST_PARAM = "id";
+    private static final String TICKET_REQUEST_PARAM = "ticket";
     private static final String NUMBERS_ATTRIBUTE = "numbers";
     private static final String NUMBER_ATTRIBUTE = "number";
     private static final String THEMES_ATTRIBUTE = "themes";
@@ -80,7 +84,7 @@ public class AdminQuestionController {
     public String showRegistration(Model model, @RequestParam(ID_REQUEST_PARAM) int ticketId) {
 
         Question question = new Question();
-        question.setNumber(questionService.lastNumber(ticketId)+1);
+        question.setNumber(questionService.lastNumber(ticketId) + 1);
         question.setTicket(ticketService.findOne(ticketId));                   //почему-то не сохраняет через форму
         model.addAttribute(QUESTION_ATTRIBUTE, question);
         model.addAttribute(THEMES_ATTRIBUTE, themeService.findAll());
@@ -118,7 +122,7 @@ public class AdminQuestionController {
                                               @RequestParam("questionId") long questionId) {
         answer.setQuestion(questionService.findOne(questionId));
         answer = answerService.save(answer);
-        if(answer.getCorrect()) {
+        if (answer.getCorrect()) {
             List<Answer> answers = answerService.findByQuestionId(questionId);
             for (Answer a : answers) {
                 if (!a.getId().equals(answer.getId())) {

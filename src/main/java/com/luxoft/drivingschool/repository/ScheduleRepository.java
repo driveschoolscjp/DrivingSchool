@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     List<Schedule> findByInstructorIdAndStudentIdNotNull(long id);
+
     List<Schedule> findByInstructorIdAndStudentIdIsNull(long id);
 
     List<Schedule> findByInstructorIdAndStudentIdNotNullAndStartIntervalBetween(
@@ -26,7 +27,7 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
             "((s.startInterval >= ?2 and s.startInterval < ?3) or " +
             "(s.finishInterval > ?2 and s.finishInterval <= ?3) or" +
             "(s.startInterval < ?2 and s.finishInterval > ?3))" +
-            " and s.id <> ?4" )
+            " and s.id <> ?4")
     List<Schedule> findIntersectByInstructorIdAndIntervalExcludeEvent(
             long teacherId, LocalDateTime start, LocalDateTime end, long eventId);
 }

@@ -19,20 +19,20 @@ public class ResultService {
     private ResultRepository resultRepository;
 
     @Transactional
-    public Result save(Result result){
-        long studentId=result.getStudent().getId();
-        long questionId=result.getAnswer().getQuestion().getId();
-        List<Result>results = resultRepository.findByStudentIdAndQuestionId(studentId, questionId);
+    public Result save(Result result) {
+        long studentId = result.getStudent().getId();
+        long questionId = result.getAnswer().getQuestion().getId();
+        List<Result> results = resultRepository.findByStudentIdAndQuestionId(studentId, questionId);
         resultRepository.delete(results);
         return resultRepository.save(result);
     }
 
-    public List<Result> findByStudentId(long studentId, long ticketId){
+    public List<Result> findByStudentId(long studentId, long ticketId) {
         return resultRepository.findByStudentId(studentId, ticketId);
     }
 
     public int countCorrect(long studentId, long ticketId) {
-        return resultRepository.countCorrect(studentId,ticketId);
+        return resultRepository.countCorrect(studentId, ticketId);
     }
 
     public Integer countIncorrect(long studentId, Long ticketId) {

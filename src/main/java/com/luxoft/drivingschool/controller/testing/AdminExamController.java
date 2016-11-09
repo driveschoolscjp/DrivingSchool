@@ -22,12 +22,12 @@ public class AdminExamController {
     private static final String VIEW_EDIT_PATH = "admin/testing/exam/edit";
     private static final String REDIRECT_SEARCH = "redirect:search";
 
-    private static final String SEARCH_MAPPING_PATH="/search";
-    private static final String ADD_MAPPING_PATH="/add";
-    private static final String SAVE_MAPPING_PATH="/save";
+    private static final String SEARCH_MAPPING_PATH = "/search";
+    private static final String ADD_MAPPING_PATH = "/add";
+    private static final String SAVE_MAPPING_PATH = "/save";
 
-    private static final String EXAMS_ATTRIBUTE="exams";
-    private static final String EXAM_ATTRIBUTE="exam";
+    private static final String EXAMS_ATTRIBUTE = "exams";
+    private static final String EXAM_ATTRIBUTE = "exam";
 
     @Autowired
     ExamService examService;

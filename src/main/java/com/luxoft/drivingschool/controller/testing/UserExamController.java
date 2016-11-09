@@ -2,9 +2,17 @@ package com.luxoft.drivingschool.controller.testing;
 
 import com.luxoft.drivingschool.model.Student;
 import com.luxoft.drivingschool.model.enums.UserRoleEnum;
-import com.luxoft.drivingschool.model.testing.*;
+import com.luxoft.drivingschool.model.testing.Answer;
+import com.luxoft.drivingschool.model.testing.Exam;
+import com.luxoft.drivingschool.model.testing.Question;
+import com.luxoft.drivingschool.model.testing.Result;
+import com.luxoft.drivingschool.model.testing.Ticket;
 import com.luxoft.drivingschool.service.StudentService;
-import com.luxoft.drivingschool.service.testing.*;
+import com.luxoft.drivingschool.service.testing.AnswerService;
+import com.luxoft.drivingschool.service.testing.ExamService;
+import com.luxoft.drivingschool.service.testing.QuestionService;
+import com.luxoft.drivingschool.service.testing.ResultService;
+import com.luxoft.drivingschool.service.testing.TicketService;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -74,24 +82,24 @@ public class UserExamController {
             Student student = studentService.findByLogin(auth.getName());
             idStudent = student.getId();
         } else {
-            session.setAttribute("results", new ArrayList<Result> ());
+            session.setAttribute("results", new ArrayList<Result>());
         }
 
         session.setAttribute("idQuestion", -1);
 //----------------------------------------------------------------------------------
         Map<Ticket, Integer> resMap = new TreeMap<>();
         Exam exam = examService.findOne(idExam);
-        List<Ticket>tickets = ticketService.findByExamId(idExam);
-        for(Ticket ticket:tickets){
+        List<Ticket> tickets = ticketService.findByExamId(idExam);
+        for (Ticket ticket : tickets) {
             int correctAnswers = resultService.countCorrect(idStudent, ticket.getId());
-            if(correctAnswers>0) {
+            if (correctAnswers > 0) {
                 resMap.put(ticket, correctAnswers);
             } else {
-                resMap.put(ticket, resultService.countIncorrect(idStudent, ticket.getId())*-1);
+                resMap.put(ticket, resultService.countIncorrect(idStudent, ticket.getId()) * -1);
             }
         }
         model.addAttribute("resMap", resMap);
-        model.addAttribute("passAnswers", exam.getQuestionPerTicketQuantity()-3);
+        model.addAttribute("passAnswers", exam.getQuestionPerTicketQuantity() - 3);
         //----------------------------------------------------------------------------------
         model.addAttribute(EXAMS_ATTRIBUTE, examService.findAll());
         model.addAttribute(EXAM_ATTRIBUTE, examService.findOne(idExam));
@@ -102,21 +110,21 @@ public class UserExamController {
 
     //Показ вопроса
     @RequestMapping(value = QUESTION_PATH, method = RequestMethod.GET)
-    public String showQuestion(@RequestParam(ID_TICKET) long idTicket, Model model, HttpSession session){
+    public String showQuestion(@RequestParam(ID_TICKET) long idTicket, Model model, HttpSession session) {
         Object iT = session.getAttribute("idTicket");
-        if(iT==null){
+        if (iT == null) {
             session.setAttribute("idTicket", idTicket);
         }
         Object iQ = session.getAttribute("idQuestion");
         long idQuestion;
-        if(iQ==null || Long.parseLong(iQ.toString())==-1L){
+        if (iQ == null || Long.parseLong(iQ.toString()) == -1L) {
             idQuestion = questionService.findByTicketIdAndNumber(idTicket, 1).getId();
             session.setAttribute("idQuestion", idQuestion);
         } else {
             idQuestion = Long.parseLong(iQ.toString());
         }
         Question question = questionService.findOne(idQuestion);
-        if(question == null){
+        if (question == null) {
             return REDIRECT_EXAM_PATH;
         }
         List<Answer> answers = answerService.findByQuestionId(idQuestion);
@@ -125,9 +133,10 @@ public class UserExamController {
         model.addAttribute("showAnswer", false);
         return ASK_QUESTION_VIEW;
     }
+
     //Проверка ответа
     @RequestMapping(value = ANSWER_PATH, method = RequestMethod.GET)
-    public String checkQuestion(@RequestParam(ID_ANSWER) long idAnswer, Model model, HttpSession session){
+    public String checkQuestion(@RequestParam(ID_ANSWER) long idAnswer, Model model, HttpSession session) {
         Answer answer = answerService.findOne(idAnswer);
         long idTicket = answer.getQuestion().getTicket().getId();
         int number = answer.getQuestion().getNumber();
@@ -137,34 +146,35 @@ public class UserExamController {
             Student student = studentService.findByLogin(auth.getName());
             idStudent = student.getId();
         } else {
-            idStudent=-1;
+            idStudent = -1;
         }
         Result result = new Result();
         result.setAnswer(answerService.findOne(idAnswer));
         result.setDateOf(new LocalDate());
-        if(idStudent>0) {
+        if (idStudent > 0) {
             result.setStudent(studentService.findOne(idStudent));
             resultService.save(result);
         } else {
             ((List<Result>) session.getAttribute("results")).add(result);
         }
-        if(answer.getCorrect()){
+        if (answer.getCorrect()) {
             Question question = answer.getQuestion();
             Exam exam = question.getTicket().getExam();
-            if(question.getNumber()>= exam.getQuestionPerTicketQuantity()){
-                return REDIRECT_SHOW_RESULTS+idTicket;
+            if (question.getNumber() >= exam.getQuestionPerTicketQuantity()) {
+                return REDIRECT_SHOW_RESULTS + idTicket;
             }
             long idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
             session.setAttribute("idQuestion", idQuestion);
-                return REDIRECT_NEXT_QUESTION+"?idTicket="+idTicket;
+            return REDIRECT_NEXT_QUESTION + "?idTicket=" + idTicket;
         } else {
-            return REDIRECT_TRUE_ANSWER+"?idAnswer="+idAnswer;
+            return REDIRECT_TRUE_ANSWER + "?idAnswer=" + idAnswer;
         }
     }
+
     //Показ правильного ответа
     @RequestMapping(value = TRUE_PATH, method = RequestMethod.GET)
-    public String showAnswer(@RequestParam(ID_ANSWER) long idAnswer, @RequestParam(value="res", required = false) Integer res,
-                             Model model, HttpSession session){
+    public String showAnswer(@RequestParam(ID_ANSWER) long idAnswer, @RequestParam(value = "res", required = false) Integer res,
+                             Model model, HttpSession session) {
 
         Answer answer = answerService.findOne(idAnswer);
         Question question = answer.getQuestion();
@@ -173,17 +183,17 @@ public class UserExamController {
         model.addAttribute("answers", answers);
         model.addAttribute("showAnswer", true);
         model.addAttribute("idWrongAnswer", idAnswer);
-        if(res != null){
+        if (res != null) {
             model.addAttribute("res", res);
         }
         long idTicket = answer.getQuestion().getTicket().getId();
         int number = answer.getQuestion().getNumber();
         Exam exam = question.getTicket().getExam();
-        long idQuestion=0;
-        if(question.getNumber()>= exam.getQuestionPerTicketQuantity()){
+        long idQuestion = 0;
+        if (question.getNumber() >= exam.getQuestionPerTicketQuantity()) {
             model.addAttribute("res", 2);
 //            return REDIRECT_SHOW_RESULTS+idTicket;
-        } else if(question.getNumber()<exam.getQuestionPerTicketQuantity()) {
+        } else if (question.getNumber() < exam.getQuestionPerTicketQuantity()) {
             idQuestion = questionService.findByTicketIdAndNumber(idTicket, ++number).getId();
         }
         session.setAttribute("idQuestion", idQuestion);
@@ -194,7 +204,7 @@ public class UserExamController {
 
     //Показ результата
     @RequestMapping(value = RESULTS_PATH, method = RequestMethod.GET)
-    public String showResults(@RequestParam(ID_TICKET) long idTicket, Model model, HttpSession session){
+    public String showResults(@RequestParam(ID_TICKET) long idTicket, Model model, HttpSession session) {
         long idStudent = 0;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         List<Result> results = null;
@@ -209,10 +219,10 @@ public class UserExamController {
         Ticket ticket = ticketService.findOne(idTicket);
         Exam exam = ticket.getExam();
         List<Question> questions = questionService.findByTicketId(idTicket);
-        for(Question question:questions){
+        for (Question question : questions) {
             resMap.put(question, null);
         }
-        for(Result res:results){
+        for (Result res : results) {
             resMap.put(res.getAnswer().getQuestion(), (res.getAnswer()));
         }
 

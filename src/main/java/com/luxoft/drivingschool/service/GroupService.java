@@ -20,7 +20,7 @@ public class GroupService {
         return groupRepository.findOne(id);
     }
 
-    public List<Group> findAll(){
+    public List<Group> findAll() {
         return groupRepository.findAll();
     }
 
@@ -29,7 +29,7 @@ public class GroupService {
     }
 
     @Transactional
-    public Group save(Group group){
+    public Group save(Group group) {
         return groupRepository.save(group);
     }
 

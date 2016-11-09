@@ -9,7 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity@Table(name = "messages")
+@Entity
+@Table(name = "messages")
 public class Message extends AbstractPersistable<Long> {
 
     private String theme;

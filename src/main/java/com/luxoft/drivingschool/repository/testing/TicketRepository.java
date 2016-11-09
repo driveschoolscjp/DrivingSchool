@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
     Integer countByExamId(long examId);
+
     List<Ticket> findByExamId(long examId);
 
     long findByNumberAndExamId(int ticketNumber, long idExam);

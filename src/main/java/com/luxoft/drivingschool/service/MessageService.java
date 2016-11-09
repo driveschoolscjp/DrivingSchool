@@ -25,25 +25,25 @@ public class MessageService {
 
     @Transactional
     public void sendMessage(Long sid, String theme, String message, boolean isEmail) {
-            Message entity = new Message();
-            entity.setDateTime((new LocalDateTime()).plusHours(2));
-            entity.setMessage(message);
-            entity.setTheme(theme);
-            Student student = studentRepository.findOne(sid);
-            entity.setStudent(student);
-            entity.setId(0L);
-            entity.setOld(false);
-            messageRepository.saveAndFlush(entity);
-            if (isEmail) {
-                mailService.sendMail(student.getEmail(), theme, message);
-            }
+        Message entity = new Message();
+        entity.setDateTime((new LocalDateTime()).plusHours(2));
+        entity.setMessage(message);
+        entity.setTheme(theme);
+        Student student = studentRepository.findOne(sid);
+        entity.setStudent(student);
+        entity.setId(0L);
+        entity.setOld(false);
+        messageRepository.saveAndFlush(entity);
+        if (isEmail) {
+            mailService.sendMail(student.getEmail(), theme, message);
+        }
     }
 
     @Transactional
     public void sendGroupMessage(Long gid, String theme, String message, boolean isEmail) {
         List<Message> entitites = new ArrayList<Message>();
         List<Student> students = studentRepository.findByGroupId(gid);
-        for (Student student: students) {
+        for (Student student : students) {
             Message entity = new Message();
             entity.setDateTime(new LocalDateTime());
             entity.setMessage(message);
@@ -86,7 +86,7 @@ public class MessageService {
 
     @Transactional
     public Message markMessageAsOld(Long message_id) {
-        Message message =  messageRepository.findOne(message_id);
+        Message message = messageRepository.findOne(message_id);
         message.setOld(true);
         return messageRepository.saveAndFlush(message);
     }
@@ -94,7 +94,7 @@ public class MessageService {
     @Transactional
     public void deleteMessages(List<Long> list) {
         List<Message> messages = new ArrayList<Message>();
-        for (Long id: list) {
+        for (Long id : list) {
             messages.add(messageRepository.findOne(id));
         }
         messageRepository.deleteInBatch(messages);

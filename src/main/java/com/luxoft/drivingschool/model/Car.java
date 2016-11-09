@@ -3,7 +3,11 @@ package com.luxoft.drivingschool.model;
 import com.luxoft.drivingschool.model.enums.Transmission;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 

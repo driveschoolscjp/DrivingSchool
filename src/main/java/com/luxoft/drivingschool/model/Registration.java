@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "registrations")
-public class Registration  extends AbstractPersistable<Long> {
+public class Registration extends AbstractPersistable<Long> {
 
     @NotNull
     @Size(min = 2, max = 50)

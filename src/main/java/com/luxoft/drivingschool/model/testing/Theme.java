@@ -3,7 +3,8 @@ package com.luxoft.drivingschool.model.testing;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "themes")

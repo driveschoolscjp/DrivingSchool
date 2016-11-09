@@ -58,14 +58,14 @@ public class ScheduleService {
         scheduleRepository.flush();
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if ( student != null && auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_ADMIN.name()))) {
+        if (student != null && auth.getAuthorities().contains(new SimpleGrantedAuthority(UserRoleEnum.ROLE_ADMIN.name()))) {
             String theme;
             String message;
             theme = "Отмена занятия";
 
 
             message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам об отмене занятия" +
-                        " по вождению, которое должно было быть " + (deleted.getStartInterval()).toString(fmt);
+                    " по вождению, которое должно было быть " + (deleted.getStartInterval()).toString(fmt);
             messageService.sendMessage(student.getId(), theme, message, isemail);
         }
     }
@@ -74,7 +74,7 @@ public class ScheduleService {
     public long lessonAction(long eventId, long teacherId, Long studentId, LocalDateTime start, LocalDateTime end,
                              LessonAction action, boolean isemail) {
         if (start.getYear() != end.getYear() || start.getDayOfYear() != end.getDayOfYear() || start.isAfter(end)) {
-           // throw new ServiceException();
+            // throw new ServiceException();
             return 0;
         }
         List<Schedule> intersectList = null;
@@ -89,7 +89,7 @@ public class ScheduleService {
             Schedule lesson = new Schedule();
             Student student = null;
             if (studentId != null) {
-                 student = studentRepository.findOne(studentId);
+                student = studentRepository.findOne(studentId);
             }
             Teacher instructor = teacherRepository.findOne(teacherId);
             lesson.setId(eventId);
@@ -105,11 +105,11 @@ public class ScheduleService {
                 if (action == LessonAction.TAKE) {
                     theme = "Вам назначено занятие";
                     message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Рады сообщить, что Вам назначено занятие" +
-                        " по вождению на " + start.toString(fmt) + ". Ваш инструктор - " + instructor.getLastname() + " " + instructor.getFirstname() +
-                    " " + instructor.getPatronymic() + ".";
+                            " по вождению на " + start.toString(fmt) + ". Ваш инструктор - " + instructor.getLastname() + " " + instructor.getFirstname() +
+                            " " + instructor.getPatronymic() + ".";
                 } else {
                     theme = "Изменение расписания";
-                    message = "Здравствуйте, " + student.getFirstname() + " " +student.getLastname() + ". Сообщаем Вам, что перенесено" +
+                    message = "Здравствуйте, " + student.getFirstname() + " " + student.getLastname() + ". Сообщаем Вам, что перенесено" +
                             " ваше занятие по вождению. Теперь оно начнется " + start.toString(fmt) + " и закончится " + end.toString(fmt) + ". Ваш инструктор - " +
                             instructor.getLastname() + " " + instructor.getFirstname() + " " + instructor.getPatronymic() + ".";
                 }

@@ -56,7 +56,7 @@ public class HomeController {
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
     public String cars(Model model) {
         model.addAttribute("cars", carService.findAll());
-        return "cars"    ;
+        return "cars";
     }
 
     // переход на страницу расчета стоимости обучения
@@ -77,30 +77,29 @@ public class HomeController {
         int horsePower = car.getHorsePower();
         Transmission transmission = car.getTransmission();
 
-        if ((pricePerHour != 0)&&(transmission!=null) &&(horsePower != 0)) {
+        if ((pricePerHour != 0) && (transmission != null) && (horsePower != 0)) {
 
-                carsPricePerHourList.addAll(carService.findByPricePerHourLessThanAndTransmission(pricePerHour, transmission));
-                carsPricePerHourList.addAll(carService.findByPricePerHourAndTransmission(pricePerHour, transmission));
-                carsHorsePowerList.addAll(carService.findByHorsePowerAndTransmission(horsePower, transmission));
-                carsHorsePowerList.addAll(carService.findByHorsePowerLessThanAndTransmission(horsePower, transmission));
+            carsPricePerHourList.addAll(carService.findByPricePerHourLessThanAndTransmission(pricePerHour, transmission));
+            carsPricePerHourList.addAll(carService.findByPricePerHourAndTransmission(pricePerHour, transmission));
+            carsHorsePowerList.addAll(carService.findByHorsePowerAndTransmission(horsePower, transmission));
+            carsHorsePowerList.addAll(carService.findByHorsePowerLessThanAndTransmission(horsePower, transmission));
 
 
-            if((!carsHorsePowerList.isEmpty()) && !(carsPricePerHourList.isEmpty())){
+            if ((!carsHorsePowerList.isEmpty()) && !(carsPricePerHourList.isEmpty())) {
 
-             for(Car c : carsHorsePowerList){
-                 for (Car c2 : carsPricePerHourList){
-                     if(c.equals(c2)){
-                         carsTotalList.add(c);
-                     }
-                 }
-             }
+                for (Car c : carsHorsePowerList) {
+                    for (Car c2 : carsPricePerHourList) {
+                        if (c.equals(c2)) {
+                            carsTotalList.add(c);
+                        }
+                    }
+                }
             }
-     }
+        }
         model.addAttribute("cars", carsTotalList);
 
         return "cost";
     }
-
 
 
     // Показ одного инструктора и его авто, отдельно от всех инструкторов
@@ -110,13 +109,13 @@ public class HomeController {
         List<Car> cars = new ArrayList<>();
         Car car = carService.findOne(id);
 
-        for (Car c: carService.findAll()){
-            if(!(c.equals(car))){
+        for (Car c : carService.findAll()) {
+            if (!(c.equals(car))) {
                 cars.add(c);
             }
         }
 
-        model.addAttribute("cars",  cars);
+        model.addAttribute("cars", cars);
         model.addAttribute("car", carService.findOne(id));
         return "carsShow";
     }

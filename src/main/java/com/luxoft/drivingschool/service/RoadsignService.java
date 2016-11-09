@@ -18,12 +18,12 @@ public class RoadsignService {
     @Autowired
     RoadsignRepository roadsignRepository;
 
-    public List<Roadsign> findRandomRoadsigns(){
+    public List<Roadsign> findRandomRoadsigns() {
 
         long totalSigns = roadsignRepository.count();
 
         Set<Long> setId = new TreeSet<>();
-        while (setId.size() < 12){
+        while (setId.size() < 12) {
             setId.add((long) (Math.random() * totalSigns));
         }
 

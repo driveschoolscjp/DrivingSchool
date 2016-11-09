@@ -16,16 +16,16 @@ public class AnswerService {
     @Autowired
     AnswerRepository answerRepository;
 
-    public List<Answer> findAll(){
+    public List<Answer> findAll() {
         return answerRepository.findAll();
     }
 
     @Transactional
-    public Answer save(Answer answer){
+    public Answer save(Answer answer) {
         return answerRepository.save(answer);
     }
 
-    public Answer findOne(long id){
+    public Answer findOne(long id) {
         return answerRepository.findOne(id);
     }
 
@@ -42,7 +42,7 @@ public class AnswerService {
     }
 
     @Transactional
-    public void delete (long id){
+    public void delete(long id) {
         answerRepository.delete(id);
     }
 }

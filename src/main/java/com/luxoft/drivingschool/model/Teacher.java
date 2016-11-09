@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Teacher extends Person {
 
     private String photoURL;
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String description;
     @JsonIgnore
     @OneToOne(mappedBy = "instructor")

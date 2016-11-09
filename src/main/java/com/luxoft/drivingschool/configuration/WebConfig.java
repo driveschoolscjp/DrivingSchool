@@ -51,7 +51,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public MessageSource messageSource(){
+    public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource resource = new ReloadableResourceBundleMessageSource();
         resource.setBasename("classpath:messages");
         resource.setDefaultEncoding("UTF-8");
@@ -63,7 +63,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JodaModule());
- 
+
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         converter.setObjectMapper(objectMapper);
         converters.add(converter);

@@ -4,14 +4,17 @@ package com.luxoft.drivingschool.model.testing;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "questions")
 public class Question extends AbstractPersistable<Long> implements Comparable<Question> {
 
     private int number;
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String question;
     private String pathToPicture;
     @ManyToOne(optional = true)
@@ -20,7 +23,7 @@ public class Question extends AbstractPersistable<Long> implements Comparable<Qu
     @ManyToOne
     @JsonIgnore
     private Ticket ticket;
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     public int getNumber() {
@@ -38,6 +41,7 @@ public class Question extends AbstractPersistable<Long> implements Comparable<Qu
     public void setQues(String ques) {
         this.question = ques;
     }
+
     public String getQues() {
         return question;
     }
@@ -80,8 +84,9 @@ public class Question extends AbstractPersistable<Long> implements Comparable<Qu
 
     @Override
     public int compareTo(Question o) {
-        return this.number-((Question)o).number;
+        return this.number - ((Question) o).number;
     }
+
     @Override
     public void setId(Long id) {
         super.setId(id);

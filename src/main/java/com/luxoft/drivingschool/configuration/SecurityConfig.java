@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @Configuration
 @EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -21,22 +21,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-            .authorizeRequests()
+                .authorizeRequests()
                 .antMatchers("/admin/**").hasAuthority(UserRoleEnum.ROLE_ADMIN.name())
                 .antMatchers("/student/**").hasAuthority(UserRoleEnum.ROLE_STUDENT.name())
                 .antMatchers("/scheduler/**").authenticated()
                 .antMatchers("/schedule/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
-            .formLogin()
-            .loginPage("/")
+                .formLogin()
+                .loginPage("/")
                 .loginProcessingUrl("/login")
-            .failureUrl("/")
+                .failureUrl("/")
                 .and()
-            .logout()
-            .logoutSuccessUrl("/")
+                .logout()
+                .logoutSuccessUrl("/")
 
-            .and().csrf().disable(); // temporarily
+                .and().csrf().disable(); // temporarily
     }
 
     // Устанавливаем, где брать пользователей

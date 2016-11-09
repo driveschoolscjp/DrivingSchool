@@ -15,16 +15,16 @@ public class ThemeService {
     @Autowired
     ThemeRepository themeRepository;
 
-    public List<Theme> findAll(){
+    public List<Theme> findAll() {
         return themeRepository.findAll();
     }
 
     @Transactional
-    public Theme save(Theme theme){
+    public Theme save(Theme theme) {
         return themeRepository.save(theme);
     }
 
-    public Theme findOne(long id){
+    public Theme findOne(long id) {
         return themeRepository.findOne(id);
     }
 }

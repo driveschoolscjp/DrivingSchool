@@ -15,12 +15,12 @@ public class TeacherService {
     @Autowired
     private TeacherRepository teacherRepository;
 
-    public Teacher findOne(Long id){
+    public Teacher findOne(Long id) {
         return teacherRepository.findOne(id);
     }
 
-    public List<Teacher> findAll(){
-       return teacherRepository.findAll();
+    public List<Teacher> findAll() {
+        return teacherRepository.findAll();
     }
 
     @Transactional

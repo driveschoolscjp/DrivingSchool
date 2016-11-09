@@ -30,9 +30,9 @@ public class MessageController {
     @RequestMapping(value = "/admin/message/send", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> sendMessage(@RequestBody Map<String, Object> map) {
-        boolean isGroupMessage = (Boolean)map.get("isGroupMessage");
-        String theme = (String)map.get("theme");
-        String message = (String)map.get("message");
+        boolean isGroupMessage = (Boolean) map.get("isGroupMessage");
+        String theme = (String) map.get("theme");
+        String message = (String) map.get("message");
         Long id = Long.parseLong(map.get("current_id").toString());
         String isEmail = map.get("isEmail").toString();
         if (isGroupMessage) {
@@ -46,7 +46,7 @@ public class MessageController {
 
     @RequestMapping(value = "/student/message/newamount", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-         public Map<String, Object> amount(@RequestBody Map<String, Object> map) {
+    public Map<String, Object> amount(@RequestBody Map<String, Object> map) {
         Student student = getCurrentStudent();
         if (student == null) {
             //throw new ServiceException();
@@ -71,7 +71,7 @@ public class MessageController {
     }
 
     @RequestMapping(value = "/student/message/getmessages", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
-        consumes = MediaType.APPLICATION_JSON_VALUE)
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> getMessages(@RequestBody Map<String, Object> map) {
         Student student = getCurrentStudent();
         Long message_id = Long.parseLong(map.get("message_id").toString());

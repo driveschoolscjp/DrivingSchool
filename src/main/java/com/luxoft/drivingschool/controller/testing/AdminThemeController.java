@@ -20,16 +20,16 @@ public class AdminThemeController {
     private static final String VIEW_EDIT_PATH = "admin/testing/theme/edit";
     private static final String REDIRECT_SHOW_TO_ID_PATH = "redirect:search";
 
-    private static final String SEARCH_MAPPING_PATH="/search";
-    private static final String ADD_MAPPING_PATH="/add";
-    private static final String SAVE_MAPPING_PATH="/save";
-    private static final String SHOW_MAPPING_PATH="/show";
-    private static final String EDIT_MAPPING_PATH="/edit";
+    private static final String SEARCH_MAPPING_PATH = "/search";
+    private static final String ADD_MAPPING_PATH = "/add";
+    private static final String SAVE_MAPPING_PATH = "/save";
+    private static final String SHOW_MAPPING_PATH = "/show";
+    private static final String EDIT_MAPPING_PATH = "/edit";
 
-    private static final String THEMES_ATTRIBUTE="themes";
-    private static final String THEME_ATTRIBUTE="theme";
+    private static final String THEMES_ATTRIBUTE = "themes";
+    private static final String THEME_ATTRIBUTE = "theme";
 
-    private static final String ID_REQUEST_PARAM="id";
+    private static final String ID_REQUEST_PARAM = "id";
 
     @Autowired
     private ThemeService themeService;
@@ -54,7 +54,7 @@ public class AdminThemeController {
     @RequestMapping(value = SAVE_MAPPING_PATH, method = RequestMethod.POST)
     public String processRegistration(@ModelAttribute(THEME_ATTRIBUTE) Theme theme) {
         theme = themeService.save(theme);
-        return REDIRECT_SHOW_TO_ID_PATH ;
+        return REDIRECT_SHOW_TO_ID_PATH;
     }
 
     // Редактирование одной темы

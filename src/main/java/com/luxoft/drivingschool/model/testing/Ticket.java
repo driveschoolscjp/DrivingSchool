@@ -6,7 +6,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.List;
 
 /**
  * Created by Svetlana Lawrentyeva on 07.03.15.
@@ -39,8 +38,9 @@ public class Ticket extends AbstractPersistable<Long> implements Comparable<Tick
 
     @Override
     public int compareTo(Ticket o) {
-        return this.number-((Ticket)o).number;
+        return this.number - ((Ticket) o).number;
     }
+
     @Override
     public void setId(Long id) {
         super.setId(id);

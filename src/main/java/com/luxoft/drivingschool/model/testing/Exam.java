@@ -1,11 +1,9 @@
 package com.luxoft.drivingschool.model.testing;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.List;
 
 /**
  * Created by Svetlana Lawrentyeva on 07.03.15.
@@ -43,6 +41,7 @@ public class Exam extends AbstractPersistable<Long> {
     public void setQuestionPerTicketQuantity(int questionPerTicketQuantity) {
         this.questionPerTicketQuantity = questionPerTicketQuantity;
     }
+
     @Override
     public void setId(Long id) {
         super.setId(id);

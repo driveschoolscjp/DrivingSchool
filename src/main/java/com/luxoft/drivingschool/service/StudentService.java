@@ -16,7 +16,7 @@ public class StudentService {
     private StudentRepository studentRepository;
 
     @Transactional
-    public Student save(Student student){
+    public Student save(Student student) {
         return studentRepository.save(student);
     }
 
@@ -24,7 +24,7 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public Student findOne(long id){
+    public Student findOne(long id) {
         return studentRepository.findOne(id);
     }
 

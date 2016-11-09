@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "answers")
 public class Answer extends AbstractPersistable<Long> {
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String answer;
     private boolean correct;
     @ManyToOne
@@ -47,6 +47,7 @@ public class Answer extends AbstractPersistable<Long> {
     public void setQuestion(Question question) {
         this.question = question;
     }
+
     @Override
     public void setId(Long id) {
         super.setId(id);

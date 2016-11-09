@@ -16,16 +16,16 @@ public class QuestionService {
     @Autowired
     QuestionRepository questionRepository;
 
-    public List<Question> findAll(){
+    public List<Question> findAll() {
         return questionRepository.findAll();
     }
 
     @Transactional
-    public Question save(Question question){
+    public Question save(Question question) {
         return questionRepository.save(question);
     }
 
-    public Question findOne(long id){
+    public Question findOne(long id) {
         return questionRepository.findOne(id);
     }
 
@@ -37,7 +37,7 @@ public class QuestionService {
         return questionRepository.countByTicketId(ticketId);
     }
 
-    public Question findByTicketIdAndNumber(long ticketId, int number){
+    public Question findByTicketIdAndNumber(long ticketId, int number) {
         return questionRepository.findByTicketIdAndNumber(ticketId, number);
     }
 

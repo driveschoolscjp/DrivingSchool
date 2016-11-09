@@ -38,7 +38,7 @@ public class AdminTeacherController {
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public String findTeachers(@RequestParam("hasCar") int hasCar,
                                Model model) {
-        switch (hasCar){
+        switch (hasCar) {
             case 1:
                 model.addAttribute("teachers", teacherService.findAll());
                 break;

@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface GroupRepository extends JpaRepository<Group, Long> {
     List<Group> findByTeacherId(long teacherId);
+
     List<Group> findByStartDateAfter(LocalDate date);
+
     List<Group> findByNameLikeIgnoreCase(String name);
 }
