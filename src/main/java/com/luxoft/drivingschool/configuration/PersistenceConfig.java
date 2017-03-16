@@ -1,5 +1,7 @@
 package com.luxoft.drivingschool.configuration;
 
+import java.util.Properties;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +14,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
@@ -31,7 +31,7 @@ public class PersistenceConfig {
     private static final String PROP_DB_MULTILINE_EXTRACTOR = "hibernate.hbm2ddl.import_files_sql_extractor";
 
     @Autowired
-    Environment environment;
+    private Environment environment;
 
     @Bean(destroyMethod = "close")
     public BasicDataSource dataSource() {
